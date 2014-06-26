@@ -1,0 +1,35 @@
+.angular-google-map-container {
+	height: 640px;
+	position: static;
+	z-index: 0;
+	top: 0px;
+}
+.container-fluid {
+	margin: 0 0 0 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+.left-panel {
+	position: absolute;
+	left: 0px;
+	width: 218px;
+	height: 100%;
+	z-index: 10;
+	top:72px;
+
+}
+.panel-heading{
+    height:50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.panel-body{
+
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+body { padding-bottom: 70px; }
