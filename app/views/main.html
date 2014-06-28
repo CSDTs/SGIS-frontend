@@ -7,50 +7,50 @@
 
 <div class="left-panel">
     <div class="panel panel-default">
-    <div class="panel-heading">
-        <nav class="navbar navbar-primary" role="navigation">
+        <div class="panel-heading">
+            <nav class="navbar navbar-primary" role="navigation">
+                <div class="container-fluid">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+    
+                        <ul class="nav navbar-nav">
+                            <!--<li class="active"><a href="#">Datasets</a></li>-->
+                            <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
+                                <span class="glyphicon glyphicon-th-list"> DataSets</span>
+                            </button>
+                            <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                                <span class="glyphicon glyphicon-tags"> Layers </span>
+                            </button>
+    
+                        </ul>
+                </div><!-- /.container-fluid -->
+    
+            </nav>
+    
+        </div>
+        <div class="panel-body">
+          <form name="myForm">
+              <div ng-repeat="source in sources">
+                  <input type="checkbox" ng-click="onSelect(source.id)">{{ source.label }}</input>
+              </div>
+          </form>
+          <nav class="navbar navbar-primary" role="navigation">
             <div class="container-fluid">
                 <!-- Collect the nav links, forms, and other content for toggling -->
-
-                    <ul class="nav navbar-nav">
-                        <!--<li class="active"><a href="#">Datasets</a></li>-->
-                        <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-th-list"> DataSets</span>
-                        </button>
-                        <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-tags"> Layers </span>
-                        </button>
-
-                    </ul>
+  
+                <ul class="nav navbar-nav">
+  
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-stats"> Charts</span>
+                    </button>
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-pencil">Draw</span>
+                    </button>
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-plus">Add</span>
+                    </button>
+                </ul>
             </div><!-- /.container-fluid -->
-
-        </nav>
-
-    </div>
-      <div class="panel-body">
-        <form name="myForm">
-            <div ng-repeat="source in sources">
-                <input type="checkbox" ng-click="onSelect(source.id)">{{ source.label }}</input>
-            </div>
-        </form>
-        <nav class="navbar navbar-primary" role="navigation">
-          <div class="container-fluid">
-              <!-- Collect the nav links, forms, and other content for toggling -->
-
-              <ul class="nav navbar-nav">
-
-                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                      <span class="glyphicon glyphicon-stats"> Charts</span>
-                  </button>
-                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                      <span class="glyphicon glyphicon-pencil">Draw</span>
-                  </button>
-                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                      <span class="glyphicon glyphicon-plus">Add</span>
-                  </button>
-              </ul>
-          </div><!-- /.container-fluid -->
-        </nav>
+          </nav>
       </div>
   </div>   
 </div>

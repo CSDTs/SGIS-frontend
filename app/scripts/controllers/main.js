@@ -46,47 +46,9 @@ angular.module('socialjusticeApp')
     		},
     		dragging: true
 		};
-    $scope.result = '';
-    $scope.options = null;
-    $scope.details = '';
-    $scope.convertCoords= function(){
-//            $scope.newMark={};
-//            $scope.newMark.location={
-//                latitude: $scope.details.geometry.location.k,
-//                longitude: $scope.details.geometry.location.A
-//            };
-//            $scope.map.center.latitude=$scope.newMark.location.latitude;
-//            $scope.map.center.longitude=$scope.newMark.location.longitude;
-//            $scope.map.zoom=12;
-        console.log('Hello new marker');
-    };
-    // Datasets taking input from Json
-    $scope.data1 = false;
-    $scope.data2 = false;
-    $scope.data3 = false;
-
-    $scope.datasets = [];
-    /*$http.get('scripts/controllers/retailFood.json').success(function(dataFood){
-        $scope.retailStores=dataFood;
-        $scope.datasets.push(dataFood);
-    });*/
-    $scope.dataCheck1= function(){
-
-        console.log('Hi :)');
-        if($scope.data1===false){
-            console.log($scope.data1);
-            $scope.dataset1=null;
-        }
-        else {
-            console.log($scope.data1);
-            $scope.dataset1=$scope.datasets;
-            console.log($scope.datasets);
-        }
-    };
 
     $scope.events = {
         'click': function() {
-            console.log('Here!');
         }
     };
   });
