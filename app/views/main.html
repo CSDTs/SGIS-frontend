@@ -1,8 +1,7 @@
 <div class="container-fluid">
   <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
-
     <marker ng-repeat="n in newMark" coords="n" draggable="true"></marker>
-    <markers models="datasets[0]" coords="'self'" click="events.click" icon="path"></markers>
+    <markers ng-repeat="dataset in data" models="dataset" coords="'self'" click="events.click" icon="path"></markers>
   </google-map>
 </div>
 
@@ -30,47 +29,28 @@
     </div>
       <div class="panel-body">
         <form name="myForm">
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Retail Stores:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Farmer Market:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Student Weight:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 4:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 5:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 6:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 7:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 8:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 9:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 10:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 11:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 12:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 13:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 14:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 15:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 16:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 17:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 18:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 19:<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 20:<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 21:<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 22:<br>
+            <div ng-repeat="source in sources">
+                <input type="checkbox" ng-click="onSelect(source.id)">{{ source.label }}</input>
+            </div>
         </form>
-            <nav class="navbar navbar-primary" role="navigation">
-              <div class="container-fluid">
-                  <!-- Collect the nav links, forms, and other content for toggling -->
+        <nav class="navbar navbar-primary" role="navigation">
+          <div class="container-fluid">
+              <!-- Collect the nav links, forms, and other content for toggling -->
 
-                  <ul class="nav navbar-nav">
+              <ul class="nav navbar-nav">
 
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-stats"> Charts</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-pencil">Draw</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-plus">Add</span>
-                      </button>
-                  </ul>
-              </div><!-- /.container-fluid -->
-            </nav>
+                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                      <span class="glyphicon glyphicon-stats"> Charts</span>
+                  </button>
+                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                      <span class="glyphicon glyphicon-pencil">Draw</span>
+                  </button>
+                  <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                      <span class="glyphicon glyphicon-plus">Add</span>
+                  </button>
+              </ul>
+          </div><!-- /.container-fluid -->
+        </nav>
       </div>
   </div>   
 </div>
