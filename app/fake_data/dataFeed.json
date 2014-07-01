@@ -1,5 +1,5 @@
 [
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "3255",
@@ -18,7 +18,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "21299",
@@ -37,7 +37,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "3531",
@@ -56,7 +56,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12168\"}",
         "street_number": "10",
@@ -75,7 +75,7 @@
         "address_line_3": "               ",
         "zip_code": "12168"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "884",
@@ -94,7 +94,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "3076",
@@ -113,7 +113,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "849",
@@ -132,7 +132,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "273",
@@ -151,7 +151,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "252",
@@ -170,7 +170,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "96",
@@ -189,7 +189,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "741",
@@ -208,13 +208,14 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "88",
         "entity_name": "KASSIM MUAADH                    ",
         "city": "TROY              ",
         "license_number": "707092",
+
         "street_name": "3RD ST                        ",
         "longitude": "-73.66313885199963",
         "id": 12,
@@ -227,7 +228,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "679",
@@ -246,7 +247,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "95",
@@ -265,7 +266,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "211",
@@ -284,7 +285,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "330",
@@ -303,7 +304,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "380",
@@ -322,7 +323,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "34",
@@ -341,7 +342,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "596",
@@ -360,7 +361,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "67",
@@ -379,7 +380,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1811",
@@ -398,7 +399,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "560",
@@ -417,7 +418,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12062\"}",
         "street_number": "1937",
@@ -436,7 +437,7 @@
         "address_line_3": "               ",
         "zip_code": "12062"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "1100",
@@ -455,7 +456,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "311",
@@ -474,7 +475,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "107",
@@ -493,7 +494,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "471",
@@ -512,7 +513,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "50",
@@ -531,7 +532,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "586",
@@ -550,7 +551,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "360",
@@ -569,7 +570,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1811",
@@ -588,7 +589,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "1",
@@ -607,7 +608,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "164",
@@ -626,7 +627,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "138",
@@ -645,7 +646,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "103",
@@ -664,7 +665,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "575",
@@ -683,7 +684,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12040\"}",
         "street_number": "17475",
@@ -702,7 +703,7 @@
         "address_line_3": "               ",
         "zip_code": "12040"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "21428",
@@ -721,7 +722,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "596",
@@ -740,7 +741,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "305",
@@ -759,7 +760,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "760",
@@ -778,7 +779,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "536",
@@ -797,7 +798,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "800",
@@ -816,7 +817,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "470",
@@ -835,7 +836,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "63",
@@ -854,7 +855,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12168\"}",
         "street_number": "15937",
@@ -873,7 +874,7 @@
         "address_line_3": "               ",
         "zip_code": "12168"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "279",
@@ -892,7 +893,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "501",
@@ -911,7 +912,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "110",
@@ -930,7 +931,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12018\"}",
         "street_number": "3034",
@@ -949,7 +950,7 @@
         "address_line_3": "               ",
         "zip_code": "12018"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "2",
@@ -968,7 +969,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12154\"}",
         "street_number": "62",
@@ -987,7 +988,7 @@
         "address_line_3": "               ",
         "zip_code": "12154"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1351",
@@ -1006,7 +1007,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "2",
@@ -1025,7 +1026,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "3283",
@@ -1044,7 +1045,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "22",
@@ -1063,7 +1064,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "380",
@@ -1082,7 +1083,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "2",
@@ -1101,7 +1102,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "9",
@@ -1120,7 +1121,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "9",
@@ -1139,7 +1140,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "501",
@@ -1158,7 +1159,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "79",
@@ -1177,7 +1178,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "25",
@@ -1196,7 +1197,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "192",
@@ -1215,7 +1216,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12089\"}",
         "street_number": "4700",
@@ -1234,7 +1235,7 @@
         "address_line_3": "               ",
         "zip_code": "12089"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12154\"}",
         "street_number": "166",
@@ -1253,7 +1254,7 @@
         "address_line_3": "               ",
         "zip_code": "12154"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "12",
@@ -1272,7 +1273,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "95",
@@ -1291,7 +1292,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "596",
@@ -1310,7 +1311,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "2901",
@@ -1329,7 +1330,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "402",
@@ -1348,7 +1349,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "400",
@@ -1367,7 +1368,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1621",
@@ -1386,7 +1387,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "132",
@@ -1405,7 +1406,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "127",
@@ -1424,7 +1425,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12022\"}",
         "street_number": "40",
@@ -1443,7 +1444,7 @@
         "address_line_3": "               ",
         "zip_code": "12022"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "264",
@@ -1462,7 +1463,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "975",
@@ -1481,7 +1482,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "721",
@@ -1500,7 +1501,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "716",
@@ -1519,7 +1520,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12022\"}",
         "street_number": "18223",
@@ -1538,7 +1539,7 @@
         "address_line_3": "               ",
         "zip_code": "12022"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "766",
@@ -1557,7 +1558,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "764",
@@ -1576,7 +1577,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "100",
@@ -1595,7 +1596,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "40",
@@ -1614,7 +1615,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12094\"}",
         "street_number": "2579",
@@ -1633,7 +1634,7 @@
         "address_line_3": "               ",
         "zip_code": "12094"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1607",
@@ -1652,7 +1653,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "77",
@@ -1671,7 +1672,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "entity_name": "FRIAR TUCK LTD                   ",
@@ -1689,7 +1690,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "461",
@@ -1708,7 +1709,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1825",
@@ -1727,7 +1728,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "865",
@@ -1746,7 +1747,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1",
@@ -1765,7 +1766,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "8",
@@ -1784,7 +1785,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12138\"}",
         "street_number": "61",
@@ -1803,7 +1804,7 @@
         "address_line_3": "               ",
         "zip_code": "12138"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "487",
@@ -1822,7 +1823,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "79",
@@ -1841,7 +1842,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "596",
@@ -1860,7 +1861,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12138\"}",
         "street_number": "72",
@@ -1879,7 +1880,7 @@
         "address_line_3": "               ",
         "zip_code": "12138"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "491-493",
@@ -1898,7 +1899,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "985",
@@ -1917,7 +1918,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1297",
@@ -1936,7 +1937,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "107",
@@ -1955,7 +1956,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "330",
@@ -1974,7 +1975,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "19",
@@ -1993,7 +1994,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "2",
@@ -2012,7 +2013,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "181",
@@ -2031,7 +2032,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "625",
@@ -2050,7 +2051,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12153\"}",
         "street_number": "8427",
@@ -2069,7 +2070,7 @@
         "address_line_3": "               ",
         "zip_code": "12153"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "499",
@@ -2088,7 +2089,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "568",
@@ -2107,7 +2108,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "2",
@@ -2126,7 +2127,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "505",
@@ -2145,7 +2146,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "64",
@@ -2164,7 +2165,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "75",
@@ -2183,7 +2184,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "100",
@@ -2202,7 +2203,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12196\"}",
         "street_number": "3610",
@@ -2221,7 +2222,7 @@
         "address_line_3": "               ",
         "zip_code": "12196"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "614",
@@ -2240,7 +2241,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "74",
@@ -2259,7 +2260,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "125",
@@ -2278,7 +2279,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "350",
@@ -2297,7 +2298,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "740",
@@ -2316,7 +2317,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "164",
@@ -2335,7 +2336,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "95",
@@ -2354,7 +2355,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "600",
@@ -2373,7 +2374,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "541",
@@ -2392,7 +2393,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "164",
@@ -2411,7 +2412,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "2385",
@@ -2430,7 +2431,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "307",
@@ -2449,7 +2450,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "600",
@@ -2468,7 +2469,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "3517",
@@ -2487,7 +2488,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "79",
@@ -2506,7 +2507,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12154\"}",
         "street_number": "4",
@@ -2525,7 +2526,7 @@
         "address_line_3": "               ",
         "zip_code": "12154"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12133\"}",
         "street_number": "4702",
@@ -2544,7 +2545,7 @@
         "address_line_3": "               ",
         "zip_code": "12133"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "615",
@@ -2563,7 +2564,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "28",
@@ -2582,7 +2583,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "49",
@@ -2601,7 +2602,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "625",
@@ -2620,7 +2621,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12018\"}",
         "street_number": "3305",
@@ -2639,7 +2640,7 @@
         "address_line_3": "               ",
         "zip_code": "12018"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "598",
@@ -2658,7 +2659,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "644",
@@ -2677,7 +2678,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "867",
@@ -2696,7 +2697,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12090\"}",
         "street_number": "4744",
@@ -2715,7 +2716,7 @@
         "address_line_3": "               ",
         "zip_code": "12090"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "244",
@@ -2734,7 +2735,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12094\"}",
         "street_number": "3187",
@@ -2753,7 +2754,7 @@
         "address_line_3": "               ",
         "zip_code": "12094"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "75",
@@ -2772,7 +2773,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "7",
@@ -2791,7 +2792,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "904",
@@ -2810,7 +2811,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "501",
@@ -2829,7 +2830,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1792",
@@ -2848,7 +2849,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "4005",
@@ -2867,7 +2868,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "449",
@@ -2886,7 +2887,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "272",
@@ -2905,7 +2906,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "120",
@@ -2924,7 +2925,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12062\"}",
         "street_number": "6438",
@@ -2943,7 +2944,7 @@
         "address_line_3": "               ",
         "zip_code": "12062"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "42",
@@ -2962,7 +2963,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "295",
@@ -2981,7 +2982,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "281",
@@ -3000,7 +3001,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "175",
@@ -3019,7 +3020,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "9",
@@ -3038,7 +3039,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "664",
@@ -3057,7 +3058,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12018\"}",
         "street_number": "1636",
@@ -3076,7 +3077,7 @@
         "address_line_3": "               ",
         "zip_code": "12018"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "125",
@@ -3095,7 +3096,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "995",
@@ -3114,7 +3115,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "3081",
@@ -3133,7 +3134,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "97",
@@ -3152,7 +3153,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "560",
@@ -3171,7 +3172,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "869",
@@ -3190,7 +3191,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "93",
@@ -3209,7 +3210,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12018\"}",
         "street_number": "489",
@@ -3228,7 +3229,7 @@
         "address_line_3": "               ",
         "zip_code": "12018"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "307",
@@ -3247,7 +3248,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "611",
@@ -3266,7 +3267,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "839",
@@ -3285,7 +3286,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12033\"}",
         "street_number": "1645",
@@ -3304,7 +3305,7 @@
         "address_line_3": "               ",
         "zip_code": "12033"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "29",
@@ -3323,7 +3324,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "2300",
@@ -3342,7 +3343,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "245",
@@ -3361,7 +3362,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "597",
@@ -3380,7 +3381,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12052\"}",
         "street_number": "2432",
@@ -3399,7 +3400,7 @@
         "address_line_3": "               ",
         "zip_code": "12052"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12182\"}",
         "street_number": "661",
@@ -3418,7 +3419,7 @@
         "address_line_3": "               ",
         "zip_code": "12182"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "156",
@@ -3437,7 +3438,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12123\"}",
         "street_number": "3528",
@@ -3456,7 +3457,7 @@
         "address_line_3": "               ",
         "zip_code": "12123"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "12",
@@ -3475,7 +3476,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "558",
@@ -3494,7 +3495,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "439",
@@ -3513,7 +3514,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "528",
@@ -3532,7 +3533,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "33",
@@ -3551,7 +3552,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "549",
@@ -3570,7 +3571,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "71",
@@ -3589,7 +3590,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12061\"}",
         "street_number": "775",
@@ -3608,7 +3609,7 @@
         "address_line_3": "               ",
         "zip_code": "12061"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12154\"}",
         "street_number": "6",
@@ -3627,7 +3628,7 @@
         "address_line_3": "               ",
         "zip_code": "12154"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12140\"}",
         "street_number": "2",
@@ -3646,7 +3647,7 @@
         "address_line_3": "               ",
         "zip_code": "12140"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "447",
@@ -3665,7 +3666,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "47",
@@ -3684,7 +3685,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "250",
@@ -3703,7 +3704,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "120-156",
@@ -3722,7 +3723,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12089\"}",
         "street_number": "4956",
@@ -3741,7 +3742,7 @@
         "address_line_3": "               ",
         "zip_code": "12089"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "70",
@@ -3760,7 +3761,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12196\"}",
         "street_number": "4357",
@@ -3779,7 +3780,7 @@
         "address_line_3": "               ",
         "zip_code": "12196"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "304",
@@ -3798,7 +3799,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12144\"}",
         "street_number": "52",
@@ -3817,7 +3818,7 @@
         "address_line_3": "               ",
         "zip_code": "12144"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "195",
@@ -3836,7 +3837,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "82",
@@ -3855,7 +3856,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "95",
@@ -3874,7 +3875,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "355",
@@ -3893,7 +3894,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12196\"}",
         "entity_name": "MARTINS FOODS OF S BURLINGTON INC",
@@ -3911,7 +3912,7 @@
         "address_line_3": "               ",
         "zip_code": "12196"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12198\"}",
         "street_number": "40",
@@ -3930,7 +3931,7 @@
         "address_line_3": "               ",
         "zip_code": "12198"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "165",
@@ -3949,7 +3950,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "445",
@@ -3968,7 +3969,7 @@
         "address_line_3": "               ",
         "zip_code": "12180"
     },
-    { "path":"/Users/gouravjeet/Documents/SocialJustice2.0/app/images/glyphicons_242_google_maps.png",
+    { "icon": "images/marker1.png",
         "needs_recoding": false,
         "human_address": "{\"address\":\"\",\"city\":\"\",\"state\":\"\",\"zip\":\"12180\"}",
         "street_number": "106",

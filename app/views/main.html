@@ -1,76 +1,64 @@
 <div class="container-fluid">
   <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
 
-    <marker ng-repeat="n in newMark" coords="n" draggable="true"></marker>
-    <markers models="datasets[0]" coords="'self'" click="events.click" icon="path"></markers>
+      <marker ng-repeat="n in newMark" coords="n" draggable="true"></marker>
+      <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" click="'onClicked'" fit='true' >
+          <windows show="'showWindow'" closeClick="'closeClick'" ng-cloak>
+            <p ng-non-bindable>Name of shop is :{{entity_name}} and city name is :{{city}} <br> </p>
+          </windows>
+      </markers>
+
   </google-map>
 </div>
-
-<div class="left-panel">
+<div class="left-panel" >
     <div class="panel panel-default">
-    <div class="panel-heading">
-        <nav class="navbar navbar-primary" role="navigation">
+        <div class="panel-heading">
+            <nav class="navbar navbar-primary" role="navigation">
+                <div class="container-fluid">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                        <ul class="nav navbar-nav">
+                            <!--<li class="active"><a href="#">Datasets</a></li>-->
+                            <button class="btn-primary active" type="button" class="btn btn-default btn-lg" >
+                                <span class="glyphicon glyphicon-th-list">DataSets</span>
+                            </button>
+                            <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                                <span class="glyphicon glyphicon-tags"> Layers </span>
+                            </button>
+                        </ul>
+                    <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
+                        <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
+                    </button>
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="panel-body" class="collapse in" id="demo">
+        <form  role="search" ng-submit="convertCoords()"  >
+            <div class="form-group move-down">
+                <input type="text" id="Autocomplete1" class="form-control input-sm" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result" options="options" details="details"/>
+                <input type="submit" class="btn btn-primary btn-sm" value="Search">
+            </div>
+        </form>
+          <form name="myForm">
+              <div ng-repeat="source in sources">
+                  <input type="checkbox" ng-click="onSelect(source.id)">{{ source.label }}</input>
+              </div>
+          </form>
+          <nav class="navbar navbar-primary" role="navigation">
             <div class="container-fluid">
                 <!-- Collect the nav links, forms, and other content for toggling -->
-
-                    <ul class="nav navbar-nav">
-                        <!--<li class="active"><a href="#">Datasets</a></li>-->
-                        <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-th-list"> DataSets</span>
-                        </button>
-                        <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                            <span class="glyphicon glyphicon-tags"> Layers </span>
-                        </button>
-
-                    </ul>
+                <ul class="nav navbar-nav">
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-stats"> Charts</span>
+                    </button>
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-pencil">Draw</span>
+                    </button>
+                    <button class="btn-primary" type="button" class="btn btn-default btn-lg">
+                        <span class="glyphicon glyphicon-plus">Add</span>
+                    </button>
+                </ul>
             </div><!-- /.container-fluid -->
-
         </nav>
-
     </div>
-      <div class="panel-body">
-        <form name="myForm">
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Retail Stores<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Farmer Market<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Student Weight<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 4<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 5<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 6<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 7<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 8<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 9<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 10<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 11<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 12<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 13<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 14<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 15<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 16<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 17<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 18<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 19<br>
-            <input type="checkbox" ng-model="data2" ng-change="dataCheck2()"> Dataset 20<br>
-            <input type="checkbox" ng-model="data3" ng-change="dataCheck3()"> Dataset 21<br>
-            <input type="checkbox" ng-model="data1" ng-change="dataCheck1()"> Dataset 22<br>
-        </form>
-            <nav class="navbar navbar-primary" role="navigation">
-              <div class="container-fluid">
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-
-                  <ul class="nav navbar-nav">
-
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-stats"> Charts</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-pencil">Draw</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-plus">Add</span>
-                      </button>
-                  </ul>
-              </div><!-- /.container-fluid -->
-            </nav>
-      </div>
   </div>   
 </div>
