@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'google-maps',
-    'ngAutocomplete'
+    'ngAutocomplete',
+    'mgcrea.ngStrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

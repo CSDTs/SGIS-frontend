@@ -30,7 +30,7 @@ angular.module('socialjusticeApp')
     $scope.convertCoords= function(){
         $scope.newMark.location={
             latitude: $scope.details.geometry.location.k,
-            longitude: $scope.details.geometry.location.A
+            longitude: $scope.details.geometry.location.B
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
@@ -67,5 +67,51 @@ angular.module('socialjusticeApp')
         markerToClose = marker; // for next go around
         marker.showWindow = true;
         $scope.$apply();
+    };
+    $scope.tabs = [
+      {
+        'title': 'Charts',
+        'content': 'Charts View will give an area to compare different data sets',
+        'template': 'views/charts.html'
+      },
+      {
+        'title': 'Draw',
+        'content': 'You can draw you own own elements',
+        'template': 'views/draw.html'
+      },
+      {
+        'title': 'Add',
+        'template': 'views/about.html',
+        'content': 'Add'
+      }
+    ];
+     $scope.events={
+        rightclick: function () {
+            console.log('Hello');
+        }
+    };
+    $scope.editNewMarker={
+        options:
+        { draggable:true},
+        events:
+        {  drag:function () {
+                console.log('Hello');
+                
+            }
+        }
+    };
+     $scope.infoWindowWithCustomClass= {
+        // coords: {
+        //   latitude: 36.270850,
+        //   longitude: -44.296875
+        // },
+        options: {
+          boxClass: 'custom-info-window'
+        },
+        show: true
+    };
+     $scope.AddwithDescription=function(){
+        $scope.editTodo=true;
+        console.log('Hi');
     };
   });
