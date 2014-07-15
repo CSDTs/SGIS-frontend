@@ -41,14 +41,14 @@
               <li class="active"><a href="#/"><span class="glyphicon glyphicon-home"></span> Home </a></li>
               <li ><a href="#/about">About</a></li>
             </ul>
-            <form class="navbar-form navbar-right" role="search" ng-submit="convertCoords()"  >
+           <!--  <form class="navbar-form navbar-right" role="search" ng-submit="convertCoords()"  >
               <div class="form-group move-down">
                   <span class="label label-primary"> Welcome, John</span>
                   <button id="id_logout" type="button" class="btn btn-danger btn-sm">Logout</button>
                   <input type="text" id="Autocomplete1" class="form-control input-sm" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result" options="options" details="details"/>
                   <input type="submit" class="btn btn-primary btn-sm" value="Search">
               </div>
-            </form>
+            </form> -->
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
@@ -66,6 +66,16 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript">
+      var config = {
+        serverRoot: 'http://107.170.106.235',
+        routes: {
+          dataSource: '/api-ds/:id',
+          dataFeed: '/api-mp/?dataset=:dataSourceId'
+        }
+      };
+    </script>
 
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
 
@@ -86,8 +96,10 @@
     <script src="bower_components/requirejs/require.js"></script>
     <script src="bower_components/autocomplete/dist/autocomplete.js"></script>
     <script src="bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script> 
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script type='text/javascript' src='bower_components/d3/d3.min.js'></script>
+    <script type='text/javascript' src='bower_components/angular-charts/dist/angular-charts.min.js'></script> 
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -95,9 +107,12 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/charts.js"></script>
         <script src="scripts/services/config.js"></script>
         <script src="scripts/services/datasource.js"></script>
         <script src="scripts/services/datafeed.js"></script>
+        
+        <script src="scripts/controllers/addTag.js"></script>
         <!-- endbuild -->
 </body>
 </html>

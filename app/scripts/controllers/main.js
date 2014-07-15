@@ -8,7 +8,7 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-  .controller('MainCtrl',function ($scope,$http, dataSource, dataFeed) {
+  .controller('MainCtrl',function ($scope,$http, $modal, dataSource, dataFeed) {
 
     var google = window.google;
 
@@ -113,5 +113,11 @@ angular.module('socialjusticeApp')
      $scope.AddwithDescription=function(){
         $scope.editTodo=true;
         console.log('Hi');
+    };
+
+    var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
+
+    $scope.makeModal = function() {
+        tagsModal.$promise.then(tagsModal.show);
     };
   });

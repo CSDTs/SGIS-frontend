@@ -1,85 +1,81 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">  
+  
   <div class="container-fluid">
-    <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
 
-        <marker ng-repeat="n in newMark" icon="newicon" coords="n" options="editNewMarker.options" events="editNewMarker.events">
-          <window show="showhome" options="infoWindowWithCustomClass.options"> 
-            <p>Home</p>
-          </window>
-        </marker>
-        <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" events="events" click="'onClicked'" fit='true' >
-            <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak>
-              <p ng-non-bindable>Name of shop is :{{entity_name}} and city name is :{{city}} <br> </p>
-            </windows>
-        </markers>
+    <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
+      <marker ng-repeat="n in newMark" icon="newicon" coords="n" options="editNewMarker.options" events="editNewMarker.events">
+        <window show="showhome" options="infoWindowWithCustomClass.options"> 
+          <p>Home</p>
+        </window>
+      </marker>
+      <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" events="events" click="'onClicked'" fit='true' >
+          <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak>
+            <p ng-non-bindable>Name of shop is :{{entity_name}} and city name is :{{city}} <br> </p>
+          </windows>
+      </markers>
+      <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="events" >
+      </polygon>
     </google-map>
   </div>
   
   <div class="left-panel" >
-  <form novalidate class="simple-form">
-    <div class="input-group input-group-sm">
-      <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
-      <span class="input-group-btn">
-      <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
-      <button class="btn btn-primary" ng-click="AddwithDescription()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-      </span>
-    </div>
-  </form>
-      <div class="panel panel-default">
-          <div class="panel-heading">
-              <nav class="navbar navbar-primary" role="navigation">
-                  <div class="container-fluid">
-                      <!-- Collect the nav links, forms, and other content for toggling -->
-                          <ul class="nav navbar-nav">
-                              <!--<li class="active"><a href="#">Datasets</a></li>-->
-                              <button class="btn-primary active" type="button" class="btn btn-default btn-lg" >
-                                  <span class="glyphicon glyphicon-th-list">DataSets</span>
-                              </button>
-                              <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                                  <span class="glyphicon glyphicon-tags"> Layers </span>
-                              </button>
-                          </ul>
-                      <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
-                          <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
-                      </button>
-                  </div><!-- /.container-fluid -->
-              </nav>
-          </div>
-          <div class="panel-body" class="collapse in" id="demo">
-        
-            <form name="myForm">
-                <div ng-repeat="source in sources">
-                    <input type="checkbox" ng-click="onSelect(source.id)">{{ source.label }}</input>
-                </div>
-            </form>
-            <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
-            <!-- <nav class="navbar navbar-primary" role="navigation">
-              <div class="container-fluid">
-                  <ul class="nav navbar-nav">
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-stats"> Charts</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg">
-                          <span class="glyphicon glyphicon-pencil">Draw</span>
-                      </button>
-                      <button class="btn-primary" type="button" class="btn btn-default btn-lg" ng-click="AddwithDescription()">
-                          <span class="glyphicon glyphicon-plus">Add</span>
-                      </button>
-                  </ul>
-              </div>      
-          </nav> -->
+    <form novalidate class="simple-form">
+      <div class="input-group input-group-sm">
+        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
+        <span class="input-group-btn">
+        <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
+        <button class="btn btn-primary" ng-click="AddwithDescription()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+        </span>
       </div>
-    </div>   
+    </form>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <nav class="navbar navbar-primary" role="navigation">
+                <div class="container-fluid">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                        <ul class="nav navbar-nav">
+                            <!--<li class="active"><a href="#">Datasets</a></li>-->
+                            <button class="btn-primary active" type="button" class="btn btn-default btn-lg" >
+                                <span class="glyphicon glyphicon-th-list">DataSets</span>
+                            </button>
+                            <button class="btn-primary" type="button" class="btn btn-default btn-lg" >
+                                <span class="glyphicon glyphicon-tags"> Layers </span>
+                            </button>
+
+                        </ul>
+                    <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
+                        <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
+                    </button>
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+        <div class="panel-body" class="collapse in" id="demo">
+          <form name="myForm">
+            <div ng-repeat="source in sources">
+                <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
+            </div>
+          </form>
+          <div id="modal_test" ng-controller="addTagCtrl">
+            <!-- <button type="button" class="btn btn-sm btn-success" data-animation="am-fade-and-slide-top" data-template="bower_components/angular-strap/src/modal/modal.tpl.html" data-placement="center" bs-modal="modal">Custom Modal
+                <br />    
+            </button> -->
+            <button type="button" class="btn btn-sm btn-success" ng-click="makeModal()">Add Tag</button>
+          </div>
+          <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
+        </div><!-- panel body -->
+  </div> <!-- panel -->  
   </div>
   <div class="right-panel" ng-show="editTodo">
     <div class="panel panel-default">
       <div class="panel-body" class="collapse in" id="demo">
-        <form name="editTodoForm" class="pure-form" ng-submit="submitTodo()">
+        <form name="editTodoForm"  ng-submit="submitTodo()">
           <fieldset>
             <label for="title">Title:</label>
-            <input id="title" class="form-control" type="text" ng-model="editTodo.title" ng-maxlength="30" required>
+            <input id="title" class="form-control" type="text" ng-model="addMarker.title" ng-maxlength="30" required>
             <label for="description">Description:</label>
-            <input id="description" class="form-control" type="text" ng-model="editTodo.desc">
+            <input id="description" class="form-control" type="text" ng-model="addMarker.desc">
+            <label for="description">Tag:</label>
+            <input id="tag1" class="form-control" type="text" ng-model="addMarker.tag1">
             <label for="latitude">Latitude:</label>
             <input id="latitude" class="form-control" type="text" ng-model="newMark.location.latitude">
             <label for="longitude">Longitude:</label>
@@ -95,4 +91,29 @@
       </div>
     </div>   
   </div>
+
+   <!-- <div class="tag-panel" ng-show="tag-show">
+    <div class="panel panel-default">
+      <div class="panel-body" class="collapse in" id="demo">
+        <form name="tagForm"  ng-submit="tagSubmit()">
+          <fieldset>
+            <label for="title">Title:</label>
+            <input id="title" class="form-control" type="text" ng-model="addMarker.title" ng-maxlength="30" required>
+            <label for="description">Description:</label>
+            <input id="description" class="form-control" type="text" ng-model="addMarker.desc">
+            <label for="description">Tag:</label>
+            <input id="tag1" class="form-control" type="text" ng-model="addMarker.tag1">
+            
+            <div ng-show="editTodo.id !== -1">
+              <label for="completed">Completed:</label>
+              <input id="completed" type="checkbox" ng-model="editTodo.comp">
+            </div>
+            <button class="btn btn-primary" type="submit">Save</button>
+            <button class="btn btn-warning" ng-click="resetCloseTodoForm()">Discard</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>   
+  </div> -->
+
 </body>

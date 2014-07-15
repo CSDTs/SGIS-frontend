@@ -3,7 +3,7 @@
 angular.module('socialjusticeApp')
   .service('config', function config() {
       var makeConfig = function() {
-          return {
+          var config = {
               routes: {
                   dataSource: '/fake_data/dataSource/:id.json',
                   dataFeed: '/fake_data/dataFeed.json?dataSource=:dataSourceId'
@@ -22,6 +22,25 @@ angular.module('socialjusticeApp')
               },
               makeConfig: makeConfig
           };
+
+          // If there is a global configuration available, merge it an overwrite defaults
+          if(window.config !== undefined) {
+            var merge = function(cur, old) {
+              var res = old;
+              for(var v in cur) {
+                if(typeof cur[v] === 'object') {
+                  res[v] = merge(cur[v], old[v]);
+                } else {
+                  res[v] = cur[v];
+                }
+              }
+              return res;
+            };
+      
+            config = merge(window.config, config);
+          }
+
+          return config;
       };
 
       return makeConfig();

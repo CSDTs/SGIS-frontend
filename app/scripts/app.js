@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'google-maps',
     'ngAutocomplete',
-    'mgcrea.ngStrap'
+    'mgcrea.ngStrap',
+    'angularCharts'
   ])
   .config(function ($routeProvider) {
     $routeProvider
