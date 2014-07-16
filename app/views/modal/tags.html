@@ -3,11 +3,63 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" ng-click="$hide()">&times;</button>
-        <h4 class="modal-title">Hello, modal</h4>
+        <h4 class="modal-title">Add Tag</h4>
       </div>
       <div class="modal-body">
-      	<h1>This is a test <small>of the modal testing system</small></h1>
-      </div>
+      	<div class="container-fluid">
+  			<form name="addTagForm" novalidate>	
+	  			<div class="row">
+	   				<div class="col-xs-3 col-md-3">
+	   					<label for="title">Name:</label><br>
+	   				</div>
+	  				<div class="col-xs-4 col-md-4">
+	  					<input id="name" type="text" ng-model="tagObject.nameTag" class="form-control-sm" placeholder="Name" ng-maxlength="30" required>
+	  				</div>
+	  				<div class="col-xs-5 col-md-5">
+	  				</div>
+	  			</div>	<br>
+	  			<div class="row">
+	   				<div class="col-xs-3 col-md-3">
+	   					<label for="desc">Description:</label><br>
+	   				</div>
+	  				<div class="col-xs-4 col-md-4">
+	  					<input id="description" type="text" ng-model="tagObject.descriptionTag" class="form-control-sm" placeholder="Description" ng-maxlength="30" required>
+	  				</div>
+	  				<div class="col-xs-5 col-md-5">
+	  				</div>
+	  			</div>	<br>
+	  			<div class="row">
+	   				<div class="col-xs-3 col-md-3">
+	   					 <label for="Tags">Tags:</label>
+	   				</div>
+	  				<div class="col-xs-7 col-md-7">
+	  					<multi-select input-model="multiTags" item-label="firstName" button-label="firstName" tick-property="selected" output-model="tagObject.outputTagSelect"></multi-select>
+	  				</div>
+	  			</div>		<br>
+	  			<div class="row">
+	   				<div class="col-xs-3 col-md-3">
+	   					<label for="addTag">Add new Tag:</label>
+	   				</div>
+	  				<div class="col-xs-4 col-md-4">
+	  					<input id="tag1" ng-model="tagObject.addNewTag" class="form-control-sm" placeholder="new Tag" type="text">
+	  				</div>
+	  				<div class="col-xs-5 col-md-5">
+	  				</div>
+	  			</div>	<br>	
+	  			<div class="row">
+	   				<div class="col-xs-2 col-md-2">
+	   					<button class="btn btn-success" ng-click="saveTag(tagObject);$hide()">Save Tag</button>
+	   				</div>
+	  				<div class="col-xs-2 col-md-2">
+	  					<button class="btn btn-warning" ng-click="reset()">Discard</button>
+	  				</div>
+	  				<div class="col-xs-8 col-md-8">
+	  					
+	  				</div>
+	  			</div>
+	   		</form>
+	  	</div>
+	  </div>	
       <div class="modal-footer">
         <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
       </div>

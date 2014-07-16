@@ -19,7 +19,8 @@ angular
     'google-maps',
     'ngAutocomplete',
     'mgcrea.ngStrap',
-    'angularCharts'
+    'angularCharts',
+    'multi-select'
   ])
   .config(function ($routeProvider) {
     $routeProvider
