@@ -77,6 +77,7 @@ angular.module('socialjusticeApp')
         else {
             $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
         }
+
     };
     $scope.result = '';
     $scope.options = null;
@@ -117,6 +118,7 @@ angular.module('socialjusticeApp')
     };
     var markerToClose = null;
     $scope.onClicked = function (marker) {
+        
         if (markerToClose) {
             markerToClose.showWindow = false;
         }
@@ -151,6 +153,11 @@ angular.module('socialjusticeApp')
             draggable:true},
         events:{ 
             drag:function () {
+            },
+            click:function(marker){
+                console.log(marker);
+                marker.showWindow = true;
+                $scope.$apply();
             },
             dblclick:function(){
                 console.log('clicked');

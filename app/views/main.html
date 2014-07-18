@@ -6,9 +6,9 @@
           <p>Home</p>
         </window>
       </marker>
-      <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" events="events" click="'onClicked'" fit='true' >
-          <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak>
-            <p ng-non-bindable>Name of shop is :{{entity_name}} and city name is :{{city}} <br> </p>
+      <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" events="editNewMarker.events" click="'onClicked'" fit='true' >
+          <windows ng-repeat="dataset in data" models="dataset" show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak>
+            <p ng-non-bindable>Name of shop is :{{name}} and city name is :{{city}} <br> </p>
           </windows>
       </markers>
       <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="polygonEvents" >
