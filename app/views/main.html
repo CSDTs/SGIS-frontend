@@ -1,23 +1,33 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">    
   <div class="container-fluid">
     <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
-      <marker ng-repeat="n in newMark" icon="newicon" coords="n" options="editNewMarker.options" events="editNewMarker.events">
-        <window show="showhome" options="infoWindowWithCustomClass.options"> 
-          <p>Home</p>
+      <marker ng-repeat="n in newMark" icon="newicon" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+        <window show="showWindow" options="infoWindowWithCustomClass.options"> 
+          <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
+              Tags are {{dataTag.outputTagSelect[0]}}
+          </p>
         </window>
       </marker>
-      <markers ng-repeat="dataset in data" models="dataset" coords="'self'" icon="'icon'" events="editNewMarker.events" click="'onClicked'" fit='true' >
-          <windows ng-repeat="dataset in data" models="dataset" show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak>
-            <p ng-non-bindable>Name of shop is :{{name}} and city name is :{{city}} <br> </p>
-          </windows>
+
+      <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">
+        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" > 
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}}</p>
+      </windows>
       </markers>
+      
+      <markers ng-repeat="dataset2 in data" models="dataset2" coords="'self'" events="editTagEvents.events">
+        <windows options="infoWindowWithCustomClass.options" >
+              <p ng-non-bindable>Hi hellow i am from {{name}}{{street}}{{city}}{{state}}</p>
+        </windows>
+      </markers>
+      
       <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="polygonEvents" >
       </polygon>
     </google-map>
   </div>
   
   <div class="left-panel" >
-    <form novalidate class="simple-form">
+    <form novalidate class="simple-form">  
       <div class="input-group input-group-sm">
         <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">

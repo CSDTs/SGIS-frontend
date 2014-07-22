@@ -13,6 +13,30 @@ angular.module('socialjusticeApp')
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
+    $scope.dataTag = {};
+
+    $scope.$watch('dataTag',function(){
+        console.log($scope.dataTag);
+    });
+    $scope.tagObject={};
+    $scope.saveTag=function(){
+        $scope.dataTag={
+            id:$scope.tagObject.id,
+            nameTag:$scope.tagObject.nameTag,
+            descriptionTag:$scope.tagObject.descriptionTag,
+            outputTagSelect:$scope.tagObject.outputTagSelect,
+            addNewTag:$scope.tagObject.addNewTag
+        };
+        var tagId=$scope.dataTag.id;
+        var i;
+        for(i=$scope.APIMArker.length-1;i>=0;i--){
+            if(tagId==$scope.APIMArker[i].id){
+                $scope.APIMArker[i].name=$scope.dataTag.nameTag;
+                $scope.APIMArker[i].city=$scope.dataTag.descriptionTag;
+                $scope.APIMArker[i].tags=$scope.dataTag.addNewTag;
+            }
+        }          
+    };
     //Adding polygons
     $scope.singleModel = 1;
     $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){  
@@ -35,6 +59,76 @@ angular.module('socialjusticeApp')
         color: '#505152',
         opacity: 1
     };
+    
+    $scope.APIMArker=[ 
+            
+            {
+                'dataset': 'http://107.170.106.235/api-ds/11/', 
+                'id': 56487, 
+                'showWindow':false,
+                'name': 'MR SAM FOOD MARKET', 
+                'latitude': '42.667402000000003', 
+                'longitude': '-73.770546899999999', 
+                'street': '61 QUAIL ST', 
+                'city': 'ALBANY', 
+                'state': 'NY', 
+                'zipcode': '12206', 
+                'county': 'Albany', 
+                'field1': 'ALSAEDI GAMAL A', 
+                'tags': '', 
+                'field3': ''
+            }, 
+            {
+                'dataset': 'http://107.170.106.235/api-ds/11/', 
+                'id': 56488, 
+                'showWindow':false,
+                'name': 'WESTMERE NEWS & VARIETY', 
+                'latitude': '42.690869300000003', 
+                'longitude': '-73.867752999999993', 
+                'street': '1823 WESTERN AVE', 
+                'city': 'ALBANY', 
+                'state': 'NY', 
+                'zipcode': '12203', 
+                'county': 'Albany', 
+                'field1': 'WESTMERE NEWS INC', 
+                'tags': '', 
+                'field3': ''
+            }
+        ,
+            {
+                'dataset': 'http://107.170.106.235/api-ds/11/', 
+                'id': 56493, 
+                'showWindow':false,
+                'name': 'PRICE CHOPPER 138', 
+                'latitude': '42.754105500000001', 
+                'longitude': '-73.756456600000007', 
+                'street': '873 NEW LOUDON RD', 
+                'city': 'LATHAM', 
+                'state': 'NY', 
+                'zipcode': '12110', 
+                'county': 'Albany', 
+                'field1': 'PRICE CHOPPER OPERATING CO INC', 
+                'tags': '', 
+                'field3': ''
+            }
+        
+    ];
+    var onMarkerClicked = function (marker) {
+        marker.showWindow = true;
+       
+    };
+    _.each($scope.APIMArker, function (marker) {
+        marker.closeClick = function () {
+          // marker.showWindow = false;
+          // $scope.$apply();
+        };
+        marker.onClicked = function () {
+        marker.showWindow = true;
+          $scope.$apply();
+        onMarkerClicked(marker);
+        };
+    });
+    
     $scope.polygonEvents={
         // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {    
         //     var polygonScopeObject = this.polygon, scope = this.scope;
@@ -91,7 +185,7 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-        $scope.map.zoom=12;
+        // $scope.map.zoom=12;
     };
 
     $scope.map = {
@@ -99,7 +193,7 @@ angular.module('socialjusticeApp')
     	  	latitude: 42.678681,
     	  	longitude: -73.741265
     	},
-    	zoom: 9,
+    	zoom: 7,
     	options: {
     		streetViewControl: true,
     		panControl: true,
@@ -117,14 +211,22 @@ angular.module('socialjusticeApp')
 	    dragging: true
     };
     var markerToClose = null;
-    $scope.onClicked = function (marker) {
+    // $scope.onClicked = function (marker) {
         
-        if (markerToClose) {
-            markerToClose.showWindow = false;
-        }
-        markerToClose = marker; // for next go around
-        marker.showWindow = true;
-        $scope.$apply();
+    //     // if (markerToClose) {
+    //     //     markerToClose.showWindow = false;
+    //     // }
+    //     // markerToClose = marker; // for next go around
+    //     marker.showWindow = true;
+
+    //     console.log('marker clicked');
+    //     $scope.$apply();
+        
+    // };
+    $scope.symbol={
+      path: window.google.maps.SymbolPath.CIRCLE,
+      scale: 5
+
     };
     $scope.tabs = [
         {
@@ -148,23 +250,31 @@ angular.module('socialjusticeApp')
     //         console.log('Hello');
     //     }
     // };
-    $scope.editNewMarker={
+    $scope.showWindow=false;
+    $scope.editTagEvents={
         options:{ 
             draggable:true},
         events:{ 
             drag:function () {
             },
-            click:function(marker){
-                console.log(marker);
-                marker.showWindow = true;
+            // click:function(marker){
+            //     console.log(marker.showWindow);
+            //     marker.showWindow = true;
+            //     console.log('marker clicked');
+            //     console.log(marker);
+            //     $scope.$apply();
+            // },
+            dblclick:function(marker){
+                console.log('dbl clicked');
+                marker.showWindow = false;
                 $scope.$apply();
-            },
-            dblclick:function(){
-                console.log('clicked');
-                $scope.makeModal();
+                var pos = marker.getPosition();        
+                var markerKey=marker.key;
+                $scope.makeModal(markerKey);
             }
         }
     };
+
     $scope.infoWindowWithCustomClass= {
         options: {
             boxClass: 'custom-info-window'
@@ -176,8 +286,23 @@ angular.module('socialjusticeApp')
         console.log('Hi');
     };
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
-    $scope.makeModal = function() {
-        tagsModal.$promise.then(tagsModal.show);
+    $scope.makeModal = function(markerkey) {
+        console.log(markerkey);
+        var i;
+        
+        for(i=$scope.APIMArker.length-1;i>=0;i--){
+          if(markerkey==$scope.APIMArker[i].id){
+                //console.log("dara");
+                
+                $scope.tagObject.nameTag=$scope.APIMArker[i].name;
+                $scope.tagObject.descriptionTag=$scope.APIMArker[i].city;
+                $scope.tagObject.id=$scope.APIMArker[i].id;
+                $scope.tagObject.addNewTag=$scope.APIMArker[i].tags;
+                tagsModal.$promise.then(tagsModal.show);
+            } 
+        }
+        
+        
         };
 
     });

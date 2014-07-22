@@ -20,7 +20,8 @@ angular
     'ngAutocomplete',
     'mgcrea.ngStrap',
     'angularCharts',
-    'multi-select'
+    'multi-select',
+    'checklist-model'
   ])
   .config(function ($routeProvider) {
     $routeProvider
