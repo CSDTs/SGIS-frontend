@@ -13,7 +13,7 @@
 	   					<label for="title">Name:</label><br>
 	   				</div>
 	  				<div class="col-xs-4 col-md-4">
-	  					<input id="name" type="text" ng-model="tagObject.nameTag" class="form-control-sm" placeholder="Name" ng-maxlength="30" required>
+	  					<label ng-bind="tagObject.nameTag"></label>
 	  				</div>
 	  				<div class="col-xs-5 col-md-5">
 	  				</div>
@@ -23,7 +23,7 @@
 	   					<label for="desc">Description:</label><br>
 	   				</div>
 	  				<div class="col-xs-4 col-md-4">
-	  					<input id="description" type="text" ng-model="tagObject.descriptionTag" class="form-control-sm" placeholder="Description" ng-maxlength="30" required>
+	  					<label ng-bind="tagObject.descriptionTag"></label>
 	  				</div>
 	  				<div class="col-xs-5 col-md-5">
 	  				</div>

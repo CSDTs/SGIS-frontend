@@ -9,8 +9,8 @@
         </window>
       </marker>
 
-      <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">
-        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" > 
+      <markers models="APIMArker" coords="'self'" events="editTagEvents.events">
+        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak> 
             <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}}</p>
       </windows>
       </markers>

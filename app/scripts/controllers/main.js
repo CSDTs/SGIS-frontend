@@ -113,20 +113,22 @@ angular.module('socialjusticeApp')
             }
         
     ];
-    var onMarkerClicked = function (marker) {
-        marker.showWindow = true;
+    // var onMarkerClicked = function (marker) {
+    //     marker.showWindow = true;
        
-    };
+    // };
     _.each($scope.APIMArker, function (marker) {
         marker.closeClick = function () {
-          // marker.showWindow = false;
-          // $scope.$apply();
+           marker.showWindow = false;
+           $scope.$apply();
         };
         marker.onClicked = function () {
         marker.showWindow = true;
+          console.log('Marker clicked');
           $scope.$apply();
-        onMarkerClicked(marker);
+        
         };
+       
     });
     
     $scope.polygonEvents={
@@ -140,7 +142,7 @@ angular.module('socialjusticeApp')
         //         // Change colors or whatever you want via the polygon_scope_object
         //     });
         // },
-        click:function clickFn(polygon, eventName, polyMouseEvent) {
+        click:function(polygon, eventName, polyMouseEvent) {
             var polygonScopeObject = this.polygon, scope = this.scope;
              console.log(polygon);
              console.log(eventName);
@@ -211,18 +213,7 @@ angular.module('socialjusticeApp')
 	    dragging: true
     };
     var markerToClose = null;
-    // $scope.onClicked = function (marker) {
-        
-    //     // if (markerToClose) {
-    //     //     markerToClose.showWindow = false;
-    //     // }
-    //     // markerToClose = marker; // for next go around
-    //     marker.showWindow = true;
-
-    //     console.log('marker clicked');
-    //     $scope.$apply();
-        
-    // };
+   
     $scope.symbol={
       path: window.google.maps.SymbolPath.CIRCLE,
       scale: 5
@@ -255,19 +246,13 @@ angular.module('socialjusticeApp')
         options:{ 
             draggable:true},
         events:{ 
-            drag:function () {
-            },
             // click:function(marker){
-            //     console.log(marker.showWindow);
             //     marker.showWindow = true;
-            //     console.log('marker clicked');
-            //     console.log(marker);
             //     $scope.$apply();
+            //     console.log('Marker clicked');    
             // },
             dblclick:function(marker){
                 console.log('dbl clicked');
-                marker.showWindow = false;
-                $scope.$apply();
                 var pos = marker.getPosition();        
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
