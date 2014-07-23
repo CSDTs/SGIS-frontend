@@ -35,15 +35,15 @@ To get started:
 
 1. Clone the repository and its submodules:
 
-git clone --recursive git@github.com:yeoman/yeoman.io.git
-cd yeoman.io
+	git clone --recursive git@github.com:yeoman/yeoman.io.git
+		cd yeoman.io
 
 2. Install all modules and needed tools
 
-npm install
-gem install bundler
-bundle install
-bower install
+	npm install
+	gem install bundler
+	bundle install
+	bower install
 
 Now you're ready to do some work!	
 
@@ -58,12 +58,13 @@ Preview your app in the browser
 	Stop the Server
 	Ctrl + C
 Installing packages using bower
-
-List current packages
+	List current packages
 	bower list
-Search for packages
+	
+	Search for packages
 	bower search package-name
-Install packages
+	
+	Install packages
 	bower install --save package-name		
 
 
