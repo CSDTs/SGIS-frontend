@@ -113,59 +113,22 @@ angular.module('socialjusticeApp')
             }
         
     ];
-    // var onMarkerClicked = function (marker) {
-    //     marker.showWindow = true;
+
+   var onMarkerClicked = function (marker) {
+        marker.showWindow = true;
        
-    // };
+    };
     _.each($scope.APIMArker, function (marker) {
         marker.closeClick = function () {
-           marker.showWindow = false;
-           $scope.$apply();
+          marker.showWindow = false;
+          $scope.$apply();
         };
         marker.onClicked = function () {
-        marker.showWindow = true;
-          console.log('Marker clicked');
-          $scope.$apply();
+        onMarkerClicked(marker);
+        $scope.$apply();
         
         };
-       
     });
-    
-    $scope.polygonEvents={
-        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {    
-        //     var polygonScopeObject = this.polygon, scope = this.scope;
-        //     console.log(polygon);
-        //     console.log(eventName);
-        //     console.log(polyMouseEvent);
-        //     scope.$apply(function() {
-        //         polygonScopeObject.selected = !polygonScopeObject.selected;
-        //         // Change colors or whatever you want via the polygon_scope_object
-        //     });
-        // },
-        click:function(polygon, eventName, polyMouseEvent) {
-            var polygonScopeObject = this.polygon, scope = this.scope;
-             console.log(polygon);
-             console.log(eventName);
-            // console.log(polyMouseEvent);
-            
-            scope.$apply(function() {
-                polygonScopeObject.selected = !polygonScopeObject.selected;
-                // Change colors or whatever you want via the polygon_scope_object
-            });
-        }
-        //   ,
-        // mouseout:function mouseOutFn(polygon, eventName, polyMouseEvent) {
-        //     var polygonScopeObject = this.polygon, scope = this.scope;
-        //     console.log(polygon);
-        //     console.log(eventName);
-        //     console.log(polyMouseEvent);
-        //     scope.$apply(function() {
-        //         polygonScopeObject.selected = !polygonScopeObject.selected;
-        //         // Change colors or whatever you want via the polygon_scope_object
-        //     });
-        // }    
-    };
-    // polygons end
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
@@ -175,6 +138,7 @@ angular.module('socialjusticeApp')
         }
 
     };
+   
     $scope.result = '';
     $scope.options = null;
     $scope.details = '';
@@ -236,11 +200,7 @@ angular.module('socialjusticeApp')
         'content': 'Add'
         }
     ];
-    //  $scope.events={
-    //     rightclick: function () {
-    //         console.log('Hello');
-    //     }
-    // };
+  
     $scope.showWindow=false;
     $scope.editTagEvents={
         options:{ 
@@ -248,14 +208,15 @@ angular.module('socialjusticeApp')
         events:{ 
             // click:function(marker){
             //     marker.showWindow = true;
-            //     $scope.$apply();
             //     console.log('Marker clicked');    
+            //     $scope.$apply();
             // },
-            dblclick:function(marker){
+             dblclick:function(marker){
                 console.log('dbl clicked');
-                var pos = marker.getPosition();        
+                var pos = marker.getPosition();
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
+                //$scope.$apply();
             }
         }
     };
@@ -266,10 +227,51 @@ angular.module('socialjusticeApp')
         },
         show: true
     };
+    $scope.hello=function(){
+        alert("hello");
+        $scope.$apply();
+    };
     $scope.AddwithDescription=function(){
         $scope.editTodo=true;
         console.log('Hi');
     };
+     $scope.polygonEvents={
+        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {    
+        //     var polygonScopeObject = this.polygon, scope = this.scope;
+        //     console.log(polygon);
+        //     console.log(eventName);
+        //     console.log(polyMouseEvent);
+        //     scope.$apply(function() {
+        //         polygonScopeObject.selected = !polygonScopeObject.selected;
+        //         // Change colors or whatever you want via the polygon_scope_object
+        //     });
+        // },
+        click:function(polygon, eventName, polyMouseEvent) {
+            //var polygonScopeObject = this.polygon, scope = this.scope;
+             console.log(polygon);
+             console.log(eventName);
+             polygon.fillColor="#ffffff";
+             $scope.$apply();
+            // console.log(polyMouseEvent);
+            
+            // scope.$apply(function() {
+            //     polygonScopeObject.selected = !polygonScopeObject.selected;
+            //     // Change colors or whatever you want via the polygon_scope_object
+            // });
+        }
+        //   ,
+        // mouseout:function mouseOutFn(polygon, eventName, polyMouseEvent) {
+        //     var polygonScopeObject = this.polygon, scope = this.scope;
+        //     console.log(polygon);
+        //     console.log(eventName);
+        //     console.log(polyMouseEvent);
+        //     scope.$apply(function() {
+        //         polygonScopeObject.selected = !polygonScopeObject.selected;
+        //         // Change colors or whatever you want via the polygon_scope_object
+        //     });
+        // }    
+    };
+    // polygons end
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);

@@ -8,16 +8,21 @@
           </p>
         </window>
       </marker>
-
-      <markers models="APIMArker" coords="'self'" events="editTagEvents.events">
-        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" ng-cloak> 
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}}</p>
+     
+      <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">  <!-- events="'editTagEvents.events'"  -->
+        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" > 
+            <div>
+            <a href="javascript:void(0)" ng-click="hello()">hit me</a>
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+            </div>
       </windows>
       </markers>
+     
       
-      <markers ng-repeat="dataset2 in data" models="dataset2" coords="'self'" events="editTagEvents.events">
-        <windows options="infoWindowWithCustomClass.options" >
+      <markers ng-repeat="dataset2 in data" models="dataset2" click="'onClicked'" coords="'self'" events="editTagEvents.events">
+        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <p ng-non-bindable>Hi hellow i am from {{name}}{{street}}{{city}}{{state}}</p>
+
         </windows>
       </markers>
       
@@ -68,7 +73,7 @@
           <!-- <button type="button" class="btn btn-sm btn-success" data-animation="am-fade-and-slide-top" data-template="bower_components/angular-strap/src/modal/modal.tpl.html" data-placement="center" bs-modal="modal">Custom Modal
               <br />    
           </button> -->
-          <button type="button" class="btn btn-sm btn-success" ng-click="makeModal()">Add Tag</button>
+          <button class="btn btn-sm btn-success" ng-click="hello()">Add Tag iphone</button>
         </div>
         <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
       </div><!-- panel body -->
