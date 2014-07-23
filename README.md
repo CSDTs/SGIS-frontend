@@ -1,26 +1,26 @@
 SGIS 2.0
-The Angular side (Front-end) of the GIS Social Justice CSDT for the 3Helix program 
+
 ===============================
 
-
-
 Overview:
-	Users are offered a drop-down list of data sources. These might be neighborhood medium incomes, gun ownership, IT accessibility, grocery stores,pollution  Users will be provided with an option to see the data sets on the map. I have implemented the NY state Farmer Market data and next step is to implement GeoJson data to add polygons on the ma
+	Users are offered a drop-down list of data sources. These might be neighborhood medium incomes, gun ownership, IT accessibility, grocery stores,pollution. 
+	Users will be provided with an option to see the data sets on the map. 
+	I have implemented the NY state Farmer Market data and next step is to implement GeoJson data to add polygons on the ma
 	Users will be able to tag information about stores on the map.
 
 Angular JS:
 	AngularJS is a new, powerful, client-side technology that provides a way of accomplishing really powerful things in a way that embraces and extends HTML, CSS and JavaScript, while shoring up some of its glaring deficiencies. It is what HTML would have been, had it been built for dynamic content.
 
-Feature 1: Two Way Data-Binding
-Feature 2: Templates
-Feature 3: MVC
-Feature 4: Dependency Injection
-Feature 5: Directives
+Features:
+	Feature 1: Two Way Data-Binding
+	Feature 2: Templates
+	Feature 3: MVC
+	Feature 4: Dependency Injection
+	Feature 5: Directives
 
 
 One-line install using npm:
-
-npm install -g yo
+	npm install -g yo
 
 What's Yeoman?
 
