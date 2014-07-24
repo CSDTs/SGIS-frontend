@@ -41,10 +41,10 @@ angular.module('socialjusticeApp')
 	// 	// console.log($scope.$parent.dataTag.addNewTag);
 
 	// };
-	$scope.reset=function(){
-   		$scope.$broadcast('show-errors-reset');
-     	$scope.tagObject = { nameTag: '', descriptionTag: '', outputTagSelect:null  , addNewTag:''};
-   		console.log($scope.tagObject.outputTagSelect);
-   	};
+	// $scope.reset=function(){
+ //   		$scope.$broadcast('show-errors-reset');
+ //     	$scope.tagObject = { nameTag: '', descriptionTag: '', outputTagSelect:null  , addNewTag:''};
+ //   		console.log($scope.tagObject.outputTagSelect);
+ //   	};
 	
 });

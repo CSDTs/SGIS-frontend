@@ -114,9 +114,8 @@ angular.module('socialjusticeApp')
         
     ];
 
-   var onMarkerClicked = function (marker) {
-        marker.showWindow = true;
-       
+    var onMarkerClicked = function (marker) {
+        marker.showWindow = true;  
     };
     _.each($scope.APIMArker, function (marker) {
         marker.closeClick = function () {
@@ -136,14 +135,12 @@ angular.module('socialjusticeApp')
         else {
             $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
         }
-
     };
    
     $scope.result = '';
     $scope.options = null;
     $scope.details = '';
     $scope.newMark={};
-
     $scope.convertCoords= function(){
         $scope.newMark.location={
             latitude: $scope.details.geometry.location.k,
@@ -151,9 +148,7 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-        // $scope.map.zoom=12;
     };
-
     $scope.map = {
     	center: {
     	  	latitude: 42.678681,
@@ -176,12 +171,10 @@ angular.module('socialjusticeApp')
     	},
 	    dragging: true
     };
-    var markerToClose = null;
-   
+    var markerToClose = null;  
     $scope.symbol={
       path: window.google.maps.SymbolPath.CIRCLE,
       scale: 5
-
     };
     $scope.tabs = [
         {
@@ -200,7 +193,6 @@ angular.module('socialjusticeApp')
         'content': 'Add'
         }
     ];
-  
     $scope.showWindow=false;
     $scope.editTagEvents={
         options:{ 
@@ -216,11 +208,9 @@ angular.module('socialjusticeApp')
                 var pos = marker.getPosition();
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
-                //$scope.$apply();
             }
         }
     };
-
     $scope.infoWindowWithCustomClass= {
         options: {
             boxClass: 'custom-info-window'
@@ -235,7 +225,7 @@ angular.module('socialjusticeApp')
         $scope.editTodo=true;
         console.log('Hi');
     };
-     $scope.polygonEvents={
+    $scope.polygonEvents={
         // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {    
         //     var polygonScopeObject = this.polygon, scope = this.scope;
         //     console.log(polygon);
@@ -271,16 +261,14 @@ angular.module('socialjusticeApp')
         //     });
         // }    
     };
-    // polygons end
+   
+    // TagsModal info window
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
         var i;
-        
         for(i=$scope.APIMArker.length-1;i>=0;i--){
           if(markerkey==$scope.APIMArker[i].id){
-                //console.log("dara");
-                
                 $scope.tagObject.nameTag=$scope.APIMArker[i].name;
                 $scope.tagObject.descriptionTag=$scope.APIMArker[i].city;
                 $scope.tagObject.id=$scope.APIMArker[i].id;
@@ -290,6 +278,6 @@ angular.module('socialjusticeApp')
         }
         
         
-        };
+    };
 
-    });
+});
