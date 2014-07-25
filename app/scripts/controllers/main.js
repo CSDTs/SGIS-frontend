@@ -28,14 +28,25 @@ angular.module('socialjusticeApp')
             addNewTag:$scope.tagObject.addNewTag
         };
         var tagId=$scope.dataTag.id;
-        var i;
-        for(i=$scope.APIMArker.length-1;i>=0;i--){
+        
+        for(var i=$scope.APIMArker.length-1;i>=0;i--){
             if(tagId==$scope.APIMArker[i].id){
                 $scope.APIMArker[i].name=$scope.dataTag.nameTag;
                 $scope.APIMArker[i].city=$scope.dataTag.descriptionTag;
                 $scope.APIMArker[i].tags=$scope.dataTag.addNewTag;
             }
-        }          
+        }    
+        for(var i in $scope.data){
+            for(var j in $scope.data[i]){
+                if(tagId==$scope.data[i][j].id){
+                    // temp[j].name=$scope.dataTag.nameTag;
+                    // temp[j].city=$scope.dataTag.descriptionTag;
+                    // required only when we want to edit the shop names
+                    $scope.data[i][j].tags=$scope.dataTag.addNewTag;
+                    console.log($scope.data[i][j].tags);
+                }
+            }
+        }                
     };
     //Adding polygons
     $scope.singleModel = 1;
@@ -65,7 +76,7 @@ angular.module('socialjusticeApp')
             {
                 'dataset': 'http://107.170.106.235/api-ds/11/', 
                 'id': 56487, 
-                'showWindow':false,
+                
                 'name': 'MR SAM FOOD MARKET', 
                 'latitude': '42.667402000000003', 
                 'longitude': '-73.770546899999999', 
@@ -81,7 +92,7 @@ angular.module('socialjusticeApp')
             {
                 'dataset': 'http://107.170.106.235/api-ds/11/', 
                 'id': 56488, 
-                'showWindow':false,
+               
                 'name': 'WESTMERE NEWS & VARIETY', 
                 'latitude': '42.690869300000003', 
                 'longitude': '-73.867752999999993', 
@@ -98,7 +109,7 @@ angular.module('socialjusticeApp')
             {
                 'dataset': 'http://107.170.106.235/api-ds/11/', 
                 'id': 56493, 
-                'showWindow':false,
+                
                 'name': 'PRICE CHOPPER 138', 
                 'latitude': '42.754105500000001', 
                 'longitude': '-73.756456600000007', 
@@ -117,23 +128,39 @@ angular.module('socialjusticeApp')
     var onMarkerClicked = function (marker) {
         marker.showWindow = true;  
     };
-    _.each($scope.APIMArker, function (marker) {
-        marker.closeClick = function () {
-          marker.showWindow = false;
-          $scope.$apply();
-        };
-        marker.onClicked = function () {
-        onMarkerClicked(marker);
-        $scope.$apply();
-        
-        };
-    });
+    // _.each($scope.APIMArker, function (marker) {
+    //     marker.closeClick = function () {
+    //       marker.showWindow = false;
+    //       $scope.$apply();
+    //     };
+    //     marker.onClicked = function () {
+    //     onMarkerClicked(marker);
+    //     $scope.$apply();
+    //     console.log(marker.showWindow);
+    //     };
+    // });
+    
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
         }
         else {
             $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
+             _.each($scope.data, function (arr){
+            console.log(arr);
+             _.each(arr, function (marker) {
+                marker.closeClick = function () {
+                  marker.showWindow = false;
+                  $scope.$apply();
+                };
+                marker.onClicked = function () {
+                    console.log("2");    
+                    onMarkerClicked(marker);
+                    $scope.$apply();
+                };
+            });
+        });
+            console.log($scope.data);
         }
     };
    
@@ -205,6 +232,27 @@ angular.module('socialjusticeApp')
             // },
              dblclick:function(marker){
                 console.log('dbl clicked');
+                marker.showWindow = false;
+                $scope.$apply();
+
+                var pos = marker.getPosition();
+                var markerKey=marker.key;
+                $scope.makeModal(markerKey);
+            }
+        }
+    };
+    $scope.markerEvents={
+        options:{ 
+            draggable:true},
+        events:{ 
+            click:function(marker){
+                marker.showWindow = true;
+                console.log('Marker clicked');
+                console.log(marker.key);    
+                $scope.$apply();
+            },
+             dblclick:function(marker){
+                console.log('dbl clicked');
                 var pos = marker.getPosition();
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
@@ -266,15 +314,20 @@ angular.module('socialjusticeApp')
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
-        var i;
-        for(i=$scope.APIMArker.length-1;i>=0;i--){
-          if(markerkey==$scope.APIMArker[i].id){
-                $scope.tagObject.nameTag=$scope.APIMArker[i].name;
-                $scope.tagObject.descriptionTag=$scope.APIMArker[i].city;
-                $scope.tagObject.id=$scope.APIMArker[i].id;
-                $scope.tagObject.addNewTag=$scope.APIMArker[i].tags;
-                tagsModal.$promise.then(tagsModal.show);
-            } 
+        
+        console.log($scope.data.length);
+        for(var index in $scope.data){
+            var temp=$scope.data[index];
+            console.log(temp);
+            for(var j in temp){
+                if(markerkey==temp[j].id){
+                    $scope.tagObject.nameTag=temp[j].name;
+                    $scope.tagObject.descriptionTag=temp[j].city;
+                    $scope.tagObject.id=temp[j].id;
+                    $scope.tagObject.addNewTag=temp[j].tags;
+                    tagsModal.$promise.then(tagsModal.show);
+                } 
+            }    
         }
         
         

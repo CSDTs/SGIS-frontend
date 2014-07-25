@@ -8,16 +8,18 @@
           </p>
         </window>
       </marker>
-      <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">  <!-- events="'editTagEvents.events'"  -->
+     <!--  <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">  
         <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" > 
             <div>
             <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
             </div>
       </windows>
-      </markers>
-      <markers ng-repeat="dataset2 in data" models="dataset2" click="'onClicked'" coords="'self'" events="editTagEvents.events">
-        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
-              <p ng-non-bindable>Hi hellow i am from {{name}}{{street}}{{city}}{{state}}</p>
+      </markers> -->
+      <markers ng-repeat="dataset2 in data" models="dataset2" coords="'self'" events="editTagEvents.events">
+        <windows ng-repeat="dataset2 in data" show="'dataset2.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+              <div>
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+            </div>
         </windows>
       </markers> 
       <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="polygonEvents" >
@@ -47,6 +49,7 @@
                           <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
+                     <!--  <button ng-click="dara()">dara</button> -->
                       </ul>
                   <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
                       <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
