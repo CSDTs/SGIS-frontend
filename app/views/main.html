@@ -8,26 +8,13 @@
           </p>
         </window>
       </marker>
-       <markers models="dataset1" coords="'self'"  events="editTagEvents.events">  
+      <markers models="dataset1" coords="'self'"  events="editTagEvents.events">  
         <windows show="'dataset1.showWindow'" options="infoWindowWithCustomClass.options" > 
             <div>
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
-              
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p> 
             </div>
-            
-              </windows>
-              </markers>
-      
-     
-    <!--   <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">
-        <windows show="marker.showWindow" idKey="id" coords="'self'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
-          <div>
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
-          </div>
         </windows>
-      </markers> -->
-      
-     
+      </markers>
       <markers models="dataset2" coords="'self'" click="'onClicked'" events="editTagEvents.events">
         <windows show="'dataset2.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>

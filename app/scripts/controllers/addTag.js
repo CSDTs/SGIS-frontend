@@ -24,28 +24,5 @@ angular.module('socialjusticeApp')
 	    { firstName: 'fastfood',  lastName: 'Romanova',   pic: '<img src=\'[...]/natalia.png class=\'multiSelect\' />',   selected: false },
 	    { firstName: 'pizza',    lastName: 'Kent',       pic: '<img src=\'[...]/clark.png  class=\'multiSelect\'  />',   selected: false  }
 	];
-	// $scope.tagObject={};
-	// $scope.saveTag=function(){
-	// 	$scope.$parent.dataTag={
-	// 		nameTag:$scope.tagObject.nameTag,
-	// 		descriptionTag:$scope.tagObject.descriptionTag,
-	// 		outputTagSelect:$scope.tagObject.outputTagSelect,
-	// 		addNewTag:$scope.tagObject.addNewTag
-	// 	};
-
-	// 	$scope.tagObject = { nameTag: '', descriptionTag: '', outputTagSelect:''  , addNewTag:''};
-		
-	// 	// console.log($scope.$parent.dataTag.nameTag);
-	// 	// console.log($scope.$parent.dataTag.descriptionTag);
-	// 	// console.log($scope.$parent.dataTag.outputTagSelect);
-	// 	// console.log($scope.$parent.dataTag.addNewTag);
-
-	// };
-	// $scope.reset=function(){
- //   		$scope.$broadcast('show-errors-reset');
- //     	$scope.tagObject = { nameTag: '', descriptionTag: '', outputTagSelect:null  , addNewTag:''};
- //   		console.log($scope.tagObject.outputTagSelect);
- //   	};
-	
 });
 

@@ -42,9 +42,6 @@ angular.module('socialjusticeApp')
         for(var i in $scope.data){
             for(var j in $scope.data[i]){
                 if(tagId==$scope.data[i][j].id){
-                    // temp[j].name=$scope.dataTag.nameTag;
-                    // temp[j].city=$scope.dataTag.descriptionTag;
-                    // required only when we want to edit the shop names
                     $scope.data[i][j].tags=$scope.dataTag.addNewTag;
                     console.log($scope.data[i][j].tags);
                 }
@@ -71,7 +68,6 @@ angular.module('socialjusticeApp')
             }    
         } 
     };
-
     //Adding polygons
     $scope.singleModel = 1;
     $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){  
@@ -94,41 +90,6 @@ angular.module('socialjusticeApp')
         color: '#505152',
         opacity: 1
     };
-    
-    
-
-   
-    // _.each($scope.APIMArker, function (marker) {
-    //     marker.closeClick = function () {
-    //       marker.showWindow = false;
-    //       $scope.$apply();
-    //     };
-    //     marker.onClicked = function () {
-    //     onMarkerClicked(marker);
-    //     $scope.$apply();
-    //     console.log(marker.showWindow);
-    //     };
-    // });
-        //  _.each($scope.data, function (arr){
-        //     console.log(arr);
-        //      _.each(arr, function (marker) {
-        //         marker.closeClick = function () {
-        //           marker.showWindow = false;
-        //           $scope.$apply();
-        //         };
-        //         marker.onClicked = function () {
-        //             console.log("2");    
-        //             onMarkerClicked(marker);
-        //             $scope.$apply();
-        //         };
-        //     });
-        // });
-        //      for(var i in $scope.data){
-
-        //         for(var j in $scope.data[i]){
-                    
-        //         }
-        //      }
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
@@ -152,9 +113,7 @@ angular.module('socialjusticeApp')
             });     
         }
     };
-    
     $scope.setValues=function(dataSourceId){
-        
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
         }
@@ -164,43 +123,7 @@ angular.module('socialjusticeApp')
         else if(dataSourceId==15){
             $scope.dataset3=$scope.data[dataSourceId];
         }
-
-        
-        
-        console.log('Setting values');
-        console.log('Dataset1'+$scope.dataset1);
-        console.log('end');
-        console.log($scope.data[dataSourceId]);
-        
-        // var tempObj1=$scope.dataset1;
-        // for(var index in tempObj1){
-        //     tempObj1[index].showWindow=false;
-        //     console.log(tempObj1[index]);
-        // }
-        // $scope.dataset1=tempObj1;
-
-
-        // var onMarkerClicked = function (marker) {
-        //     marker.showWindow = true;  
-        // };
-        // _.each($scope.dataset1, function (marker) {
-              
-        //     marker.closeClick = function () {
-        //       marker.showWindow = false;
-        //       $scope.$apply();
-        //     };
-        //     marker.onClicked = function () {
-        //     onMarkerClicked(marker);
-        //     $scope.$apply();
-        //     //console.log(marker.showWindow);
-        //     };
-
-        // });
-        console.log($scope.dataset1);
-
-       
     };
-   
     $scope.result = '';
     $scope.options = null;
     $scope.details = '';
@@ -262,14 +185,6 @@ angular.module('socialjusticeApp')
         options:{ 
             draggable:true},
         events:{ 
-            // click:function(marker){
-            //     var markerKey=marker.key;
-            //     console.log(marker);
-            //    // $scope.resetInfo(markerKey);
-            //     marker.showWindow = true;
-            //     console.log('Marker clicked');    
-            //     $scope.$apply();
-            // },
              dblclick:function(marker){
                 console.log('dbl clicked');
                 var pos = marker.getPosition();
@@ -329,63 +244,6 @@ angular.module('socialjusticeApp')
         //     });
         // }    
     };
-    $scope.APIMArker=[ 
-            
-                {
-                'dataset': 'http://107.170.106.235/api-ds/11/', 
-                'id': 56487, 
-                
-                'name': 'MR SAM FOOD MARKET', 
-                'latitude': '42.667402000000003', 
-                'longitude': '-73.770546899999999', 
-                'street': '61 QUAIL ST', 
-                'city': 'ALBANY', 
-                'state': 'NY', 
-                'zipcode': '12206', 
-                'county': 'Albany', 
-                'field1': 'ALSAEDI GAMAL A', 
-                'tags': '', 
-                'field3': ''
-            } 
-            
-            ,
-                {
-                'dataset': 'http://107.170.106.235/api-ds/11/', 
-                'id': 56488, 
-                
-                'name': 'WESTMERE NEWS & VARIETY', 
-                'latitude': '42.690869300000003', 
-                'longitude': '-73.867752999999993', 
-                'street': '1823 WESTERN AVE', 
-                'city': 'ALBANY', 
-                'state': 'NY', 
-                'zipcode': '12203', 
-                'county': 'Albany', 
-                'field1': 'WESTMERE NEWS INC', 
-                'tags': '', 
-                'field3': ''
-            }
-        ,
-            {
-                'dataset': 'http://107.170.106.235/api-ds/11/', 
-                'id': 56493, 
-                
-                'name': 'PRICE CHOPPER 138', 
-                'latitude': '42.754105500000001', 
-                'longitude': '-73.756456600000007', 
-                'street': '873 NEW LOUDON RD', 
-                'city': 'LATHAM', 
-                'state': 'NY', 
-                'zipcode': '12110', 
-                'county': 'Albany', 
-                'field1': 'PRICE CHOPPER OPERATING CO INC', 
-                'tags': '', 
-                'field3': ''
-            }
-            
-            
-            
-    ];
      $scope.resetInfo=function(markerKey){
         for(var index in $scope.APIMArker){
             for(var jindex in $scope.APIMArker[index]){
@@ -400,6 +258,4 @@ angular.module('socialjusticeApp')
             }
         }
     };
-   
-   
 });
