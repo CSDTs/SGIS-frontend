@@ -90,6 +90,7 @@ angular.module('socialjusticeApp')
         color: '#505152',
         opacity: 1
     };
+    
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
@@ -100,7 +101,7 @@ angular.module('socialjusticeApp')
                 $scope.dataset2={};
             } 
             else if(dataSourceId==15){
-                $scope.dataset3=;
+                $scope.dataset3={};
             }
         }
         else 
@@ -113,7 +114,9 @@ angular.module('socialjusticeApp')
             });     
         }
     };
+    
     $scope.setValues=function(dataSourceId){
+        
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
         }
@@ -123,6 +126,14 @@ angular.module('socialjusticeApp')
         else if(dataSourceId==15){
             $scope.dataset3=$scope.data[dataSourceId];
         }
+
+        
+        
+        console.log('Setting values');
+        console.log('Dataset1'+$scope.dataset1);
+        console.log('end');
+        console.log($scope.data[dataSourceId]);
+        console.log($scope.dataset1); 
     };
     $scope.result = '';
     $scope.options = null;
@@ -193,8 +204,6 @@ angular.module('socialjusticeApp')
             }
         }
     };
-
-   
     $scope.infoWindowWithCustomClass= {
         options: {
             boxClass: 'custom-info-window'
@@ -244,7 +253,7 @@ angular.module('socialjusticeApp')
         //     });
         // }    
     };
-     $scope.resetInfo=function(markerKey){
+    $scope.resetInfo=function(markerKey){
         for(var index in $scope.APIMArker){
             for(var jindex in $scope.APIMArker[index]){
                 if(markerKey==$scope.APIMArker[index][jindex].id){
