@@ -8,20 +8,40 @@
           </p>
         </window>
       </marker>
-     <!--  <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">  
-        <windows show="'showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" > 
+       <markers models="dataset1" coords="'self'"  events="editTagEvents.events">  
+        <windows show="'dataset1.showWindow'" options="infoWindowWithCustomClass.options" > 
             <div>
             <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+              
             </div>
-      </windows>
+            
+              </windows>
+              </markers>
+      
+     
+    <!--   <markers models="APIMArker" coords="'self'" click="'onClicked'" events="editTagEvents.events">
+        <windows show="marker.showWindow" idKey="id" coords="'self'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+          <div>
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+          </div>
+        </windows>
       </markers> -->
-      <markers ng-repeat="dataset2 in data" models="dataset2" coords="'self'" events="editTagEvents.events">
-        <windows ng-repeat="dataset2 in data" show="'dataset2.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+      
+     
+      <markers models="dataset2" coords="'self'" click="'onClicked'" events="editTagEvents.events">
+        <windows show="'dataset2.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
             <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
             </div>
         </windows>
       </markers> 
+      <markers  models="dataset3" coords="'self'" events="editTagEvents.events">
+        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+              <div>
+            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+            </div>
+        </windows>
+      </markers>  
       <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="polygonEvents" >
       </polygon>
     </google-map>
@@ -63,6 +83,7 @@
           <div ng-repeat="source in sources">
               <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
+        
         </form>
         <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
       </div><!-- panel body -->
