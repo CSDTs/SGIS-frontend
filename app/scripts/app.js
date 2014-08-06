@@ -21,9 +21,13 @@ angular
     'mgcrea.ngStrap',
     'angularCharts',
     'multi-select',
-    'checklist-model'
+    'checklist-model',
+    'djangoRESTResources'
   ])
+
   .config(function ($routeProvider) {
+    //,$resourceProvider
+    //$resourceProvider.defaults.stripTrailingSlashes = false;
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -36,6 +40,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+   
   });
 
 

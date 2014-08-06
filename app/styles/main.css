@@ -1,5 +1,5 @@
 .angular-google-map-container {
-	height: 640px;
+	height: 840px;
 	position: static;
 	z-index: 0;
 	top: 0px;
@@ -48,7 +48,7 @@ body { padding-bottom: 70px; }
     /*border: 1px solid white;*/
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
     margin-top: 15px;
     margin-left: -130px;
 }
@@ -58,7 +58,7 @@ body { padding-bottom: 70px; }
     border-radius: 2px 0 0 2px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
-    height: 32px;
+    height: 50px;
     outline: none;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
@@ -95,6 +95,14 @@ height: 100%;
 width: 30%;
 height: 50%;
 
+}
+#buttonimage{
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 10px;
+  width:10px;
 }
 .border{
 border-color: black

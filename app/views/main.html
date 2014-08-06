@@ -1,34 +1,40 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">    
   <div class="container-fluid">
-    <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options">
-      <marker ng-repeat="n in newMark" icon="newicon" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+    <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events">
+      <marker ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
         <window show="showWindow" options="infoWindowWithCustomClass.options"> 
           <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
               Tags are {{dataTag.outputTagSelect[0]}}
           </p>
         </window>
       </marker>
-      <markers models="dataset1" coords="'self'"  events="editTagEvents.events">  
+      <markers models="dataset1" coords="'self'" icon="image.circle" doCluster="false" events="editTagEvents.events" doRebuildAll="true">  
         <windows show="'dataset1.showWindow'" options="infoWindowWithCustomClass.options" > 
             <div>
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p> 
+            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} 
+            <br> County: {{county}}
+            <br>Tags: {{tags}} </p>
             </div>
         </windows>
       </markers>
-      <markers models="dataset2" coords="'self'" click="'onClicked'" events="editTagEvents.events">
+      <markers models="dataset2" coords="'self'" click="'onClicked'" doCluster="false" events="editTagEvents.events" doRebuildAll="true">
         <windows show="'dataset2.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} 
+            <br> County: {{county}}
+            <br>Tags: {{tags}} </p>
             </div>
         </windows>
       </markers> 
       <markers  models="dataset3" coords="'self'" events="editTagEvents.events">
-        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" doRebuildAll="true">
               <div>
-            <p ng-non-bindable>  Name:{{name}} <br>Address:{{street}},{{city}},{{state}} <br>Tags: {{tags}} </p>
+            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} <br> County: {{county}}<br>Tags: {{tags}} </p>
             </div>
         </windows>
-      </markers>  
+      </markers>
+
+      <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons>
       <polygon ng-repeat="p in polyShowArray.features" path="p.geometry" stroke="strokecolor" fill="p.fillcolor" clickable="true" events="polygonEvents" >
       </polygon>
     </google-map>
@@ -40,9 +46,19 @@
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
         <button class="btn btn-primary" ng-click="AddwithDescription()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+        <div class="btn btn-default">
+          <button class="buttonimage" ><img src="/images/normal.png" height="18px" width="22px"></button>
+          <button class="buttonimage"><img src="/images/polygon.png" height="18px" width="22px"></button>
+          <button class="buttonimage" ng-click="drawmarker"><img src="/images/marker.png" height="18px" width="22px"></button>
+          <button class="buttonimage"><img src="/images/polyline.png" height="18px" width="22px"></button>
+          <button class="buttonimage"><img src="/images/rectangle.png" height="18px" width="22px"></button>
+          <button class="buttonimage"><img src="/images/cirlc.png" height="18px" width="22px"></button>
+        </div>
         </span>
       </div>
+
     </form>
+
     <div class="panel panel-default">
       <div class="panel-heading">
           <nav class="navbar navbar-primary" role="navigation">
@@ -56,7 +72,6 @@
                           <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
-                     <!--  <button ng-click="dara()">dara</button> -->
                       </ul>
                   <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
                       <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
@@ -67,11 +82,14 @@
       <!-- panel body -->
       <div class="panel-body" class="collapse in" id="demo">
         <form name="myForm">
-          <div ng-repeat="source in sources">
+          <div class="checkbox" ng-repeat="source in sources">
               <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
-        
         </form>
+       <!--  <div ng-repeat="source in sources">
+          <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
+        </div> -->
+
         <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
       </div><!-- panel body -->
     </div> <!-- panel -->  
