@@ -33,19 +33,11 @@
 	   					 <label for="Tags">Tags:</label>
 	   				</div>
 	  				<div class="col-xs-7 col-md-7">
-	  					<multi-select input-model="multiTags" item-label="tags" button-label="tags" tick-property="selected" output-model="tagObject.outputTagSelect"></multi-select>
+	  					<tags-input ng-model="tagObject.multiTags" display-property="tag">
+							<auto-complete source="loadTags($query)"></auto-complete>
+	  					</tags-input>
 	  				</div>
-	  			</div>		<br>
-	  			<div class="row">
-	   				<div class="col-xs-3 col-md-3">
-	   					<label for="addTag">Add new Tag:</label>
-	   				</div>
-	  				<div class="col-xs-4 col-md-4">
-	  					<input id="tag1" ng-model="tagObject.addNewTag" class="form-control-sm" placeholder="new Tag" type="text">
-	  				</div>
-	  				<div class="col-xs-5 col-md-5">
-	  				</div>
-	  			</div>	<br>	
+	  			</div>		<br>	
 	  			<div class="row">
 	   				<div class="col-xs-2 col-md-2">
 	   					<button class="btn btn-success" ng-click="saveTag(tagObject);$hide()">Save Tag</button>
@@ -64,3 +56,4 @@
     </div>
   </div>
 </div>
+<!-- <multi-select input-model="tagObject.multiTags" item-label="tag" button-label="tag" tick-property="selected" output-model="tagObject.outputTagSelect"></multi-select> -->

@@ -9,7 +9,7 @@
  */
 angular.module('socialjusticeApp')
 
-  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource) {
+  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService) {
 
     var google = window.google;
     $scope.sources = dataSource.query();
@@ -18,8 +18,9 @@ angular.module('socialjusticeApp')
     $scope.dataset1={};
     $scope.dataset2={};
     $scope.dataset3={};
-
+    $scope.multiTags=[];
     $scope.tagObject={};
+    $scope.polygonData={};
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -29,22 +30,28 @@ angular.module('socialjusticeApp')
             addNewTag:$scope.tagObject.addNewTag
         };
         var tagId=$scope.dataTag.id;
-        
-        for(var i=$scope.data.length-1;i>=0;i--){
-            if(tagId==$scope.data[i].id){
-                $scope.data[i].name=$scope.dataTag.nameTag;
-                $scope.data[i].city=$scope.dataTag.descriptionTag;
-                $scope.data[i].tags.push($scope.dataTag.addNewTag);
-                for(var index in $scope.data[i].tags){
-                    console.log($scope.data[i].tags[index]);
-                }
-                
-            }
-        }    
-        var k=56496;
-        var temp=djResource('http://107.170.106.235/api-mp/56496/',{id:56496});
-        $scope.animal=temp.query();
-        console.log($scope.animal);
+
+        // for(var i=$scope.data.length-1;i>=0;i--){
+        //     if(tagId==$scope.data[i].id){
+        //         $scope.data[i].name=$scope.dataTag.nameTag;
+        //         $scope.data[i].city=$scope.dataTag.descriptionTag;
+        //         $scope.data[i].tags.push($scope.dataTag.addNewTag);
+        //         for(var index in $scope.data[i].tags){
+        //             console.log($scope.data[i].tags[index]);
+        //         }
+
+        //     }
+        // }
+        // var k=56496;
+
+        var temp=djResource('http://107.170.106.235/api-mp/:id/',{id:tagId});
+        var Poll=temp.get({id:tagId},function(){
+            Poll.readByUser=true;
+            Poll.$save();
+        });
+        console.log("Animal Resources");
+        console.log(temp);
+        console.log(Poll);
         //var tempdata = dataEdit.get({ id:56496 });
          //var id = tempdata.id;
 
@@ -61,13 +68,14 @@ angular.module('socialjusticeApp')
 
                 }
             }
-        }                
+        }
     };
-     // TagsModal info window
+
+     //Showing TagsModal info window
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
-        
+
         console.log($scope.data.length);
         for(var index in $scope.data){
             var temp=$scope.data[index];
@@ -77,54 +85,39 @@ angular.module('socialjusticeApp')
                     $scope.tagObject.nameTag=temp[j].name;
                     $scope.tagObject.descriptionTag=temp[j].city;
                     $scope.tagObject.id=temp[j].id;
+                        // for(var k in temp[j].tags){
+                        //     // $scope.multiTags=
+
+                        // }
                     $scope.tagObject.addNewTag=temp[j].tags;
-                    $scope.multiTags=temp[j].tags;
+                    $scope.tagObject.multiTags=temp[j].tags;
+                    $scope.tagObject.outputTagSelect=temp[j].tags;
+                    console.log($scope.tagObject.outputTagSelect);
                     console.log("Tags");
                     console.log($scope.multiTags.tags);
                     tagsModal.$promise.then(tagsModal.show);
-                } 
-            }    
-        } 
+                }
+            }
+        }
     };
-    // $scope.currentLocation=new google.maps.OverlayView();
-    // // overlay.draw = function() {};
-    // //     overlay.setMap(map);
-    // // $scope.drawmarker=function(){
+    $scope.loadTags = function(query) {
+        console.log(dataSource.query());
 
-    // };
+        $scope.datas1=dataSource.query().$promise;
 
-    //DRAWING TOOLBAR
-    // $scope.drawingManager = new google.maps.drawing.DrawingManager({
-    //     drawingMode: google.maps.drawing.OverlayType.MARKER,
-    //     drawingControl: true,
-    //     drawingControlOptions: {
-    //         position: google.maps.ControlPosition.TOP_CENTER,
-    //         drawingModes: [
-    //             google.maps.drawing.OverlayType.MARKER,
-    //             google.maps.drawing.OverlayType.CIRCLE,
-    //             google.maps.drawing.OverlayType.POLYGON,
-    //             google.maps.drawing.OverlayType.POLYLINE,
-    //             google.maps.drawing.OverlayType.RECTANGLE
-    //         ]
-    //     },
-    //     markerOptions: {
-    //         icon: 'images/beachflag.png'
-    //     },
-    //     circleOptions: {
-    //         fillColor: '#ffff00',
-    //         fillOpacity: 1,
-    //         strokeWeight: 5,
-    //         clickable: false,
-    //         editable: true,
-    //         zIndex: 1
-    //     }
-    // });
-     // drawingManager.setMap($scope.map);
+        for(var indTemp in $scope.datas1){
+            $scope.tags1=indTemp.tags;
+            console.log($scope.tags1);
+        }
+       // $scope.tags1=$scope.datas1[0].tags;
 
-    //DRAWING TOOLBAR-END
+        return $scope.tags1;
+        //return $http.get('tags.json');
+        //return tags.query().$promise;
+    };
     //Adding polygons
     $scope.singleModel = 1;
-    $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){  
+    $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
         $scope.poly1=dataPoly;
      });
     $scope.showHidePoly=function(){
@@ -135,7 +128,7 @@ angular.module('socialjusticeApp')
             $scope.polyShowArray=null;
         }
     };
-    $scope.fillcolor={  
+    $scope.fillcolor={
         color:'#63C3F2',
         opacity: '0.2'
     };
@@ -150,16 +143,16 @@ angular.module('socialjusticeApp')
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = {};
-            $scope.resetValues(dataSourceId); 
+            $scope.resetValues(dataSourceId);
         }
-        else 
+        else
         {
-            $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});  
+            $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
             $scope.data[dataSourceId].$promise.then(function (result) {
                 $scope.data[dataSourceId] = result;
                 console.log($scope.data[dataSourceId]);
-                $scope.setValues(dataSourceId); 
-            });     
+                $scope.setValues(dataSourceId);
+            });
         }
     };
     $scope.resetValues=function(dataSourceId){
@@ -168,30 +161,31 @@ angular.module('socialjusticeApp')
             }
             else if(dataSourceId==2){
                 $scope.dataset2={};
-            } 
+            }
             else if(dataSourceId==3){
                 $scope.dataset3={};
             }
     };
     $scope.setValues=function(dataSourceId){
-        
+
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
+            $scope.tag1=$scope.data[dataSourceId].tags;
         }
         else if(dataSourceId==2){
             $scope.dataset2=$scope.data[dataSourceId];
-        } 
+        }
         else if(dataSourceId==3){
             $scope.dataset3=$scope.data[dataSourceId];
         }
 
-        
-        
+
+
         console.log('Setting values');
         console.log('Dataset1'+$scope.dataset1);
         console.log('end');
         console.log($scope.data[dataSourceId]);
-        console.log($scope.dataset1); 
+        console.log($scope.dataset1);
     };
     $scope.result = '';
     $scope.options = null;
@@ -217,7 +211,7 @@ angular.module('socialjusticeApp')
     		panControlOptions: {
     			position: google.maps.ControlPosition.TOP_RIGHT
     		},
-            
+
     		zoomControl: true,
     		zoomControlOptions: {
 				style: google.maps.ZoomControlStyle.LARGE,
@@ -228,8 +222,8 @@ angular.module('socialjusticeApp')
     	},
 	    dragging: true
     };
-    
-    var markerToClose = null;  
+
+    var markerToClose = null;
     $scope.symbol={
       path: window.google.maps.SymbolPath.CIRCLE,
       scale: 5
@@ -253,10 +247,14 @@ angular.module('socialjusticeApp')
     ];
     $scope.showWindow=false;
     $scope.editTagEvents={
-        options:{ 
+        options:{
             draggable:true},
-        events:{ 
-             dblclick:function(marker){
+        events:{
+            mouseover:function(marker){
+                console.log(marker);
+                marker.showWindow=true;
+            },
+             click:function(marker){
                 console.log('dbl clicked');
                 var pos = marker.getPosition();
                 var markerKey=marker.key;
@@ -264,7 +262,7 @@ angular.module('socialjusticeApp')
             }
         }
     };
-      
+
     $scope.infoWindowWithCustomClass= {
         options: {
             boxClass: 'custom-info-window'
@@ -283,8 +281,26 @@ angular.module('socialjusticeApp')
         $scope.editTodo=true;
         console.log('Hi');
     };
+    //Polygon Serives Fetching
+    $scope.polygonData={};
+    $scope.polygonFunc=function(){
+
+        // var baseUrl="http://107.170.106.235/api-poly/?page_size=10";
+        // $scope.productsResource = $resource(baseUrl);
+        // $scope.products=$scope.productsResource.query();
+        // console.log("Dara"+$scope.products);
+
+        var polyData=polygonService.query(function(){
+          var polyData1=polyData;
+          console.log(polyData1);
+        });
+        $scope.polygonData=polyData;
+    };
+
+
+
     $scope.polygonEvents={
-        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {    
+        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
         //     var polygonScopeObject = this.polygon, scope = this.scope;
         //     console.log(polygon);
         //     console.log(eventName);
@@ -301,7 +317,7 @@ angular.module('socialjusticeApp')
              polygon.fillColor="#ffffff";
              $scope.$apply();
             // console.log(polyMouseEvent);
-            
+
             // scope.$apply(function() {
             //     polygonScopeObject.selected = !polygonScopeObject.selected;
             //     // Change colors or whatever you want via the polygon_scope_object
@@ -317,20 +333,7 @@ angular.module('socialjusticeApp')
         //         polygonScopeObject.selected = !polygonScopeObject.selected;
         //         // Change colors or whatever you want via the polygon_scope_object
         //     });
-        // }    
+        // }
     };
-    // $scope.resetInfo=function(markerKey){
-    //     for(var index in $scope.APIMArker){
-    //         for(var jindex in $scope.APIMArker[index]){
-    //             if(markerKey==$scope.APIMArker[index][jindex].id){
-    //                 console.log("called");
 
-    //             }
-    //             else{
-    //                 $scope.APIMArker[index][jindex].showWindow=false;
-    //                 console.log('reset info called');
-    //             }
-    //         }
-    //     }
-    // };
 });

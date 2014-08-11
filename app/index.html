@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -60,9 +61,9 @@
         }
       };
     </script>
-    
+
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false?key=AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc"></script>
-    
+
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -88,6 +89,7 @@
     <script src="bower_components/angular-bootstrap-show-errors/src/showErrors.js"></script>
     <script src="bower_components/checklist-model/checklist-model.js"></script>
     <script src="bower_components/angular-django-rest-resource/angular-django-rest-resource.js"></script>
+    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -97,8 +99,9 @@
         <script src="scripts/controllers/charts.js"></script>
         <script src="scripts/services/config.js"></script>
         <script src="scripts/services/datasource.js"></script>
-        <script src="scripts/services/datafeed.js"></script>  
-        <script src="scripts/services/dataedit.js"></script>  
+        <script src="scripts/services/datafeed.js"></script>
+        <script src="scripts/services/dataedit.js"></script>
+        <script src="scripts/services/polygonservice.js"></script>
         <script src="scripts/controllers/addTag.js"></script>
 
         <!-- endbuild -->

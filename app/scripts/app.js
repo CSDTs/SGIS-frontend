@@ -22,7 +22,8 @@ angular
     'angularCharts',
     'multi-select',
     'checklist-model',
-    'djangoRESTResources'
+    'djangoRESTResources',
+    'ngTagsInput'
   ])
 
   .config(function ($routeProvider) {
