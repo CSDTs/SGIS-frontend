@@ -9,7 +9,7 @@
  */
 angular.module('socialjusticeApp')
 
-  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService) {
+  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService) {
 
     var google = window.google;
     $scope.sources = dataSource.query();
@@ -42,33 +42,17 @@ angular.module('socialjusticeApp')
 
         //     }
         // }
-        // var k=56496;
-
-        var temp=djResource('http://107.170.106.235/api-mp/:id/',{id:tagId});
-        var Poll=temp.get({id:tagId},function(){
-            Poll.readByUser=true;
-            Poll.$save();
+        $scope.Poll={};
+        var temp=$resource('http://107.170.106.235/api-mp/:id/',{id:tagId});
+        temp.get({id:tagId})
+        .$promise.then(function(tagobj){
+            $scope.Poll=tagobj;
+            $scope.Poll.readByUser=true;
         });
-        console.log("Animal Resources");
-        console.log(temp);
-        console.log(Poll);
-        //var tempdata = dataEdit.get({ id:56496 });
-         //var id = tempdata.id;
-
+        $scope.Poll.tags=$scope.dataTag.outputTagSelect;
+        dataEdit.update({ id:tagId }, $scope.Poll);
        // Now call update passing in the ID first then the object you are updating
-       //dataEdit.update({ id:id }, tempdata);
-
        // This will PUT /notes/ID with the note object in the request payload
-
-        for(var i in $scope.data){
-            for(var j in $scope.data[i]){
-                if(tagId==$scope.data[i][j].id){
-                    $scope.data[i][j].tags=$scope.dataTag.addNewTag;
-                    console.log($scope.data[i][j].tags);
-
-                }
-            }
-        }
     };
 
      //Showing TagsModal info window
@@ -85,36 +69,22 @@ angular.module('socialjusticeApp')
                     $scope.tagObject.nameTag=temp[j].name;
                     $scope.tagObject.descriptionTag=temp[j].city;
                     $scope.tagObject.id=temp[j].id;
-                        // for(var k in temp[j].tags){
-                        //     // $scope.multiTags=
-
-                        // }
                     $scope.tagObject.addNewTag=temp[j].tags;
                     $scope.tagObject.multiTags=temp[j].tags;
                     $scope.tagObject.outputTagSelect=temp[j].tags;
-                    console.log($scope.tagObject.outputTagSelect);
-                    console.log("Tags");
-                    console.log($scope.multiTags.tags);
+                    // console.log($scope.tagObject.outputTagSelect);
+                    // console.log("Tags");
+                    // console.log($scope.multiTags.tags);
                     tagsModal.$promise.then(tagsModal.show);
                 }
             }
         }
     };
+
     $scope.loadTags = function(query) {
-        console.log(dataSource.query());
-
-        $scope.datas1=dataSource.query().$promise;
-
-        for(var indTemp in $scope.datas1){
-            $scope.tags1=indTemp.tags;
-            console.log($scope.tags1);
-        }
-       // $scope.tags1=$scope.datas1[0].tags;
-
-        return $scope.tags1;
-        //return $http.get('tags.json');
-        //return tags.query().$promise;
+        return tagService.query().$promise;
     };
+
     //Adding polygons
     $scope.singleModel = 1;
     $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
@@ -281,14 +251,10 @@ angular.module('socialjusticeApp')
         $scope.editTodo=true;
         console.log('Hi');
     };
-    //Polygon Serives Fetching
+    //Polygon Services Fetching
     $scope.polygonData={};
     $scope.polygonFunc=function(){
 
-        // var baseUrl="http://107.170.106.235/api-poly/?page_size=10";
-        // $scope.productsResource = $resource(baseUrl);
-        // $scope.products=$scope.productsResource.query();
-        // console.log("Dara"+$scope.products);
 
         var polyData=polygonService.query(function(){
           var polyData1=polyData;
