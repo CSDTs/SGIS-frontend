@@ -20,7 +20,8 @@ angular.module('socialjusticeApp')
     $scope.dataset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
-    $scope.polygonData={};
+    $scope.polyData=[];
+    $scope.singleModel = false;
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -50,7 +51,10 @@ angular.module('socialjusticeApp')
             $scope.Poll.readByUser=true;
         });
         $scope.Poll.tags=$scope.dataTag.outputTagSelect;
-        dataEdit.update({ id:tagId }, $scope.Poll);
+        var notes=$scope.Poll;
+        console.log("dataEdit");
+        dataEdit.update({ id:tagId }, notes);
+        console.log("notes");
        // Now call update passing in the ID first then the object you are updating
        // This will PUT /notes/ID with the note object in the request payload
     };
@@ -86,18 +90,11 @@ angular.module('socialjusticeApp')
     };
 
     //Adding polygons
-    $scope.singleModel = 1;
-    $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
-        $scope.poly1=dataPoly;
-     });
-    $scope.showHidePoly=function(){
-        if($scope.singleModel===1){
-            $scope.polyShowArray=$scope.poly1;
-        }
-        else{
-            $scope.polyShowArray=null;
-        }
-    };
+    //
+    // $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
+    //     $scope.poly1=dataPoly;
+    //  });
+
     $scope.fillcolor={
         color:'#63C3F2',
         opacity: '0.2'
@@ -215,14 +212,29 @@ angular.module('socialjusticeApp')
         'content': 'Add'
         }
     ];
+    var onMarkerClicked = function (marker) {
+        marker.showWindow = true;
+        $scope.$apply();
+    };
     $scope.showWindow=false;
+    _.each($scope.dataset1, function (marker) {
+        marker.closeClick = function () {
+          marker.showWindow = false;
+          $scope.$apply();
+        };
+        marker.onClicked = function () {
+            onMarkerClicked(marker);
+        };
+    });
+
     $scope.editTagEvents={
         options:{
             draggable:true},
         events:{
             mouseover:function(marker){
+
+                onMarkerClicked(marker);
                 console.log(marker);
-                marker.showWindow=true;
             },
              click:function(marker){
                 console.log('dbl clicked');
@@ -252,18 +264,30 @@ angular.module('socialjusticeApp')
         console.log('Hi');
     };
     //Polygon Services Fetching
-    $scope.polygonData={};
+    $scope.showHidePoly=function(){
+        $scope.singleModel= !$scope.singleModel;
+        if($scope.singleModel==true){
+            console.log($scope.singleModel);
+            $scope.polygonFunc();
+
+        }
+        else{
+            $scope.polyData=[];
+            console.log($scope.singleModel);
+        }
+    };
     $scope.polygonFunc=function(){
-
-
         var polyData=polygonService.query(function(){
           var polyData1=polyData;
           console.log(polyData1);
         });
-        $scope.polygonData=polyData;
+        $scope.polyData=polyData;
+        // var promObj=polygonService.query().$promise.then(function(){
+        //   $scope.polyData=promObj;
+        // });
+        // $scope.polyData=promObj;
+        // console.log($scope.polyData);
     };
-
-
 
     $scope.polygonEvents={
         // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {

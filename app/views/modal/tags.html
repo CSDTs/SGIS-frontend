@@ -34,7 +34,7 @@
 	   				</div>
 	  				<div class="col-xs-7 col-md-7">
 	  					<tags-input ng-model="tagObject.multiTags" display-property="tag" add-from-autocomplete-only="true">
-							<auto-complete source="loadTags($query)"></auto-complete>
+							<auto-complete source="loadTags($query)" min-length="1"></auto-complete>
 	  					</tags-input>
 	  				</div>
 	  			</div>		<br>

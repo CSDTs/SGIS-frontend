@@ -8,17 +8,18 @@
           </p>
         </window>
       </marker>
-      <markers models="dataset1" coords="'self'" icon="image.circle" doCluster="false" events="editTagEvents.events" doRebuildAll="true">
-        <windows show="'dataset1.showWindow'" doRebuildAll="true" options="infoWindowWithCustomClass.options" >
+      <markers models="dataset1" coords="'self'" click="'onClicked'" icon="image.circle" doCluster="false" events="editTagEvents.events" >
+        <windows ng-show="dataset1.showWindow">
             <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
             <br> County: {{county}}
-            <br>Tags: {{tags[0].tag}} </p>
+            <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
+            <!-- <p ng-repeat="u in tags">{{u.tag}}</p> -->
             </div>
         </windows>
       </markers>
-      <markers models="dataset2" coords="'self'" click="'onClicked'" doCluster="false" events="editTagEvents.events" doRebuildAll="true">
-        <windows show="'dataset2.showWindow'" doRebuildAll="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
+      <markers models="dataset2" coords="'self'" click="'onClicked'" doCluster="false" events="editTagEvents.events" >
+        <windows show="'dataset2.showWindow'"  closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
             <br> County: {{county}}
@@ -29,15 +30,15 @@
         </windows>
       </markers>
       <markers  models="dataset3" coords="'self'" events="editTagEvents.events">
-        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" doRebuildAll="true">
+        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} <br> County: {{county}}<br>Tags: {{tags}} </p>
             </div>
         </windows>
       </markers>
 
-      <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons>
-      <polygon ng-repeat="p in polygonData" path="p.geometry" clickable="true" events="polygonEvents" >
+      <!-- <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons> -->
+      <polygon ng-repeat="p in polyData" path="p.geometry" clickable="true" events="polygonEvents" >
       </polygon>
 
     </google-map>
@@ -72,7 +73,7 @@
                           <button class="btn-primary active" type="button" class="btn btn-default btn-lg" >
                               <span class="glyphicon glyphicon-th-list">DataSets</span>
                           </button>
-                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly();polygonFunc()">
+                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
                       </ul>
@@ -88,8 +89,8 @@
           <div class="checkbox" ng-repeat="source in sources">
               <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
-          <p>{{tagObject.outputTagSelect}}</p>
-        
+          <!-- <p>{{polyData}}</p> -->
+
         </form>
        <!--  <div ng-repeat="source in sources">
           <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
