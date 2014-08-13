@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('socialjusticeApp')
-  .service('dataEdit', function($resource) {
-   return $resource('http://107.170.106.235/api-mp/:id/', null,
+  .factory('dataEdit', function($resource,djResource) {
+   return djResource('http://107.170.106.235/apitag/', {},
        {
-           'update': { method:'PUT' }
+           'create': { method:'POST' }
        });
    });

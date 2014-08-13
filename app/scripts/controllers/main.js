@@ -53,10 +53,31 @@ angular.module('socialjusticeApp')
         $scope.Poll.tags=$scope.dataTag.outputTagSelect;
         var notes=$scope.Poll;
         console.log("dataEdit");
-        dataEdit.update({ id:tagId }, notes);
+        console.log($scope.dataTag.outputTagSelect);
+        for(var k in $scope.dataTag.outputTagSelect){
+          $scope.product={};
+          $scope.product.mappoint=tagId;
+          $scope.product.tag=$scope.dataTag.outputTagSelect[k].id;
+          var product =new dataEdit($scope.product);
+          console.log($scope.dataTag.outputTagSelect[k].id);
+          console.log($scope.product.mappoint);
+          product.$create();
+        }
+        // $scope.product={};
+        // $scope.product.mappoint=14;
+        // $scope.product.tag=4;
+        // var product =new dataEdit($scope.product);
+        // product.$create();
+
+
+
+      //  dataEdit.create({ id:tagId }, notes);
         console.log("notes");
+
+
        // Now call update passing in the ID first then the object you are updating
        // This will PUT /notes/ID with the note object in the request payload
+
     };
 
      //Showing TagsModal info window
