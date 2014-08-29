@@ -6,9 +6,7 @@ angular.module('socialjusticeApp')
    return $resource(baseUrlTag, {},{
       query: {method: 'GET', isArray: true, transformResponse: function(TagData) {
         var d = JSON.parse(TagData);
-        console.log(d);
         var tagArray=d.results[0].tags;
-        console.log(tagArray);
         return tagArray;
     }}
    });

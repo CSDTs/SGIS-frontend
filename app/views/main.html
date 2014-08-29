@@ -60,9 +60,7 @@
         </div>
         </span>
       </div>
-
-    </form>
-
+    </form> 
     <div class="panel panel-default">
       <div class="panel-heading">
           <nav class="navbar navbar-primary" role="navigation">
@@ -90,14 +88,17 @@
               <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
           <!-- <p>{{polyData}}</p> -->
-
         </form>
-       <!--  <div ng-repeat="source in sources">
+  
+   <input type="text" class="form-control" ng-model="selectedTag" ng-options="state for state in states" placeholder="Filter by Tag" bs-typeahead>
+    <p>{{selectedTag}}</p>
+        <!-- <div ng-repeat="source in sources">
           <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
         </div> -->
 
-        <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br>
+       <!--  <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br> -->
       </div><!-- panel body -->
     </div> <!-- panel -->
+  </div>                 
   </div>
 </body>

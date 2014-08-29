@@ -48,7 +48,7 @@ body { padding-bottom: 70px; }
     /*border: 1px solid white;*/
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 5px;
-    width: 250px;
+    width: 280px;
     margin-top: 15px;
     margin-left: -130px;
 }
@@ -173,7 +173,4 @@ border-color: black
 .bootstrap .autocomplete .suggestion-item.selected em {
   color: #262626;
   background-color: #ffff00;
-} 
-
-
-
+}

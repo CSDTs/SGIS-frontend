@@ -8,7 +8,18 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-
+    .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService) {
+    return function(scope, iElement, iAttrs) {
+            iElement.autocomplete({
+                source: scope[iAttrs.uiItems],
+                select: function() {
+                    $timeout(function() {
+                      iElement.trigger('input');
+                    }, 0);
+                }
+            });
+    };
+})
   .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService) {
 
     var google = window.google;
@@ -107,9 +118,11 @@ angular.module('socialjusticeApp')
     };
 
     $scope.loadTags = function(query) {
-        return tagService.query().$promise;
+        return tagService.query().$promise;     
     };
 
+    $scope.selectedTag = '';
+    $scope.states = ['fruits', 'vegetables', 'organic vegetables', 'bus accessible', 'local foods'];
     //Adding polygons
     //
     // $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
@@ -130,8 +143,8 @@ angular.module('socialjusticeApp')
     };
     $scope.onSelect = function(dataSourceId) {
         if($scope.data[dataSourceId] !== undefined) {
-            $scope.data[dataSourceId] = {};
-            $scope.resetValues(dataSourceId);
+            $scope.data[dataSourceId] = undefined;
+            $scope.resetValues(dataSourceId);  
         }
         else
         {
@@ -139,13 +152,14 @@ angular.module('socialjusticeApp')
             $scope.data[dataSourceId].$promise.then(function (result) {
                 $scope.data[dataSourceId] = result;
                 console.log($scope.data[dataSourceId]);
+                
                 $scope.setValues(dataSourceId);
             });
         }
     };
     $scope.resetValues=function(dataSourceId){
          if(dataSourceId==1){
-                $scope.dataset1={};
+                $scope.dataset1={};   
             }
             else if(dataSourceId==2){
                 $scope.dataset2={};
@@ -186,6 +200,7 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
+
     };
     $scope.map = {
     	center: {

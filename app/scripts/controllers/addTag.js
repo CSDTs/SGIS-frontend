@@ -11,13 +11,6 @@ angular.module('socialjusticeApp')
 	$scope.hideModal = function() {
 		myOtherModal.$promise.then(myOtherModal.hide);
 	};
-	// $scope.multiTags= [
-	//     { firstName: 'sells vegetables',    lastName: 'Parker',     pic: '<img src=\'[...]/peter.png  class=\'multiSelect\'  />',   selected: false },
-	//     { firstName: 'fruits',     lastName: 'Jane',       pic: '<img src=\'[...]/mary.png   class=\'multiSelect\'  />',   selected: false },
-	//     { firstName: 'stationary',    lastName: 'Wayne',      pic: '<img src=\'[...]/bruce.png  class=\'multiSelect\'  />',   selected: false  },
-	//     { firstName: 'laundry',    lastName: 'Banner',     pic: '<img src=\'[...]/david.png  class=\'multiSelect\'  />',   selected: false },
-	//     { firstName: 'fastfood',  lastName: 'Romanova',   pic: '<img src=\'[...]/natalia.png class=\'multiSelect\' />',   selected: false },
-	//     { firstName: 'pizza',    lastName: 'Kent',       pic: '<img src=\'[...]/clark.png  class=\'multiSelect\'  />',   selected: false  }
-	// ];
+	
 });
 

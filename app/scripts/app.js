@@ -23,7 +23,8 @@ angular
     'multi-select',
     'checklist-model',
     'djangoRESTResources',
-    'ngTagsInput'
+    'ngTagsInput',
+    'angucomplete'
   ])
 
   .config(function ($routeProvider) {
