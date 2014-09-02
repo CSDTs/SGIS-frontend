@@ -8,27 +8,30 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-    .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
-    return function(scope, iElement, iAttrs) {
-            iElement.autocomplete({
-                source: scope[iAttrs.uiItems],
-                select: function() {
-                    $timeout(function() {
-                      iElement.trigger('input');
-                    }, 0);
-                }
-            });
-    };
-})
-  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService) {
+    // .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
+    // return function(scope, iElement, iAttrs) {
+    //         iElement.autocomplete({
+    //             source: scope[iAttrs.uiItems],
+    //             select: function() {
+    //                 $timeout(function() {
+    //                   iElement.trigger('input');
+    //                 }, 0);
+    //             }
+    //         });
+    //     };
+    // })
+  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource,$timeout, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
 
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
     $scope.dataTag = {};
     $scope.dataset1={};
+    $scope.dset1={};
     $scope.dataset2={};
+    $scope.dset2={};
     $scope.dataset3={};
+    $scope.dset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
@@ -120,9 +123,29 @@ angular.module('socialjusticeApp')
     $scope.loadTags = function(query) {
         return tagService.query().$promise;     
     };
-    //$scope.filteredData[0]=tagFiltering.query();
+   
     $scope.selectedTag = '';
     $scope.states = ['fruits', 'vegetables', 'organic vegetables', 'bus accessible', 'local foods'];
+
+    $scope.Default=function(){
+        $scope.dataset1=
+    };
+    $scope.checkFilter=function(){
+        console.log('HI'); 
+        if(selectedTag=''){
+
+        }
+        var filterData=tagFiltering.query({selectedTag:$scope.selectedTag},function(){
+            $scope.dataset1=filterData;
+            for(var l=0 ;l<=$scope.dataset1.length-1;l++){
+                 $scope.dataset1[l].img=$scope.image.marker1;
+                 console.log($scope.dataset1[l].img);
+            }
+        });
+        console.log('Tag Filtering');
+        console.log($scope.dataset1);   
+    };
+    
     //Adding polygons
     //
     // $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){

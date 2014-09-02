@@ -49,7 +49,7 @@
         <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
-        <button class="btn btn-primary" ng-click="AddwithDescription()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
+        <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
         <div class="btn btn-default">
           <button class="buttonimage" ><img src="/images/normal.png" height="18px" width="22px"></button>
           <button class="buttonimage"><img src="/images/polygon.png" height="18px" width="22px"></button>
@@ -89,9 +89,20 @@
           </div>
           <!-- <p>{{polyData}}</p> -->
         </form>
-  
-   <input type="text" class="form-control" ng-model="selectedTag" ng-options="state for state in states" placeholder="Filter by Tag" bs-typeahead>
-    <p>{{selectedTag}}</p>
+ 
+     
+   
+  <div class="input-group">
+      
+      <input type="text" class="form-control" ng-model="selectedTag" ng-options="state for state in states" placeholder="Filter by Tag" bs-typeahead>
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-filter"></span></button>
+        <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-save"></span></button> 
+
+      </span>
+
+  </div><!-- /input-group -->
+  <p>{{selectedTag}}</p>
         <!-- <div ng-repeat="source in sources">
           <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
         </div> -->
