@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('socialjusticeApp')
-  .constant("baseUrlTag","http://107.170.106.235/api-ds")
+  .constant('baseUrlTag','http://107.170.106.235/api-ds'    )
   .service('tagService', function($resource,baseUrlTag) {
    return $resource(baseUrlTag, {},{
       query: {method: 'GET', isArray: true, transformResponse: function(TagData) {

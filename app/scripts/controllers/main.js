@@ -8,7 +8,7 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-    .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService) {
+    .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
     return function(scope, iElement, iAttrs) {
             iElement.autocomplete({
                 source: scope[iAttrs.uiItems],
@@ -120,7 +120,7 @@ angular.module('socialjusticeApp')
     $scope.loadTags = function(query) {
         return tagService.query().$promise;     
     };
-
+    //$scope.filteredData[0]=tagFiltering.query();
     $scope.selectedTag = '';
     $scope.states = ['fruits', 'vegetables', 'organic vegetables', 'bus accessible', 'local foods'];
     //Adding polygons
@@ -135,8 +135,8 @@ angular.module('socialjusticeApp')
     };
     $scope.strokecolor={
         weight: 1,
-        color: '#505152',
-        opacity: 1
+        color: '#505250',
+        opacity: 0.6
     };
     $scope.user={
         dataset:['dara']
@@ -172,13 +172,30 @@ angular.module('socialjusticeApp')
 
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
+            for(var l=0 ;l<=$scope.dataset1.length-1;l++){
+                 $scope.dataset1[l].img=$scope.image.marker1;
+                 console.log($scope.dataset1[l].img);
+            }
+           
+            console.log('Image');
+            //console.log($scope.dataset1[0].img);
             $scope.tag1=$scope.data[dataSourceId].tags;
         }
         else if(dataSourceId==2){
             $scope.dataset2=$scope.data[dataSourceId];
+            for(var l=0 ;l<=$scope.dataset2.length-1;l++){
+                 $scope.dataset2[l].img=$scope.image.marker1;
+                 console.log($scope.dataset2[l].img);
+            }
+            
         }
         else if(dataSourceId==3){
             $scope.dataset3=$scope.data[dataSourceId];
+            for(var l=0 ;l<=$scope.dataset3.length-1;l++){
+                 $scope.dataset3[l].img=$scope.image.marker1;
+                 console.log($scope.dataset3[l].img);
+            }
+            
         }
 
 
@@ -200,6 +217,7 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
+        $scope.map.zoom=11;
 
     };
     $scope.map = {
@@ -287,12 +305,13 @@ angular.module('socialjusticeApp')
         }
     };
     $scope.image={
-        farm:"./images/farmstand.png",
-        home: "./images/home.png",
-        circle: "./images/measle_blue.png"
+        farm:'./images/farmstand.png',
+        home: './images/home.png',
+        circle: './images/measle_blue.png',
+        marker1:'./images/measle_blue.png'
     };
     $scope.hello=function(){
-        alert("hello");
+        alert('hello');
         $scope.$apply();
     };
     $scope.AddwithDescription=function(){
@@ -326,22 +345,27 @@ angular.module('socialjusticeApp')
     };
 
     $scope.polygonEvents={
-        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
-        //     var polygonScopeObject = this.polygon, scope = this.scope;
-        //     console.log(polygon);
-        //     console.log(eventName);
-        //     console.log(polyMouseEvent);
-        //     scope.$apply(function() {
-        //         polygonScopeObject.selected = !polygonScopeObject.selected;
-        //         // Change colors or whatever you want via the polygon_scope_object
-        //     });
-        // },
+        mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
+            var polygonScopeObject = this.polygon, scope = this.scope;
+            console.log(polygon);
+            console.log(eventName);
+            console.log(polyMouseEvent);
+            scope.$apply(function() {
+                polygonScopeObject.selected = !polygonScopeObject.selected;
+                // Change colors or whatever you want via the polygon_scope_object
+            });
+        },
         click:function(polygon, eventName, polyMouseEvent) {
             //var polygonScopeObject = this.polygon, scope = this.scope;
              console.log(polygon);
              console.log(eventName);
-             polygon.fillColor="#ffffff";
-             $scope.$apply();
+             console.log(polygon.fillColor);
+             polygon.fillColor=$scope.fillcolor.color;
+             polygon.strokeColor=$scope.strokecolor.color;
+             polygon.fillOpacity=$scope.fillcolor.opacity;
+             polygon.strokeOpacity=$scope.strokecolor.opacity;
+             alert(polygon.strokeOpacity);
+             //$scope.$apply();
             // console.log(polyMouseEvent);
 
             // scope.$apply(function() {
