@@ -128,13 +128,13 @@ angular.module('socialjusticeApp')
     $scope.states = ['fruits', 'vegetables', 'organic vegetables', 'bus accessible', 'local foods'];
 
     $scope.Default=function(){
-        $scope.dataset1=
+        //$scope.dataset1=
     };
     $scope.checkFilter=function(){
         console.log('HI'); 
-        if(selectedTag=''){
+        // if(selectedTag=''){
 
-        }
+        // }
         var filterData=tagFiltering.query({selectedTag:$scope.selectedTag},function(){
             $scope.dataset1=filterData;
             for(var l=0 ;l<=$scope.dataset1.length-1;l++){
