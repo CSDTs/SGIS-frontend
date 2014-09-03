@@ -1,7 +1,7 @@
 'use strict';
 
     angular.module('socialjusticeApp')
-  .constant('baseUrlFilter','http://107.170.106.235/api-mp/?tag=:selectedTag&dataset=1')
+  .constant('baseUrlFilter','http://107.170.106.235/api-mp/?tag=:selectedTag&dataset=:dataId')
     .service('tagFiltering', function($resource,baseUrlFilter) {
      return $resource(baseUrlFilter, {},{
         query: {method: 'GET', isArray: true, transformResponse: function(filterData) {

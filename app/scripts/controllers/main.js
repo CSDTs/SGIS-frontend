@@ -126,24 +126,64 @@ angular.module('socialjusticeApp')
    
     $scope.selectedTag = '';
     $scope.states = ['fruits', 'vegetables', 'organic vegetables', 'bus accessible', 'local foods'];
-
+    $scope.isEmpty=function(obj) 
+    { 
+        for(var prop in obj)
+        { 
+            if(obj.hasOwnProperty(prop)) 
+                return false; 
+        }
+        return true;
+    };
     $scope.Default=function(){
-        //$scope.dataset1=
+        if($scope.isEmpty($scope.dataset1)){
+            console.log('Null');
+        }
+        else{
+            $scope.dataset1=$scope.dset1;
+        }
+
+        if($scope.isEmpty($scope.dataset2)){
+            console.log('Null');
+        }
+        else{
+            $scope.dataset2=$scope.dset2;
+        }
+
+        if($scope.isEmpty($scope.dataset3)){
+            console.log('Null');
+        }
+        else{
+            $scope.dataset3=$scope.dset3;
+        }
     };
     $scope.checkFilter=function(){
-        console.log('HI'); 
-        // if(selectedTag=''){
-
-        // }
-        var filterData=tagFiltering.query({selectedTag:$scope.selectedTag},function(){
-            $scope.dataset1=filterData;
+        
+        if($scope.isEmpty($scope.dataset1)){
+            console.log('Null');
+        }
+        else{
+             var filterData1=tagFiltering.query({selectedTag:$scope.selectedTag, dataId:'1'},function(){
+            $scope.dataset1=filterData1;
             for(var l=0 ;l<=$scope.dataset1.length-1;l++){
                  $scope.dataset1[l].img=$scope.image.marker1;
                  console.log($scope.dataset1[l].img);
             }
         });
-        console.log('Tag Filtering');
-        console.log($scope.dataset1);   
+        }
+        if($scope.isEmpty($scope.dataset2)){
+            console.log('Null');
+        }
+        else{
+        
+        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTag, dataId:'11'},function(){
+            $scope.dataset2=filterData2;
+            for(var l=0 ;l<=$scope.dataset2.length-1;l++){
+                 $scope.dataset2[l].img=$scope.image.marker1;
+                 console.log($scope.dataset2[l].img);
+            }
+        });
+        }
     };
     
     //Adding polygons
@@ -195,6 +235,7 @@ angular.module('socialjusticeApp')
 
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
+            $scope.dset1=$scope.dataset1;
             for(var l=0 ;l<=$scope.dataset1.length-1;l++){
                  $scope.dataset1[l].img=$scope.image.marker1;
                  console.log($scope.dataset1[l].img);
@@ -206,6 +247,7 @@ angular.module('socialjusticeApp')
         }
         else if(dataSourceId==2){
             $scope.dataset2=$scope.data[dataSourceId];
+            $scope.dset2=$scope.dataset2;
             for(var l=0 ;l<=$scope.dataset2.length-1;l++){
                  $scope.dataset2[l].img=$scope.image.marker1;
                  console.log($scope.dataset2[l].img);
@@ -214,6 +256,7 @@ angular.module('socialjusticeApp')
         }
         else if(dataSourceId==3){
             $scope.dataset3=$scope.data[dataSourceId];
+            $scope.dset3=$scope.dataset3;
             for(var l=0 ;l<=$scope.dataset3.length-1;l++){
                  $scope.dataset3[l].img=$scope.image.marker1;
                  console.log($scope.dataset3[l].img);
