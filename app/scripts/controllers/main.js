@@ -35,7 +35,12 @@ angular.module('socialjusticeApp')
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
+    $scope.matchModel="any";
     $scope.singleModel = false;
+    $scope.selectedTagUrl="";
+
+
+
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -57,6 +62,7 @@ angular.module('socialjusticeApp')
 
         //     }
         // }
+
         $scope.Poll={};
         var temp=$resource('http://107.170.106.235/api-mp/:id/',{id:tagId});
         temp.get({id:tagId})
@@ -159,16 +165,32 @@ angular.module('socialjusticeApp')
     };
     $scope.checkFilter=function(){
         
+        // First we will check which checbox is selected,If we have selected any --> any filtering will be done and 
+        //if Match All is done, we will have MATch all filtering is done
+        // $scope.matchmodel--> will tell about the type of filter
+        // Actually by default, it is any and for match ALL we need to use match =ALL
+            $scope.selectedTagUrl="";
+            for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
+                
+                $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[m].tag+",";
+            }
+            $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[$scope.selectedTag.length-1].tag;
+            
+            console.log("URL");
+            console.log($scope.selectedTagUrl);
+
         if($scope.isEmpty($scope.dataset1)){
             console.log('Null');
         }
         else{
-             var filterData1=tagFiltering.query({selectedTag:$scope.selectedTag, dataId:'1'},function(){
+            
+            
+            var filterData1=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'1', matchModel:$scope.matchModel},function(){
             $scope.dataset1=filterData1;
-            for(var l=0 ;l<=$scope.dataset1.length-1;l++){
-                 $scope.dataset1[l].img=$scope.image.marker1;
-                 console.log($scope.dataset1[l].img);
-            }
+            // for(var l=0 ;l<=$scope.dataset1.length-1;l++){
+            //      $scope.dataset1[l].img=$scope.image.marker1;
+            //      console.log($scope.dataset1[l].img);
+            // }
         });
         }
         if($scope.isEmpty($scope.dataset2)){
@@ -176,12 +198,12 @@ angular.module('socialjusticeApp')
         }
         else{
         
-        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTag, dataId:'11'},function(){
+        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'11', matchModel:$scope.matchModel},function(){
             $scope.dataset2=filterData2;
-            for(var l=0 ;l<=$scope.dataset2.length-1;l++){
-                 $scope.dataset2[l].img=$scope.image.marker1;
-                 console.log($scope.dataset2[l].img);
-            }
+            // for(var l=0 ;l<=$scope.dataset2.length-1;l++){
+            //      $scope.dataset2[l].img=$scope.image.marker1;
+            //      console.log($scope.dataset2[l].img);
+            // }
         });
         }
     };
@@ -236,31 +258,31 @@ angular.module('socialjusticeApp')
         if(dataSourceId==1){
             $scope.dataset1=$scope.data[dataSourceId];
             $scope.dset1=$scope.dataset1;
-            for(var l=0 ;l<=$scope.dataset1.length-1;l++){
-                 $scope.dataset1[l].img=$scope.image.marker1;
-                 console.log($scope.dataset1[l].img);
-            }
+            // for(var l=0 ;l<=$scope.dataset1.length-1;l++){
+            //      $scope.dataset1[l].img=$scope.image.marker1;
+            //      console.log($scope.dataset1[l].img);
+            // }
            
-            console.log('Image');
+            // console.log('Image');
             //console.log($scope.dataset1[0].img);
             $scope.tag1=$scope.data[dataSourceId].tags;
         }
         else if(dataSourceId==2){
             $scope.dataset2=$scope.data[dataSourceId];
             $scope.dset2=$scope.dataset2;
-            for(var l=0 ;l<=$scope.dataset2.length-1;l++){
-                 $scope.dataset2[l].img=$scope.image.marker1;
-                 console.log($scope.dataset2[l].img);
-            }
+            // for(var l=0 ;l<=$scope.dataset2.length-1;l++){
+            //      $scope.dataset2[l].img=$scope.image.marker1;
+            //      console.log($scope.dataset2[l].img);
+            // }
             
         }
         else if(dataSourceId==3){
             $scope.dataset3=$scope.data[dataSourceId];
             $scope.dset3=$scope.dataset3;
-            for(var l=0 ;l<=$scope.dataset3.length-1;l++){
-                 $scope.dataset3[l].img=$scope.image.marker1;
-                 console.log($scope.dataset3[l].img);
-            }
+            // for(var l=0 ;l<=$scope.dataset3.length-1;l++){
+            //      $scope.dataset3[l].img=$scope.image.marker1;
+            //      console.log($scope.dataset3[l].img);
+            // }
             
         }
 
