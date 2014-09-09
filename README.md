@@ -2,72 +2,17 @@ SGIS 2.0
 
 ===============================
 
-Overview:
-	Users are offered a drop-down list of data sources. These might be neighborhood medium incomes, gun ownership, IT accessibility, grocery stores,pollution. 
-	Users will be provided with an option to see the data sets on the map. 
-	I have implemented the NY state Farmer Market data and next step is to implement GeoJson data to add polygons on the ma
-	Users will be able to tag information about stores on the map.
+Goal :
+Geographical Information System(GIS) application for school kids:
 
-Angular JS:
-	AngularJS is a new, powerful, client-side technology that provides a way of accomplishing really powerful things in a way that embraces and extends HTML, CSS and JavaScript, while shoring up some of its glaring deficiencies. It is what HTML would have been, had it been built for dynamic content.
+The basic idea is to provide students with different data sources that might be interesting for the kids in measuring different datasets such as neighborhood medium incomes, gun ownership, IT accessibility, grocery stores, pollution. Kids will be able to measure their neighborhood and will learn generative justice in the class by comparing how prosperous their neighborhood is. Other primary goal is to make it useful for teachers teaching kids. We will be making our system as eClassroom where teachers and students will be able to login and teachers will be able to see what tags kids have added.
 
-Features:
-	Feature 1: Two Way Data-Binding
-	Feature 2: Templates
-	Feature 3: MVC
-	Feature 4: Dependency Injection
-	Feature 5: Directives
+Users of the system: Anyone who wants to compare his neighborhood in the state of New York will be able to use this application to add his own custom tags. It is also helpful for teachers teaching kids about generative justice. Additionally, kids will be able to compare neighborhood in the class by looking at the interactive charts corresponding to their neighborhood. 
+
+Technology Used:
+Front-end: I am using Angular (Javascript Framework) with Google Maps.
+Back-end: Python Django to make API that can be used for other applications also.
+D3Js will be used for making interactive charts.
 
 
-One-line install using npm:
-	npm install -g yo
-
-What's Yeoman?
-
-	Yeoman helps you kickstart new projects, prescribing best practices and tools to help you stay productive.The Yeoman workflow is comprised of three types of tools for improving your productivity and satisfaction when building a web app: the scaffolding tool (yo), the build tool (Grunt, Gulp, etc) and the package manager (like Bower and npm).
-
-	1) yo scaffolds out a new application, writing your Grunt configuration and pulling in relevant Grunt tasks and Bower dependencies that you might need for your build.
-	2) The Build System is used to build, preview and test your project. Grunt and Gulp are two popular options.
-	    Bower, npm, etc
-	3) The Package Manager is used for dependency management, so that you no longer have to manually download and manage your scripts. Bower and npm are two popular options.
-
-Installation:
-
-	To get started:
-
-	1. Clone the repository and its submodules:
-
-		git clone --recursive git@github.com:yeoman/yeoman.io.git
-			cd yeoman.io
-
-	2. Install all modules and needed tools
-
-		npm install
-		gem install bundler
-		bundle install
-		bower install
-
-Now you're ready to do some work!	
-
-Check out the website for various functionalities.
-
-http://yeoman.io/
-
-Running Application
-	Preview your app in the browser
-		Start the server
-		grunt serve
-
-		Stop the Server
-		Ctrl + C
-	Installing packages using bower
-		List current packages
-		bower list
-		
-		Search for packages
-		bower search package-name
-		
-		Install packages
-		bower install --save package-name		
-
-
+	
