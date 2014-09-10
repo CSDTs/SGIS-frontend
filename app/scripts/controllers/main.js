@@ -35,9 +35,9 @@ angular.module('socialjusticeApp')
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
-    $scope.matchModel="any";
+    $scope.matchModel='any';
     $scope.singleModel = false;
-    $scope.selectedTagUrl="";
+    $scope.selectedTagUrl='';
 
 
 
@@ -72,8 +72,8 @@ angular.module('socialjusticeApp')
             $scope.Poll.readByUser=true;
         });
         $scope.Poll.tags=$scope.dataTag.outputTagSelect;
-        var notes=$scope.Poll;
-        console.log("dataEdit");
+        //var notes=$scope.Poll;
+        console.log('dataEdit');
         console.log($scope.dataTag.outputTagSelect);
         for(var k in $scope.dataTag.outputTagSelect){
           $scope.product={};
@@ -93,7 +93,7 @@ angular.module('socialjusticeApp')
 
 
       //  dataEdit.create({ id:tagId }, notes);
-        console.log("notes");
+        console.log('notes');
 
 
        // Now call update passing in the ID first then the object you are updating
@@ -111,7 +111,7 @@ angular.module('socialjusticeApp')
             var temp=$scope.data[index];
             console.log(temp);
             for(var j in temp){
-                if(markerkey==temp[j].id){
+                if(markerkey===temp[j].id){
                     $scope.tagObject.nameTag=temp[j].name;
                     $scope.tagObject.descriptionTag=temp[j].city;
                     $scope.tagObject.id=temp[j].id;
@@ -119,7 +119,7 @@ angular.module('socialjusticeApp')
                     $scope.tagObject.multiTags=temp[j].tags;
                     $scope.tagObject.outputTagSelect=temp[j].tags;
                     // console.log($scope.tagObject.outputTagSelect);
-                     console.log("Tags");
+                     console.log('Tags');
                     // console.log($scope.multiTags.tags);
                     tagsModal.$promise.then(tagsModal.show);
                 }
@@ -137,8 +137,9 @@ angular.module('socialjusticeApp')
     { 
         for(var prop in obj)
         { 
-            if(obj.hasOwnProperty(prop)) 
+            if(obj.hasOwnProperty(prop)) {
                 return false; 
+            }
         }
         return true;
     };
@@ -170,14 +171,14 @@ angular.module('socialjusticeApp')
         //if Match All is done, we will have MATch all filtering is done
         // $scope.matchmodel--> will tell about the type of filter
         // Actually by default, it is any and for match ALL we need to use match =ALL
-            $scope.selectedTagUrl="";
+            $scope.selectedTagUrl='';
             for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
                 
-                $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[m].tag+",";
+                $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[m].tag+',';
             }
             $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[$scope.selectedTag.length-1].tag;
             
-            console.log("URL");
+            console.log('URL');
             console.log($scope.selectedTagUrl);
 
         if($scope.isEmpty($scope.dataset1)){
@@ -236,12 +237,12 @@ angular.module('socialjusticeApp')
         }
         else
         {
-            var dataset1_values=1;
-            var dataset2_values=4;
-            //var dataset1_values=;
-            if(dataSourceId==1){
+            var dataset1Values=1;
+            var dataset2Values=4;
+            //var dataset1Values=;
+            if(dataSourceId===1){
 
-                for(var u=1;u<=dataset1_values;u++)
+                for(var u=1;u<=dataset1Values;u++)
                 {
                     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
                     $scope.data[dataSourceId].$promise.then(function (result) {
@@ -252,8 +253,8 @@ angular.module('socialjusticeApp')
                 }  
                 $scope.setValues(dataSourceId);
             }
-            else if(dataSourceId==2){
-                for(var v=1;v<=dataset2_values;v++)
+            else if(dataSourceId===2){
+                for(var v=1;v<=dataset2Values;v++)
                 {  
                     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':v});
                     $scope.data[dataSourceId].$promise.then(function (result) {
@@ -267,19 +268,19 @@ angular.module('socialjusticeApp')
         }
     };
     $scope.resetValues=function(dataSourceId){
-         if(dataSourceId==1){
+         if(dataSourceId===1){
                 $scope.dataset1={};   
             }
-            else if(dataSourceId==2){
+            else if(dataSourceId===2){
                 $scope.dataset2={};
             }
-            else if(dataSourceId==3){
+            else if(dataSourceId===3){
                 $scope.dataset3={};
             }
     };
     $scope.setValues=function(dataSourceId){
 
-        if(dataSourceId==1){
+        if(dataSourceId===1){
             $scope.dataset1=$scope.data[dataSourceId];
             $scope.dset1=$scope.dataset1;
             // for(var l=0 ;l<=$scope.dataset1.length-1;l++){
@@ -291,7 +292,7 @@ angular.module('socialjusticeApp')
             //console.log($scope.dataset1[0].img);
             $scope.tag1=$scope.data[dataSourceId].tags;  //abhi comment kara thain 7:00
         }
-        else if(dataSourceId==2){
+        else if(dataSourceId===2){
             $scope.dataset2=$scope.data[dataSourceId];
             $scope.dset2=$scope.dataset2;
             // for(var l=0 ;l<=$scope.dataset2.length-1;l++){
@@ -300,7 +301,7 @@ angular.module('socialjusticeApp')
             // }
             
         }
-        else if(dataSourceId==3){
+        else if(dataSourceId===3){
             $scope.dataset3=$scope.data[dataSourceId];
             $scope.dset3=$scope.dataset3;
             // for(var l=0 ;l<=$scope.dataset3.length-1;l++){
@@ -356,7 +357,7 @@ angular.module('socialjusticeApp')
 	    dragging: true
     };
 
-    var markerToClose = null;
+    
     $scope.symbol={
       path: window.google.maps.SymbolPath.CIRCLE,
       scale: 5
@@ -404,7 +405,7 @@ angular.module('socialjusticeApp')
             },
              click:function(marker){
                 console.log('dbl clicked');
-                var pos = marker.getPosition();
+                //var pos = marker.getPosition();
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
             }
@@ -423,7 +424,7 @@ angular.module('socialjusticeApp')
         marker1:'./images/measle_blue.png'
     };
     $scope.hello=function(){
-        alert('hello');
+        window.alert('hello');
         $scope.$apply();
     };
     $scope.AddwithDescription=function(){
@@ -433,7 +434,7 @@ angular.module('socialjusticeApp')
     //Polygon Services Fetching
     $scope.showHidePoly=function(){
         $scope.singleModel= !$scope.singleModel;
-        if($scope.singleModel==true){
+        if($scope.singleModel===true){
             console.log($scope.singleModel);
             $scope.polygonFunc();
 
@@ -476,7 +477,7 @@ angular.module('socialjusticeApp')
              polygon.strokeColor=$scope.strokecolor.color;
              polygon.fillOpacity=$scope.fillcolor.opacity;
              polygon.strokeOpacity=$scope.strokecolor.opacity;
-             alert(polygon.strokeOpacity);
+             google.windows.alert(polygon.strokeOpacity);
              //$scope.$apply();
             // console.log(polyMouseEvent);
 
