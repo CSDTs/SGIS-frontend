@@ -24,7 +24,7 @@ angular.module('socialjusticeApp')
 
     var google = window.google;
     $scope.sources = dataSource.query();
-    $scope.data = {};
+    $scope.data = [];
     $scope.dataTag = {};
     $scope.dataset1={};
     $scope.dset1={};
@@ -38,6 +38,7 @@ angular.module('socialjusticeApp')
     $scope.matchModel="any";
     $scope.singleModel = false;
     $scope.selectedTagUrl="";
+
 
 
 
@@ -118,7 +119,7 @@ angular.module('socialjusticeApp')
                     $scope.tagObject.multiTags=temp[j].tags;
                     $scope.tagObject.outputTagSelect=temp[j].tags;
                     // console.log($scope.tagObject.outputTagSelect);
-                    // console.log("Tags");
+                     console.log("Tags");
                     // console.log($scope.multiTags.tags);
                     tagsModal.$promise.then(tagsModal.show);
                 }
@@ -198,7 +199,7 @@ angular.module('socialjusticeApp')
         }
         else{
         
-        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'11', matchModel:$scope.matchModel},function(){
+        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'2', matchModel:$scope.matchModel},function(){
             $scope.dataset2=filterData2;
             // for(var l=0 ;l<=$scope.dataset2.length-1;l++){
             //      $scope.dataset2[l].img=$scope.image.marker1;
@@ -227,19 +228,42 @@ angular.module('socialjusticeApp')
         dataset:['dara']
     };
     $scope.onSelect = function(dataSourceId) {
+        console.log(dataSourceId);
+
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
             $scope.resetValues(dataSourceId);  
         }
         else
         {
-            $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
-            $scope.data[dataSourceId].$promise.then(function (result) {
-                $scope.data[dataSourceId] = result;
-                console.log($scope.data[dataSourceId]);
-                
+            var dataset1_values=1;
+            var dataset2_values=4;
+            //var dataset1_values=;
+            if(dataSourceId==1){
+
+                for(var u=1;u<=dataset1_values;u++)
+                {
+                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
+                    $scope.data[dataSourceId].$promise.then(function (result) {
+                        $scope.data[dataSourceId]=result;
+                        console.log($scope.data[dataSourceId]);
+                    });
+                    //console.log($scope.data[dataSourceId]);
+                }  
                 $scope.setValues(dataSourceId);
-            });
+            }
+            else if(dataSourceId==2){
+                for(var v=1;v<=dataset2_values;v++)
+                {  
+                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':v});
+                    $scope.data[dataSourceId].$promise.then(function (result) {
+                        $scope.data[dataSourceId]=result;
+                        console.log($scope.data[dataSourceId]);
+                    });
+                } 
+                 
+                $scope.setValues(dataSourceId);
+            }
         }
     };
     $scope.resetValues=function(dataSourceId){
@@ -265,7 +289,7 @@ angular.module('socialjusticeApp')
            
             // console.log('Image');
             //console.log($scope.dataset1[0].img);
-            $scope.tag1=$scope.data[dataSourceId].tags;
+            $scope.tag1=$scope.data[dataSourceId].tags;  //abhi comment kara thain 7:00
         }
         else if(dataSourceId==2){
             $scope.dataset2=$scope.data[dataSourceId];
