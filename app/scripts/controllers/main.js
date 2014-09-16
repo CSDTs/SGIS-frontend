@@ -8,23 +8,13 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-    // .directive('autoComplete', function($timeout,$scope,$http,$routeParams,$modal,$resource, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
-    // return function(scope, iElement, iAttrs) {
-    //         iElement.autocomplete({
-    //             source: scope[iAttrs.uiItems],
-    //             select: function() {
-    //                 $timeout(function() {
-    //                   iElement.trigger('input');
-    //                 }, 0);
-    //             }
-    //         });
-    //     };
-    // })
   .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource,$timeout, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
 
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = [];
+    var dataSourceId=1;
+    $scope.d1 = [];
     $scope.dataTag = {};
     $scope.dataset1={};
     $scope.dset1={};
@@ -38,6 +28,9 @@ angular.module('socialjusticeApp')
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
+    var dataset1Values=139;
+    var curDataSet1Values = 1;
+    var dataset2Values=4;
 
 
 
@@ -228,30 +221,53 @@ angular.module('socialjusticeApp')
     $scope.user={
         dataset:['dara']
     };
+     function q(data) {
+            //$scope.data[dataSourceId].push(data);
+            $scope.d1.push(data);
+            console.log($scope.d1);
+            console.log('ajao');
+            if(curDataSet1Values<dataset1Values) {
+                curDataSet1Values += 1;
+                console.log('increasing count');
+                dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+            }
+        };
     $scope.onSelect = function(dataSourceId) {
-        console.log(dataSourceId);
-
+        
+       
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
             $scope.resetValues(dataSourceId);  
         }
         else
         {
-            var dataset1Values=1;
-            var dataset2Values=4;
+            
+          //  dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+
             //var dataset1Values=;
             if(dataSourceId===1){
 
-                for(var u=1;u<=dataset1Values;u++)
-                {
-                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
-                    $scope.data[dataSourceId].$promise.then(function (result) {
-                        $scope.data[dataSourceId]=result;
-                        console.log($scope.data[dataSourceId]);
-                    });
-                    //console.log($scope.data[dataSourceId]);
-                }  
-                $scope.setValues(dataSourceId);
+                // function q(data) {
+                //     $scope.dataset1.append(data);
+                //     if(curDataSet1Values < dataset1Values) {
+                //         curDataSet1Values += 1;
+                //         dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+                //     }
+                // }
+                $scope.data[dataSourceId]=dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+                // for(var u=1;u<=dataset1Values;u++)
+                // {
+                //     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
+                //     $scope.data[dataSourceId].$promise.then(function (result) {
+                //         $scope.data[dataSourceId]=result;
+                //         console.log($scope.data[dataSourceId]);
+                //     });
+                //     //console.log($scope.data[dataSourceId]);
+                // } 
+                $scope.dataset1=$scope.d1;
+                console.log('final');
+                console.log($scope.d1);
+                //$scope.setValues(dataSourceId);
             }
             else if(dataSourceId===2){
                 for(var v=1;v<=dataset2Values;v++)
@@ -266,7 +282,9 @@ angular.module('socialjusticeApp')
                 $scope.setValues(dataSourceId);
             }
         }
+        
     };
+   
     $scope.resetValues=function(dataSourceId){
          if(dataSourceId===1){
                 $scope.dataset1={};   
@@ -281,7 +299,10 @@ angular.module('socialjusticeApp')
     $scope.setValues=function(dataSourceId){
 
         if(dataSourceId===1){
+
             $scope.dataset1=$scope.data[dataSourceId];
+            $scope.dataset1=$scope.d1;
+            console.log($scope.dataset1);
             $scope.dset1=$scope.dataset1;
             // for(var l=0 ;l<=$scope.dataset1.length-1;l++){
             //      $scope.dataset1[l].img=$scope.image.marker1;

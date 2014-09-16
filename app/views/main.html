@@ -8,8 +8,8 @@
           </p>
         </window>
       </marker>
-      <markers models="dataset1" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
-        <windows show="dataset1.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
+      <markers ng-repeat="t in dataset1" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+        <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
             <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
             <br> County: {{county}}

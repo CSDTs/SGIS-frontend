@@ -5,6 +5,7 @@ angular.module('socialjusticeApp')
       return $resource(config.route('dataFeed'), null, {
       	query: {method: 'GET', isArray: true, transformResponse: function(data) {
       		data = JSON.parse(data);
+      		
       		return data.results;
       	}}
       });
