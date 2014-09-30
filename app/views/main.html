@@ -36,6 +36,9 @@
             </div>
         </windows>
       </markers>
+      <markers ng-repeat="u in dataset4" models="u" doCluster="true" coords="'self'" events="editTagEvents.events">
+        
+      </markers>
 
       <!-- <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons> -->
       <polygon ng-repeat="p in polyData" path="p.geometry" clickable="true" events="polygonEvents" >
@@ -56,7 +59,7 @@
           <button class="buttonimage" ng-click="drawmarker"><img src="/images/marker.png" height="18px" width="22px"></button>
           <button class="buttonimage"><img src="/images/polyline.png" height="18px" width="22px"></button>
           <button class="buttonimage"><img src="/images/rectangle.png" height="18px" width="22px"></button>
-          <button class="buttonimage"><img src="/images/cirlc.png" height="18px" width="22px"></button>
+          <button class="buttonimage"><img src="/images/cirlc.png" height="18px" width="22px" ng-click="checkFilter()"></button>
         </div>
         </span>
       </div>
@@ -68,16 +71,17 @@
                   <!-- Collect the nav links, forms, and other content for toggling -->
                       <ul class="nav navbar-nav">
                           <!--<li class="active"><a href="#">Datasets</a></li>-->
-                          <button class="btn-primary active" type="button" class="btn btn-default btn-lg" >
+                          <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
                               <span class="glyphicon glyphicon-th-list">DataSets</span>
                           </button>
-                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
+                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
                       </ul>
                   <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
                       <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
                   </button>
+                  <button type="button" ng-click="LocationCheck()">Location</button>
               </div><!-- /.container-fluid -->
           </nav>
       </div>

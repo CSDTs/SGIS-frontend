@@ -8,7 +8,7 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource,$timeout, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering) {
+  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource,$timeout, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering,locationService) {
 
     var google = window.google;
     $scope.sources = dataSource.query();
@@ -21,10 +21,16 @@ angular.module('socialjusticeApp')
     $scope.dataset2={};
     $scope.dset2={};
     $scope.dataset3={};
+    $scope.dataset4=[];
+    $scope.page_num=1;
     $scope.dset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
+    $scope.max_lon=-73.68;
+    $scope.min_lon=-74.20;
+    $scope.max_lat=42.2;
+    $scope.min_lat=41.688426;
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
@@ -158,6 +164,32 @@ angular.module('socialjusticeApp')
             $scope.dataset3=$scope.dset3;
         }
     };
+    $scope.dataset5=[];
+    $scope.LocationCheck=function(){
+
+        $scope.dataset5=locationService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pageNum:$scope.page_num}).$promise.then(loc);
+
+    // var filterData4=locationService.query({minlat:$scope.min_lat,minlon:$scope.min_lon,maxlat:$scope.max_lat,maxlon:$scope.max_lon,pagenum=$scope.page_num},function(){
+    //     $scope.dataset4=filterData4;
+    // });
+    };
+
+    function loc(data) { 
+        var nextResult=data.next;
+        var results=data.results;
+        console.log(data.next);
+        $scope.dataset4.push(results);
+        console.log($scope.dataset4);
+        console.log('Location service');
+        console.log('increasing count');
+        if(data.next!="null"){
+            $scope.page_num=$scope.page_num+1;
+            console.log($scope.page_num);
+            locationService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pageNum:$scope.page_num}).$promise.then(loc);   
+        }   
+
+    }
+  
     $scope.checkFilter=function(){
         
         // First we will check which checbox is selected,If we have selected any --> any filtering will be done and 
@@ -332,13 +364,11 @@ angular.module('socialjusticeApp')
             
         }
 
-
-
-        console.log('Setting values');
-        console.log('Dataset1'+$scope.dataset1);
-        console.log('end');
-        console.log($scope.data[dataSourceId]);
-        console.log($scope.dataset1);
+    console.log('Setting values');
+    console.log('Dataset1'+$scope.dataset1);
+    console.log('end');
+    console.log($scope.data[dataSourceId]);
+    console.log($scope.dataset1);
     };
     $scope.result = '';
     $scope.options = null;
@@ -351,9 +381,14 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-        $scope.map.zoom=11;
-
+       // $scope.map.zoom=11;
+        $scope.max_lon=$scope.newMark.location.longitude+0.1;
+        $scope.min_lon=$scope.newMark.location.longitude-0.1;
+        $scope.max_lat=$scope.newMark.location.latitude+0.1;
+        $scope.min_lat=$scope.newMark.location.latitude-0.1;
+        $scope.LocationCheck();
     };
+
     $scope.map = {
     	center: {
     	  	latitude: 42.678681,
