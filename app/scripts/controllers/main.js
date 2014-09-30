@@ -27,10 +27,10 @@ angular.module('socialjusticeApp')
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
-    $scope.max_lon=-73.68;
-    $scope.min_lon=-74.20;
-    $scope.max_lat=42.2;
-    $scope.min_lat=41.688426;
+    $scope.max_lon=0;
+    $scope.min_lon=0;
+    $scope.max_lat=0;
+    $scope.min_lat=0;
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
@@ -165,8 +165,11 @@ angular.module('socialjusticeApp')
         }
     };
     $scope.dataset5=[];
-    $scope.LocationCheck=function(){
 
+    $scope.LocationCheck=function(){
+        $scope.page_num=1;
+        $scope.dataset5=[];
+        $scope.dataset4=[];
         $scope.dataset5=locationService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pageNum:$scope.page_num}).$promise.then(loc);
 
     // var filterData4=locationService.query({minlat:$scope.min_lat,minlon:$scope.min_lon,maxlat:$scope.max_lat,maxlon:$scope.max_lon,pagenum=$scope.page_num},function(){
@@ -375,6 +378,10 @@ angular.module('socialjusticeApp')
     $scope.details = '';
     $scope.newMark={};
     $scope.convertCoords= function(){
+        $scope.max_lon=0;
+        $scope.min_lon=0;
+        $scope.max_lat=0;
+        $scope.min_lat=0;
         $scope.newMark.location={
             latitude: $scope.details.geometry.location.k,
             longitude: $scope.details.geometry.location.B
