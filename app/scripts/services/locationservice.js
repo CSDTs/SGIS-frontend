@@ -1,6 +1,6 @@
 'use strict';
 
-    angular.module('socialjusticeApp')
+angular.module('socialjusticeApp')
   .constant('baseUrlLocation','http://107.170.106.235/api-mp/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pageNum')
     .service('locationService', function($resource,baseUrlLocation) {
      return $resource(baseUrlLocation, {},{

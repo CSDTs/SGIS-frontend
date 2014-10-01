@@ -23,10 +23,13 @@ angular.module('socialjusticeApp')
     $scope.dataset3={};
     $scope.dataset4=[];
     $scope.page_num=1;
+    $scope.pagePolygon=1;
     $scope.dset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData=[];
+    $scope.polyData1=[];
+    $scope.polyData2=[];
     $scope.max_lon=0;
     $scope.min_lon=0;
     $scope.max_lat=0;
@@ -171,10 +174,6 @@ angular.module('socialjusticeApp')
         $scope.dataset5=[];
         $scope.dataset4=[];
         $scope.dataset5=locationService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pageNum:$scope.page_num}).$promise.then(loc);
-
-    // var filterData4=locationService.query({minlat:$scope.min_lat,minlon:$scope.min_lon,maxlat:$scope.max_lat,maxlon:$scope.max_lon,pagenum=$scope.page_num},function(){
-    //     $scope.dataset4=filterData4;
-    // });
     };
 
     function loc(data) { 
@@ -237,13 +236,6 @@ angular.module('socialjusticeApp')
         });
         }
     };
-    
-    //Adding polygons
-    //
-    // $http.get('fake_data/test_neighbourhood.json').success(function(dataPoly){
-    //     $scope.poly1=dataPoly;
-    //  });
-
     $scope.fillcolor={
         color:'#63C3F2',
         opacity: '0.2'
@@ -394,6 +386,7 @@ angular.module('socialjusticeApp')
         $scope.max_lat=$scope.newMark.location.latitude+0.1;
         $scope.min_lat=$scope.newMark.location.latitude-0.1;
         $scope.LocationCheck();
+        $scope.polygonFunc();
     };
 
     $scope.map = {
@@ -508,18 +501,30 @@ angular.module('socialjusticeApp')
         }
     };
     $scope.polygonFunc=function(){
-        var polyData=polygonService.query(function(){
-          var polyData1=polyData;
-          console.log(polyData1);
-        });
-        $scope.polyData=polyData;
-        // var promObj=polygonService.query().$promise.then(function(){
-        //   $scope.polyData=promObj;
-        // });
-        // $scope.polyData=promObj;
-        // console.log($scope.polyData);
+        $scope.pagePolygon=1;
+        $scope.polyData=[];
+        $scope.polyData1=[];
+        $scope.polyData=polygonService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pagePoly:$scope.pagePolygon}).$promise.then(polyServiceCall); 
+        // $scope.polyData2=$scope.polyData1[0];
+        // console.log('PolygoSameer');
+        // console.log($scope.polyData2);
     };
 
+    function polyServiceCall(dataPoly) { 
+        var nextResultPoly=dataPoly.next;
+        var resultsPoly=dataPoly.results;
+        console.log(dataPoly.next);
+        $scope.polyData1.push(dataPoly.results);
+        console.log($scope.polyData1);
+        
+        console.log('Polygon Service');
+        console.log('increasing count');
+        // if(nextResultPoly!="null"){
+        //     $scope.pagePolygon=$scope.pagePolygon+1;
+        //     console.log($scope.pagePolygon);
+        //     polygonService.query({minLat:$scope.min_lat,minLon:$scope.min_lon,maxLat:$scope.max_lat,maxLon:$scope.max_lon,pagePoly:$scope.pagePolygon}).$promise.then(polyServiceCall);     
+        // }   
+    }
     $scope.polygonEvents={
         mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
             var polygonScopeObject = this.polygon, scope = this.scope;
