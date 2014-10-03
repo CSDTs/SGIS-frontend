@@ -78,16 +78,23 @@
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
                       </ul>
-                  <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
-                      <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
+                 
+                <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refresh()">
+                              <span class="glyphicon glyphicon-refresh"> Refresh </span>
+                          </button>
+                <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
+                <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
                   </button>
-                <!--   <button type="button" ng-click="LocationCheck()">Location</button> -->
               </div><!-- /.container-fluid -->
           </nav>
       </div>
       <!-- panel body -->
       <div class="panel-body" class="collapse in" id="demo">
         <form name="myForm">
+      <!--   <label class="checkbox" ng-repeat="source in sources">
+          <input type="checkbox" checklist-model="selectedSource" checklist-value="source">{{source.name}}
+        </label> -->
+
           <div class="checkbox" ng-repeat="source in sources">
               <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
@@ -95,7 +102,9 @@
           <!-- <p>{{polyData}}</p> -->
         </form>
  
-     
+    <!--    <button class="btn-primary" type="button" ng-click="checkAll()" > Check All</button> 
+       <button class="btn-primary" type="button" ng-click="uncheckAll()" > Uncheck All</button>
+ -->
    
   <div class="input-group">
       
@@ -122,7 +131,7 @@
      <span class="label label-primary" >Match All</span>
     </div><!-- /input-group -->
   
-  
+    <p>{{selectedSource}}</p>
         <!-- <div ng-repeat="source in sources">
           <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
         </div> -->

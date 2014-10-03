@@ -17,6 +17,7 @@ angular.module('socialjusticeApp')
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = [];
+    $scope.selectedSource=[];       // reprsents the sources selected in the checkbox
     var dataSourceId=1;
     $scope.d1 = [];
     $scope.dataTag = {};
@@ -107,7 +108,7 @@ angular.module('socialjusticeApp')
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
-
+        tagsModal.$promise.then(tagsModal.show);
         console.log($scope.data.length);
         for(var index in $scope.data){
             var temp=$scope.data[index];
@@ -249,15 +250,22 @@ angular.module('socialjusticeApp')
     };
     $scope.fillcolor={
         color:'#63C3F2',
-        opacity: '0.2'
+        opacity: '0.1'
     };
     $scope.strokecolor={
         weight: 1,
         color: '#505250',
-        opacity: 0.6
+        opacity: 0.4
     };
     $scope.user={
         dataset:['dara']
+    };
+    $scope.checkAll = function() {
+        //$scope.selectedSource = angular.copy($scope.roles);
+    };
+    $scope.uncheckAll = function() {
+
+        $scope.selectedSource = [];
     };
     function q(data) {
             //$scope.data[dataSourceId].push(data);
@@ -267,18 +275,26 @@ angular.module('socialjusticeApp')
             if(curDataSet1Values<dataset1Values) {
                 curDataSet1Values += 1;
                 console.log('increasing count');
-                dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+                dataFeed.query({'dataSourceId':dataSourceId}).$promise.then(q);
             }
     }
     $scope.onSelect = function(dataSourceId) {
         
-       
+        for(var i=0;i<$scope.data.length;i++){
+            console.log("testing");
+        }
+        
+    $scope.data[dataSourceId]=dataFeed.query({
+        'dataSourceId':dataSourceId
+    }).$promise.then(q);
+        
         if($scope.data[dataSourceId] !== undefined) {
             $scope.data[dataSourceId] = undefined;
             $scope.resetValues(dataSourceId);  
         }
         else
         {
+
             
           //  dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
 
@@ -292,7 +308,9 @@ angular.module('socialjusticeApp')
                 //         dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
                 //     }
                 // }
-                $scope.data[dataSourceId]=dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+                $scope.data[dataSourceId]=dataFeed.query({
+                    'dataSourceId':dataSourceId
+                }).$promise.then(q);
                 // for(var u=1;u<=dataset1Values;u++)
                 // {
                 //     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
@@ -310,7 +328,7 @@ angular.module('socialjusticeApp')
             else if(dataSourceId===2){
                 for(var v=1;v<=dataset2Values;v++)
                 {  
-                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':v});
+                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
                     $scope.data[dataSourceId].$promise.then(function (result) {
                         $scope.data[dataSourceId]=result;
                         console.log($scope.data[dataSourceId]);
@@ -391,7 +409,7 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-        $scope.map.zoom=11;
+        $scope.map.zoom=13;
         $scope.maxLon=$scope.newMark.location.longitude+1.0;
         $scope.minLon=$scope.newMark.location.longitude-1.0;
         $scope.maxLat=$scope.newMark.location.latitude+1.0;
