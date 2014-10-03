@@ -57,7 +57,12 @@
         serverRoot: 'http://107.170.106.235',
         routes: {
           dataSource: '/api-ds/:id',
-          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:dataSetValues'
+          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:dataSetValues',
+          locationService:'/api-mp/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pageNum',
+          tagFiltering:'/api-mp/?tag=:selectedTag&dataset=:dataId&match=:matchModel',
+          tagService:'/api-ds',
+          polygonService:'/api-poly/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pagePoly',
+          dataEdit:'/api-tag/'
         }
       };
     </script>

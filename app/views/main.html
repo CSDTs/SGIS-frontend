@@ -8,7 +8,7 @@
           </p>
         </window>
       </marker>
-      <markers ng-repeat="t in dataset1" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+      <markers ng-repeat="t in dataset1" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
         <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
             <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
@@ -18,7 +18,7 @@
             </div>
         </windows>
       </markers>
-      <markers models="dataset2" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+      <markers models="dataset2" doCluster="true" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
         <windows show="'dataset2.showWindow'"  closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
@@ -29,14 +29,14 @@
             </div>
         </windows>
       </markers>
-      <markers  models="dataset3" coords="'self'" events="editTagEvents.events">
+      <markers  models="dataset3" doCluster="true" coords="'self'" events="editTagEvents.events">
         <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
               <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} <br> County: {{county}}<br>Tags: {{tags}} </p>
             </div>
         </windows>
       </markers>
-      <markers ng-repeat="u in dataset4" models="u" doCluster="true" coords="'self'" events="editTagEvents.events">
+      <markers models="dataset4" doCluster="true" coords="'self'" events="editTagEvents.events">
         
       </markers>
 
@@ -49,7 +49,7 @@
   <div class="left-panel" >
     <form novalidate class="simple-form">
       <div class="input-group input-group-sm">
-        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search for places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
+        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search dataset by places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
         <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
@@ -81,7 +81,7 @@
                   <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
                       <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
                   </button>
-                  <button type="button" ng-click="LocationCheck()">Location</button>
+                <!--   <button type="button" ng-click="LocationCheck()">Location</button> -->
               </div><!-- /.container-fluid -->
           </nav>
       </div>

@@ -186,10 +186,15 @@ angular.module('socialjusticeApp')
     };
 
     function loc(data) { 
-        var results=data.results;
-        $scope.dataset4.push(results);
+        var m=data.results.length;
+        //$scope.dataset4.push(results);
+        for(var i=0; i < m; i++) {
+            $scope.dataset4.push(data.results[i]);
+            console.log(data.results[i]);
+        }
+
         if((data.count/100<=$scope.pageNum)){
-            console.log("Reached null");
+            console.log('Reached null');
         }
         else{
             $scope.pageNum=$scope.pageNum+1;
@@ -455,7 +460,6 @@ angular.module('socialjusticeApp')
             onMarkerClicked(marker);
         };
     });
-
     $scope.editTagEvents={
         options:{
             draggable:true},
@@ -473,7 +477,6 @@ angular.module('socialjusticeApp')
             }
         }
     };
-
     $scope.infoWindowWithCustomClass= {
         options: {
             boxClass: 'custom-info-window'
@@ -509,10 +512,10 @@ angular.module('socialjusticeApp')
     $scope.polygonFunc=function(){
         $scope.pagePolygon=1;
          $scope.polyData1=[];
-        var maxLon=$scope.newMark.location.longitude+0.07;
-        var minLon=$scope.newMark.location.longitude-0.07;
-        var maxLat=$scope.newMark.location.latitude+0.07;
-        var minLat=$scope.newMark.location.latitude-0.07;
+        var maxLon=$scope.newMark.location.longitude+1.0;
+        var minLon=$scope.newMark.location.longitude-1.0;
+        var maxLat=$scope.newMark.location.latitude+1.0;
+        var minLat=$scope.newMark.location.latitude-1.0;
         $scope.polyData=polygonService.query(
                             {
                                 minLat:minLat,
