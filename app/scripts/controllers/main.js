@@ -8,8 +8,12 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-  .controller('MainCtrl',function ($scope,$http,$routeParams,$modal,$resource,$timeout, dataSource, dataFeed,dataEdit,djResource,polygonService,tagService,tagFiltering,locationService) {
-
+  .controller('MainCtrl',function ($scope,$http,$routeParams,
+                                $modal,$resource,$timeout, 
+                                dataSource, dataFeed,dataEdit,
+                                djResource,polygonService,tagService,
+                                tagFiltering,locationService) 
+    {
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = [];
@@ -40,10 +44,6 @@ angular.module('socialjusticeApp')
     var dataset1Values=139;
     var curDataSet1Values = 1;
     var dataset2Values=4;
-
-
-
-
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -175,40 +175,35 @@ angular.module('socialjusticeApp')
         $scope.dataset5=[];
         $scope.dataset4=[];
 
-    //     $scope.dataset5=locationService.query(
-    //                         {
-    //                             minLat:$scope.minLat,
-    //                             minLon:$scope.minLon,
-    //                             maxLat:$scope.maxLat,
-    //                             maxLon:$scope.maxLon,
-    //                             pageNum:$scope.pageNum
-    //                         }).$promise.then(loc);
-    // };
+        $scope.dataset5=locationService.query(
+                            {
+                                minLat:$scope.minLat,
+                                minLon:$scope.minLon,
+                                maxLat:$scope.maxLat,
+                                maxLon:$scope.maxLon,
+                                pageNum:$scope.pageNum
+                            }).$promise.then(loc);
+    };
 
-    // function loc(data) { 
-    //     var results=data.results;
-    //     $scope.dataset4.push(results);
-    //     if((data.count/100<=$scope.pageNum)){
-    //         console.log("Reached null");
-    //     }
-    //     else{
-    //         $scope.pageNum=$scope.pageNum+1;
-    //         locationService.query(
-    //                 {
-    //                     minLat:$scope.minLat,
-    //                     minLon:$scope.minLon,
-    //                     maxLat:$scope.maxLat,
-    //                     maxLon:$scope.maxLon,
-    //                     pageNum:$scope.pageNum
-    //                 }).$promise.then(loc);      
-    //     }   
+    function loc(data) { 
+        var results=data.results;
+        $scope.dataset4.push(results);
+        if((data.count/100<=$scope.pageNum)){
+            console.log("Reached null");
+        }
+        else{
+            $scope.pageNum=$scope.pageNum+1;
+            locationService.query(
+                    {
+                        minLat:$scope.minLat,
+                        minLon:$scope.minLon,
+                        maxLat:$scope.maxLat,
+                        maxLon:$scope.maxLon,
+                        pageNum:$scope.pageNum
+                    }).$promise.then(loc);      
+        }   
     }
     $scope.checkFilter=function(){
-        
-        // First we will check which checbox is selected,If we have selected any --> any filtering will be done and 
-        //if Match All is done, we will have MATch all filtering is done
-        // $scope.matchmodel--> will tell about the type of filter
-        // Actually by default, it is any and for match ALL we need to use match =ALL
             $scope.selectedTagUrl='';
             for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
                 
@@ -391,11 +386,11 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-       // $scope.map.zoom=11;
-        $scope.maxLon=$scope.newMark.location.longitude+0.25;
-        $scope.minLon=$scope.newMark.location.longitude-0.25;
-        $scope.maxLat=$scope.newMark.location.latitude+0.25;
-        $scope.minLat=$scope.newMark.location.latitude-0.25;
+        $scope.map.zoom=11;
+        $scope.maxLon=$scope.newMark.location.longitude+1.0;
+        $scope.minLon=$scope.newMark.location.longitude-1.0;
+        $scope.maxLat=$scope.newMark.location.latitude+1.0;
+        $scope.minLat=$scope.newMark.location.latitude-1.0;
         $scope.LocationCheck();
         $scope.polygonFunc();
     };
@@ -513,8 +508,7 @@ angular.module('socialjusticeApp')
     };
     $scope.polygonFunc=function(){
         $scope.pagePolygon=1;
-        $scope.polyData=[];
-        $scope.polyData1=[];
+         $scope.polyData1=[];
         var maxLon=$scope.newMark.location.longitude+0.07;
         var minLon=$scope.newMark.location.longitude-0.07;
         var maxLat=$scope.newMark.location.latitude+0.07;
@@ -527,19 +521,20 @@ angular.module('socialjusticeApp')
                                 maxLon:maxLon,
                                 pagePoly:$scope.pagePolygon
                             }).$promise.then(polyServiceCall); 
+
     };
     function polyServiceCall(dataPoly) { 
         var m=dataPoly.results.length;
         console.log(m);
-        for(var i=0; i < dataPoly.results.length-1; i+= 1) {
+        for(var i=0; i < m; i++) {
             $scope.polyData1.push(dataPoly.results[i]);
-            console.log('Added');
-            console.log(dataPoly.results[i]);
         }
-        if(dataPoly.next!=='null'){
+        if((dataPoly.count/100)<=$scope.pagePolygon){
+            console.log('reached null');
+        }
+        else{
             console.log('how many times');
             $scope.pagePolygon=$scope.pagePolygon+1;
-            console.log($scope.pagePolygon);
             polygonService.query(
                 {
                     minLat:$scope.minLat,
@@ -548,8 +543,7 @@ angular.module('socialjusticeApp')
                     maxLon:$scope.maxLon,
                     pagePoly:$scope.pagePolygon
                 }).$promise.then(polyServiceCall);     
-        }  
-    
+        }
 }
     $scope.polygonEvents={
        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
