@@ -1,6 +1,6 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-    <google-map id="mapcan" center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events">
+    <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events">
       <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
         <window show="showWindow" options="infoWindowWithCustomClass.options">
           <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
@@ -41,7 +41,7 @@
       </markers>
 
       <!-- <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons> -->
-      <polygon ng-repeat="p in polyData1[0]" path="p.geometry" clickable="true" events="polygonEvents" >
+      <polygon ng-repeat="d in polyData1" path="d.geometry" clickable="true" events="polygonEvents" >
       </polygon>
 
     </google-map>

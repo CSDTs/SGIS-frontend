@@ -8,7 +8,7 @@ angular.module('socialjusticeApp')
           var d = JSON.parse(filterData);
           var nextResult=d.next;
           console.log(nextResult);
-          console.log(d.results);
+          console.log(d);
           return d;
       }}
    });
