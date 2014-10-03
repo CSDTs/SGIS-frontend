@@ -6,9 +6,6 @@ angular.module('socialjusticeApp')
      return $resource(baseUrlLocation, {},{
         query: {method: 'GET', isArray: false, transformResponse: function(filterData) {
           var d = JSON.parse(filterData);
-          var nextResult=d.next;
-          console.log(nextResult);
-          console.log(d);
           return d;
       }}
    });

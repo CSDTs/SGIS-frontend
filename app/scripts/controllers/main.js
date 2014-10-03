@@ -174,25 +174,35 @@ angular.module('socialjusticeApp')
         $scope.pageNum=1;
         $scope.dataset5=[];
         $scope.dataset4=[];
-        $scope.dataset5=locationService.query({minLat:$scope.minLat,minLon:$scope.minLon,maxLat:$scope.maxLat,maxLon:$scope.maxLon,pageNum:$scope.pageNum}).$promise.then(loc);
-    };
 
-    function loc(data) { 
-        //var nextResult=data.next;
-        var results=data.results;
-        console.log(data.next);
-        $scope.dataset4.push(results);
-        console.log($scope.dataset4);
-        console.log('Location service');
-        console.log('increasing count');
-        if(data.next!=='null'){
-            $scope.pageNum=$scope.pageNum+1;
-            console.log($scope.pageNum);
-            locationService.query({minLat:$scope.minLat,minLon:$scope.minLon,maxLat:$scope.maxLat,maxLon:$scope.maxLon,pageNum:$scope.pageNum}).$promise.then(loc);   
-        }   
+    //     $scope.dataset5=locationService.query(
+    //                         {
+    //                             minLat:$scope.minLat,
+    //                             minLon:$scope.minLon,
+    //                             maxLat:$scope.maxLat,
+    //                             maxLon:$scope.maxLon,
+    //                             pageNum:$scope.pageNum
+    //                         }).$promise.then(loc);
+    // };
 
+    // function loc(data) { 
+    //     var results=data.results;
+    //     $scope.dataset4.push(results);
+    //     if((data.count/100<=$scope.pageNum)){
+    //         console.log("Reached null");
+    //     }
+    //     else{
+    //         $scope.pageNum=$scope.pageNum+1;
+    //         locationService.query(
+    //                 {
+    //                     minLat:$scope.minLat,
+    //                     minLon:$scope.minLon,
+    //                     maxLat:$scope.maxLat,
+    //                     maxLon:$scope.maxLon,
+    //                     pageNum:$scope.pageNum
+    //                 }).$promise.then(loc);      
+    //     }   
     }
-  
     $scope.checkFilter=function(){
         
         // First we will check which checbox is selected,If we have selected any --> any filtering will be done and 
@@ -509,22 +519,25 @@ angular.module('socialjusticeApp')
         var minLon=$scope.newMark.location.longitude-0.07;
         var maxLat=$scope.newMark.location.latitude+0.07;
         var minLat=$scope.newMark.location.latitude-0.07;
-        $scope.polyData=polygonService.query({minLat:minLat,minLon:minLon,maxLat:maxLat,maxLon:maxLon,pagePoly:$scope.pagePolygon}).$promise.then(polyServiceCall); 
-        // $scope.polyData2=$scope.polyData1[0];
-        // console.log('PolygoSameer');
-        // console.log($scope.polyData2);
+        $scope.polyData=polygonService.query(
+                            {
+                                minLat:minLat,
+                                minLon:minLon,
+                                maxLat:maxLat,
+                                maxLon:maxLon,
+                                pagePoly:$scope.pagePolygon
+                            }).$promise.then(polyServiceCall); 
     };
-    
-    // $scope.viewPortInfo=getGMap();
-    // console.log('Displaying viewport Info');
-    //console.log($scope.viewPortInfo);
     function polyServiceCall(dataPoly) { 
-        for(var i=0; i < dataPoly.results.length; i+= 1) {
+        var m=dataPoly.results.length;
+        console.log(m);
+        for(var i=0; i < dataPoly.results.length-1; i+= 1) {
             $scope.polyData1.push(dataPoly.results[i]);
             console.log('Added');
             console.log(dataPoly.results[i]);
         }
-        if(dataPoly.next==='null'){
+        if(dataPoly.next!=='null'){
+            console.log('how many times');
             $scope.pagePolygon=$scope.pagePolygon+1;
             console.log($scope.pagePolygon);
             polygonService.query(
@@ -536,7 +549,8 @@ angular.module('socialjusticeApp')
                     pagePoly:$scope.pagePolygon
                 }).$promise.then(polyServiceCall);     
         }  
-    }
+    
+}
     $scope.polygonEvents={
        // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
             // var polygonScopeObject = this.polygon, scope = this.scope;
