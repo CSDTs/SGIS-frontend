@@ -96,7 +96,7 @@
         </label> -->
 
           <div class="checkbox" ng-repeat="source in sources">
-              <input type="checkbox" ng-click="onSelect(source.id)">{{ source.name }}</input>
+              <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
           
           <!-- <p>{{polyData}}</p> -->
@@ -132,6 +132,7 @@
     </div><!-- /input-group -->
   
     <p>{{selectedSource}}</p>
+
         <!-- <div ng-repeat="source in sources">
           <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
         </div> -->
