@@ -16,11 +16,16 @@ angular.module('socialjusticeApp')
     {
     var google = window.google;
     $scope.sources = dataSource.query();
-    $scope.data = [];
-    $scope.selectedSource=[];       // reprsents the sources selected in the checkbox
-    var dataSourceId=1;
+    $scope.data = {};
+    $scope.innerarray=[];
+    $scope.selectedSource=[]; 
+          // reprsents the sources selected in the checkbox
+    //var dataSourceId=1;
+    $scope.temp=[];
+    $scope.pageFeed=1;
     $scope.d1 = [];
     $scope.dataTag = {};
+    var dataSourceId=1;
     $scope.dataset1={};
     $scope.dset1={};
     $scope.dataset2={};
@@ -267,79 +272,147 @@ angular.module('socialjusticeApp')
 
         $scope.selectedSource = [];
     };
-    function q(data) {
-            //$scope.data[dataSourceId].push(data);
-            $scope.d1.push(data);
-            console.log($scope.d1);
-            console.log('ajao');
-            if(curDataSet1Values<dataset1Values) {
-                curDataSet1Values += 1;
-                console.log('increasing count');
-                dataFeed.query({'dataSourceId':dataSourceId}).$promise.then(q);
-            }
-    }
+    //  function loc(data) { 
+    //     var m=data.results.length;
+    //     //$scope.dataset4.push(results);
+    //     for(var i=0; i < m; i++) {
+    //         $scope.dataset4.push(data.results[i]);
+    //         console.log(data.results[i]);
+    //     }
+
+    //     if((data.count/100<=$scope.pageNum)){
+    //         console.log('Reached null');
+    //     }
+    //     else{
+    //         $scope.pageNum=$scope.pageNum+1;
+    //         locationService.query(
+    //                 {
+    //                     minLat:$scope.minLat,
+    //                     minLon:$scope.minLon,
+    //                     maxLat:$scope.maxLat,
+    //                     maxLon:$scope.maxLon,
+    //                     pageNum:$scope.pageNum
+    //                 }).$promise.then(loc);      
+    //     }   
+    // }
+   
     $scope.onSelect = function(dataSourceId) {
+        console.log(dataSourceId);
+        console.log(this);
+        $scope.pageFeed=1;
+        // for(var i=0;i<$scope.data.length;i++){
+        //     console.log('testing');
+        // }    
+        // if($scope.data[dataSourceId] !== undefined) {
+        //     $scope.data[dataSourceId] = undefined;
+        //     $scope.resetValues(dataSourceId);  
+        // }
+        // else
+        // {
+
+        $scope.temp=dataFeed.query({
+            'dataSourceId':dataSourceId,
+            'pageFeed':$scope.pageFeed
+        }).$promise.then(function(data){
+            console.log("DataSourceId",dataSourceId);
+            q(data,dataSourceId);
+        });
+
+        //}   
+            //var dataset1Values=;
+            // if(dataSourceId===1){
+
+            //     // function q(data) {
+            //     //     $scope.dataset1.append(data);
+            //     //     if(curDataSet1Values < dataset1Values) {
+            //     //         curDataSet1Values += 1;
+            //     //         dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
+            //     //     }
+            //     // }
+            //     $scope.data[dataSourceId]=dataFeed.query({
+            //         'dataSourceId':dataSourceId
+            //     }).$promise.then(q);
+            //     // for(var u=1;u<=dataset1Values;u++)
+            //     // {
+            //     //     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
+            //     //     $scope.data[dataSourceId].$promise.then(function (result) {
+            //     //         $scope.data[dataSourceId]=result;
+            //     //         console.log($scope.data[dataSourceId]);
+            //     //     });
+            //     //     //console.log($scope.data[dataSourceId]);
+            //     // } 
+            //     $scope.dataset1=$scope.d1;
+            //     console.log('final');
+            //     console.log($scope.d1);
+            //     //$scope.setValues(dataSourceId);
+            // }
+            // else if(dataSourceId===2){
+            //     for(var v=1;v<=dataset2Values;v++)
+            //     {  
+            //         $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
+            //         $scope.data[dataSourceId].$promise.then(function (result) {
+            //             $scope.data[dataSourceId]=result;
+            //             console.log($scope.data[dataSourceId]);
+            //         });
+            //     } 
+                 
+            //     $scope.setValues(dataSourceId);
+            // }
         
-        for(var i=0;i<$scope.data.length;i++){
-            console.log("testing");
-        }
         
-    $scope.data[dataSourceId]=dataFeed.query({
-        'dataSourceId':dataSourceId
-    }).$promise.then(q);
-        
-        if($scope.data[dataSourceId] !== undefined) {
-            $scope.data[dataSourceId] = undefined;
-            $scope.resetValues(dataSourceId);  
+    };
+     function q(data,dataSourceId) {
+        // var r=data.results.length; 
+        // for(var i=0;i<r;i++){
+        //     $scope.innerarray.push(data.results[i]);
+        // }
+        // console.log($scope.innerarray);
+        var r=data.results.length; 
+        console.log("^"+dataSourceId+"^");
+        if($scope.data[dataSourceId]!=undefined)
+        {
+         console.log('second time');
+         var existingArray=[];
+         existingArray = $scope.data[dataSourceId];
+         console.log("Before bakchodi",existingArray);
+         for(var i=0;i<r;i++){
+            existingArray.push(data.results[i]);
+         }
+         console.log("After bakchodi",existingArray);
+         $scope.data[dataSourceId] = existingArray;
+         console.log("Final check",$scope.data[dataSourceId]);
+
+
         }
         else
         {
-
-            
-          //  dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
-
-            //var dataset1Values=;
-            if(dataSourceId===1){
-
-                // function q(data) {
-                //     $scope.dataset1.append(data);
-                //     if(curDataSet1Values < dataset1Values) {
-                //         curDataSet1Values += 1;
-                //         dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':curDataSet1Values}).$promise.then(q);
-                //     }
-                // }
-                $scope.data[dataSourceId]=dataFeed.query({
-                    'dataSourceId':dataSourceId
-                }).$promise.then(q);
-                // for(var u=1;u<=dataset1Values;u++)
-                // {
-                //     $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId,'dataSetValues':u});
-                //     $scope.data[dataSourceId].$promise.then(function (result) {
-                //         $scope.data[dataSourceId]=result;
-                //         console.log($scope.data[dataSourceId]);
-                //     });
-                //     //console.log($scope.data[dataSourceId]);
-                // } 
-                $scope.dataset1=$scope.d1;
-                console.log('final');
-                console.log($scope.d1);
-                //$scope.setValues(dataSourceId);
-            }
-            else if(dataSourceId===2){
-                for(var v=1;v<=dataset2Values;v++)
-                {  
-                    $scope.data[dataSourceId] = dataFeed.query({'dataSourceId':dataSourceId});
-                    $scope.data[dataSourceId].$promise.then(function (result) {
-                        $scope.data[dataSourceId]=result;
-                        console.log($scope.data[dataSourceId]);
-                    });
-                } 
-                 
-                $scope.setValues(dataSourceId);
-            }
+         console.log('first time');
+         if(dataSourceId!=undefined){
+            $scope.data[dataSourceId] = data.results;
+         }   
         }
+        // if($scope.data.dataSourceId==dataSourceId){
+        // }
+        // else{
+        //     console.log('first time');
+        //     $scope.data.push({dataSourceId:$scope.innerarray});
+        // }
         
-    };
+        console.log($scope.data);
+        console.log('adding in data');
+        if(Math.ceil(data.count/100)<=$scope.pageFeed) {
+            console.log('reached end of array');
+        }
+        else{
+            $scope.pageFeed=$scope.pageFeed+1;
+            dataFeed.query({'dataSourceId':dataSourceId,
+                            'pageFeed':$scope.pageFeed
+            }).$promise.then(function(data){
+            console.log("DataSourceIdInner",dataSourceId);
+            q(data,dataSourceId);
+        });
+        }
+    }
    
     $scope.resetValues=function(dataSourceId){
          if(dataSourceId===1){
@@ -391,8 +464,8 @@ angular.module('socialjusticeApp')
     console.log('Setting values');
     console.log('Dataset1'+$scope.dataset1);
     console.log('end');
-    console.log($scope.data[dataSourceId]);
-    console.log($scope.dataset1);
+   // console.log($scope.data[dataSourceId]);
+    //console.log($scope.dataset1);
     };
     $scope.result = '';
     $scope.options = null;
