@@ -17,7 +17,7 @@ angular.module('socialjusticeApp')
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
-    $scope.dataShow = {};
+    $scope.dataDuplicate = {};
     $scope.dataTemp={};
     $scope.innerarray=[];
     $scope.selectedSource={};
@@ -133,11 +133,14 @@ angular.module('socialjusticeApp')
         return true;
     };
     $scope.Default=function(){
+        $scope.dataDuplicate=$scope.data;
+
+
         if($scope.isEmpty($scope.dataset1)){
             console.log('Null');
         }
         else{
-            $scope.dataset1=$scope.dset1;
+            $scope.dataDuplicate=$scope.data;
         }
 
         if($scope.isEmpty($scope.dataset2)){
@@ -154,8 +157,8 @@ angular.module('socialjusticeApp')
             $scope.dataset3=$scope.dset3;
         }
     };
-    $scope.dataset5=[];
 
+    $scope.dataset5=[];
     $scope.LocationCheck=function(){
         $scope.pageNum=1;
         $scope.dataset5=[];
@@ -201,28 +204,35 @@ angular.module('socialjusticeApp')
             $scope.selectedTagUrl=$scope.selectedTagUrl+
             $scope.selectedTag[$scope.selectedTag.length-1].tag;
             console.log($scope.selectedTagUrl);
-        if($scope.isEmpty($scope.dataset1)){
-            console.log('Null');
+            
+        for(var a in $scope.dataDuplicate){ 
+        console.log($scope.dataDuplicate[a]);  
+            if($scope.isEmpty($scope.dataDuplicate[a])){
+                console.log('Null');
+            }
+            else{ 
+                console.log("value of a "+a);
+                var filterData1=tagFiltering.query({
+                                selectedTag:$scope.selectedTagUrl,
+                                dataId:'1', matchModel:$scope.matchModel},
+                                function(){
+                                    $scope.dataDuplicate[a]=filterData1;
+                                    console.log($scope.dataDuplicate[a]);
+                                });
+            }
+
         }
-        else{ 
-            var filterData1=tagFiltering.query({
-                            selectedTag:$scope.selectedTagUrl,
-                            dataId:'1', matchModel:$scope.matchModel},
-                            function(){
-                                $scope.dataset1=filterData1;
-                            });
-        }
-        if($scope.isEmpty($scope.dataset2)){
-            console.log('Null');
-        }
-        else{
-            var filterData2=tagFiltering.query({
-                            selectedTag:$scope.selectedTagUrl,
-                            dataId:'2', matchModel:$scope.matchModel},
-                            function(){
-                                $scope.dataset2=filterData2;
-                            });
-        }
+        // if($scope.isEmpty($scope.dataset2)){
+        //     console.log('Null');
+        // }
+        // else{
+        //     var filterData2=tagFiltering.query({
+        //                     selectedTag:$scope.selectedTagUrl,
+        //                     dataId:'2', matchModel:$scope.matchModel},
+        //                     function(){
+        //                         $scope.dataset2=filterData2;
+        //                     });
+        // }
     };
     $scope.refresh=false;
     $scope.refreshMap=function(){
@@ -269,7 +279,7 @@ angular.module('socialjusticeApp')
     };
     function q(data,dataSourceId) {
         var r=data.results.length; 
-        console.log('^'+dataSourceId+'^');
+        //console.log('^'+dataSourceId+'^');
         if($scope.data[dataSourceId]!==undefined){
             var existingArray=[];
             existingArray = $scope.data[dataSourceId];
@@ -277,10 +287,12 @@ angular.module('socialjusticeApp')
                 existingArray.push(data.results[i]);
             }
             $scope.data[dataSourceId] = existingArray;
+            $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
         }
         else{
             if(dataSourceId!=undefined){
                 $scope.data[dataSourceId] = data.results;
+                $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
             }   
         }
         // if(Math.ceil(data.count/100)==($scope.pageFeed)/2){
