@@ -1,6 +1,6 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-    <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events">
+    <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'">
       <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
         <window show="showWindow" options="infoWindowWithCustomClass.options">
           <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
@@ -8,7 +8,7 @@
           </p>
         </window>
       </marker>
-      <markers ng-repeat="t in dataset1" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+      <markers ng-repeat="t in data" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
         <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
             <div>
             <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
@@ -18,28 +18,7 @@
             </div>
         </windows>
       </markers>
-      <markers models="dataset2" doCluster="true" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
-        <windows show="'dataset2.showWindow'"  closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
-              <div>
-            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
-            <br> County: {{county}}
-            <br>
-            Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}}
-            </p>
-            </div>
-        </windows>
-      </markers>
-      <markers  models="dataset3" doCluster="true" coords="'self'" events="editTagEvents.events">
-        <windows show="'marker.showWindow'" closeClick="'closeClick'" options="infoWindowWithCustomClass.options" >
-              <div>
-            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}} <br> County: {{county}}<br>Tags: {{tags}} </p>
-            </div>
-        </windows>
-      </markers>
-      <markers models="dataset4" doCluster="true" coords="'self'" events="editTagEvents.events">
-        
-      </markers>
-
+   
       <!-- <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons> -->
       <polygon ng-repeat="d in polyData1" path="d.geometry" clickable="true" events="polygonEvents" >
       </polygon>
@@ -79,7 +58,7 @@
                           </button>
                       </ul>
                  
-                <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refresh()">
+                <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refreshMap()">
                               <span class="glyphicon glyphicon-refresh"> Refresh </span>
                           </button>
                 <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">

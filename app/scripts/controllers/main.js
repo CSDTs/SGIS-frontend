@@ -17,6 +17,8 @@ angular.module('socialjusticeApp')
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
+    $scope.dataShow = {};
+    $scope.dataTemp={};
     $scope.innerarray=[];
     $scope.selectedSource={};
     $scope.selectedSourceDisabled={}; 
@@ -114,7 +116,7 @@ angular.module('socialjusticeApp')
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
-        tagsModal.$promise.then(tagsModal.show);
+        //tagsModal.$promise.then(tagsModal.show);
         console.log($scope.data.length);
         for(var index in $scope.data){
             var temp=$scope.data[index];
@@ -135,7 +137,6 @@ angular.module('socialjusticeApp')
             }
         }
     };
-
     $scope.loadTags = function(query) {
         console.log(query);
         return tagService.query().$promise;
@@ -194,7 +195,6 @@ angular.module('socialjusticeApp')
 
     function loc(data) { 
         var m=data.results.length;
-        //$scope.dataset4.push(results);
         for(var i=0; i < m; i++) {
             $scope.dataset4.push(data.results[i]);
             console.log(data.results[i]);
@@ -254,6 +254,13 @@ angular.module('socialjusticeApp')
         });
         }
     };
+    $scope.refresh=false;
+    $scope.refreshMap=function(){
+
+        console.log('refreshing the map');
+        $scope.refresh=true;
+    }
+
     $scope.fillcolor={
         color:'#63C3F2',
         opacity: '0.1'
@@ -287,9 +294,13 @@ angular.module('socialjusticeApp')
         });
         }   
         else if($scope.selectedSource[dataSourceId]==false){
+            //$scope.dataTemp=;
 
+            
         }
         else if($scope.selectedSource[dataSourceId]==true) {
+            console.log("entered false statement");
+            delete $scope.data[dataSourceId];
         } 
         console.log("<<"+$scope.selectedSource[dataSourceId]+">>");    
     };
@@ -315,6 +326,9 @@ angular.module('socialjusticeApp')
         }
         console.log($scope.data);
         console.log('adding in data');
+        // if(Math.ceil(data.count/100)==($scope.pageFeed)/2){
+        //     $scope.dataShow=$scope.data;
+        // }// i can use some optimization by showing half points
         if(Math.ceil(data.count/100)<=$scope.pageFeed) {
             console.log('reached end of array');
             $scope.selectedSourceDisabled[dataSourceId]=false;
