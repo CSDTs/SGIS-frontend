@@ -21,12 +21,9 @@ angular.module('socialjusticeApp')
     $scope.dataTemp={};
     $scope.innerarray=[];
     $scope.selectedSource={};
-    $scope.selectedSourceDisabled={}; 
-          // reprsents the sources selected in the checkbox
-    //var dataSourceId=1;
+    $scope.selectedSourceDisabled={};  // reprsents the sources selected in the checkbox
     $scope.temp=[];
     $scope.pageFeed=1;
-    $scope.d1 = [];
     $scope.dataTag = {};
     var dataSourceId=1;
     $scope.dataset1={};
@@ -34,7 +31,7 @@ angular.module('socialjusticeApp')
     $scope.dataset2={};
     $scope.dset2={};
     $scope.dataset3={};
-    $scope.dataset4=[];
+    $scope.dataLocation=[];
     $scope.pageNum=1;
     $scope.pagePolygon=1;
     $scope.dset3={};
@@ -42,7 +39,6 @@ angular.module('socialjusticeApp')
     $scope.tagObject={};
     $scope.polyData=[];
     $scope.polyData1=[];
-    $scope.polyData2=[];
     $scope.maxLon=0;
     $scope.minLon=0;
     $scope.maxLat=0;
@@ -59,19 +55,6 @@ angular.module('socialjusticeApp')
             addNewTag:$scope.tagObject.addNewTag
         };
         var tagId=$scope.dataTag.id;
-
-        // for(var i=$scope.data.length-1;i>=0;i--){
-        //     if(tagId==$scope.data[i].id){
-        //         $scope.data[i].name=$scope.dataTag.nameTag;
-        //         $scope.data[i].city=$scope.dataTag.descriptionTag;
-        //         $scope.data[i].tags.push($scope.dataTag.addNewTag);
-        //         for(var index in $scope.data[i].tags){
-        //             console.log($scope.data[i].tags[index]);
-        //         }
-
-        //     }
-        // }
-
         $scope.Poll={};
         var temp=$resource('http://107.170.106.235/api-mp/:id/',{id:tagId});
         temp.get({id:tagId})
@@ -92,29 +75,11 @@ angular.module('socialjusticeApp')
           console.log($scope.product.mappoint);
           product.$create();
         }
-        // $scope.product={};
-        // $scope.product.mappoint=14;
-        // $scope.product.tag=4;
-        // var product =new dataEdit($scope.product);
-        // product.$create();
-
-
-
-      //  dataEdit.create({ id:tagId }, notes);
-        console.log('notes');
-
-
-       // Now call update passing in the ID first then the object you are updating
-       // This will PUT /notes/ID with the note object in the request payload
-
     };
-
      //Showing TagsModal info window
     var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
-        //tagsModal.$promise.then(tagsModal.show);
-        console.log($scope.data.length);
         for(var index in $scope.data){
             var temp=$scope.data[index];
             console.log(temp);
@@ -133,6 +98,22 @@ angular.module('socialjusticeApp')
                 }
             }
         }
+        var temp=$scope.dataLocation;
+
+        for(var j in temp){
+            if(markerkey===temp[j].id){
+                console.log("aayush");
+                $scope.tagObject.nameTag=temp[j].name;
+                $scope.tagObject.descriptionTag=temp[j].city;
+                $scope.tagObject.id=temp[j].id;
+                $scope.tagObject.addNewTag=temp[j].tags;
+                $scope.tagObject.multiTags=temp[j].tags;
+                $scope.tagObject.outputTagSelect=temp[j].tags;
+                console.log('Tags');
+                tagsModal.$promise.then(tagsModal.show);
+            }
+        }
+        
     };
     $scope.loadTags = function(query) {
         console.log(query);
@@ -178,7 +159,7 @@ angular.module('socialjusticeApp')
     $scope.LocationCheck=function(){
         $scope.pageNum=1;
         $scope.dataset5=[];
-        $scope.dataset4=[];
+        $scope.dataLocation=[];
 
         $scope.dataset5=locationService.query(
                             {
@@ -193,7 +174,7 @@ angular.module('socialjusticeApp')
     function loc(data) { 
         var m=data.results.length;
         for(var i=0; i < m; i++) {
-            $scope.dataset4.push(data.results[i]);
+            $scope.dataLocation.push(data.results[i]);
             console.log(data.results[i]);
         }
 
@@ -215,49 +196,39 @@ angular.module('socialjusticeApp')
     $scope.checkFilter=function(){
             $scope.selectedTagUrl='';
             for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
-                
                 $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[m].tag+',';
             }
-            $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[$scope.selectedTag.length-1].tag;
-            
-            console.log('URL');
+            $scope.selectedTagUrl=$scope.selectedTagUrl+
+            $scope.selectedTag[$scope.selectedTag.length-1].tag;
             console.log($scope.selectedTagUrl);
-
         if($scope.isEmpty($scope.dataset1)){
             console.log('Null');
         }
-        else{
-            
-            
-            var filterData1=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'1', matchModel:$scope.matchModel},function(){
-            $scope.dataset1=filterData1;
-            // for(var l=0 ;l<=$scope.dataset1.length-1;l++){
-            //      $scope.dataset1[l].img=$scope.image.marker1;
-            //      console.log($scope.dataset1[l].img);
-            // }
-        });
+        else{ 
+            var filterData1=tagFiltering.query({
+                            selectedTag:$scope.selectedTagUrl,
+                            dataId:'1', matchModel:$scope.matchModel},
+                            function(){
+                                $scope.dataset1=filterData1;
+                            });
         }
         if($scope.isEmpty($scope.dataset2)){
             console.log('Null');
         }
         else{
-        
-        var filterData2=tagFiltering.query({selectedTag:$scope.selectedTagUrl, dataId:'2', matchModel:$scope.matchModel},function(){
-            $scope.dataset2=filterData2;
-            // for(var l=0 ;l<=$scope.dataset2.length-1;l++){
-            //      $scope.dataset2[l].img=$scope.image.marker1;
-            //      console.log($scope.dataset2[l].img);
-            // }
-        });
+            var filterData2=tagFiltering.query({
+                            selectedTag:$scope.selectedTagUrl,
+                            dataId:'2', matchModel:$scope.matchModel},
+                            function(){
+                                $scope.dataset2=filterData2;
+                            });
         }
     };
     $scope.refresh=false;
     $scope.refreshMap=function(){
-
         console.log('refreshing the map');
         $scope.refresh=true;
     };
-
     $scope.fillcolor={
         color:'#63C3F2',
         opacity: '0.1'
@@ -271,10 +242,8 @@ angular.module('socialjusticeApp')
         dataset:['dara']
     };
     $scope.checkAll = function() {
-        //$scope.selectedSource = angular.copy($scope.roles);
     };
     $scope.uncheckAll = function() {
-
         $scope.selectedSource = [];
     };
     $scope.onSelect = function(dataSourceId) {
@@ -291,13 +260,10 @@ angular.module('socialjusticeApp')
         });
         }   
         else if($scope.selectedSource[dataSourceId]===false){
-            //$scope.dataTemp=;
-
-            
         }
         else if($scope.selectedSource[dataSourceId]===true) {
             console.log('entered false statement');
-            delete $scope.data[dataSourceId];
+            //delete $scope.data[dataSourceId];
         } 
         console.log('<<'+$scope.selectedSource[dataSourceId]+'>>');    
     };
@@ -307,30 +273,22 @@ angular.module('socialjusticeApp')
         if($scope.data[dataSourceId]!==undefined){
             var existingArray=[];
             existingArray = $scope.data[dataSourceId];
-            console.log('Before bakchodi',existingArray);
             for(var i=0;i<r;i++){
                 existingArray.push(data.results[i]);
             }
-            console.log('After bakchodi',existingArray);
             $scope.data[dataSourceId] = existingArray;
-            console.log('Final check',$scope.data[dataSourceId]);
         }
         else{
-            console.log('first time');
-            if(dataSourceId!==undefined){
+            if(dataSourceId!=undefined){
                 $scope.data[dataSourceId] = data.results;
             }   
         }
-        console.log($scope.data);
-        console.log('adding in data');
         // if(Math.ceil(data.count/100)==($scope.pageFeed)/2){
         //     $scope.dataShow=$scope.data;
         // }// i can use some optimization by showing half points
         if(Math.ceil(data.count/100)<=$scope.pageFeed) {
-            console.log('reached end of array');
             $scope.selectedSourceDisabled[dataSourceId]=false;
             console.log($scope.selectedSourceDisabled[dataSourceId]);
-
         }
         else{
             $scope.pageFeed=$scope.pageFeed+1;
@@ -388,9 +346,7 @@ angular.module('socialjusticeApp')
     		minZoom: 3
     	},
 	    dragging: true
-    };
-
-    
+    }; 
     $scope.symbol={
       path: window.google.maps.SymbolPath.CIRCLE,
       scale: 5

@@ -1,38 +1,35 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-    <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'">
-      <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
-        <window show="showWindow" options="infoWindowWithCustomClass.options">
-          <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
-              Tags are {{dataTag.outputTagSelect[0]}}
-          </p>
-        </window>
-      </marker>
-      <markers ng-repeat="t in data" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
-        <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
-            <div>
-            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
-            <br> County: {{county}}
-            <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
-            <!-- <p ng-repeat="u in tags">{{u.tag}}</p> -->
-            </div>
-        </windows>
-      </markers>
-    <!-- Location services  -->
-    <markers models="dataset4" doCluster="true" coords="'self'"   events="editTagEvents.events">
+  <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'">
+    <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+      <window show="showWindow" options="infoWindowWithCustomClass.options">
+        <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
+        Tags are {{dataTag.outputTagSelect[0]}}
+        </p>
+      </window>
+    </marker>
+    <markers ng-repeat="t in data" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+      <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
+        <div>
+          <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
+          <br> County: {{county}}
+          <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
+        </div>
+      </windows>
     </markers>
-  
-   
-      <!-- <nggmap-free-draw-polygons polygons="map.polys" draw="map.draw" ></nggmap-free-draw-polygons> -->
-      <polygon ng-repeat="d in polyData1" path="d.geometry" clickable="true" events="polygonEvents" >
-      </polygon>
+    <!-- Location services  -->
+    <markers models="dataLocation" doCluster="true" coords="'self'"   events="editTagEvents.events">
+    </markers>
+    <polygon ng-repeat="d in polyData1" path="d.geometry" clickable="true" events="polygonEvents" >
+    </polygon>
 
-    </google-map>
+</google-map>
   </div>
   <div class="left-panel" >
     <form novalidate class="simple-form">
       <div class="input-group input-group-sm">
-        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search dataset by places" ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
+        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search dataset by places"
+        ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
         <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
@@ -60,8 +57,7 @@
                           <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
-                      </ul>
-                 
+                      </ul>    
                 <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refreshMap()">
                               <span class="glyphicon glyphicon-refresh"> Refresh </span>
                           </button>
@@ -74,23 +70,13 @@
       <!-- panel body -->
       <div class="panel-body" class="collapse in" id="demo">
         <form name="myForm">
-      <!--   <label class="checkbox" ng-repeat="source in sources">
-          <input type="checkbox" checklist-model="selectedSource" checklist-value="source">{{source.name}}
-        </label> -->
-
           <div class="checkbox" ng-repeat="source in sources">
               <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
-          
-          <!-- <p>{{polyData}}</p> -->
         </form>
- 
     <!--    <button class="btn-primary" type="button" ng-click="checkAll()" > Check All</button> 
-       <button class="btn-primary" type="button" ng-click="uncheckAll()" > Uncheck All</button>
- -->
-   
+       <button class="btn-primary" type="button" ng-click="uncheckAll()" > Uncheck All</button>-->
   <div class="input-group">
-      
       <!-- <input type="text" class="form-control" ng-model="selectedTag" ng-options="state for state in states" placeholder="Filter by Tag" bs-typeahead> -->
       <tags-input ng-model="selectedTag" display-property="tag"  placeholder="Filter by Tag" ng-options="state for state in states">
               <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
@@ -98,10 +84,7 @@
       <span class="input-group-btn">
         <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-filter"></span></button>
         <button class="btn btn-primary" type="button" ng-click="Default()" > <span class="glyphicon glyphicon-save"></span></button> 
-
       </span>
-      
-
   </div><!-- /input-group -->
   <div class="input-group">
       <span >
@@ -113,17 +96,10 @@
       </span>
      <span class="label label-primary" >Match All</span>
     </div><!-- /input-group -->
-  
     <p>{{selectedSource}}</p>
-
-        <!-- <div ng-repeat="source in sources">
-          <input type="checkbox" checklist-model="user.dataset" checklist-value="name"> {{source.name}}
-        </div> -->
-
        <!--  <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br> -->
       </div><!-- panel body -->
     </div> <!-- panel -->
   </div>                 
   </div>
-
 </body>
