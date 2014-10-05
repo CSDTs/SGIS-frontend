@@ -50,9 +50,6 @@ angular.module('socialjusticeApp')
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
-    var dataset1Values=139;
-    var curDataSet1Values = 1;
-    var dataset2Values=4;
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -259,7 +256,7 @@ angular.module('socialjusticeApp')
 
         console.log('refreshing the map');
         $scope.refresh=true;
-    }
+    };
 
     $scope.fillcolor={
         color:'#63C3F2',
@@ -283,44 +280,44 @@ angular.module('socialjusticeApp')
     $scope.onSelect = function(dataSourceId) {
         console.log(dataSourceId);
         $scope.pageFeed=1;
-        if($scope.selectedSource[dataSourceId]==undefined){
+        if($scope.selectedSource[dataSourceId]===undefined){
             $scope.selectedSourceDisabled[dataSourceId]=true;
             $scope.temp=dataFeed.query({
             'dataSourceId':dataSourceId,
             'pageFeed':$scope.pageFeed
             }).$promise.then(function(data){
-            console.log("DataSourceId",dataSourceId);
+            console.log('DataSourceId',dataSourceId);
             q(data,dataSourceId);
         });
         }   
-        else if($scope.selectedSource[dataSourceId]==false){
+        else if($scope.selectedSource[dataSourceId]===false){
             //$scope.dataTemp=;
 
             
         }
-        else if($scope.selectedSource[dataSourceId]==true) {
-            console.log("entered false statement");
+        else if($scope.selectedSource[dataSourceId]===true) {
+            console.log('entered false statement');
             delete $scope.data[dataSourceId];
         } 
-        console.log("<<"+$scope.selectedSource[dataSourceId]+">>");    
+        console.log('<<'+$scope.selectedSource[dataSourceId]+'>>');    
     };
     function q(data,dataSourceId) {
         var r=data.results.length; 
-        console.log("^"+dataSourceId+"^");
-        if($scope.data[dataSourceId]!=undefined){
+        console.log('^'+dataSourceId+'^');
+        if($scope.data[dataSourceId]!==undefined){
             var existingArray=[];
             existingArray = $scope.data[dataSourceId];
-            console.log("Before bakchodi",existingArray);
+            console.log('Before bakchodi',existingArray);
             for(var i=0;i<r;i++){
                 existingArray.push(data.results[i]);
             }
-            console.log("After bakchodi",existingArray);
+            console.log('After bakchodi',existingArray);
             $scope.data[dataSourceId] = existingArray;
-            console.log("Final check",$scope.data[dataSourceId]);
+            console.log('Final check',$scope.data[dataSourceId]);
         }
         else{
             console.log('first time');
-            if(dataSourceId!=undefined){
+            if(dataSourceId!==undefined){
                 $scope.data[dataSourceId] = data.results;
             }   
         }
@@ -340,7 +337,7 @@ angular.module('socialjusticeApp')
             dataFeed.query({'dataSourceId':dataSourceId,
                             'pageFeed':$scope.pageFeed
             }).$promise.then(function(data){
-                console.log("DataSourceIdInner",dataSourceId);
+                console.log('DataSourceIdInner',dataSourceId);
                 q(data,dataSourceId);
                 });
         }
