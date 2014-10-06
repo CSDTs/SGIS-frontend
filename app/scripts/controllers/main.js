@@ -17,6 +17,7 @@ angular.module('socialjusticeApp')
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
+    $scope.dataShow={};
     $scope.dataDuplicate = {};
     $scope.dataTemp={};
     $scope.innerarray=[];
@@ -136,26 +137,26 @@ angular.module('socialjusticeApp')
         $scope.dataDuplicate=$scope.data;
 
 
-        if($scope.isEmpty($scope.dataset1)){
-            console.log('Null');
-        }
-        else{
-            $scope.dataDuplicate=$scope.data;
-        }
+        // if($scope.isEmpty($scope.dataset1)){
+        //     console.log('Null');
+        // }
+        // else{
+        //     $scope.dataDuplicate=$scope.data;
+        // }
 
-        if($scope.isEmpty($scope.dataset2)){
-            console.log('Null');
-        }
-        else{
-            $scope.dataset2=$scope.dset2;
-        }
+        // if($scope.isEmpty($scope.dataset2)){
+        //     console.log('Null');
+        // }
+        // else{
+        //     $scope.dataset2=$scope.dset2;
+        // }
 
-        if($scope.isEmpty($scope.dataset3)){
-            console.log('Null');
-        }
-        else{
-            $scope.dataset3=$scope.dset3;
-        }
+        // if($scope.isEmpty($scope.dataset3)){
+        //     console.log('Null');
+        // }
+        // else{
+        //     $scope.dataset3=$scope.dset3;
+        // }
     };
 
     $scope.dataset5=[];
@@ -198,6 +199,7 @@ angular.module('socialjusticeApp')
     }
     $scope.checkFilter=function(){
             $scope.selectedTagUrl='';
+
             for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
                 $scope.selectedTagUrl=$scope.selectedTagUrl+$scope.selectedTag[m].tag+',';
             }
@@ -214,25 +216,13 @@ angular.module('socialjusticeApp')
                 console.log("value of a "+a);
                 var filterData1=tagFiltering.query({
                                 selectedTag:$scope.selectedTagUrl,
-                                dataId:'1', matchModel:$scope.matchModel},
+                                dataId:a, matchModel:$scope.matchModel},
                                 function(){
                                     $scope.dataDuplicate[a]=filterData1;
                                     console.log($scope.dataDuplicate[a]);
                                 });
             }
-
         }
-        // if($scope.isEmpty($scope.dataset2)){
-        //     console.log('Null');
-        // }
-        // else{
-        //     var filterData2=tagFiltering.query({
-        //                     selectedTag:$scope.selectedTagUrl,
-        //                     dataId:'2', matchModel:$scope.matchModel},
-        //                     function(){
-        //                         $scope.dataset2=filterData2;
-        //                     });
-        // }
     };
     $scope.refresh=false;
     $scope.refreshMap=function(){
@@ -295,9 +285,13 @@ angular.module('socialjusticeApp')
                 $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
             }   
         }
-        // if(Math.ceil(data.count/100)==($scope.pageFeed)/2){
-        //     $scope.dataShow=$scope.data;
-        // }// i can use some optimization by showing half points
+        console.log(Math.ceil(data.count/400));
+        console.log("***"+($scope.pageFeed));
+        if($scope.pageFeed==30 || $scope.pageFeed==60 || $scope.pageFeed==100 || $scope.pageFeed==143){
+            
+            $scope.dataShow=$scope.data;
+        }
+        // i can use some optimization by showing half points
         if(Math.ceil(data.count/100)<=$scope.pageFeed) {
             $scope.selectedSourceDisabled[dataSourceId]=false;
             console.log($scope.selectedSourceDisabled[dataSourceId]);

@@ -8,7 +8,7 @@
         </p>
       </window>
     </marker>
-    <markers ng-repeat="t in dataDuplicate" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+    <markers ng-repeat="t in dataShow" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
       <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
         <div>
           <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
