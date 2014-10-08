@@ -226,12 +226,12 @@ angular.module('socialjusticeApp')
     };
     $scope.fillcolor={
         color:'#63C3F2',
-        opacity: '0.1'
+        opacity: 0.5
     };
     $scope.strokecolor={
         weight: 1,
         color: '#505250',
-        opacity: 0.4
+        opacity: 0.3
     };
     $scope.user={
         dataset:['dara']
@@ -318,14 +318,28 @@ angular.module('socialjusticeApp')
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
         //$scope.map.zoom=15;
-        // $scope.maxLon=$scope.newMark.location.longitude+1.0;
-        // $scope.minLon=$scope.newMark.location.longitude-1.0;
-        // $scope.maxLat=$scope.newMark.location.latitude+1.0;
-        // $scope.minLat=$scope.newMark.location.latitude-1.0;
-        //map.setCenter(marker.getPosition());
-
         $scope.map.control.getGMap().setCenter(new google.maps.LatLng($scope.map.center.latitude,$scope.map.center.longitude));
-        $scope.map.control.getGMap().setZoom(10);
+        $scope.map.control.getGMap().setZoom(13);
+        var bounds =  $scope.map.control.getGMap().getBounds();
+        var zoomlevel=$scope.map.control.getGMap().getZoom();
+        console.log(zoomlevel);
+        console.log($scope.map.bounds);
+        $scope.maxLat = bounds.getNorthEast().lat();
+        $scope.maxLon = bounds.getNorthEast().lng();
+        $scope.minLat = bounds.getSouthWest().lat();
+        $scope.minLon = bounds.getSouthWest().lng();
+        console.log( $scope.minLat);
+        console.log( $scope.minLon);
+        console.log( $scope.maxLat);
+        console.log( $scope.maxLon);
+        $scope.LocationCheck();
+        $scope.polygonFunc();
+    };
+    $scope.LoadingBounds= function(){
+        $scope.maxLon=0;
+        $scope.minLon=0;
+        $scope.maxLat=0;
+        $scope.minLat=0;
         var bounds =  $scope.map.control.getGMap().getBounds();
         var zoomlevel=$scope.map.control.getGMap().getZoom();
         console.log(zoomlevel);
@@ -349,7 +363,13 @@ angular.module('socialjusticeApp')
     	  	latitude: 42.678681,
     	  	longitude: -73.741265
     	},
-    	zoom: 7,
+        events:{
+            idle:function(){
+                console.log('bounds are changing');
+                $scope.LoadingBounds();
+            }
+        },
+    	zoom: 11,
     	options: {
     		streetViewControl: true,
     		panControl: true,
@@ -454,16 +474,16 @@ angular.module('socialjusticeApp')
     $scope.polygonFunc=function(){
         $scope.pagePolygon=1;
          $scope.polyData1=[];
-        var maxLon=$scope.newMark.location.longitude+1.0;
-        var minLon=$scope.newMark.location.longitude-1.0;
-        var maxLat=$scope.newMark.location.latitude+1.0;
-        var minLat=$scope.newMark.location.latitude-1.0;
+        // var maxLon=$scope.newMark.location.longitude+1.0;
+        // var minLon=$scope.newMark.location.longitude-1.0;
+        // var maxLat=$scope.newMark.location.latitude+1.0;
+        // var minLat=$scope.newMark.location.latitude-1.0;
         $scope.polyData=polygonService.query(
                             {
-                                minLat:minLat,
-                                minLon:minLon,
-                                maxLat:maxLat,
-                                maxLon:maxLon,
+                                minLat:$scope.minLat,
+                                minLon:$scope.minLon,
+                                maxLat:$scope.maxLat,
+                                maxLon:$scope.maxLon,
                                 pagePoly:$scope.pagePolygon
                             }).$promise.then(polyServiceCall); 
 

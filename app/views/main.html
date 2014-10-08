@@ -18,9 +18,9 @@
       </windows>
     </markers>
     <!-- Location services  -->
-    <markers models="dataLocation" doCluster="true" coords="'self'"   events="editTagEvents.events">
+    <markers models="dataLocation" doCluster="true" coords="'self'" events="editTagEvents.events">
     </markers>
-    <polygon ng-repeat="d in polyData1" path="d.geometry" clickable="true" events="polygonEvents" >
+    <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
     </polygon>
 
 </google-map>
