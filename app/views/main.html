@@ -1,6 +1,6 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-  <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'">
+  <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
     <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
       <window show="showWindow" options="infoWindowWithCustomClass.options">
         <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
@@ -54,7 +54,7 @@
                           <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
                               <span class="glyphicon glyphicon-th-list">DataSets</span>
                           </button>
-                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="showHidePoly()">
+                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="getViewPortBounds()">
                               <span class="glyphicon glyphicon-tags"> Layers </span>
                           </button>
                       </ul>    
