@@ -79,8 +79,45 @@ angular.module('socialjusticeApp')
           product.$create();
         }
     };
+  //================================================================
+  $scope.drawingManagerOptions = {
+    drawingMode: google.maps.drawing.OverlayType.MARKER,
+    drawingControl: true,
+    drawingControlOptions: {
+      position: google.maps.ControlPosition.TOP_CENTER,
+        drawingModes: [
+          google.maps.drawing.OverlayType.MARKER,
+          google.maps.drawing.OverlayType.CIRCLE,
+          google.maps.drawing.OverlayType.POLYGON,
+          google.maps.drawing.OverlayType.POLYLINE,
+          google.maps.drawing.OverlayType.RECTANGLE
+        ]
+    },
+    circleOptions: {
+      fillColor: '#ffff00',
+        fillOpacity: 1,
+        strokeWeight: 5,
+        clickable: false,
+        editable: true,
+        zIndex: 1
+      }
+    };
+  $scope.markersAndCircleFlag = true;
+  $scope.drawingManagerControl = {};
+  $scope.$watch('markersAndCircleFlag', function() {
+    if (!$scope.drawingManagerControl.getDrawingManager) {
+      return;
+    }
+    var controlOptions = angular.copy($scope.drawingManagerOptions);
+    if (!$scope.markersAndCircleFlag) {
+      controlOptions.drawingControlOptions.drawingModes.shift();
+      controlOptions.drawingControlOptions.drawingModes.shift();
+    }
+    $scope.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
+  });
+  //=================================================================
      //Showing TagsModal info window
-    var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
+        var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
     $scope.makeModal = function(markerkey) {
         console.log(markerkey);
         for(var index in $scope.data){
@@ -239,7 +276,7 @@ angular.module('socialjusticeApp')
     $scope.strokecolor={
         weight: 1,
         color: '#505250',
-        opacity: 0.3
+        opacity: 0.7
     };
     $scope.user={
         dataset:['dara']
@@ -276,6 +313,7 @@ angular.module('socialjusticeApp')
         if($scope.data[dataSourceId]!==undefined){
             var existingArray=[];
             existingArray = $scope.data[dataSourceId];
+            console.log(existingArray);
             for(var i=0;i<r;i++){
                 existingArray.push(data.results[i]);
             }

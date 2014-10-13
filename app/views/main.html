@@ -1,14 +1,14 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-  <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
-    <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+   <ui-gmap-google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
+    <ui-gmap-marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
       <window show="showWindow" options="infoWindowWithCustomClass.options">
         <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
         Tags are {{dataTag.outputTagSelect[0]}}
         </p>
       </window>
-    </marker>
-    <markers ng-repeat="t in dataShow" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
+    </ui-gmap-marker>
+    <ui-gmap-markers ng-repeat="t in dataShow" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
       <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
         <div>
           <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
@@ -16,14 +16,16 @@
           <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
         </div>
       </windows>
-    </markers>
+    </ui-gmap-markers>
     <!-- Location services  -->
-    <markers models="dataLocation" doCluster="true" coords="'self'" events="editTagEvents.events">
-    </markers>
-    <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
-    </polygon>
+    <ui-gmap-markers models="dataLocation" doCluster="true" coords="'self'" events="editTagEvents.events">
+    </ui-gmap-markers>
+    <ui-gmap-polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
+    </ui-gmap-polygon>
+    <ui-gmap-drawing-manager options="drawingManagerOptions" control="drawingManagerControl"> 
+    </ui-gmap-drawing-manager>
+</ui-gmap-google-map>
 
-</google-map>
   </div>
   <div class="left-panel" >
     <form novalidate class="simple-form">
@@ -32,15 +34,8 @@
         ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
-        <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button>
-        <div class="btn btn-default">
-          <button class="buttonimage" ><img src="/images/normal.png" height="18px" width="22px"></button>
-          <button class="buttonimage"><img src="/images/polygon.png" height="18px" width="22px"></button>
-          <button class="buttonimage" ng-click="drawmarker"><img src="/images/marker.png" height="18px" width="22px"></button>
-          <button class="buttonimage"><img src="/images/polyline.png" height="18px" width="22px"></button>
-          <button class="buttonimage"><img src="/images/rectangle.png" height="18px" width="22px"></button>
-          <button class="buttonimage"><img src="/images/cirlc.png" height="18px" width="22px" ng-click="checkFilter()"></button>
-        </div>
+       <!--  <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button> -->
+
         </span>
       </div>
     </form> 
@@ -48,7 +43,6 @@
       <div class="panel-heading">
           <nav class="navbar navbar-primary" role="navigation">
               <div class="container-fluid">
-                  <!-- Collect the nav links, forms, and other content for toggling -->
                       <ul class="nav navbar-nav">
                           <!--<li class="active"><a href="#">Datasets</a></li>-->
                           <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
@@ -74,6 +68,7 @@
               <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
         </form>
+
     <!--    <button class="btn-primary" type="button" ng-click="checkAll()" > Check All</button> 
        <button class="btn-primary" type="button" ng-click="uncheckAll()" > Uncheck All</button>-->
   <div class="input-group">

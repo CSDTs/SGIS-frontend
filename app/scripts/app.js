@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'google-maps',
+    'google-maps'.ns(),
     'ngAutocomplete',
     'mgcrea.ngStrap',
     'angularCharts',
