@@ -2,20 +2,20 @@
   <div class="container-fluid">
    <ui-gmap-google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
     <ui-gmap-marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
-      <window show="showWindow" options="infoWindowWithCustomClass.options">
+      <ui-gmap-ui-gmap-window show="showWindow" options="infoWindowWithCustomClass.options">
         <p >Name is:{{dataTag.nameTag}}<br>Description  is:{{dataTag.descriptionTag}}<br>
         Tags are {{dataTag.outputTagSelect[0]}}
         </p>
-      </window>
+      </ui-gmap-window>
     </ui-gmap-marker>
-    <ui-gmap-markers ng-repeat="t in dataShow" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" doCluster="false" events="editTagEvents.events" >
-      <windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
+    <ui-gmap-markers ng-repeat="t in data" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
+      <ui-gmap-windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
         <div>
           <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
           <br> County: {{county}}
           <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
         </div>
-      </windows>
+      </ui-gmap-windows>
     </ui-gmap-markers>
     <!-- Location services  -->
     <ui-gmap-markers models="dataLocation" doCluster="true" coords="'self'" events="editTagEvents.events">

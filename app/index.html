@@ -57,7 +57,7 @@
         serverRoot: 'http://107.170.106.235',
         routes: {
           dataSource: '/api-ds/:id',
-          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed',
+          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon',
           locationService:'/api-mp/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pageNum',
           tagFiltering:'/api-mp/?tag=:selectedTag&dataset=:dataId&match=:matchModel',
           tagService:'/api-ds',
@@ -99,7 +99,6 @@
     <script src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
     <script src="bower_components/jquery-ui/jquery-ui.js"></script>
     <script src="bower_components/angucomplete/angucomplete.js"></script>
-    
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->

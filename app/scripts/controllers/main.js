@@ -20,6 +20,7 @@ angular.module('socialjusticeApp')
     $scope.dataShow={};
     $scope.dataDuplicate = {};
     $scope.dataTemp={};
+    $scope.boundsChangedFlag=0;
     $scope.halt=0;
     $scope.innerarray=[];
     $scope.selectedSource={};
@@ -29,6 +30,7 @@ angular.module('socialjusticeApp')
     $scope.pageFeed=1;
     $scope.dataTag = {};
     var dataSourceId=1;
+    $scope.dataSourceId;
     $scope.dataset1={};
     $scope.dset1={};
     $scope.dataset2={};
@@ -174,50 +176,7 @@ angular.module('socialjusticeApp')
         $scope.dataDuplicate=$scope.data;
     };
 
-    $scope.dataset5=[];
-    $scope.LocationCheck=function(){
-        $scope.pageNum=1;
-        console.log('Location check'+$scope.halt);
-        $scope.dataset5=[];
-        $scope.halt=0;
-        //$scope.dataLocation=[];
-        console.log('after locationcheck'+$scope.halt);
-        $scope.dataset5=locationService.query(
-                            {
-                                minLat:$scope.minLat,
-                                minLon:$scope.minLon,
-                                maxLat:$scope.maxLat,
-                                maxLon:$scope.maxLon,
-                                pageNum:$scope.pageNum
-                            }).$promise.then(loc);
-    };
-
-    function loc(data) { 
-        console.log('Loc loop'+$scope.halt);
-        if($scope.halt==1){
-            return;
-        }
-        var m=data.results.length;
-        for(var i=0; i < m; i++) {
-            $scope.dataLocation.push(data.results[i]);
-            //console.log(data.results[i]);
-        }
-
-        if((data.count/100<=$scope.pageNum)){
-            console.log('Reached null');
-        }
-        else{
-            $scope.pageNum=$scope.pageNum+1;
-            locationService.query(
-                    {
-                        minLat:$scope.minLat,
-                        minLon:$scope.minLon,
-                        maxLat:$scope.maxLat,
-                        maxLon:$scope.maxLon,
-                        pageNum:$scope.pageNum
-                    }).$promise.then(loc);      
-        }   
-    }
+   
     $scope.getViewPortBounds=function(){
 
         var bounds =  $scope.map.control.getGMap().getBounds();
@@ -270,8 +229,8 @@ angular.module('socialjusticeApp')
         return;
     };
     $scope.fillcolor={
-        color:'#63C3F2',
-        opacity: 0.5
+        color:'#505250',
+        opacity: 0.2
     };
     $scope.strokecolor={
         weight: 1,
@@ -287,29 +246,47 @@ angular.module('socialjusticeApp')
         $scope.selectedSource = [];
     };
     $scope.onSelect = function(dataSourceId) {
+        if($scope.selectedSource[5]===undefined){
+            $scope.polygonFunc();
+        }
+
         console.log(dataSourceId);
         $scope.pageFeed=1;
-        if($scope.selectedSource[dataSourceId]===undefined){
+        $scope.dataSourceId=dataSourceId;
+        if($scope.selectedSource[dataSourceId]===undefined ){
             $scope.selectedSourceDisabled[dataSourceId]=true;
-            $scope.temp=dataFeed.query({
-            'dataSourceId':dataSourceId,
+            $scope.LoadPointsOnLocation(dataSourceId);
+        }   
+        else if($scope.selectedSource[dataSourceId]===false ){
+            $scope.dataShow[dataSourceId]=$scope.data[dataSourceId];
+            console.log($scope.data[dataSourceId]);
+            console.log('clicking input box again');
+        }
+        else if($scope.selectedSource[dataSourceId]===true) {
+            console.log('entered false statement'); //when unclicks the input button
+            $scope.data[dataSourceId] =[];
+            //$scope.dataShow[dataSourceId]={};
+            //delete $scope.data[dataSourceId];
+        } 
+        };
+    $scope.LoadPointsOnLocation=function(dataSourceId){
+        $scope.data[dataSourceId]=[];
+        $scope.pageFeed=1;
+        $scope.temp=dataFeed.query({
+            minLat:$scope.minLat,
+            minLon:$scope.minLon,
+            maxLat:$scope.maxLat,
+            maxLon:$scope.maxLon,    
+            'dataSourceId':$scope.dataSourceId,
             'pageFeed':$scope.pageFeed
             }).$promise.then(function(data){
             console.log('DataSourceId',dataSourceId);
             q(data,dataSourceId);
         });
-        }   
-        else if($scope.selectedSource[dataSourceId]===false){
-        }
-        else if($scope.selectedSource[dataSourceId]===true) {
-            console.log('entered false statement');
-            //delete $scope.data[dataSourceId];
-        } 
-        console.log('<<'+$scope.selectedSource[dataSourceId]+'>>');    
     };
     function q(data,dataSourceId) {
+        console.log('you will never walk alone');
         var r=data.results.length; 
-        //console.log('^'+dataSourceId+'^');
         if($scope.data[dataSourceId]!==undefined){
             var existingArray=[];
             existingArray = $scope.data[dataSourceId];
@@ -319,7 +296,6 @@ angular.module('socialjusticeApp')
             }
             $scope.data[dataSourceId] = existingArray;
             $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
-           // console.log($scope.dataDuplicate[dataSourceId]);
         }
         else{
             if(dataSourceId!==undefined){
@@ -329,11 +305,6 @@ angular.module('socialjusticeApp')
         }
         console.log(Math.ceil(data.count/400));
         console.log("***"+($scope.pageFeed));
-        //if($scope.pageFeed==30 || $scope.pageFeed==60 || $scope.pageFeed==100 || $scope.pageFeed==143){
-            
-            $scope.dataShow=$scope.data;
-        //}
-        // i can use some optimization by showing half points
         if(Math.ceil(data.count/100)<=$scope.pageFeed) {
             $scope.selectedSourceDisabled[dataSourceId]=false;
             console.log($scope.selectedSourceDisabled[dataSourceId]);
@@ -341,7 +312,11 @@ angular.module('socialjusticeApp')
         else{
             $scope.pageFeed=$scope.pageFeed+1;
             dataFeed.query({'dataSourceId':dataSourceId,
-                            'pageFeed':$scope.pageFeed
+                            'pageFeed':$scope.pageFeed,
+                            minLat:$scope.minLat,
+                            minLon:$scope.minLon,
+                            maxLat:$scope.maxLat,
+                            maxLon:$scope.maxLon
             }).$promise.then(function(data){
                 console.log('DataSourceIdInner',dataSourceId);
                 q(data,dataSourceId);
@@ -352,6 +327,51 @@ angular.module('socialjusticeApp')
     $scope.options = null;
     $scope.details = '';
     $scope.newMark={};
+     $scope.dataset5=[];
+     // Location Services Starting Here
+    $scope.LocationCheck=function(){
+        $scope.pageNum=1;
+        console.log('Location check'+$scope.halt);
+        $scope.dataset5=[];
+        $scope.halt=0;
+        //$scope.dataLocation=[];
+        console.log('after locationcheck'+$scope.halt);
+        $scope.dataset5=locationService.query(
+                            {
+                                minLat:$scope.minLat,
+                                minLon:$scope.minLon,
+                                maxLat:$scope.maxLat,
+                                maxLon:$scope.maxLon,
+                                pageNum:$scope.pageNum
+                            }).$promise.then(loc);
+    };
+
+    function loc(data) { 
+        console.log('Loc loop'+$scope.halt);
+        if($scope.halt==1){
+            return;
+        }
+        var m=data.results.length;
+        for(var i=0; i < m; i++) {
+            $scope.dataLocation.push(data.results[i]);
+            //console.log(data.results[i]);
+        }
+
+        if((data.count/100<=$scope.pageNum)){
+            console.log('Reached null');
+        }
+        else{
+            $scope.pageNum=$scope.pageNum+1;
+            locationService.query(
+                    {
+                        minLat:$scope.minLat,
+                        minLon:$scope.minLon,
+                        maxLat:$scope.maxLat,
+                        maxLon:$scope.maxLon,
+                        pageNum:$scope.pageNum
+                    }).$promise.then(loc);      
+        }   
+    }
     $scope.convertCoords= function(){
         $scope.maxLon=0;
         $scope.minLon=0;
@@ -387,7 +407,7 @@ angular.module('socialjusticeApp')
         $scope.minLon=0;
         $scope.maxLat=0;
         $scope.minLat=0;
-        console.log('Loading bounds'+$scope.halt);
+        console.log('Bounds Changing'+$scope.halt);
         var bounds =  $scope.map.control.getGMap().getBounds();
         var zoomlevel=$scope.map.control.getGMap().getZoom();
         console.log(zoomlevel);
@@ -400,8 +420,26 @@ angular.module('socialjusticeApp')
         console.log( $scope.minLon);
         console.log( $scope.maxLat);
         console.log( $scope.maxLon);
-        $scope.LocationCheck();
-        $scope.polygonFunc();
+        $scope.boundsChangedFlag=1;
+
+        for (var i in $scope.data) {
+            console.log($scope.data[i]);
+            if($scope.selectedSource[i]==true){
+                $scope.LoadPointsOnLocation(i);
+                console.log('kkkk');
+                console.log($scope.selectedSource[i]);
+            }
+            else{
+
+            }
+        };
+        //$scope.LoadPointsOnLocation(2);
+        // $scope.LoadPointsOnLocation();
+        //$scope.LocationCheck();
+         if($scope.selectedSource[5]==true){
+            $scope.polygonFunc();
+         }
+        
     };
 
     $scope.map = {
@@ -461,7 +499,7 @@ angular.module('socialjusticeApp')
         $scope.$apply();
     };
     $scope.showWindow=false;
-    _.each($scope.dataset1, function (marker) {
+    _.each($scope.data, function (marker) {
         marker.closeClick = function () {
           marker.showWindow = false;
           $scope.$apply();
@@ -508,18 +546,10 @@ angular.module('socialjusticeApp')
     };
     //Polygon Services Fetching
     $scope.showHidePoly=function(){
-        $scope.singleModel= !$scope.singleModel;
-        if($scope.singleModel===true){
-            console.log($scope.singleModel);
-            $scope.polygonFunc();
-
-        }
-        else{
-            $scope.polyData=[];
-            console.log($scope.singleModel);
-        }
+        
     };
     $scope.polygonFunc=function(){
+        $scope.polyData1=[];
         $scope.pagePolygon=1;
         var pol=polygonService.query(
                             {
@@ -557,45 +587,45 @@ angular.module('socialjusticeApp')
         }
     };
     $scope.polygonEvents={
-       // mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
-            // var polygonScopeObject = this.polygon, scope = this.scope;
-            // console.log(polygon);
-            // console.log(eventName);
-            // console.log(polyMouseEvent);
-            // scope.$apply(function() {
-            //     polygonScopeObject.selected = !polygonScopeObject.selected;
-            //     // Change colors or whatever you want via the polygon_scope_object
-            // });
-      //  },
-        // click:function(polygon, eventName, polyMouseEvent) {
-            //var polygonScopeObject = this.polygon, scope = this.scope;
-             // console.log(polygon);
-             // console.log(eventName);
-             // console.log(polygon.fillColor);
-             // polygon.fillColor=$scope.fillcolor.color;
-             // polygon.strokeColor=$scope.strokecolor.color;
-             // polygon.fillOpacity=$scope.fillcolor.opacity;
-             // polygon.strokeOpacity=$scope.strokecolor.opacity;
-             // google.windows.alert(polygon.strokeOpacity);
-             //$scope.$apply();
-            // console.log(polyMouseEvent);
+       mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
+            var polygonScopeObject = this.polygon, scope = this.scope;
+            console.log(polygon);
+            console.log(eventName);
+            console.log(polyMouseEvent);
+            scope.$apply(function() {
+                polygonScopeObject.selected = !polygonScopeObject.selected;
+                // Change colors or whatever you want via the polygon_scope_object
+            });
+       },
+        click:function(polygon, eventName, polyMouseEvent) {
+            var polygonScopeObject = this.polygon, scope = this.scope;
+             console.log(polygon);
+             console.log(eventName);
+             console.log(polygon.fillColor);
+             polygon.fillColor=$scope.fillcolor.color;
+             polygon.strokeColor=$scope.strokecolor.color;
+             polygon.fillOpacity=$scope.fillcolor.opacity;
+             polygon.strokeOpacity=$scope.strokecolor.opacity;
+             google.windows.alert(polygon.strokeOpacity);
+             $scope.$apply();
+            console.log(polyMouseEvent);
 
-            // scope.$apply(function() {
-            //     polygonScopeObject.selected = !polygonScopeObject.selected;
-            //     // Change colors or whatever you want via the polygon_scope_object
-            // });
-      //  }
-        //   ,
-        // mouseout:function mouseOutFn(polygon, eventName, polyMouseEvent) {
-        //     var polygonScopeObject = this.polygon, scope = this.scope;
-        //     console.log(polygon);
-        //     console.log(eventName);
-        //     console.log(polyMouseEvent);
-        //     scope.$apply(function() {
-        //         polygonScopeObject.selected = !polygonScopeObject.selected;
-        //         // Change colors or whatever you want via the polygon_scope_object
-        //     });
-        // }
+            scope.$apply(function() {
+                polygonScopeObject.selected = !polygonScopeObject.selected;
+                // Change colors or whatever you want via the polygon_scope_object
+            });
+       }
+          ,
+        mouseout:function mouseOutFn(polygon, eventName, polyMouseEvent) {
+            var polygonScopeObject = this.polygon, scope = this.scope;
+            console.log(polygon);
+            console.log(eventName);
+            console.log(polyMouseEvent);
+            scope.$apply(function() {
+                polygonScopeObject.selected = !polygonScopeObject.selected;
+                // Change colors or whatever you want via the polygon_scope_object
+            });
+        }
     };
 
 });
