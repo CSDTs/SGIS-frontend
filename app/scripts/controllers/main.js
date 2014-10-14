@@ -97,8 +97,8 @@ angular.module('socialjusticeApp')
     },
     circleOptions: {
       fillColor: '#ffff00',
-        fillOpacity: 1,
-        strokeWeight: 5,
+        fillOpacity: .2,
+        strokeWeight: .7,
         clickable: false,
         editable: true,
         zIndex: 1
@@ -246,7 +246,7 @@ angular.module('socialjusticeApp')
         $scope.selectedSource = [];
     };
     $scope.onSelect = function(dataSourceId) {
-        if($scope.selectedSource[5]===undefined){
+        if($scope.selectedSource[5]!==undefined){
             $scope.polygonFunc();
         }
 
@@ -559,7 +559,6 @@ angular.module('socialjusticeApp')
                                 maxLon:$scope.maxLon,
                                 pagePoly:$scope.pagePolygon
                             }).$promise.then(polyServiceCall); 
-
     };
     var dataPoly=[];
     function polyServiceCall(dataPoly) { 
