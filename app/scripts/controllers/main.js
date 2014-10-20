@@ -22,15 +22,15 @@ angular.module('socialjusticeApp')
     $scope.dataTemp={};
     $scope.boundsChangedFlag=0;
     $scope.halt=0;
+    $scope.doCluster=false;
     $scope.innerarray=[];
     $scope.selectedSource={};
     $scope.selectedSourceDisabled={};  // reprsents the sources selected in the checkbox
     $scope.temp=[];
-    var polyData=[];
     $scope.pageFeed=1;
     $scope.dataTag = {};
-    var dataSourceId=1;
-    $scope.dataSourceId;
+    //var dataSourceId=1;
+    $scope.dataSourceId=1;
     $scope.dataset1={};
     $scope.dset1={};
     $scope.dataset2={};
@@ -42,7 +42,6 @@ angular.module('socialjusticeApp')
     $scope.dset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
-    $scope.polyData=[];
     $scope.polyData1=[];
     $scope.maxLon=0;
     $scope.minLon=0;
@@ -51,6 +50,9 @@ angular.module('socialjusticeApp')
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
+    $scope.clusterFunc=function(){
+        $scope.doCluster=!$scope.doCluster;
+    };
     $scope.saveTag=function(){
         $scope.dataTag={
             id:$scope.tagObject.id,
@@ -68,8 +70,6 @@ angular.module('socialjusticeApp')
             $scope.Poll.readByUser=true;
         });
         $scope.Poll.tags=$scope.dataTag.outputTagSelect;
-        //var notes=$scope.Poll;
-        console.log('dataEdit');
         console.log($scope.dataTag.outputTagSelect);
         for(var k in $scope.dataTag.outputTagSelect){
           $scope.product={};
@@ -81,7 +81,7 @@ angular.module('socialjusticeApp')
           product.$create();
         }
     };
-  //================================================================
+  //=================================================
   $scope.drawingManagerOptions = {
     drawingMode: google.maps.drawing.OverlayType.MARKER,
     drawingControl: true,
@@ -97,8 +97,8 @@ angular.module('socialjusticeApp')
     },
     circleOptions: {
       fillColor: '#ffff00',
-        fillOpacity: .2,
-        strokeWeight: .7,
+        fillOpacity: 0.2,
+        strokeWeight: 0.7,
         clickable: false,
         editable: true,
         zIndex: 1
@@ -143,7 +143,6 @@ angular.module('socialjusticeApp')
         var temp2=$scope.dataLocation;
         for(var f in temp2){
             if(markerkey===temp2[f].id){
-                console.log('aayush');
                 $scope.tagObject.nameTag=temp2[f].name;
                 $scope.tagObject.descriptionTag=temp2[f].city;
                 $scope.tagObject.id=temp2[f].id;
@@ -209,10 +208,11 @@ angular.module('socialjusticeApp')
                 console.log('value of a '+a);
                 var filterData1=tagFiltering.query({
                                 selectedTag:$scope.selectedTagUrl,
-                                dataId:a, matchModel:$scope.matchModel},
+                                dataId:a, matchModel:$scope.matchModel
+                            },
                                 function(){
                                     $scope.dataDuplicate[a]=filterData1;
-                                    console.log($scope.dataDuplicate[a]);
+                                    //console.log($scope.dataDuplicate[a]);
                                 });
             }
         }
@@ -246,9 +246,9 @@ angular.module('socialjusticeApp')
         $scope.selectedSource = [];
     };
     $scope.onSelect = function(dataSourceId) {
-        if($scope.selectedSource[5]!==undefined){
-            $scope.polygonFunc();
-        }
+        // if($scope.selectedSource[9]!==undefined){
+        //     $scope.polygonFunc();
+        // }
 
         console.log(dataSourceId);
         $scope.pageFeed=1;
@@ -304,7 +304,7 @@ angular.module('socialjusticeApp')
             }   
         }
         console.log(Math.ceil(data.count/400));
-        console.log("***"+($scope.pageFeed));
+        console.log('***'+($scope.pageFeed));
         if(Math.ceil(data.count/100)<=$scope.pageFeed) {
             $scope.selectedSourceDisabled[dataSourceId]=false;
             console.log($scope.selectedSourceDisabled[dataSourceId]);
@@ -348,7 +348,7 @@ angular.module('socialjusticeApp')
 
     function loc(data) { 
         console.log('Loc loop'+$scope.halt);
-        if($scope.halt==1){
+        if($scope.halt===1){
             return;
         }
         var m=data.results.length;
@@ -424,7 +424,7 @@ angular.module('socialjusticeApp')
 
         for (var i in $scope.data) {
             console.log($scope.data[i]);
-            if($scope.selectedSource[i]==true){
+            if($scope.selectedSource[i]===true){
                 $scope.LoadPointsOnLocation(i);
                 console.log('kkkk');
                 console.log($scope.selectedSource[i]);
@@ -432,13 +432,13 @@ angular.module('socialjusticeApp')
             else{
 
             }
-        };
+        }
         //$scope.LoadPointsOnLocation(2);
         // $scope.LoadPointsOnLocation();
         //$scope.LocationCheck();
-         if($scope.selectedSource[5]==true){
-            $scope.polygonFunc();
-         }
+         // if($scope.selectedSource[9]===true){
+         //    $scope.polygonFunc();
+         // }
         
     };
 
@@ -499,15 +499,15 @@ angular.module('socialjusticeApp')
         $scope.$apply();
     };
     $scope.showWindow=false;
-    _.each($scope.data, function (marker) {
-        marker.closeClick = function () {
-          marker.showWindow = false;
-          $scope.$apply();
-        };
-        marker.onClicked = function () {
-            onMarkerClicked(marker);
-        };
-    });
+    // $.each($scope.data, function (marker) {
+    //     marker.closeClick = function () {
+    //       marker.showWindow = false;
+    //       $scope.$apply();
+    //     };
+    //     marker.onClicked = function () {
+    //         onMarkerClicked(marker);
+    //     };
+    // });
     $scope.editTagEvents={
         options:{
             draggable:true},
@@ -546,12 +546,13 @@ angular.module('socialjusticeApp')
     };
     //Polygon Services Fetching
     $scope.showHidePoly=function(){
-        
+      $scope.polygonFunc();  
     };
     $scope.polygonFunc=function(){
         $scope.polyData1=[];
         $scope.pagePolygon=1;
-        var pol=polygonService.query(
+        var pol=[];
+        pol=polygonService.query(
                             {
                                 minLat:$scope.minLat,
                                 minLon:$scope.minLon,
@@ -560,7 +561,7 @@ angular.module('socialjusticeApp')
                                 pagePoly:$scope.pagePolygon
                             }).$promise.then(polyServiceCall); 
     };
-    var dataPoly=[];
+    
     function polyServiceCall(dataPoly) { 
         var m=dataPoly.results.length;
        // console.log(m);
@@ -584,47 +585,8 @@ angular.module('socialjusticeApp')
                     pagePoly:$scope.pagePolygon
                 }).$promise.then(polyServiceCall);     
         }
-    };
-    $scope.polygonEvents={
-       mouseover:function mouseOverFn(polygon, eventName, polyMouseEvent) {
-            var polygonScopeObject = this.polygon, scope = this.scope;
-            console.log(polygon);
-            console.log(eventName);
-            console.log(polyMouseEvent);
-            scope.$apply(function() {
-                polygonScopeObject.selected = !polygonScopeObject.selected;
-                // Change colors or whatever you want via the polygon_scope_object
-            });
-       },
-        click:function(polygon, eventName, polyMouseEvent) {
-            var polygonScopeObject = this.polygon, scope = this.scope;
-             console.log(polygon);
-             console.log(eventName);
-             console.log(polygon.fillColor);
-             polygon.fillColor=$scope.fillcolor.color;
-             polygon.strokeColor=$scope.strokecolor.color;
-             polygon.fillOpacity=$scope.fillcolor.opacity;
-             polygon.strokeOpacity=$scope.strokecolor.opacity;
-             google.windows.alert(polygon.strokeOpacity);
-             $scope.$apply();
-            console.log(polyMouseEvent);
-
-            scope.$apply(function() {
-                polygonScopeObject.selected = !polygonScopeObject.selected;
-                // Change colors or whatever you want via the polygon_scope_object
-            });
-       }
-          ,
-        mouseout:function mouseOutFn(polygon, eventName, polyMouseEvent) {
-            var polygonScopeObject = this.polygon, scope = this.scope;
-            console.log(polygon);
-            console.log(eventName);
-            console.log(polyMouseEvent);
-            scope.$apply(function() {
-                polygonScopeObject.selected = !polygonScopeObject.selected;
-                // Change colors or whatever you want via the polygon_scope_object
-            });
-        }
+    }
+    $scope.polygonEvents={       
     };
 
 });

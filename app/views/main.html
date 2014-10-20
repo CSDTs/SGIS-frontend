@@ -8,7 +8,7 @@
         </p>
       </ui-gmap-window>
     </ui-gmap-marker>
-    <ui-gmap-markers ng-repeat="t in data" doCluster="true" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
+    <ui-gmap-markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
       <ui-gmap-windows show="t.showWindow" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
         <div>
           <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
@@ -18,7 +18,7 @@
       </ui-gmap-windows>
     </ui-gmap-markers>
     <!-- Location services  -->
-    <ui-gmap-markers models="dataLocation" doCluster="true" coords="'self'" events="editTagEvents.events">
+    <ui-gmap-markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
     </ui-gmap-markers>
     <ui-gmap-polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
     </ui-gmap-polygon>
@@ -45,11 +45,11 @@
               <div class="container-fluid">
                       <ul class="nav navbar-nav">
                           <!--<li class="active"><a href="#">Datasets</a></li>-->
-                          <button class="btn-primary active" type="button" class="btn btn-default btn-lg">
-                              <span class="glyphicon glyphicon-th-list">DataSets</span>
+                          <button class="btn-primary active" type="button" class="btn btn-default btn-lg" ng-click="clusterFunc()">
+                              <span class="glyphicon glyphicon-th-list">Cluster</span>
                           </button>
                           <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="getViewPortBounds()">
-                              <span class="glyphicon glyphicon-tags"> Layers </span>
+                              <span class="glyphicon glyphicon-tags" ng-click="showHidePoly()"> Layers </span>
                           </button>
                       </ul>    
                 <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refreshMap()">
