@@ -8,16 +8,27 @@
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
+
   .controller('MainCtrl',function ($scope,$http,$routeParams,
                                 $modal,$resource,$timeout, 
                                 dataSource, dataFeed,dataEdit,
                                 djResource,polygonService,tagService,
                                 tagFiltering,locationService) 
     {
+    // GoogleMapApi.then(function(maps) {
+    //     $scope.googleVersion = maps.version;
+    // maps.visualRefresh = true;
+    // $log.info('$scope.map.rectangle.bounds set');
+    // $scope.map.rectangle.bounds = new maps.LatLngBounds(
+    //     new maps.LatLng(55,-100),
+    //     new maps.LatLng(49,-78)
+    // );
+    // });
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
     $scope.dataShow={};
+    $scope.Id=1;
     $scope.dataDuplicate = {};
     $scope.dataTemp={};
     $scope.boundsChangedFlag=0;
@@ -29,7 +40,6 @@ angular.module('socialjusticeApp')
     $scope.temp=[];
     $scope.pageFeed=1;
     $scope.dataTag = {};
-    //var dataSourceId=1;
     $scope.dataSourceId=1;
     $scope.dataset1={};
     $scope.dset1={};
@@ -75,7 +85,7 @@ angular.module('socialjusticeApp')
           $scope.product={};
           $scope.product.mappoint=tagId;
           $scope.product.tag=$scope.dataTag.outputTagSelect[k].id;
-          var product =new dataEdit($scope.product);
+          var product =new dbataEdit($scope.product);
           console.log($scope.dataTag.outputTagSelect[k].id);
           console.log($scope.product.mappoint);
           product.$create();
@@ -120,16 +130,19 @@ angular.module('socialjusticeApp')
   //=================================================================
      //Showing TagsModal info window
         var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
-    $scope.makeModal = function(markerkey) {
-        console.log(markerkey);
-        for(var index in $scope.data){
+        $scope.makeModal = function(markerkey) {
+        $scope.Id=1;
+        var index=1;
+        console.log($scope.data);
+        for(index in $scope.data){
             var temp=$scope.data[index];
-            console.log(temp);
             for(var j in temp){
                 if(markerkey===temp[j].id){
+                    $scope.Id=index;
                     $scope.tagObject.nameTag=temp[j].name;
                     $scope.tagObject.descriptionTag=temp[j].city;
                     $scope.tagObject.id=temp[j].id;
+                    console.log($scope.tagObject.id);
                     $scope.tagObject.addNewTag=temp[j].tags;
                     $scope.tagObject.multiTags=temp[j].tags;
                     $scope.tagObject.outputTagSelect=temp[j].tags;
@@ -156,7 +169,7 @@ angular.module('socialjusticeApp')
     };
     $scope.loadTags = function(query) {
         console.log(query);
-        return tagService.query().$promise;
+        return tagService.query({Id:$scope.Id}).$promise;
     };
    
     $scope.selectedTag = '';
@@ -441,7 +454,6 @@ angular.module('socialjusticeApp')
          // }
         
     };
-
     $scope.map = {
         control: {},
         bounds: {},
@@ -520,6 +532,7 @@ angular.module('socialjusticeApp')
              click:function(marker){
                 console.log('dbl clicked');
                 //var pos = marker.getPosition();
+                console.log(marker);
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
             }
@@ -588,5 +601,4 @@ angular.module('socialjusticeApp')
     }
     $scope.polygonEvents={       
     };
-
 });

@@ -60,14 +60,14 @@
           dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon',
           locationService:'/api-mp/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pageNum',
           tagFiltering:'/api-mp/?tag=:selectedTag&dataset=:dataId&match=:matchModel',
-          tagService:'/api-ds',
+          tagService:'/api-ds/:Id',
           polygonService:'/api-poly/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pagePoly',
           dataEdit:'/api-tag/'
         }
       };
     </script>
     <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,drawing&sensor=false?key=AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc"></script>
+     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,drawing&sensor=false?key=AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -88,6 +88,7 @@
     <script src="bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
     <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
     <script src="bower_components/angular-multi-select/angular-multi-select.js"></script>
     <script src="bower_components/angular-bootstrap-show-errors/src/showErrors.js"></script>
