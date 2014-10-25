@@ -4,6 +4,10 @@ angular.module('socialjusticeApp')
   .service('config', function config() {
       var makeConfig = function() {
         var config = {
+          map: {
+            maxZoomLevelLoading: 12,
+            startLocation: [42.000, -91.000]
+          },
           routes: {
               dataSource: '/fake_data/dataSource/:id.json',
               dataFeed: '/fake_data/dataFeed.json?dataSource=:dataSourceId'

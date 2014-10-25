@@ -15,15 +15,6 @@ angular.module('socialjusticeApp')
                                 djResource,polygonService,tagService,
                                 tagFiltering,locationService) 
     {
-    // GoogleMapApi.then(function(maps) {
-    //     $scope.googleVersion = maps.version;
-    // maps.visualRefresh = true;
-    // $log.info('$scope.map.rectangle.bounds set');
-    // $scope.map.rectangle.bounds = new maps.LatLngBounds(
-    //     new maps.LatLng(55,-100),
-    //     new maps.LatLng(49,-78)
-    // );
-    // });
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
@@ -65,7 +56,7 @@ angular.module('socialjusticeApp')
         $scope.doCluster=!$scope.doCluster;
     };
     $scope.saveState=function(){
-        if(document.getElementById('but1').innerHTML==='Resume'){
+        if(document.getElementById('but1').innerHTML=='Resume'){
             document.getElementById('but1').innerHTML='Save';
         }else{
             document.getElementById('but1').innerHTML='Resume';
@@ -291,7 +282,7 @@ angular.module('socialjusticeApp')
         } 
         };
     $scope.LoadPointsOnLocation=function(dataSourceId){
-        if($scope.savetheState===true){
+        if($scope.savetheState==true){
             console.log('saveState');
             return;
         }
@@ -312,7 +303,7 @@ angular.module('socialjusticeApp')
     };
     function q(data,dataSourceId) {
         $scope.selectedSourceDisabled[dataSourceId]=true;
-        if($scope.savetheState===true){
+        if($scope.savetheState==true){
             return;
         }
         console.log('you will never walk alone');
@@ -566,7 +557,7 @@ angular.module('socialjusticeApp')
         $scope.polygonFunc();
     };
     $scope.polygonFunc=function(){
-        if($scope.savetheState===true){
+        if($scope.savetheState==true){
             return;
         }
         $scope.polyData1=[];
@@ -588,7 +579,7 @@ angular.module('socialjusticeApp')
     };
     
     function polyServiceCall(dataPoly) { 
-        if($scope.savetheState===true){
+        if($scope.savetheState==true){
             return;
         }
         if($scope.polygoncheck===false){

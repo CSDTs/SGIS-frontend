@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'google-maps'.ns(),
+    'google-maps',
     'ngAutocomplete',
     'mgcrea.ngStrap',
     'angularCharts',
@@ -26,14 +26,6 @@ angular
     'ngTagsInput',
     'angucomplete'
   ])
-  .config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
-    GoogleMapApi.configure({
-      key: 'AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc',
-      v: '3.17',
-      libraries: 'places,geometry,drawing'
-    });
-  }])
-
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

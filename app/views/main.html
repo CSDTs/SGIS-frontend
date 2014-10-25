@@ -1,29 +1,29 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-   <ui-gmap-google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable="true" options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
-    <ui-gmap-marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+   <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable='true' options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
+    <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
       
-    </ui-gmap-marker>
-    <ui-gmap-ui-gmap-window show="showWindow" options="infoWindowWithCustomClass.options">
+    </marker>
+    <window show="showWindow" options="infoWindowWithCustomClass.options">
        <p>Home</p>
-      </ui-gmap-window>
-    <ui-gmap-markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
-      <ui-gmap-windows show="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
+      </window>
+    <markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
+      <windows show="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
         <div>
           <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
           <br> County: {{county}}
           <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
         </div>
-      </ui-gmap-windows>
-    </ui-gmap-markers>
+      </windows>
+    </markers>
     <!-- Location services  -->
-    <ui-gmap-markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
-    </ui-gmap-markers>
-    <ui-gmap-polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
-    </ui-gmap-polygon>
-    <ui-gmap-drawing-manager options="drawingManagerOptions" control="drawingManagerControl"> 
-    </ui-gmap-drawing-manager>
-</ui-gmap-google-map>
+    <markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
+    </markers>
+    <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
+    </polygon>
+   <!--  <drawing-manager options="drawingManagerOptions" control="drawingManagerControl"> 
+    </drawing-manager> -->
+</google-map>
 
   </div>
   <div class="left-panel" >
