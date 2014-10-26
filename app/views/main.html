@@ -1,30 +1,26 @@
 <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
   <div class="container-fluid">
-   <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable='true' options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
-    <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
-      
-    </marker>
-    <window show="showWindow" options="infoWindowWithCustomClass.options">
-       <p>Home</p>
+    <google-map id="mapcan" bounds='northeast' center="map.center" zoom="map.zoom" draggable='true' options="map.options" events="map.events" refresh="'refresh'" control="map.control" bounds="map.bounds">
+      <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+      </marker>
+      <window show="showWindow" options="infoWindowWithCustomClass.options">
+        <p>Home</p>
       </window>
-    <markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
-      <windows show="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
-        <div>
-          <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
-          <br> County: {{county}}
-          <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
-        </div>
-      </windows>
-    </markers>
+      <markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
+        <windows show="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
+          <div>
+            <p ng-non-bindable>  Name:  {{name}} <br> Address: {{street}},{{city}}
+            <br> County: {{county}}
+            <br>Tags: {{tags[0].tag}} {{tags[1].tag}} {{tags[2].tag}} {{tags[3].tag}} </p>
+          </div>
+        </windows>
+      </markers>
     <!-- Location services  -->
-    <markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
-    </markers>
-    <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
-    </polygon>
-   <!--  <drawing-manager options="drawingManagerOptions" control="drawingManagerControl"> 
-    </drawing-manager> -->
-</google-map>
-
+      <markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
+      </markers>
+      <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
+      </polygon>
+    </google-map>
   </div>
   <div class="left-panel" >
     <form novalidate class="simple-form">
@@ -33,30 +29,23 @@
         ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
         <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
-       <!--  <button class="btn btn-primary" ng-click="AddwithDescription();checkFilter()" type="button"><span class="glyphicon glyphicon-plus"></span></button> -->
-
         </span>
       </div>
     </form> 
     <div class="panel panel-default">
       <div class="panel-heading">
-          <nav class="navbar navbar-primary" role="navigation">
-              <div class="container-fluid">
-                      <ul class="nav navbar-nav">
-                          <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="getViewPortBounds()">
-                              <span class="glyphicon glyphicon-tags" ng-click="showHidePoly()"> Layers </span>
-                          </button>
-                      </ul>    
-                <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refreshMap()">
-                              <span class="glyphicon glyphicon-refresh"> Refresh </span>
-                          </button>
-                            <button id="but1" value="Save" class="btn-primary" type="button" class="btn btn-default btn-lg" ng-click="saveState()"> Save  
-                          </button>
-                <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
-                <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
-                  </button>
-              </div><!-- /.container-fluid -->
-          </nav>
+        <nav class="navbar navbar-primary" role="navigation">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav"></ul>    
+            <button class="btn-primary" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-lg" ng-click="refreshMap()">Refresh
+              <span class="glyphicon glyphicon-refresh">  </span>
+            </button>
+            <button id="but1" value="Stop Loading" class="btn-primary" type="button" class="btn btn-default btn-lg" ng-click="saveState()"> Stop Loading</button>
+            <button class="btn-primary active" type="button" class="btn btn-default btn-lg" data-toggle="collapse" data-target="#demo">
+            <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
+            </button>
+          </div><!-- /.container-fluid -->
+        </nav>
       </div>
       <!-- panel body -->
       <div class="panel-body" class="collapse in" id="demo">
@@ -67,30 +56,26 @@
               <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name }}</input>
           </div>
         </form>
-  <div class="input-group">
-
-                          
-      <!-- <input type="text" class="form-control" ng-model="selectedTag" ng-options="state for state in states" placeholder="Filter by Tag" bs-typeahead> -->
-      <tags-input ng-model="selectedTag" display-property="tag"  placeholder="Filter by Tag" ng-options="state for state in states">
-              <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
-      </tags-input>
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-filter"></span></button>
-        <button class="btn btn-primary" type="button" ng-click="Default()" > <span class="glyphicon glyphicon-save"></span></button> 
-      </span>
-  </div><!-- /input-group -->
-  <div class="input-group">
-      <span >
-        <input type="radio" name="matchfilter" ng-model="matchModel" value="any" checked>
-      </span>
-     <span class="label label-primary" >Match Any</span>
-      <span >
-        <input type="radio" name="matchfilter" ng-model="matchModel" value="all">
-      </span>
-     <span class="label label-primary" >Match All</span>
-    </div><!-- /input-group -->
-    <p>{{selectedSource}}</p>
-       <!--  <div ng-model="tabs.activeTab" bs-tabs="tabs"></div><br> -->
+      <div class="input-group">
+      
+          <tags-input ng-model="selectedTag" display-property="tag"  placeholder="Filter by Tag" ng-options="state for state in states">
+                  <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
+          </tags-input>
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-filter"></span></button>
+            <button class="btn btn-primary" type="button" ng-click="Default()" > <span class="glyphicon glyphicon-save"></span></button> 
+          </span>
+      </div><!-- /input-group -->
+      <div class="input-group">
+          <span >
+            <input type="radio" name="matchfilter" ng-model="matchModel" value="any" checked>
+          </span>
+         <span class="label label-primary" >Match Any</span>
+          <span >
+            <input type="radio" name="matchfilter" ng-model="matchModel" value="all">
+          </span>
+         <span class="label label-primary" >Match All</span>
+        </div><!-- /input-group -->
       </div><!-- panel body -->
     </div> <!-- panel -->
   </div>                 

@@ -39,8 +39,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-   
   });
-
-
-
