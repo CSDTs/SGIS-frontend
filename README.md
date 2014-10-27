@@ -22,9 +22,25 @@ Technology Used:
 Installation
 --------------
 ```
+For Ubuntu 14.04
 git clone https://github.com/gouravjeet/SGIS-2.0.git
 cd SGIS-2.0/
 grunt serve 
+sudo apt-get install node
+sudo apt-get install npm
+sudo npm install -g grunt-cli
+bower install -g bower
+npm install grunt-bower-install
+
+
+For Mac OS X
+git clone https://github.com/gouravjeet/SGIS-2.0.git
+cd SGIS-2.0/
+grunt serve 
+brew install node
+sudo  brew postinstall node
+npm update -g npm
+sudo npm install -g grunt-cli
 
 
 ```
@@ -33,10 +49,15 @@ Tech
 
 SGIS uses a number of open source projects to work properly:
 
+* bower	- Bower works by fetching and installing packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for.
+
+* grunt - Jabascript task zRunner
+* yeoman - Yeoman helps you kickstart new projects, prescribing best practices and tools to help you stay productive.
 * [Ace Editor] - awesome web-based text editor
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
-* [jQuery] - duh 
+* [jQuery] - Javascript library
+
 [gis_csdt]:https://github.com/kathleentully/gis_csdt
 
 

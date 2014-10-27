@@ -12,9 +12,10 @@ angular.module('socialjusticeApp')
   .controller('MainCtrl',function ($scope,$http,$routeParams,
                                 $modal,$alert,$tooltip,$popover,$resource,$timeout, 
                                 dataSource, dataFeed,dataEdit,
-                                djResource,polygonService,tagService,
-                                tagFiltering,locationService) 
+                                djResource,polygonService,tagService) 
     {
+    //==============Initialization of variables==========================
+        
     var google = window.google;
     $scope.sources = dataSource.query();
     $scope.data = {};
@@ -54,7 +55,43 @@ angular.module('socialjusticeApp')
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
+    //============= Introduction of the map details===================
+    $scope.map = {
+        control: {},
+        bounds: {},
+        center: {
+            latitude: 42.678681,
+            longitude: -73.741265
+        },
+        events:{
+            dragstart:function(){
+                $scope.draghalt=1;
+                console.log('draghalt');
+            },
+            idle:function(){
+                $scope.draghalt=0;
+                $scope.LoadingBounds();
+            }
+        },
+        zoom: 11,
+        options: {
+            streetViewControl: true,
+            panControl: true,
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
 
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.LARGE,
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            maxZoom: 20,
+            minZoom: 6
+        }
+    };
+    //====================End Map Details=========================
+    //==================Posting Tag functionality=================
     $scope.clusterFunc=function(){
         $scope.doCluster=!$scope.doCluster;
     };
@@ -91,8 +128,44 @@ angular.module('socialjusticeApp')
           product.$create();
         }
     };
-  //=================================================
-  $scope.drawingManagerOptions = {
+    var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
+    $scope.makeModal = function(markerkey) {
+    $scope.Id=1;
+    var index=1;
+    for(index in $scope.data){
+        var temp=$scope.data[index];
+        for(var j in temp){
+            if(markerkey===temp[j].id){
+                $scope.Id=index;
+                $scope.tagObject.nameTag=temp[j].name;
+                $scope.tagObject.descriptionTag=temp[j].city;
+                $scope.tagObject.id=temp[j].id;
+                $scope.tagObject.addNewTag=temp[j].tags;
+                $scope.tagObject.multiTags=temp[j].tags;
+                $scope.tagObject.outputTagSelect=temp[j].tags;
+                tagsModal.$promise.then(tagsModal.show);
+            }
+        }
+    }
+    var temp2=$scope.dataLocation;
+    for(var f in temp2){
+        if(markerkey===temp2[f].id){
+            $scope.tagObject.nameTag=temp2[f].name;
+            $scope.tagObject.descriptionTag=temp2[f].city;
+            $scope.tagObject.id=temp2[f].id;
+            $scope.tagObject.addNewTag=temp2[f].tags;
+            $scope.tagObject.multiTags=temp2[f].tags;
+            $scope.tagObject.outputTagSelect=temp2[f].tags;
+            tagsModal.$promise.then(tagsModal.show);
+        }
+    }     
+};
+    $scope.loadTags = function(query) {
+        return tagService.query({Id:$scope.Id}).$promise;
+    };
+  //===============ENd Adding Tag Functionality=========================================
+  //===============Functions with multiple purposes=====================================
+    $scope.drawingManagerOptions = {
     drawingMode: google.maps.drawing.OverlayType.MARKER,
     drawingControl: true,
     drawingControlOptions: {
@@ -114,56 +187,19 @@ angular.module('socialjusticeApp')
         zIndex: 1
       }
     };
-  $scope.markersAndCircleFlag = true;
-  $scope.drawingManagerControl = {};
-  $scope.$watch('markersAndCircleFlag', function() {
-    if (!$scope.drawingManagerControl.getDrawingManager) {
+    $scope.markersAndCircleFlag = true;
+    $scope.drawingManagerControl = {};
+    $scope.$watch('markersAndCircleFlag', function() {
+        if (!$scope.drawingManagerControl.getDrawingManager) {
       return;
     }
     var controlOptions = angular.copy($scope.drawingManagerOptions);
-    if (!$scope.markersAndCircleFlag) {
-      controlOptions.drawingControlOptions.drawingModes.shift();
-      controlOptions.drawingControlOptions.drawingModes.shift();
+        if (!$scope.markersAndCircleFlag) {
+        controlOptions.drawingControlOptions.drawingModes.shift();
+        controlOptions.drawingControlOptions.drawingModes.shift();
     }
     $scope.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
-  });
-  //=================================================================
-     //Showing TagsModal info window
-        var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
-        $scope.makeModal = function(markerkey) {
-        $scope.Id=1;
-        var index=1;
-        for(index in $scope.data){
-            var temp=$scope.data[index];
-            for(var j in temp){
-                if(markerkey===temp[j].id){
-                    $scope.Id=index;
-                    $scope.tagObject.nameTag=temp[j].name;
-                    $scope.tagObject.descriptionTag=temp[j].city;
-                    $scope.tagObject.id=temp[j].id;
-                    $scope.tagObject.addNewTag=temp[j].tags;
-                    $scope.tagObject.multiTags=temp[j].tags;
-                    $scope.tagObject.outputTagSelect=temp[j].tags;
-                    tagsModal.$promise.then(tagsModal.show);
-                }
-            }
-        }
-        var temp2=$scope.dataLocation;
-        for(var f in temp2){
-            if(markerkey===temp2[f].id){
-                $scope.tagObject.nameTag=temp2[f].name;
-                $scope.tagObject.descriptionTag=temp2[f].city;
-                $scope.tagObject.id=temp2[f].id;
-                $scope.tagObject.addNewTag=temp2[f].tags;
-                $scope.tagObject.multiTags=temp2[f].tags;
-                $scope.tagObject.outputTagSelect=temp2[f].tags;
-                tagsModal.$promise.then(tagsModal.show);
-            }
-        }     
-    };
-    $scope.loadTags = function(query) {
-        return tagService.query({Id:$scope.Id}).$promise;
-    };
+    });
     $scope.selectedTag = '';
     $scope.isEmpty=function(obj) 
     { 
@@ -183,7 +219,6 @@ angular.module('socialjusticeApp')
                 $scope.LoadPointsOnLocation(i);
             }
         }    
-
     };
     $scope.getViewPortBounds=function(){
         var bounds =  $scope.map.control.getGMap().getBounds();
@@ -204,7 +239,7 @@ angular.module('socialjusticeApp')
     $scope.refresh=false;
     $scope.refreshMap=function(){
         $scope.map.control.refresh({});
-        $scope.map.control.getGMap().setZoom(7);
+        $scope.map.control.getGMap().setZoom(10);
     };
     $scope.getMapInstance = function () {
         return;
@@ -233,20 +268,17 @@ angular.module('socialjusticeApp')
             $scope.selectedSourceDisabled[dataSourceId]=true;
             $scope.LoadPointsOnLocation(dataSourceId);
             console.log('1');
-            console.log($scope.data);
         }   
         else if($scope.selectedSource[dataSourceId]===false ){
             //$scope.dataShow[dataSourceId]=$scope.data[dataSourceId];
             $scope.data[dataSourceId]=[];
             console.log('2');
-            console.log($scope.data);
             $scope.selectedSourceDisabled[dataSourceId]=true;
             $scope.LoadPointsOnLocation(dataSourceId);
         }
         else if($scope.selectedSource[dataSourceId]===true) {
             console.log('3');
             $scope.data[dataSourceId] =[];
-            console.log($scope.data);
             
         } 
         };
@@ -291,7 +323,6 @@ angular.module('socialjusticeApp')
                 existingArray.push(data.results[i]);
             }
             $scope.data[dataSourceId] = existingArray;
-            console.log($scope.data);
             $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
         }
         else{
@@ -340,8 +371,6 @@ angular.module('socialjusticeApp')
         $scope.minLat = bounds.getSouthWest().lat();
         $scope.minLon = bounds.getSouthWest().lng();
     };
-    
-   
     $scope.LoadingBounds= function(){
         $scope.halt=1;
         $scope.maxLon=0;
@@ -349,7 +378,6 @@ angular.module('socialjusticeApp')
         $scope.maxLat=0;
         $scope.minLat=0;
         var bounds =  $scope.map.control.getGMap().getBounds();
-        var zoomlevel=$scope.map.control.getGMap().getZoom();
         $scope.maxLat = bounds.getNorthEast().lat();
         $scope.maxLon = bounds.getNorthEast().lng();
         $scope.minLat = bounds.getSouthWest().lat();
@@ -366,40 +394,7 @@ angular.module('socialjusticeApp')
         }
     };
 
-    $scope.map = {
-        control: {},
-        bounds: {},
-    	center: {
-    	  	latitude: 42.678681,
-    	  	longitude: -73.741265
-    	},
-        events:{
-            dragstart:function(){
-                $scope.draghalt=1;
-                console.log('draghalt');
-            },
-            idle:function(){
-                $scope.draghalt=0;
-                $scope.LoadingBounds();
-            }
-        },
-    	zoom: 11,
-    	options: {
-    		streetViewControl: true,
-    		panControl: true,
-    		panControlOptions: {
-    			position: google.maps.ControlPosition.TOP_RIGHT
-    		},
-
-    		zoomControl: true,
-    		zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.LARGE,
-				position: google.maps.ControlPosition.RIGHT_TOP
-    		},
-    		maxZoom: 20,
-    		minZoom: 3
-    	}
-    };
+   
     var myAlert = $alert({title: 'It will not load too many points ith this zoom level!', content: '', placement: 'top-left', container:'google-map',type: 'info', keyboard: true, show: false,duration:'2'});
       $scope.showAlert = function() {
         myAlert.show(); // or myAlert.$promise.then(myAlert.show) if you use an external html template
