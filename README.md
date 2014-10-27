@@ -23,28 +23,35 @@ Installation
 --------------
 ```
 For Ubuntu 14.04
-git clone https://github.com/gouravjeet/SGIS-2.0.git
-cd SGIS-2.0/
-grunt serve 
-sudo apt-get install node
-sudo apt-get install npm
-sudo npm install -g grunt-cli
-bower install -g bower
-npm install grunt-bower-install
+--------------
+First, there are a few essentials for installing node
+	Needed for Node:
+	$sudo apt-get install node
+	$sudo apt-get install npm
+	Needed for Grunt
+	$sudo npm install -g grunt-cli
+	Needed for Bower
+	$npm install -g bower
+--------------
+Cloning into the code
+	$git clone https://github.com/gouravjeet/SGIS-2.0.git
+	cd SGIS-2.0/
+	grunt serve 
 
+Now, you need to install the project dependencies
 
-For Mac OS X
-git clone https://github.com/gouravjeet/SGIS-2.0.git
-cd SGIS-2.0/
-grunt serve 
-brew install node
-sudo  brew postinstall node
-npm update -g npm
-sudo npm install -g grunt-cli
+--------------
+Needed for Bower Packages:
+	$bower install --save
+--------------
+Needed for Grunt Packages:
+	$sudo npm install --save
+	The --save option instructs NPM to include the package inside of the dependencies section of your package.json automatically, thus saving you an additional step.
+
 
 
 ```
-Tech
+Technolgies Used
 -----------
 
 SGIS uses a number of open source projects to work properly:

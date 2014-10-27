@@ -10,11 +10,12 @@
 angular.module('socialjusticeApp')
 
   .controller('MainCtrl',function ($scope,$http,$routeParams,
-                                $modal,$alert,$tooltip,$popover,$resource,$timeout, 
+                                $modal,$alert,$tooltip,
+                                $popover,$resource,$timeout, 
                                 dataSource, dataFeed,dataEdit,
                                 djResource,polygonService,tagService) 
     {
-    //==============Initialization of variables==========================
+    //==============Initialization of variables=============
         
     var google = window.google;
     $scope.sources = dataSource.query();
@@ -31,7 +32,7 @@ angular.module('socialjusticeApp')
     $scope.doCluster=false;
     $scope.innerarray=[];
     $scope.selectedSource={};
-    $scope.selectedSourceDisabled={};  // reprsents the sources selected in the checkbox
+    $scope.selectedSourceDisabled={};  
     $scope.temp=[];
     $scope.pageFeed=1;
     $scope.dataTag = {};
@@ -55,7 +56,7 @@ angular.module('socialjusticeApp')
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
-    //============= Introduction of the map details===================
+    //============= Introduction of the map details===========
     $scope.map = {
         control: {},
         bounds: {},
@@ -128,7 +129,9 @@ angular.module('socialjusticeApp')
           product.$create();
         }
     };
-    var tagsModal = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
+    var tagsModal = $modal({scope: $scope,
+        template: 'views/modal/tags.html',
+        show: false});
     $scope.makeModal = function(markerkey) {
     $scope.Id=1;
     var index=1;
@@ -163,8 +166,8 @@ angular.module('socialjusticeApp')
     $scope.loadTags = function(query) {
         return tagService.query({Id:$scope.Id}).$promise;
     };
-  //===============ENd Adding Tag Functionality=========================================
-  //===============Functions with multiple purposes=====================================
+  //===============ENd Adding Tag Functionality===========================
+  //===============Functions with multiple purposes=======================
     $scope.drawingManagerOptions = {
     drawingMode: google.maps.drawing.OverlayType.MARKER,
     drawingControl: true,
@@ -261,6 +264,8 @@ angular.module('socialjusticeApp')
     $scope.uncheckAll = function() {
         $scope.selectedSource = [];
     };
+    //==================end Multipurpose functions==================
+    //====================Loading Points by checking Boxes==========
     $scope.onSelect = function(dataSourceId) {
         $scope.pageFeed=1;
         $scope.dataSourceId=dataSourceId;
@@ -363,7 +368,9 @@ angular.module('socialjusticeApp')
         };
         $scope.map.center.latitude=$scope.newMark.location.latitude;
         $scope.map.center.longitude=$scope.newMark.location.longitude;
-        $scope.map.control.getGMap().setCenter(new google.maps.LatLng($scope.map.center.latitude,$scope.map.center.longitude));
+        $scope.map.control.getGMap().setCenter(
+            new google.maps.LatLng($scope.map.center.latitude,
+                                    $scope.map.center.longitude));
         $scope.map.control.getGMap().setZoom(13);
         var bounds =  $scope.map.control.getGMap().getBounds();
         $scope.maxLat = bounds.getNorthEast().lat();
@@ -394,13 +401,16 @@ angular.module('socialjusticeApp')
         }
     };
 
-   
-    var myAlert = $alert({title: 'It will not load too many points ith this zoom level!', content: '', placement: 'top-left', container:'google-map',type: 'info', keyboard: true, show: false,duration:'2'});
+   //======================End Loading Points by checking Boxes============================
+   //========================Multipurpose Functions 2====================================== 
+    var myAlert = $alert({title: 'It will not load too many points ith this zoom level!', 
+                    content: '', placement: 'top-left', container:'google-map',
+                    type: 'info', keyboard: true, show: false,duration:'2'});
       $scope.showAlert = function() {
-        myAlert.show(); // or myAlert.$promise.then(myAlert.show) if you use an external html template
+        myAlert.show(); 
       };
       $scope.hideAlert = function() {
-        myAlert.hide(); // or myAlert.$promise.then(myAlert.show) if you use an external html template
+        myAlert.hide(); 
       };
     $scope.$watch(function($scope) { return $scope.map.zoom;}, function (){
         if($scope.map.zoom<7){
@@ -446,6 +456,8 @@ angular.module('socialjusticeApp')
     $scope.AddwithDescription=function(){
         $scope.editTodo=true;
     };
+     //========================END Multipurpose Functions 2=======
+    //=================Start Polygon Loading==================
     $scope.polygoncheck=false;
     //Polygon Services Fetching
     $scope.showHidePoly=function(){
@@ -507,4 +519,5 @@ angular.module('socialjusticeApp')
                 }).$promise.then(polyServiceCall);     
         }
     }
+    //=======================End Polygon Loading=====================
 });
