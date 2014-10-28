@@ -37,15 +37,9 @@ angular.module('socialjusticeApp')
     $scope.pageFeed=1;
     $scope.dataTag = {};
     $scope.dataSourceId=1;
-    $scope.dataset1={};
-    $scope.dset1={};
-    $scope.dataset2={};
-    $scope.dset2={};
-    $scope.dataset3={};
     $scope.dataLocation=[];
     $scope.pageNum=1;
     $scope.pagePolygon=1;
-    $scope.dset3={};
     $scope.multiTags=[];
     $scope.tagObject={};
     $scope.polyData1=[];
