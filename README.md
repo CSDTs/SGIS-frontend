@@ -61,7 +61,6 @@ SGIS uses a number of open source projects to work properly:
 * yeoman - Yeoman helps you kickstart new projects, prescribing best practices and tools to help you stay productive.
 * [Ace Editor] - awesome web-based text editor
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
 * [jQuery] - Javascript library
 
 [gis_csdt]:https://github.com/kathleentully/gis_csdt
