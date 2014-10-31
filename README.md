@@ -34,11 +34,11 @@ First, there are a few essentials for installing node
 	Needed for Bower
 	>npm install -g bower
 ```
-
+```
 Cloning into the code
 	>git clone https://github.com/gouravjeet/SGIS-2.0.git
 	>cd SGIS-2.0/
-
+```
 Now, you need to install the project dependencies
 ```
 Needed for Bower Packages:
