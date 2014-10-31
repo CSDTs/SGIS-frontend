@@ -27,32 +27,37 @@ For Ubuntu 14.04
 ```
 First, there are a few essentials for installing node
 	Needed for Node:
-	$sudo apt-get install node
-	$sudo apt-get install npm
+	>sudo apt-get install node
+	>sudo apt-get install npm
 	Needed for Grunt
-	$sudo npm install -g grunt-cli
+	>sudo npm install -g grunt-cli
 	Needed for Bower
-	$npm install -g bower
+	>npm install -g bower
 ```
+
+Cloning into the code
+	>git clone https://github.com/gouravjeet/SGIS-2.0.git
+	>cd SGIS-2.0/
+
 Now, you need to install the project dependencies
 ```
 Needed for Bower Packages:
-	$bower install --save
+	>bower install 
+It will then ask for angular and bootstrap packages	
+	please select 3.1.1 for bootstrap and 1.2.16 for angular
 ```
 ```
 Needed for Grunt Packages:
-	$sudo npm install --save
+	>sudo npm install --save
 	The --save option instructs NPM to include the package inside of the dependencies section of your package.json automatically, thus saving you an additional step.
 ```
 
 ```
-Cloning into the code
-	$git clone https://github.com/gouravjeet/SGIS-2.0.git
-	cd SGIS-2.0/
-	grunt serve 
+Running the Application	
+	>grunt serve 
 ```
 
-Technolgies Used
+Technologies Used
 -----------
 
 SGIS uses a number of open source projects to work properly:
