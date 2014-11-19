@@ -12,18 +12,31 @@
 	   				<div class="col-xs-3 col-md-3">
 	   					<label for="title">Name:</label><br>
 	   				</div>
-	  				<div class="col-xs-4 col-md-4">
+	  				<div class="col-xs-8 col-md-8">
 	  					<label ng-bind="tagObject.nameTag"></label>
 	  				</div>
-	  				<div class="col-xs-5 col-md-5">
+	  				<div class="col-xs-1 col-md-1">
 	  				</div>
 	  			</div>	<br>
 	  			<div class="row">
 	   				<div class="col-xs-3 col-md-3">
-	   					<label for="desc">Description:</label><br>
+	   					<label for="desc">Address:</label><br>
+	   				</div>
+	  				<div class="col-xs-8 col-md-8">
+	  					<label ng-bind="tagObject.street"></label>
+	  					<label ng-bind="tagObject.city"></label>
+	  					<label ng-bind="tagObject.state"></label>
+	  					<label ng-bind="tagObject.zipcode"></label>
+	  				</div>
+	  				<div class="col-xs-1 col-md-1">
+	  				</div>
+	  			</div>	<br>
+	  			<div class="row">
+	   				<div class="col-xs-3 col-md-3">
+	   					<label for="desc">County:</label><br>
 	   				</div>
 	  				<div class="col-xs-4 col-md-4">
-	  					<label ng-bind="tagObject.descriptionTag"></label>
+	  					<label ng-bind="tagObject.county"></label>
 	  				</div>
 	  				<div class="col-xs-5 col-md-5">
 	  				</div>
@@ -40,10 +53,13 @@
 	  				</div>
 				</div>
 					
-		   				<div class="tagMap">
-		   					<google-map bounds='northeast' center="mapTag.center" zoom="mapTag.zoom" draggable='true' options="mapTag.options" events="mapTag.events" refresh="'refresh'" control="mapTag.control">
-								 <marker idKey="1" ng-repeat="n in newMark" icon="image.home" coords="n" options="editTagEvents.options" events="editTagEvents.events">
+		   				<div >
+		   					<google-map class="tagMap" bounds="mapTag.bounds" center="mapTag.center" zoom="mapTag.zoom" draggable='true' options="mapTag.options" events="mapTag.events" refresh="'refresh'" control="mapTag.control">
+
+								 <marker idKey="2" coords="tagObject" options="editTagEvents.options" events="mapTag.marker.events">
+								 <!--  <window show="showTagWindow" options="infoWindowWithCustomClass.options"><p>{{tagObject.nameTag}}</p></window> -->
 								</marker> 
+
 								</google-map>
 	      				
 		   				</div>
@@ -58,17 +74,15 @@
 	   				<div class="col-xs-2 col-md-2">
 	   					<button class="btn btn-success" ng-click="saveTag(tagObject);$hide()">Save Tag</button>
 	   				</div>
-	  				<div class="col-xs-2 col-md-2">
-	  				</div>
 	  				<div class="col-xs-8 col-md-8">
+	  				</div>
+	  				<div class="col-xs-2 col-md-2">
+	  				<button type="button" class="btn btn-warning" ng-click="$hide()">Close</button>
 	  				</div>
 	  			</div>
 	   		</form>
 	  	</div>
 	  </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" ng-click="$hide()">Close</button>
-      </div>
     </div>
   </div>
 </div>

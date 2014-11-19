@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc function
- * @name socialjusticeApp.controller:AboutCtrl
+ * @name socialjusticeApp.controller:MainCtrl
  * @description
- * # AboutCtrl
+ * # MainCtrl
  * Controller of the socialjusticeApp
  */
 angular.module('socialjusticeApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('AboutCtrl', function($scope) {
+
+    $scope.button=function(argument) {
+    	console.log($scope.data);
+    };
+    
   });

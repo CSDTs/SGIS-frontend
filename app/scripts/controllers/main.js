@@ -58,6 +58,7 @@ angular.module('socialjusticeApp')
             latitude: 42.678681,
             longitude: -73.741265
         },
+       
         events:{
             dragstart:function(){
                 $scope.draghalt=1;
@@ -95,14 +96,19 @@ angular.module('socialjusticeApp')
         events:{
            
         },
+        marker:{
+            options:{draggable:true},
+            events:{
+                click:function(){
+                console.log("click marker");    
+                $scope.showTagWindow=true;
+                }
+            }
+        },
         zoom: 16,
         options: {
             streetViewControl: true,
             panControl: false,
-            panControlOptions: {
-                position: google.maps.ControlPosition.TOP_RIGHT
-            },
-
             zoomControl: true,
             zoomControlOptions: {
                 style: google.maps.ZoomControlStyle.SMALL,
@@ -169,10 +175,18 @@ angular.module('socialjusticeApp')
                 $scope.tagObject.id=temp[j].id;
                 $scope.tagObject.latitude=temp[j].latitude;
                 $scope.tagObject.longitude=temp[j].longitude;
+                $scope.mapTag.center.latitude=$scope.tagObject.latitude;
+                $scope.mapTag.center.longitude=$scope.tagObject.longitude;
                 $scope.tagObject.addNewTag=temp[j].tags;
                 $scope.tagObject.multiTags=temp[j].tags;
                 $scope.tagObject.outputTagSelect=temp[j].tags;
+                $scope.tagObject.street=temp[j].street;
+                $scope.tagObject.city=temp[j].city;
+                $scope.tagObject.state=temp[j].state;
+                $scope.tagObject.zipcode=temp[j].zipcode;
+                $scope.tagObject.county=temp[j].county;
                 tagsModal.$promise.then(tagsModal.show);
+
             }
         }
     }
@@ -437,6 +451,7 @@ angular.module('socialjusticeApp')
       };
       $scope.hideAlert = function() {
         myAlert.hide(); 
+        $scope.showTagWindow=false;
       };
     $scope.$watch(function($scope) { return $scope.map.zoom;}, function (){
         if($scope.map.zoom<7){
@@ -453,7 +468,7 @@ angular.module('socialjusticeApp')
       scale: 5
     };
     $scope.showWindow=false;
-   
+    $scope.showTagWindow=false;
     $scope.editTagEvents={
         options:{
             draggable:true},

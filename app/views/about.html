@@ -1,5 +1,5 @@
 
-<body ng-controller="ChartsCtrl">
+<body ng-controller="AboutCtrl">
 
 
 <div class="jumbotron">
@@ -10,6 +10,13 @@
     User will also be able to add shapes on the map that would be helpful for the user to take an account of places he/she likes or dislikes.
     </p>
     <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+	<!-- <button ng-click="button"></button> -->
+	<table>
+	  <tr ng-repeat="x in data" models="x">
+	    <td>{{ x.name }}</td>
+<!-- 	    <td>{{ x.Country }}</td> -->
+	  </tr>
+	</table>
 
 </div>
 

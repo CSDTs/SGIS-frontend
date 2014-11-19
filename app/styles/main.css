@@ -4,31 +4,35 @@
 	z-index: 0;
 	top: 0px;
 }
+.ng-table {
+    border: 1px solid #000;
+}
 
 .tagMap .angular-google-map-container{
   height: 200px;
+  z-index: 0;
 }
 
-#mapcan {
+/*#mapcan {
   height: 420px;
   z-index: 0;
   top: 0px;
-}
+}*/
 
 .tagMap{
   height: 200px;
-
+  z-index: 0;
 }
-google-map .hell{
+/*google-map .hell{
   position: absolute;
   height: 50%;
-}
-#maptagid{
+}*/
+/*#maptagid{
   height: 200px;
   position: static;
   z-index: 0;
   top: 0px;
-}
+}*/
 .container-fluid {
 	margin: 0 0 0 0;
 	padding-left: 0;

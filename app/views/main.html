@@ -77,6 +77,14 @@
           </span>
          <span class="label label-primary" >Match All</span>
         </div><!-- /input-group -->
+        <div>
+        <table ng-table class="table">
+          <tr ng-repeat="d in data">
+              <td data-title="'Name'">{{d.name}}</td>
+              <td data-title="'Age'">{{d.age}}</td>
+          </tr>
+        </table>
+        </div>
 
       </div><!-- panel body -->
      <!--  <div>
