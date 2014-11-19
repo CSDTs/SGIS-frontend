@@ -85,6 +85,36 @@ angular.module('socialjusticeApp')
             minZoom: 6
         }
     };
+    $scope.mapTag = {
+        control: {},
+        bounds: {},
+        center: {
+            latitude: 42.678681,
+            longitude: -73.741265
+        },
+        events:{
+           
+        },
+        zoom: 16,
+        options: {
+            streetViewControl: true,
+            panControl: false,
+            panControlOptions: {
+                position: google.maps.ControlPosition.TOP_RIGHT
+            },
+
+            zoomControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.RIGHT
+            },
+            maxZoom: 20,
+            minZoom: 6
+        }
+    };
+    $scope.changeSkin=function(){
+        //$scope.map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+    };
     //====================End Map Details=========================
     //==================Posting Tag functionality=================
     $scope.clusterFunc=function(){
@@ -137,6 +167,8 @@ angular.module('socialjusticeApp')
                 $scope.tagObject.nameTag=temp[j].name;
                 $scope.tagObject.descriptionTag=temp[j].city;
                 $scope.tagObject.id=temp[j].id;
+                $scope.tagObject.latitude=temp[j].latitude;
+                $scope.tagObject.longitude=temp[j].longitude;
                 $scope.tagObject.addNewTag=temp[j].tags;
                 $scope.tagObject.multiTags=temp[j].tags;
                 $scope.tagObject.outputTagSelect=temp[j].tags;

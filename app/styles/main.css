@@ -1,8 +1,33 @@
 .angular-google-map-container {
-	height: 540px;
-	position: static;
+	
+  height: 840px;
 	z-index: 0;
 	top: 0px;
+}
+
+.tagMap .angular-google-map-container{
+  height: 200px;
+}
+
+#mapcan {
+  height: 420px;
+  z-index: 0;
+  top: 0px;
+}
+
+.tagMap{
+  height: 200px;
+
+}
+google-map .hell{
+  position: absolute;
+  height: 50%;
+}
+#maptagid{
+  height: 200px;
+  position: static;
+  z-index: 0;
+  top: 0px;
 }
 .container-fluid {
 	margin: 0 0 0 0;

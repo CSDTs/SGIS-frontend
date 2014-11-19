@@ -1,8 +1,21 @@
 .angular-google-map-container {
 	height: 840px;
-	position: static;
 	z-index: 0;
 	top: 0px;
+}
+div .row .col-xs-2 col-md-12 .maptag{
+  height: 200px;
+  z-index: 0;
+  top: 0px;
+}
+#tagMap{
+  
+}
+#maptagid{
+  height: 200px;
+  width: 200px;
+  z-index: 0;
+  top: 0px;
 }
 .container-fluid {
 	margin: 0 0 0 0;

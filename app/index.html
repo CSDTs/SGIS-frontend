@@ -57,10 +57,10 @@
         serverRoot: 'http://107.170.106.235',
         routes: {
           dataSource: '/api-ds/:id',
-          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&tag=:selectedTag&match=:matchModel',
+          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&tag=:selectedTag&match=:matchModel&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon',
           tagService:'/api-ds/:Id',
           polygonService:'/api-poly/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pagePoly',
-          dataEdit:'/api-tag/'
+          dataEdit:'/api-newtag/'
         }
       };
     </script>
