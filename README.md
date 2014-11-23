@@ -1,6 +1,7 @@
 
 SGIS 2.0: FrontEnd of the 3Helix Program
 ========================================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/gouravjeet/SGIS-2.0?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 * Backend is available at [gis_csdt]
 
 **Goal :
