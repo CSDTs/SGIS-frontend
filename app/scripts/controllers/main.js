@@ -9,7 +9,7 @@
  */
 angular.module('socialjusticeApp')
 
-  .controller('MainCtrl',function ($scope,$http,$routeParams,
+  .controller('MainCtrl',function ($scope,$http,$filter,$routeParams,
                                 $modal,$alert,$tooltip,
                                 $popover,$resource,$timeout, 
                                 dataSource, dataFeed,dataEdit,
@@ -23,7 +23,10 @@ angular.module('socialjusticeApp')
     $scope.draghalt=0;
     $scope.dataShow={};
     $scope.zoomlevel;
+    $scope.showWin=false; 
+    $scope.pointsLoaded=0;
     $scope.Id=1;
+    $scope.counter=0;
     $scope.dataDuplicate = {};
     $scope.savetheState=false;
     $scope.dataTemp={};
@@ -47,6 +50,11 @@ angular.module('socialjusticeApp')
     $scope.minLon=0;
     $scope.maxLat=0;
     $scope.minLat=0;
+    $scope.tableRow={};
+    $scope.tableRow.coords={
+        latitude: 42.678681,
+        longitude: -73.741265
+    };
     $scope.matchModel='any';
     $scope.singleModel = false;
     $scope.selectedTagUrl='';
@@ -165,10 +173,13 @@ angular.module('socialjusticeApp')
     $scope.makeModal = function(markerkey) {
     $scope.Id=1;
     var index=1;
+    //console.log(markerkey);
     for(index in $scope.data){
         var temp=$scope.data[index];
         for(var j in temp){
+            console.log(temp[j].id);
             if(markerkey===temp[j].id){
+
                 $scope.Id=index;
                 $scope.tagObject.nameTag=temp[j].name;
                 $scope.tagObject.descriptionTag=temp[j].city;
@@ -236,6 +247,7 @@ angular.module('socialjusticeApp')
         if (!$scope.drawingManagerControl.getDrawingManager) {
       return;
     }
+
     var controlOptions = angular.copy($scope.drawingManagerOptions);
         if (!$scope.markersAndCircleFlag) {
         controlOptions.drawingControlOptions.drawingModes.shift();
@@ -243,6 +255,18 @@ angular.module('socialjusticeApp')
     }
     $scope.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
     });
+  
+     // $scope.$watch(
+     //    function( $scope ) {
+     //    console.log( "Function watched" );
+     //    // This becomes the value we're "watching".
+     //    return;
+     //    },
+     //    function( counter) {
+     //    $scope.counter=$scope.data[2].length;
+     //    console.log($scope.counter);
+     //    }
+     //    ); 
     $scope.selectedTag = '';
     $scope.isEmpty=function(obj) 
     { 
@@ -254,6 +278,8 @@ angular.module('socialjusticeApp')
         }
         return true;
     };
+    
+
     $scope.Default=function(){
         $scope.selectedTag=null;
         $scope.selectedTagUrl=null;
@@ -360,6 +386,10 @@ angular.module('socialjusticeApp')
             return;
         }
         var r=data.results.length; 
+        // $scope.calculatePointsLoaded=function(){
+        //     $scope.pointsLoaded=$scope.pointsLoaded+$scope.data[dataSourceId].length;
+        // };
+        $scope.pointsLoaded=data.count;
         if($scope.data[dataSourceId]!==undefined){
              console.log('4');
             var existingArray=[];
@@ -369,9 +399,15 @@ angular.module('socialjusticeApp')
             }
             $scope.data[dataSourceId] = existingArray;
             $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
+            console.log($scope.data[dataSourceId]);
+            $scope.existingArray=existingArray;
+            $scope.temporary=$scope.data[2];
+
+
         }
         else{
              console.log('5');
+
             if(dataSourceId!==undefined){
                 $scope.data[dataSourceId] = data.results;
                 $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
@@ -397,6 +433,7 @@ angular.module('socialjusticeApp')
     $scope.options = null;
     $scope.details = '';
     $scope.newMark={};
+
     $scope.convertCoords= function(){
         $scope.maxLon=0;
         $scope.minLon=0;
@@ -474,6 +511,7 @@ angular.module('socialjusticeApp')
             draggable:true},
         events:{
              click:function(marker){
+                console.log(marker);
                 var markerKey=marker.key;
                 $scope.makeModal(markerKey);
             }
@@ -561,4 +599,16 @@ angular.module('socialjusticeApp')
         }
     }
     //=======================End Polygon Loading=====================
+$scope.searchText;
+    $scope.selectTable=function(){
+      $scope.showWin=true;  
+      $scope.tableRow.id=this.row.id;
+      $scope.tableRow.name=this.row.name;
+      $scope.tableRow.latitude=this.row.latitude;
+      $scope.tableRow.longitude=this.row.longitude;
+      $scope.tableRow.coords={latitude:$scope.tableRow.latitude,longitude:$scope.tableRow.longitude};
+      console.log(this.row);
+
+    };
 });
+

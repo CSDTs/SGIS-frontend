@@ -25,7 +25,11 @@
     "allmighty-autocomplete": "*",
     "jquery-ui": "~1.11.1",
     "angucomplete": "*",
-    "bluebird": "~2.3.5"
+    "bluebird": "~2.3.5",
+    "angular-scrollable-table": "*",
+    "angu-fixed-header-table": "*",
+    "angular-smart-table": "~1.4.4",
+    "angular-dashboard-framework": "~0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
