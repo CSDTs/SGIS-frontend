@@ -42,7 +42,7 @@
 .left-panel {
 	position: absolute;
 	left: 0px;
-	width: 250px;
+	width: 300px;
 	height: 50%;
 	z-index: 10;
 	top:72px;
@@ -52,7 +52,7 @@
 	position: absolute;
 	left: 0px;
 	top: 357px;
-	width: 250px;
+	width: 300px;
 	height: 20%;
 	z-index: 10;
 }
@@ -248,8 +248,6 @@ tfoot td {
     width: 100%;
     display: inline-block;
 } 
-/*Table Type 1 ends *********************************************/
-
 /*Table Type 2 starts*********************************************/
 .st-sort-ascent:before {
     content: '\25B2';

@@ -22,6 +22,7 @@ angular.module('socialjusticeApp')
     $scope.data = {};
     $scope.draghalt=0;
     $scope.dataShow={};
+    $scope.selectedSet={};
     $scope.zoomlevel;
     $scope.showWin=false; 
     $scope.pointsLoaded=0;
@@ -177,7 +178,7 @@ angular.module('socialjusticeApp')
     for(index in $scope.data){
         var temp=$scope.data[index];
         for(var j in temp){
-            console.log(temp[j].id);
+           
             if(markerkey===temp[j].id){
 
                 $scope.Id=index;
@@ -256,17 +257,6 @@ angular.module('socialjusticeApp')
     $scope.drawingManagerControl.getDrawingManager().setOptions(controlOptions);
     });
   
-     // $scope.$watch(
-     //    function( $scope ) {
-     //    console.log( "Function watched" );
-     //    // This becomes the value we're "watching".
-     //    return;
-     //    },
-     //    function( counter) {
-     //    $scope.counter=$scope.data[2].length;
-     //    console.log($scope.counter);
-     //    }
-     //    ); 
     $scope.selectedTag = '';
     $scope.isEmpty=function(obj) 
     { 
@@ -389,7 +379,7 @@ angular.module('socialjusticeApp')
         // $scope.calculatePointsLoaded=function(){
         //     $scope.pointsLoaded=$scope.pointsLoaded+$scope.data[dataSourceId].length;
         // };
-        $scope.pointsLoaded=data.count;
+        //$scope.pointsLoaded=data.count;
         if($scope.data[dataSourceId]!==undefined){
              console.log('4');
             var existingArray=[];
@@ -401,7 +391,7 @@ angular.module('socialjusticeApp')
             $scope.dataDuplicate[dataSourceId]= $scope.data[dataSourceId];
             console.log($scope.data[dataSourceId]);
             $scope.existingArray=existingArray;
-            $scope.temporary=$scope.data[2];
+            
 
 
         }
@@ -600,6 +590,16 @@ angular.module('socialjusticeApp')
     }
     //=======================End Polygon Loading=====================
 $scope.searchText;
+    $scope.selectData=function(){
+        console.log('select data');
+        if($scope.data[$scope.selectedSet.id]==undefined){
+
+        }
+        else{
+            $scope.temporary=$scope.data[$scope.selectedSet.id];
+            $scope.pointsLoaded=$scope.data[$scope.selectedSet.id].length;
+        }
+    };
     $scope.selectTable=function(){
       $scope.showWin=true;  
       $scope.tableRow.id=this.row.id;

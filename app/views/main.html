@@ -8,7 +8,7 @@
       </window>
       <window show="showWin" coords="tableRow.coords">
          <div> 
-            <p >  Name:  {{tableRow.name}}{{tableRow.street}} </p>
+            <p > {{tableRow.name}}{{tableRow.street}} </p>
           </div>
       </window>
      <!--  <markers models="data.geometry" coords="self" options="editTagEvents.options" events="editTagEvents.events">
@@ -101,35 +101,49 @@
   
     </div> <!-- panel -->
 <div class="right-panel">
+
 <div class="panel panel-info">
 
   <div class="panel-body" class="collapse in" id="rightp">
-   <table ng-repeat="u in data" st-table="u" class="table">
+
+  <table st-table="u" class="table table-striped">
     <thead>
       <tr>
         <th st-sort="name">Name</th>
-        <th st-sort="street">Address</th>
-        <th st-sort="city">City</th>
         <th></th>
+        <th></th>
+        <th></th>
+        <th st-sort="street">Address</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th st-sort="city">City</th>
       </tr>
     </thead>
-  <tbody>
-<tr st-select-row="row" st-pagination-scroll st-select-mode="multiple" ng-repeat="row in temporary" ng-click="selectTable()">
-  <td>{{row.name | uppercase }}</td>
-   <td>{{row.street }} </td>
-  <td>{{row.city }}</td>
-</tr>
-</tbody> 
-    </table>
+    <tbody>
+      <tr st-select-row="row" st-pagination-scroll st-select-mode="multiple" ng-repeat="row in temporary" ng-click="selectTable()">
+          <td>{{row.name | uppercase }}</td>
+          <td>{{row.street }} </td>
+          <td>{{row.city }}</td>
+      </tr>
+    </tbody> 
+  </table>
       </div>
       <div class="panel-heading">
-   <button class="btn btn-primary" type="button">
+      <div class="btn-group" role="group">
+     <button type="button" class="btn btn-primary btn-sm" ng-model="selectedSet" data-html="1" ng-options="icon.name for icon in sources" bs-select>
+      Action <span class="caret"></span>
+    </button>
+    <button class="btn btn-primary btn-sm" ng-click="selectData()">Show</button>
+  </div>
+   <button class="btn btn-primary btn-sm" type="button">
   
   Points:{{sources.name[2]}} <span class="badge">{{sources.name}}{{pointsLoaded}}</span>
+ 
 </button>
- <button class=" btn btn-primary btn-sm" type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#rightp">
+<!--  <button class=" btn btn-primary btn-sm" type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#rightp">
             <i class="glyphicon glyphicon-play"> </i>
-            </button>
+            </button> -->
 </div> 
       </div> 
 </div>
