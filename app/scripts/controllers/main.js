@@ -136,10 +136,10 @@ angular.module('socialjusticeApp')
         $scope.doCluster=!$scope.doCluster;
     };
     $scope.saveState=function(){
-        if(document.getElementById('but1').innerHTML==='Resume'){
-            document.getElementById('but1').innerHTML='Stop Loading';
+        if(document.getElementById('but1').innerHTML==='RESUME'){
+            document.getElementById('but1').innerHTML='STOP LOADING';
         }else{
-            document.getElementById('but1').innerHTML='Resume';
+            document.getElementById('but1').innerHTML='RESUME';
         }
         $scope.savetheState=!$scope.savetheState;
     };
@@ -599,6 +599,9 @@ $scope.searchText;
             $scope.temporary=$scope.data[$scope.selectedSet.id];
             $scope.pointsLoaded=$scope.data[$scope.selectedSet.id].length;
         }
+    };
+    $scope.popover = {
+        'content': 'Please Choose Valid DataSet'
     };
     $scope.selectTable=function(){
       $scope.showWin=true;  

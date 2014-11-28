@@ -42,7 +42,7 @@
         <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Search dataset by places"
         ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
         <span class="input-group-btn">
-        <button class="btn btn-primary" ng-click="convertCoords()" type="button">Search</button>
+        <button class="btn btn-primary" ng-click="convertCoords()" type="button"><i class="glyphicon glyphicon-search"> </i></button>
         </span>
       </div>
     </form> 
@@ -51,10 +51,10 @@
         <nav class="navbar navbar-primary" role="navigation">
           <div class="container-fluid">
                
-            <button class="btn btn-primary btn-sm" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-xs" ng-click="refreshMap()">Refresh
+            <button class="btn btn-primary btn-sm" ng-model="singleModel" type="button" btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0" class="btn btn-default btn-xs" ng-click="refreshMap()">REFRESH
               <span class="glyphicon glyphicon-refresh">  </span>
             </button>
-            <button id="but1" value="Stop Loading" class="btn btn-primary btn-sm" type="button" class="btn-xs btn-default btn-xs" ng-click="saveState()"> Stop Loading</button>
+            <button id="but1" value="Stop Loading" class="btn btn-primary btn-sm" type="button" class="btn-xs btn-default btn-xs" ng-click="saveState()"> STOP LOADING</button>
             <button class=" btn btn-primary btn-sm" type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#demo">
             <i class="glyphicon glyphicon-play fa-rotate-90"> </i>
             </button>
@@ -64,10 +64,14 @@
       <!-- panel body -->
       <div class="panel-body" class="collapse in" id="demo">
         <form name="myForm">
-         <input type="checkbox" ng-model="polygoncheck" ng-click="showHidePoly()">Polygons</input>
-          <input type="checkbox" ng-model="doCluster" ng-click="clusterFunc()">Clustering</input>
+        <label class="btn btn-primary btn-sm">
+           <input type="checkbox" ng-model="polygoncheck" ng-click="showHidePoly()">POLYGONS</input>
+        </label>
+        <label class="btn btn-primary btn-sm">
+          <input type="checkbox" ng-model="doCluster" ng-click="clusterFunc()">CLUSTERING</input>
+          </label>
           <div class="checkbox" ng-repeat="source in sources">
-              <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name }}</input>
+              <input type="checkbox" ng-model="selectedSource[source.id]" ng-disabled="selectedSourceDisabled[source.id]" ng-click="onSelect(source.id)">{{ source.name | uppercase}}</input>
           </div>
         </form>
       <div class="input-group">
@@ -103,48 +107,48 @@
 <div class="right-panel">
 
 <div class="panel panel-info">
-
-  <div class="panel-body" class="collapse in" id="rightp">
-
-  <table st-table="u" class="table table-striped">
-    <thead>
-      <tr>
-        <th st-sort="name">Name</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th st-sort="street">Address</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th st-sort="city">City</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr st-select-row="row" st-pagination-scroll st-select-mode="multiple" ng-repeat="row in temporary" ng-click="selectTable()">
-          <td>{{row.name | uppercase }}</td>
-          <td>{{row.street }} </td>
-          <td>{{row.city }}</td>
-      </tr>
-    </tbody> 
-  </table>
-      </div>
-      <div class="panel-heading">
+    <div class="panel-heading">
       <div class="btn-group" role="group">
      <button type="button" class="btn btn-primary btn-sm" ng-model="selectedSet" data-html="1" ng-options="icon.name for icon in sources" bs-select>
       Action <span class="caret"></span>
     </button>
-    <button class="btn btn-primary btn-sm" ng-click="selectData()">Show</button>
+    <button class="btn btn-primary btn-sm" data-placement="bottom" ng-click="selectData()" data-animation="focus" autoClose="true" bs-popover="popover">Show</button>
   </div>
    <button class="btn btn-primary btn-sm" type="button">
   
   Points:{{sources.name[2]}} <span class="badge">{{sources.name}}{{pointsLoaded}}</span>
  
 </button>
-<!--  <button class=" btn btn-primary btn-sm" type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#rightp">
+ <!-- <button class=" btn btn-primary btn-sm" type="button" class="btn btn-default btn-sm" data-toggle="collapse" data-target="#rightp">
             <i class="glyphicon glyphicon-play"> </i>
             </button> -->
 </div> 
+  <div class="panel-body" class="collapse in" id="rightp" >
+
+  <table st-table="u" class="table table-striped">
+    <thead>
+      <tr>
+        <th st-sort="name">NAME</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th st-sort="street">ADDRESS</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th st-sort="city">CITY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr st-select-row="row" st-pagination-scroll st-select-mode="multiple" ng-repeat="row in temporary" ng-click="selectTable()">
+          <td>{{row.name | uppercase }}</td>
+          <td>{{row.street | uppercase }} </td>
+          <td>{{row.city | uppercase}}</td>
+      </tr>
+    </tbody> 
+  </table>
+      </div>
+    
       </div> 
 </div>
   </div>                 

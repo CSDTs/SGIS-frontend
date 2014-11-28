@@ -1,7 +1,7 @@
 /*Map container*/
 .angular-google-map-container {
 	
-  height: 640px;
+  height: 700px;
 	z-index: 0;
 	top: 0px;
 }
@@ -51,7 +51,7 @@
 .right-panel {
 	position: absolute;
 	left: 0px;
-	top: 357px;
+	top: 370px;
 	width: 300px;
 	height: 20%;
 	z-index: 10;
@@ -204,6 +204,25 @@ border-color: black
   color: #262626;
   background-color: #ffff00;
 }
+.footer {
+  background: #4A4948;
+  color: #fff;
+  padding: 10px 0;
+  height: 250px;
+  text-align: center;
+}
+.footer .copyright {
+  line-height: 1.6;
+  color: #a1aab4;
+  font-size: 14px;
+  display: inline-block;
+}
+.footer a {
+  color: #fff;
+}
+.footer .fa-heart {
+  color: #fb866a;
+}
 /*Table Type 1 starts*********************************************/
  
         table {
@@ -212,7 +231,7 @@ border-color: black
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    height: 230px; /* this can vary */
+    height: 260px; /* this can vary */
 }
 table * {
     box-sizing: inherit;
@@ -248,6 +267,58 @@ tfoot td {
     width: 100%;
     display: inline-block;
 } 
+@media (min-width: 1400px) {
+  .container {
+    width: 1360px;
+  }
+}
+a.dotted-link {
+  border-bottom: 1px dotted #778492;
+  color: #778492;
+}
+a.dotted-link:hover {
+  text-decoration: none;
+  color: #49515a;
+}
+.info .fa {
+  margin-right: 15px;
+  color: #ccd1d6;
+}
+.info .fa.fa-envelope-o {
+  font-size: 14px;
+}
+.ghfeed {
+  height: 600px;
+}
+.ghfeed,
+.ghfeed *,
+.ghfeed *:before,
+.ghfeed *:after {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.sections-wrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.section {
+  margin-bottom: 30px;
+}
+.section .section-inner {
+  background: #fff;
+  padding: 30px;
+}
+.section .heading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #545e69;
+  font-size: 24px;
+}
+.section .content .more-link .fa {
+  margin-right: 5px;
+  font-size: 14px;
+}
 /*Table Type 2 starts*********************************************/
 .st-sort-ascent:before {
     content: '\25B2';
