@@ -272,14 +272,7 @@ tfoot td {
     width: 1360px;
   }
 }
-a.dotted-link {
-  border-bottom: 1px dotted #778492;
-  color: #778492;
-}
-a.dotted-link:hover {
-  text-decoration: none;
-  color: #49515a;
-}
+
 .info .fa {
   margin-right: 15px;
   color: #ccd1d6;

@@ -11,8 +11,6 @@
             <p > {{tableRow.name}}{{tableRow.street}} </p>
           </div>
       </window>
-     <!--  <markers models="data.geometry" coords="self" options="editTagEvents.options" events="editTagEvents.events">
-      </markers> -->
       <markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
         <windows show="true" closeClick="'closeClick'" options="infoWindowWithCustomClass.options">
           <div>
@@ -24,14 +22,6 @@
       </markers>
     <!-- Location services  -->
       <markers models="dataLocation" doCluster="doCluster" coords="'self'" events="editTagEvents.events">
-      <!-- </markers>
-              <marker idKey="5" coords="m.results[0].geometry" >
-      </marker>
-      <marker idKey="6" coords="m.results[1].geometry" >
-      </marker>`
-      <markers models="m.results" coords="geometry">
-      </markers>
-      <markers ng-repeat="l in data" models="l" coords="geometry" click="'onClicked'" doCluster="doCluster" icon="'img'" events="editTagEvents.events" > -->
       <polygon ng-repeat="d in polyData1" path="d.geometry" fill='fillcolor' stroke='strokecolor' clickable="true" events="polygonEvents" >
       </polygon>
     </google-map>
@@ -99,10 +89,6 @@
         </div>
 
       </div><!-- panel body -->
-     <!--  <div>
-        <button class="btn btn-primary" type="button" ng-click="changeSkin()" >HI </button>
-      </div> -->
-  
     </div> <!-- panel -->
 <div class="right-panel">
 
@@ -112,8 +98,9 @@
      <button type="button" class="btn btn-primary btn-sm" ng-model="selectedSet" data-html="1" ng-options="icon.name for icon in sources" bs-select>
       Action <span class="caret"></span>
     </button>
-    <button class="btn btn-primary btn-sm" data-placement="bottom" ng-click="selectData()" data-animation="focus" autoClose="true" bs-popover="popover">Show</button>
+    <button class="btn btn-primary btn-sm" data-placement="bottom" ng-click="selectData()" data-animation="focus" autoClose="true" >Show</button>
   </div>
+  <!-- bs-popover="popover" -->
    <button class="btn btn-primary btn-sm" type="button">
   
   Points:{{sources.name[2]}} <span class="badge">{{sources.name}}{{pointsLoaded}}</span>
