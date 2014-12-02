@@ -613,5 +613,9 @@ $scope.searchText;
       console.log(this.row);
 
     };
+    //=========================Download file ===================
+   // $scope.downloadAllDataSet=function(){
+
+   // }; 
 });
 

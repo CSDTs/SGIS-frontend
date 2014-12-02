@@ -70,7 +70,8 @@
           dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&tag=:selectedTag&match=:matchModel&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon',
           tagService:'/api-ds/:Id',
           polygonService:'/api-poly/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pagePoly',
-          dataEdit:'/api-newtag/'
+          dataEdit:'/api-newtag/',
+          downloadFile:'/api-dist/?dataset=:dataSetId&year=2010&format=csv'
         }
       };
     </script>
@@ -115,7 +116,6 @@
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="../bower_components/angular-ui-sortable/sortable.js"></script>
     <script src="../bower_components/angular-dashboard-framework/dist/angular-dashboard-framework.min.js"></script>
-
     <!-- endbower -->
     <!-- endbuild -->
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -132,6 +132,7 @@
         <script src="scripts/controllers/addTag.js"></script>
         <script src="scripts/services/tagfiltering.js"></script>
         <script src="scripts/services/locationservice.js"></script>
+         <script src="scripts/services/downloadFile.js"></script>
        
 
         <!-- endbuild -->

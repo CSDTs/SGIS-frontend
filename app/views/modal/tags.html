@@ -51,27 +51,33 @@
 	  					</tags-input>
 	  				</div>
 				</div>
-		   				<div >
+		   				<!-- <div >
 		   					<google-map class="tagMap" bounds="mapTag.bounds" center="mapTag.center" zoom="mapTag.zoom" draggable='true' options="mapTag.options" events="mapTag.events" refresh="'refresh'" control="mapTag.control">
 								 <marker idKey="2" coords="tagObject" options="editTagEvents.options" events="mapTag.marker.events">
 								</marker> 
 								</google-map>
-		   				</div>
+		   				</div> -->
 	  					<br>
 	  			<div class="row">
 	   				<div class="col-xs-2 col-md-2">
 	   					<button class="btn btn-success" ng-click="saveTag(tagObject);$hide()">Save Tag</button>
 	   				</div>
 	   				<div class="col-xs-2 col-md-2">
-	   					<button class="btn btn-success" ng-click="">One </button>
+	   					<label class="btn btn-default">
+	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{damn}}" download="expenses.xls">Download  <span class="glyphicon glyphicon-download-alt">  </span></a>
+	   					</label>
 	   				</div>
 	   				<div class="col-xs-2 col-md-2">
 	  				</div>
-	  				<div class="col-xs-2 col-md-2">
-	  				</div>
+	  				
 	   				<div class="col-xs-2 col-md-2">
-	   					<button class="btn btn-success" ng-click="">All</button>
+						<label class="btn btn-default">
+	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{damn}}" download="expenses.xls">Download All  <span class="glyphicon glyphicon-download-alt">  </span></a>
+	   					</label>
+	   					
 	   				</div>
+	   				<div class="col-xs-2 col-md-2">
+	  				</div>
 	  				<div class="col-xs-2 col-md-2">
 	  				<button type="button" class="btn btn-warning" ng-click="$hide()">Close</button>
 	  				</div>

@@ -72,10 +72,9 @@
 }
 body { padding-bottom: 70px; }
 .custom-info-window{
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 20px;
-    /*border: 1px solid white;*/
+    background: rgba(256,256,256,1);
+    color: black;
+    padding: 10px;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 5px;
     width: 280px;
@@ -94,8 +93,8 @@ body { padding-bottom: 70px; }
 }
 #pac-input {
     background-color: #fff;
-    padding: 0 11px 0 13px;
-    width: 400px;
+    padding: 0 15px 0 13px;
+    width: 264px;
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
@@ -106,7 +105,7 @@ body { padding-bottom: 70px; }
 	border-color: #4d90fe;
 	margin-left: 5px;
 	padding-left: 14px;  /* Regular padding-left + 1. */
-	width: 401px;
+	width: 266px;
 }
 #chart-bar{
     height:50px;

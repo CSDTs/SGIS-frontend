@@ -6,9 +6,10 @@
       <window show="showWindow" options="infoWindowWithCustomClass.options">
         <p>Home</p>
       </window>
-      <window show="showWin" coords="tableRow.coords">
+      <window show="showWin"  coords="tableRow.coords">
          <div> 
-            <p > {{tableRow.name}}{{tableRow.street}} </p>
+            <p > {{tableRow.name}} </p>
+            <p>{{tableRow.street}}</p>
           </div>
       </window>
       <markers ng-repeat="t in data" doCluster="doCluster" models="t" coords="'self'" click="'onClicked'" icon="'img'" events="editTagEvents.events" >
