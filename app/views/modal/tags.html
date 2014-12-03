@@ -51,6 +51,7 @@
 	  					</tags-input>
 	  				</div>
 				</div>
+				<!--This tag can be used for adding the second google map in the popUp Window-->
 		   				<!-- <div >
 		   					<google-map class="tagMap" bounds="mapTag.bounds" center="mapTag.center" zoom="mapTag.zoom" draggable='true' options="mapTag.options" events="mapTag.events" refresh="'refresh'" control="mapTag.control">
 								 <marker idKey="2" coords="tagObject" options="editTagEvents.options" events="mapTag.marker.events">
@@ -66,7 +67,7 @@
 	  				</div>
 	   				<div class="col-xs-2 col-md-2">
 	   					<label class="btn btn-default">
-	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{damn}}" download="expenses.xls">Download  <span class="glyphicon glyphicon-download-alt">  </span></a>
+	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{csvfile}}" download="expenses.xls">Download  <span class="glyphicon glyphicon-download-alt">  </span></a>
 	   					</label>
 	   				</div>
 	   				<div class="col-xs-1 col-md-1">
@@ -74,7 +75,7 @@
 	  				
 	   				<div class="col-xs-2 col-md-2">
 						<label class="btn btn-default">
-	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{damn}}" download="expenses.xls">Download All  <span class="glyphicon glyphicon-download-alt">  </span></a>
+	   					<a ng-href="http://www2.census.gov/acs/2005_Gulf_Coast_Area_Data_Profiles/{{csvfile}}" download="expenses.xls">Download All  <span class="glyphicon glyphicon-download-alt">  </span></a>
 	   					</label>
 	   					
 	   				</div>
@@ -90,4 +91,3 @@
     </div>
   </div>
 </div>
-<!-- <multi-select input-model="tagObject.multiTags" item-label="tag" button-label="tag" tick-property="selected" output-model="tagObject.outputTagSelect"></multi-select> -->

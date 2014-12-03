@@ -23,7 +23,6 @@ angular.module('socialjusticeApp')
     $scope.draghalt=0;
     $scope.dataShow={};
     $scope.selectedSet={};
-    $scope.zoomlevel;
     $scope.showWin=false; 
     $scope.pointsLoaded=0;
     $scope.Id=1;
@@ -109,7 +108,7 @@ angular.module('socialjusticeApp')
             options:{draggable:true},
             events:{
                 click:function(){
-                console.log("click marker");    
+                    
                 $scope.showTagWindow=true;
                 }
             }
@@ -215,7 +214,7 @@ angular.module('socialjusticeApp')
         }
     }     
 };
-    $scope.loadTags = function(query) {
+    $scope.loadTags = function() {
         return tagService.query({Id:$scope.Id}).$promise;
     };
   //===============ENd Adding Tag Functionality===========================
@@ -279,9 +278,7 @@ angular.module('socialjusticeApp')
             }
         }    
     };
-    $scope.getViewPortBounds=function(){
-        var bounds =  $scope.map.control.getGMap().getBounds();
-    };
+
     $scope.checkFilter=function(){
             $scope.selectedTagUrl='';
             for(var m=0 ;m<=$scope.selectedTag.length-2;m++){
@@ -589,10 +586,10 @@ angular.module('socialjusticeApp')
         }
     }
     //=======================End Polygon Loading=====================
-$scope.searchText;
+
     $scope.selectData=function(){
-        console.log('select data');
-        if($scope.data[$scope.selectedSet.id]==undefined){
+        
+        if($scope.data[$scope.selectedSet.id]===undefined){
 
         }
         else{
@@ -613,9 +610,5 @@ $scope.searchText;
       console.log(this.row);
 
     };
-    //=========================Download file ===================
-   // $scope.downloadAllDataSet=function(){
-
-   // }; 
 });
 
