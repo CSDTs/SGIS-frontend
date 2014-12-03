@@ -33,7 +33,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-map-marker"> </i> SGIS</a>
+            <a class="navbar-brand"><i class="glyphicon glyphicon-map-marker"> </i> SGIS</a>
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -44,20 +44,24 @@
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
+
       <div ng-view=""></div>
       <div class="footer">
-      <small class="copyright">Rensselaer Polytechnic Institute@2014</small>
-      <div class="center"> 
-        <small class="copyright">Contact Information:
-        <br>Ron Eglash  :
-          <a href="mailto:eglash@rpi.edu">eglash@rpi.edu</a> <br>Gouravjeet Singh  :
-          <a href="mailto:singhg4@rpi.edu">singhg4@rpi.edu</a><br>
-          Kathleen Tully :
-          <a href="mailto:kathleen.tully@gmail.com">kathleen.tully@gmail.com</a>
-        </small>
-        </div>
+       <p>Rensselaer Polytechnic Institute@2014</p>
+      <!-- <small class="copyright">Rensselaer Polytechnic Institute@2014</small>
+        <div class="center"> 
+          <small class="copyright">Contact Information:
+          <br>Ron Eglash  :
+            <a href="mailto:eglash@rpi.edu">eglash@rpi.edu</a> <br>Gouravjeet Singh  :
+            <a href="mailto:singhg4@rpi.edu">singhg4@rpi.edu</a><br>
+            Kathleen Tully :
+            <a href="mailto:kathleen.tully@gmail.com">kathleen.tully@gmail.com</a>
+          </small>
+        </div> -->
       </div>
+
     </div>
+    
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -121,15 +125,13 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/charts.js"></script>
+        <script src="scripts/controllers/addTag.js"></script>
         <script src="scripts/services/config.js"></script>
         <script src="scripts/services/datasource.js"></script>
         <script src="scripts/services/datafeed.js"></script>
         <script src="scripts/services/dataedit.js"></script>
         <script src="scripts/services/polygonservice.js"></script>
         <script src="scripts/services/tagservice.js"></script>
-        <script src="scripts/controllers/addTag.js"></script>
         <script src="scripts/services/tagfiltering.js"></script>
         <script src="scripts/services/locationservice.js"></script>
          <script src="scripts/services/downloadFile.js"></script>
