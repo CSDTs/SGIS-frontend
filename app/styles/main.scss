@@ -1,46 +1,63 @@
+/*Map container*/
 .angular-google-map-container {
-	height: 840px;
-	z-index: 0;
-	top: 0px;
-}
-div .row .col-xs-2 col-md-12 .maptag{
-  height: 200px;
-  z-index: 0;
-  top: 0px;
-}
-#tagMap{
   
-}
-#maptagid{
-  height: 200px;
-  width: 200px;
+  height: 700px;
   z-index: 0;
   top: 0px;
 }
+.ng-table {
+    border: 1px solid #000;
+}
+
+.tagMap .angular-google-map-container{
+  height: 200px;
+  z-index: 0;
+}
+
+/*#mapcan {
+  height: 420px;
+  z-index: 0;
+  top: 0px;
+}*/
+
+.tagMap{
+  height: 200px;
+  z-index: 0;
+}
+/*google-map .hell{
+  position: absolute;
+  height: 50%;
+}*/
+/*#maptagid{
+  height: 200px;
+  position: static;
+  z-index: 0;
+  top: 0px;
+}*/
 .container-fluid {
-	margin: 0 0 0 0;
-	padding-left: 0;
-	padding-right: 0;
+  margin: 0 0 0 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .left-panel {
-	position: absolute;
-	left: 0px;
-	width: 340px;
-	height: 100%;
-	z-index: 10;
-	top:72px;
+  position: absolute;
+  left: 0px;
+  width: 300px;
+  height: 50%;
+  z-index: 10;
+  top:72px;
 
 }
 .right-panel {
-	position: absolute;
-	right: 40px;
-	top:400px;
-	width: 220px;
-	height: 20%;
-	z-index: 10;
+  position: absolute;
+  left: 0px;
+  top: 370px;
+  width: 300px;
+  height: 20%;
+  z-index: 10;
 }
 .panel-heading{
-    height:35px;
+    height:40px;
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 5px;
@@ -55,10 +72,9 @@ div .row .col-xs-2 col-md-12 .maptag{
 }
 body { padding-bottom: 70px; }
 .custom-info-window{
-    background: rgba(0,0,0,0.5);
-    color: white;
-    padding: 20px;
-    /*border: 1px solid white;*/
+    background: rgba(256,256,256,1);
+    color: black;
+    padding: 10px;
     box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
     border-radius: 5px;
     width: 280px;
@@ -77,8 +93,8 @@ body { padding-bottom: 70px; }
 }
 #pac-input {
     background-color: #fff;
-    padding: 0 11px 0 13px;
-    width: 400px;
+    padding: 0 15px 0 13px;
+    width: 264px;
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
@@ -86,10 +102,10 @@ body { padding-bottom: 70px; }
   }
 
 #pac-input:focus {
-	border-color: #4d90fe;
-	margin-left: 5px;
-	padding-left: 14px;  /* Regular padding-left + 1. */
-	width: 401px;
+  border-color: #4d90fe;
+  margin-left: 5px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+  width: 266px;
 }
 #chart-bar{
     height:50px;
@@ -127,22 +143,22 @@ border-color: black
 .form-group.has-error .help-block {
   display: block;
 }
-
 .modal-backdrop.am-fade {
-  opacity: .5;
-  transition: opacity .15s linear;
-  &.ng-enter {
-    opacity: 0;
-    &.ng-enter-active {
-      opacity: .5;
-    }
-  }
-  &.ng-leave {
     opacity: .5;
-    &.ng-leave-active {
-      opacity: 0;
-    }
-  }
+    transition: opacity .05s linear;
+}
+.modal-backdrop.am-fade.ng-enter {
+    opacity: 0;
+}
+.modal-backdrop.am-fade.ng-enter.ng-enter-active {
+    opacity: .5;
+}
+
+.modal-backdrop.am-fade.ng-leave {
+    opacity: .5;
+}
+.modal-backdrop.am-fade.ng-leave.ng-leave-active {
+    opacity: 0;
 }
 .bootstrap .tags {
   background-color: #fff;
@@ -169,7 +185,7 @@ border-color: black
 }
 .bootstrap .tags .tag-item button {
   background: transparent;
-  color: #000;
+  color: #fff;
   opacity: .4;
 }
 .bootstrap .autocomplete {
@@ -187,3 +203,160 @@ border-color: black
   color: #262626;
   background-color: #ffff00;
 }
+.footer {
+  background: #4A4948;
+  color: #fff;
+  padding: 10px 0;
+  height: 250px;
+  text-align: center;
+}
+.footer .copyright {
+  line-height: 1.6;
+  color: #a1aab4;
+  font-size: 14px;
+  display: inline-block;
+}
+.footer a {
+  color: #fff;
+}
+.footer .fa-heart {
+  color: #fb866a;
+}
+/*Table Type 1 starts*********************************************/
+ 
+        table {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 260px; /* this can vary */
+}
+table * {
+    box-sizing: inherit;
+    -moz-box-sizing: inherit;
+}
+thead {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+tbody {
+    overflow-y: scroll;
+    display: inline-block;
+}
+thead > tr, tbody > tr, tfoot > tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+thead, tfoot {
+    flex-shrink: 0;
+}
+ tbody td {
+    width: 100%; /* this can vary */
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+tfoot {
+    display: inline-block;
+}
+tfoot td {
+    width: 100%;
+    display: inline-block;
+} 
+@media (min-width: 1400px) {
+  .container {
+    width: 1360px;
+  }
+}
+
+.info .fa {
+  margin-right: 15px;
+  color: #ccd1d6;
+}
+.info .fa.fa-envelope-o {
+  font-size: 14px;
+}
+.ghfeed {
+  height: 600px;
+}
+.ghfeed,
+.ghfeed *,
+.ghfeed *:before,
+.ghfeed *:after {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.sections-wrapper {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.section {
+  margin-bottom: 30px;
+}
+.section .section-inner {
+  background: #fff;
+  padding: 30px;
+}
+.section .heading {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #545e69;
+  font-size: 24px;
+}
+.section .content .more-link .fa {
+  margin-right: 5px;
+  font-size: 14px;
+}
+/*Table Type 2 starts*********************************************/
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+.st-sort-descent:before {
+    content: '\25BC';
+}
+.table-container{
+    height:700px;
+    overflow-y:scroll;
+}
+.loading-indicator {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 0.7em; }
+.loading-indicator:before {
+    display: inline-block;
+    margin: 0 0.4em;
+    min-width: 1em;
+    min-height: 1em;
+    border-top: 4px solid #646464;
+    border-right: 4px solid #e6e6e6;
+    border-left: 4px solid #e6e6e6;
+    border-bottom: 4px solid #646464;
+    content: "";
+    -webkit-animation: halfspin 1s ease infinite;
+    -moz-animation: halfspin 1s ease infinite;
+    -o-animation: halfspin 1s ease infinite;
+    animation: halfspin 1s ease infinite;
+    border-radius: 100%; }
+@-webkit-keyframes halfspin {
+    to {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg); } }
+@-moz-keyframes halfspin {
+    to {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg); } }
+@keyframes halfspin {
+    to {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg); } }
+/*Table Type 2 ends *********************************************/        

@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('socialjusticeApp')
-.controller('addTagCtrl',function($scope, $modal,$resource,dataEdit,djResource,downloadFile,config) {
+.controller('addTagCtrl',function($scope, $modal,dataEdit,djResource) {
 	// Pre-fetch an external template populated with a custom scope
-		$scope.damn='Gulf_Coast_Area_Geographies.xls';
+	$scope.damn='Gulf_Coast_Area_Geographies.xls';
 	var myOtherModal  = $modal({scope: $scope, template: 'views/modal/tags.html', show: false});
 	// Show when some event occurs (use $promise property to ensure the template has been loaded)
 	$scope.showModal = function() {
@@ -24,12 +24,8 @@ angular.module('socialjusticeApp')
         });
         console.log($scope.d);
         $scope.damn='Gulf_Coast_Area_Geographies.xls';
-		// $scope.download=downloadFile.query({
-  //           'dataSetId':$scope.dataSetId
-  //           }).$promise.then(function(data){
-            
-  //       });
+		
    	}; 
-
+	
 });
 

@@ -2,7 +2,7 @@
   "name": "socialjustice",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.16",
+    "angular": "~1.3.0",
     "json3": "~3.3.1",
     "es5-shim": "~3.1.0",
     "bootstrap": "~3.1.1",
@@ -12,7 +12,7 @@
     "angular-animate": "1.2.16",
     "angular-touch": "1.2.16",
     "angular-route": "1.2.16",
-    "angular-google-maps": "1.2.4",
+    "angular-google-maps": "~1.1.4",
     "autocomplete": "~0.1.9",
     "ngAutocomplete": "~1.0.0",
     "angular-strap": "~2.0.3",
@@ -25,11 +25,7 @@
     "allmighty-autocomplete": "*",
     "jquery-ui": "~1.11.1",
     "angucomplete": "*",
-    "bluebird": "~2.3.5",
-    "angular-scrollable-table": "*",
-    "angu-fixed-header-table": "*",
-    "angular-smart-table": "~1.4.4",
-    "angular-dashboard-framework": "~0.4.0"
+    "bluebird": "~2.3.5"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

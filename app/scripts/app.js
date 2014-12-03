@@ -24,10 +24,7 @@ angular
     'checklist-model',
     'djangoRESTResources',
     'ngTagsInput',
-    'angucomplete',
-    'scrollable-table',
-    'anguFixedHeaderTable',
-    'smart-table'
+    'angucomplete'
   ])
   .config(function ($routeProvider) {
     $routeProvider

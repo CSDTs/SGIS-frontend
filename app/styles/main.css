@@ -1,9 +1,9 @@
 /*Map container*/
 .angular-google-map-container {
-	
+  
   height: 700px;
-	z-index: 0;
-	top: 0px;
+  z-index: 0;
+  top: 0px;
 }
 .ng-table {
     border: 1px solid #000;
@@ -35,26 +35,26 @@
   top: 0px;
 }*/
 .container-fluid {
-	margin: 0 0 0 0;
-	padding-left: 0;
-	padding-right: 0;
+  margin: 0 0 0 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .left-panel {
-	position: absolute;
-	left: 0px;
-	width: 300px;
-	height: 50%;
-	z-index: 10;
-	top:72px;
+  position: absolute;
+  left: 0px;
+  width: 300px;
+  height: 50%;
+  z-index: 10;
+  top:72px;
 
 }
 .right-panel {
-	position: absolute;
-	left: 0px;
-	top: 370px;
-	width: 300px;
-	height: 20%;
-	z-index: 10;
+  position: absolute;
+  left: 0px;
+  top: 370px;
+  width: 300px;
+  height: 20%;
+  z-index: 10;
 }
 .panel-heading{
     height:40px;
@@ -102,10 +102,10 @@ body { padding-bottom: 70px; }
   }
 
 #pac-input:focus {
-	border-color: #4d90fe;
-	margin-left: 5px;
-	padding-left: 14px;  /* Regular padding-left + 1. */
-	width: 266px;
+  border-color: #4d90fe;
+  margin-left: 5px;
+  padding-left: 14px;  /* Regular padding-left + 1. */
+  width: 266px;
 }
 #chart-bar{
     height:50px;
