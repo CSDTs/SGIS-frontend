@@ -2,41 +2,16 @@
 
 /**
  * @ngdoc overview
- * @name socialjusticeApp
+ * @name sgisApp
  * @description
- * # socialjusticeApp
+ * # sgisApp
  *
  * Main module of the application.
  */
-angular
-  .module('socialjusticeApp', [
-    'ngAnimate',
-    'ngCookies',
+angular.module('sgisApp', [
     'ngResource',
-    'ngRoute',
-    'ngSanitize',
+   /* 'ngSanitize',*/
     'ngTouch',
-    'google-maps',
-    'ngAutocomplete',
-    'mgcrea.ngStrap',
-    'angularCharts',
-    'multi-select',
-    'checklist-model',
-    'djangoRESTResources',
-    'ngTagsInput',
-    'angucomplete'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    'map-module',
+    'ui-module'
+]);

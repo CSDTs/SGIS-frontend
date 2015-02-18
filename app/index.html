@@ -9,121 +9,60 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
-    <link rel="stylesheet" href="bower_components/angular-multi-select/angular-multi-select.css" />
-    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
-    <link rel="stylesheet" href="bower_components/allmighty-autocomplete/style/autocomplete.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-      <!-- endbuild -->
+    <!-- endbuild -->
   </head>
-  <body ng-app="socialjusticeApp" ng-controller="MainCtrl">
+  <body ng-app="sgisApp">
+
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
     <!-- Add your site or application content here -->
-    <div class="container-fluid">
-      <nav class="navbar navbar-inverse" role="navigation">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"> <i class="glyphicon glyphicon-map-marker"> </i>SGIS</a>
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/"><span class="glyphicon glyphicon-home"></span> Home </a></li>
-              <li ><a href="#/about">About</a></li>
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-      <div ng-view=""></div>
-      <div class="footer">
-      <small class="copyright">Rensselaer Polytechnic Institute@2014</small>
-        <div class="center"> 
-          <small class="copyright">Contact Information:
-          <br>Ron Eglash  :
-            <a href="mailto:eglash@rpi.edu">eglash@rpi.edu</a> <br>Gouravjeet Singh  :
-            <a href="mailto:singhg4@rpi.edu">gouravjeet@gmail.com</a><br>
-            Kathleen Tully :
-            <a href="mailto:kathleen.tully@gmail.com">kathleen.tully@gmail.com</a>
-          </small>
-        </div>
-      </div>
+    <div>
+      <div class="header">
+        <span class="glyphicon glyphicon-map-marker"> </span>SGIS
+      </div><!--header-->
+    </div><!-- /.container-fluid -->
+
+    <div id="main" ng-controller="UiController as uiCtrl">
+      <span ng-controller="MapController as mapCtrl">
+        <ui-gmap-google-map center='mapCtrl.map.center' zoom='mapCtrl.map.zoom'></ui-gmap-google-map>       
+      </span>
+
+      <div id="right-panel">
+        <div ng-include="'views/panel.html'"></div>
+      </div>   
     </div>
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-      var config = {
-        serverRoot: 'http://107.170.106.235',
-        routes: {
-          dataSource: '/api-ds/:id',
-          dataFeed: '/api-mp/?dataset=:dataSourceId&page_size=100&page=:pageFeed&max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&tag=:selectedTag&match=:matchModel',
-          tagService:'/api-ds/:Id',
-          polygonService:'/api-poly/?max_lat=:maxLat&min_lon=:minLon&min_lat=:minLat&max_lon=:maxLon&page_size=100&page=:pagePoly',
-          dataEdit:'/api-tag/'
-        }
-      };
-    </script>
-    <script src="bower_components/bluebird/js/browser/bluebird.js"></script>
-     <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyBsqM8z-sm8gohHbuBO-2KlzbTyxbEAvsc&sensor=false&libraries=places,drawing"></script>
+    
+    <div class="footer">
+      <small class="copyright">©2015 Rensselaer Polytechnic Institute</small>
+    </div>
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
-    <script src="bower_components/requirejs/require.js"></script>
-    <script src="bower_components/autocomplete/dist/autocomplete.js"></script>
-    <script src="bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
-    <script src="bower_components/angular-multi-select/angular-multi-select.js"></script>
-    <script src="bower_components/angular-bootstrap-show-errors/src/showErrors.js"></script>
-    <script src="bower_components/checklist-model/checklist-model.js"></script>
-    <script src="bower_components/angular-django-rest-resource/angular-django-rest-resource.js"></script>
-    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-    <script src="bower_components/allmighty-autocomplete/script/autocomplete.js"></script>
-    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
-    <script src="bower_components/angucomplete/angucomplete.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!--<script src="scripts/controllers/main.js"></script>-->
+        <script src="scripts/controllers/ui.js"></script>
+        <script src="scripts/controllers/map.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/charts.js"></script>
-        <script src="scripts/services/config.js"></script>
-        <script src="scripts/services/datasource.js"></script>
-        <script src="scripts/services/datafeed.js"></script>
-        <script src="scripts/services/dataedit.js"></script>
-        <script src="scripts/services/polygonservice.js"></script>
-        <script src="scripts/services/tagservice.js"></script>
-        <script src="scripts/controllers/addTag.js"></script>
-        <script src="scripts/services/tagfiltering.js"></script>
-        <script src="scripts/services/locationservice.js"></script>
+        <script src="scripts/controllers/dataset-list.js"></script>
+        <script src="scripts/config.js"></script>
         <!-- endbuild -->
 </body>
 </html>

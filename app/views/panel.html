@@ -1,0 +1,45 @@
+<div id="grandparent" class="list-group panel">
+  <div class="list-group-item list-group-item-info" data-parent="#grandparent">
+    <form novalidate class="simple-form">
+      <div class="input-group input-group-sm">
+        <input id="pac-input" type="text" id="Autocomplete1" class="form-control" placeholder="Find a location"
+        ng-model="autocomplete" ng-autocomplete="result"  details="details" data-animation="am-flip-x" ng-options="options">
+        <span class="input-group-btn">
+          <button class="btn btn-primary glyphicon glyphicon-search" ng-click="convertCoords()" type="button"></button>
+        </span>
+      </div>
+    </form> 
+  </div>
+  <div ng-controller="DatasetListController as datasetListCtrl">
+    <a href="#datasetList" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Datasets<span class="badge">{{ datasetListCtrl.count }}</span></a>
+    <div class="collapse" id="datasetList">
+      <div class="list-group-item">
+        <div class="input-group input-group-sm input-group-btn">
+          <button id="refresh-but" class="btn btn-primary btn-sm glyphicon glyphicon-refresh" ng-click="refreshMap()"></button>
+          <button id="stop-but" class="btn btn-primary btn-sm glyphicon glyphicon-stop" type="button" ng-click="saveState()"></button>
+          <!--<button id="cluster-but" class="btn btn-primary btn-sm" type="button" ng-click="saveState()">cluster points</button>-->
+        </div>
+      </div>
+      <div class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
+        <input type="checkbox" ng-model="datasetListCtrl.activeDatasets[datasetId]" ng-change="datasetListCtrl.toggleActivatedDataset(datasetId)">{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
+      </div>
+    </div>
+    <!--filter part!-->
+    <a href="#filterPanel" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Filter</a>
+    <div class="collapse" id="filterPanel">
+      <div class="input-group list-group-item">
+        <tags-input ng-model="selectedTag" display-property="tag"  placeholder="Filter by Tag" ng-options="state for state in states">
+          <auto-complete source="datasetListCtrl.activeTags" min-length="1"></auto-complete>
+        </tags-input>
+        <span class="input-group-btn">
+          <button class="btn btn-primary" type="button" ng-click="checkFilter()" > <span class="glyphicon glyphicon-filter"></span></button>
+          <button class="btn btn-primary" type="button" ng-click="Default()" > <span class="glyphicon glyphicon-remove-circle"></span></button> 
+        </span>
+        <input type="radio" name="matchfilter" ng-model="matchModel" value="any" checked><span class="label label-primary" >Match Any</span>
+        <input type="radio" name="matchfilter" ng-model="matchModel" value="all"><span class="label label-primary" >Match All</span>
+      </div><!-- /input-group -->
+    </div>
+  </div> <!--end datasetlistctrl scope-->
+</div>
+
+
