@@ -1,8 +1,15 @@
-var datasetServices = angular.module('datasetServices', ['ngResource']);
+'use strict';
 
-datasetServices.factory('Phone', ['$resource',
-  function($resource){
-    return $resource('phones/:phoneId.json', {}, {
-      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
-    });
-  }]);
+angular.module('sgisApp')
+  .service('datasetList', ['$resource','config',function datasetList($resource, config) {
+    return $resource(config.route('datasetList'), {}, {query: {method: 'GET', isArray: false}});
+}]);
+/*"api-sensors": "http://127.0.0.1:8000/api-sensors/", 
+    "api-count": "http://127.0.0.1:8000/api-count/", 
+    "api-ds": "http://127.0.0.1:8000/api-ds/", 
+    "api-mp": "http://127.0.0.1:8000/api-mp/", 
+    "api-newtag": "http://127.0.0.1:8000/api-tag/", 
+    "api-poly": "http://127.0.0.1:8000/api-poly/", 
+    "api-tag": "http://127.0.0.1:8000/api-tag/", 
+    "api-test": "http://127.0.0.1:8000/api-dist/", 
+    "api-dist"*/

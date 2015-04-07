@@ -11,7 +11,7 @@
     </form> 
   </div>
   <div ng-controller="DatasetListController as datasetListCtrl">
-    <a href="#datasetList" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Datasets<span class="badge">{{ datasetListCtrl.count }}</span></a>
+    <a href="#datasetList" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Datasets<span class="badge">{{ datasetListCtrl.datasets.length }}</span></a>
     <div class="collapse" id="datasetList">
       <div class="list-group-item">
         <div class="input-group input-group-sm input-group-btn">
