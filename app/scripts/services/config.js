@@ -13,18 +13,21 @@ angular.module('sgisApp')
   .service('config', function config() {
     var makeConfig = function() {
       var config = {
-        map: {
+        /*map: {
           maxZoomLevelLoading: 12,
           startZoom: 8,
           startLocation: [42.000, -91.000]
-        },
+        },*/
         serverRoot: 'http://127.0.0.1:8000',
         routes: {
           datasetList: '/api-ds/',
           dataSource: '/fake_data/dataSource/:id.json',
           dataFeed: '/fake_data/dataFeed.json?dataSource=:dataSourceId'
         },
-        route: function(name, values) {
+        /*mapOptions: function(){
+          return {center: {latitude: this.map.startLocation[0], longitude: this.map.startLocation[1]}, zoom: this.map.startZoom};
+        },*/
+        route: function(name) {
           var route = this.routes[name];
           /*if(values !== undefined) {
             for(var key in values) {

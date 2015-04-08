@@ -8,7 +8,7 @@
  * Controller of the sgisApp
  */
 angular.module('sgisApp')
-  .controller('DatasetListController', ['$scope','datasetList',function ($scope, datasetList) {
+  .controller('DatasetListController', ['$scope','datasetList','sharedTagService',function ($scope, datasetList,sharedTagService) {
     /*local scope accessible by anonymous functions*/
     var datasetListCtrl = this;
     /*function inside here is done when query returns*/
@@ -17,44 +17,36 @@ angular.module('sgisApp')
       datasetListCtrl.datasets = datasetListCtrl.datasets.results;
       var recursiveLoad = function(num){
         temp = datasetList.query({page:num},function(){
+          for (var i = 0; i < temp.results.length;i++){
+            temp.results[i]['active'] = false;
+          }
           datasetListCtrl.datasets = datasetListCtrl.datasets.concat(temp.results);
           if (temp.next != null){
             recursiveLoad(num+1);
           }
         });
       };
-      recursiveLoad(2);
+      for (var i = 0; i < datasetListCtrl.datasets.length;i++){
+        datasetListCtrl.datasets[i]['active'] = false;
+      }
+      if (temp.next!=null){
+        recursiveLoad(2);
+      }
     });
-   /* var temp = {};
-    var temp2 = {};
-    datasetListCtrl.datasets.map(function (value, index){
-    	temp[value.id] = value;
-    	temp2[value.id] = false;
-    	delete temp[value.id].id;
-    });
-    this.datasets = temp;
-  	this.activeDatasets = temp2;*/
-  	this.activeTags = [];
-  	this.here = false;
+  	datasetListCtrl.activeTags = sharedTagService.getTagList();
 
-
-  	this.setActiveTags = function(){
-  		this.activeTags = [];
-  		for (var k in this.activeDatasets){
-  			if(this.activeDatasets[k]){
-  				this.activeTags = this.activeTags.concat(this.datasets[k].tags);
-  			}
-  		}
-  	};
-
-  	this.toggleActivatedDataset = function (datasetId){
-  		if (this.activeDatasets[datasetId]) {
-  				this.here=true;
+  	datasetListCtrl.toggleActivatedDataset = function (datasetIndex){
+  		if (datasetListCtrl.datasets[datasetIndex].active) {
   		/*just activated, this is tied to checkbox*/
-  			this.activeTags = this.activeTags.concat(this.datasets[datasetId].tags);
+  			for (var i = 0; i < datasetListCtrl.datasets[datasetIndex]['tags'].length; i++ ){
+          sharedTagService.addTag(datasetListCtrl.datasets[datasetIndex]['tags'][i]);
+        }
 	  	} else {
-	  		this.setActiveTags();
+	  		for (var i = 0; i < datasetListCtrl.datasets[datasetIndex]['tags']; i++ ){
+          sharedTagService.removeTag(datasetListCtrl.datasets[datasetIndex]['tags'][i]);
+          
+        }
 	  	}
-  	}
+  	};
 
   }]);

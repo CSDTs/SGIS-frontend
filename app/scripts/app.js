@@ -13,5 +13,6 @@ angular.module('sgisApp', [
    /* 'ngSanitize',*/
     'ngTouch',
     'map-module',
-    'ui-module'
+    'ui-module',
+    'ngTagsInput'
 ]);
