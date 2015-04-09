@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sgisApp')
+angular.module('sgisServices')
   .service('datasetList', ['$resource','config',function datasetList($resource, config) {
     return $resource(config.route('datasetList'), {}, {query: {method: 'GET', isArray: false}});
 }]);

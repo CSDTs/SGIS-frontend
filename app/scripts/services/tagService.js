@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('sgisApp')
+angular.module('sgisServices')
   .service('sharedTagService', function () {
     var activeTagList = {};
+    var filterByList = [];
+    var matchAll = true;
 
     return {
+      //active tag stuff
       getTagList:function () {
         return Object.keys(activeTagList);
       },
@@ -27,6 +30,26 @@ angular.module('sgisApp')
         if (datasetListCtrl.activeTags[tag] == 0){
           delete datasetListCtrl.activeTags[tag];
         }
+      },
+      //filter by tag stuff
+      getFilterByListForInput: function(){
+        var list = [];
+        for (var tag in filterByList){
+          list.push({text:tag});
+        }
+        return list;
+      },
+      getFilterByList: function(){
+        return filterByList;
+      },
+      setFilterByList: function(list){
+
+      },
+      matchAll:function(){
+        matchAll = true;
+      },
+      matchAny:function(){
+        matchAll = false;
       }
   };
 })

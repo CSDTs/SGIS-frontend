@@ -1,7 +1,7 @@
 
-angular.module('map-module',['uiGmapgoogle-maps'])
-	.controller('MapController',function () {
+angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
+	.controller('MapController',['config',function (config) {
 		var mapCtrl = this;
-		mapCtrl.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
-	})
-;
+		mapCtrl.config = config.map;
+		mapCtrl.map = mapCtrl.config.starting;
+	}]);

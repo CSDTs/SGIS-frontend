@@ -8,7 +8,7 @@
  * Controller of the sgisApp
  */
 angular.module('sgisApp')
-  .controller('DatasetListController', ['$scope','datasetList','sharedTagService',function ($scope, datasetList,sharedTagService) {
+  .controller('DatasetListController', ['$scope','datasetList','sharedTagService',function ($scope,datasetList,sharedTagService) {
     /*local scope accessible by anonymous functions*/
     var datasetListCtrl = this;
     /*function inside here is done when query returns*/

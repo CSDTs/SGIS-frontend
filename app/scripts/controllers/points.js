@@ -1,9 +1,12 @@
 'use strict';
 
-angular.module('sgisApp')
+angular.module('sgisServices')
   .service('sharedPointService', function () {
     var points = {};
-
+    var datasetStatus = {};
+    /*{array-index:  {id: ,
+                      lastPage: }}*/
+    
     return {
       getPoints:function () {
         return points;
