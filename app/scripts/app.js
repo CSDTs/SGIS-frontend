@@ -8,11 +8,15 @@
  *
  * Main module of the application.
  */
-angular.module('sgisApp', [
+angular.module('sgisServices', [
     'ngResource',
-   /* 'ngSanitize',*/
-    'ngTouch',
-    'map-module',
-    'ui-module',
-    'ngTagsInput'
+    'uiGmapgoogle-maps'
+]);
+angular.module('sgisApp', [
+	'ngResource',
+	'ngTouch',
+	'map-module',
+	'ui-module',
+    'ngTagsInput',
+    'uiGmapgoogle-maps'
 ]);
