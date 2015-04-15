@@ -1,23 +1,28 @@
 
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
-	.controller('MapController',['$scope','config','uiGmapGoogleMapApi',function ($scope,config,uiGmapGoogleMapApi) {
-		var mapCtrl = $scope;
-		mapCtrl.map = {
+	.controller('MapController',['$scope','config','envService','uiGmapGoogleMapApi',function ($scope,config,envService,uiGmapGoogleMapApi) {
+		$scope.map = {
+			zoom: 12,
+		    center: {latitude: 42.68,
+		               longitude: -73.70},
 			control: {},
 			events: {
-				dragend: function(){
-					console.log(mapCtrl.map.control);
-				},
-			},
+				tilesloaded: function(map,eventName,args){
+				var bounds = $scope.map.control.getGMap().getBounds();
+				alert();
+
+				envService.setBoundingBox({
+					maxLat: bounds.getNorthEast().lat(),
+					maxLon: bounds.getNorthEast().lng(), 
+					minLat: bounds.getSouthWest().lat(), 
+					minLon: bounds.getSouthWest().lng()
+				});
+				}
+			}
+
 		};
 
-		mapCtrl.bounds = {};
-		mapCtrl.config = config.map;
-		mapCtrl.map.center = mapCtrl.config.starting.center;
-		mapCtrl.map.zoom = mapCtrl.config.starting.zoom;
-		
 		uiGmapGoogleMapApi.then(function(maps) {
-			mapCtrl.map.events.dragend();
 		});
 	}]);
 

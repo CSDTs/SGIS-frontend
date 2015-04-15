@@ -31,7 +31,7 @@
 
     <div id="main" ng-controller="UiController as uiCtrl">
       <span ng-controller="MapController as mapCtrl">
-        <ui-gmap-google-map center='mapCtrl.map.center' zoom='mapCtrl.map.zoom'></ui-gmap-google-map>       
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control' events='map.events'></ui-gmap-google-map>       
       </span>
 
       <div id="right-panel">
@@ -65,6 +65,7 @@
         <script src="scripts/controllers/map.js"></script>
         <script src="scripts/services/config.js"></script>
         <script src="scripts/services/tagService.js"></script>
+        <script src="scripts/services/envService.js"></script>
         <script src="scripts/controllers/dataset-list.js"></script>
         <script src="scripts/controllers/filter.js"></script>
         <script src="scripts/services/datasets.js"></script>
