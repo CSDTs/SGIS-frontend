@@ -2,15 +2,10 @@
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
 	.controller('MapController',['$scope','config','envService','uiGmapGoogleMapApi',function ($scope,config,envService,uiGmapGoogleMapApi) {
 		$scope.map = {
-			zoom: 12,
-		    center: {latitude: 42.68,
-		               longitude: -73.70},
 			control: {},
 			events: {
 				tilesloaded: function(map,eventName,args){
 				var bounds = $scope.map.control.getGMap().getBounds();
-				alert();
-
 				envService.setBoundingBox({
 					maxLat: bounds.getNorthEast().lat(),
 					maxLon: bounds.getNorthEast().lng(), 
@@ -21,6 +16,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
 			}
 
 		};
+		$scope.map.zoom = config.map.starting.zoom;
+		$scope.map.center = config.map.starting.center;
 
 		uiGmapGoogleMapApi.then(function(maps) {
 		});
