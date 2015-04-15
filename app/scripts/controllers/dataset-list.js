@@ -8,7 +8,7 @@
  * Controller of the sgisApp
  */
 angular.module('sgisApp')
-  .controller('DatasetListController', ['$scope','datasetList','sharedTagService',function ($scope,datasetList,sharedTagService) {
+  .controller('DatasetListController', ['$scope','datasetList','sharedTagService','envService',function ($scope,datasetList,sharedTagService,envService) {
     /*local scope accessible by anonymous functions*/
     var datasetListCtrl = this;
     /*function inside here is done when query returns*/
@@ -38,14 +38,11 @@ angular.module('sgisApp')
   	datasetListCtrl.toggleActivatedDataset = function (datasetIndex){
   		if (datasetListCtrl.datasets[datasetIndex].active) {
   		/*just activated, this is tied to checkbox*/
-  			for (var i = 0; i < datasetListCtrl.datasets[datasetIndex]['tags'].length; i++ ){
-          sharedTagService.addTag(datasetListCtrl.datasets[datasetIndex]['tags'][i]);
-        }
+  			sharedTagService.addTags(datasetListCtrl.datasets[datasetIndex]);
+        envService.addActiveDataset(datasetIndex);
 	  	} else {
-	  		for (var i = 0; i < datasetListCtrl.datasets[datasetIndex]['tags']; i++ ){
-          sharedTagService.removeTag(datasetListCtrl.datasets[datasetIndex]['tags'][i]);
-          
-        }
+        sharedTagService.removeTags(datasetListCtrl.datasets[datasetIndex]);
+        envService.removeActiveDataset(datasetIndex);
 	  	}
   	};
 

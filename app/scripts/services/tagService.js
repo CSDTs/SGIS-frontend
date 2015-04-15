@@ -18,17 +18,21 @@ angular.module('sgisServices')
         }
         return list;
       },
-      addTag:function (tag) {
-        if (activeTagList.hasOwnProperty(tag)){
-            activeTagList[tag]++;
-          } else{
-            activeTagList[tag] = 1;
+      addTags:function(dataset){
+        for (var i = 0; i < dataset.tags.length; i++ ){
+          if(activeTagList.hasOwnProperty(dataset.tags[i])){
+            activeTagList[dataset.tags[i]][dataset.id] = true;
+          }else{
+            activeTagList[dataset.tags[i]] = {};
+            activeTagList[dataset.tags[i]][dataset.id] = true;
           }
+        }
       },
-      removeTag:function (tag) {
-        datasetListCtrl.activeTags[tag]--;
-        if (datasetListCtrl.activeTags[tag] == 0){
-          delete datasetListCtrl.activeTags[tag];
+      removeTags:function (dataset) {
+        for (var i = 0; i < dataset.tags.length; i++ ){
+          if(activeTagList.hasOwnProperty(dataset.tags[i]) && activeTagList[dataset.tags[i]].hasOwnProperty(dataset.id)){
+            delete activeTagList[dataset.tags[i]][dataset.id];
+          }
         }
       },
       //filter by tag stuff
@@ -50,6 +54,9 @@ angular.module('sgisServices')
       },
       matchAny:function(){
         matchAll = false;
-      }
+      },
+      getMatch:function(){
+        return matchAll ? 'all' : 'any';
+      },
   };
 })
