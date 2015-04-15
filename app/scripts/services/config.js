@@ -24,8 +24,10 @@ angular.module('sgisServices')
         serverRoot: 'http://127.0.0.1:8000',
         routes: {
           datasetList: '/api-ds/',
-          dataSource: '/fake_data/dataSource/:id.json',
-          dataFeed: '/fake_data/dataFeed.json?dataSource=:dataSourceId'
+          mapElement: '/api-test/',
+          mapPoint: '/api-mp/',
+          mapPolygon: '/api-poly/',
+
         },
         route: function(name) {
           var route = this.routes[name];

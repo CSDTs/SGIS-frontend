@@ -8,15 +8,15 @@
  * Controller of the sgisApp
  */
 angular.module('sgisApp')
-  .controller('DatasetListController', ['$scope','datasetList','sharedTagService','envService',function ($scope,datasetList,sharedTagService,envService) {
+  .controller('DatasetListController', ['getServices','sharedTagService','sharedGeomService','envService',function (getServices,sharedTagService,sharedGeomService,envService) {
     /*local scope accessible by anonymous functions*/
     var datasetListCtrl = this;
     /*function inside here is done when query returns*/
-  	datasetListCtrl.datasets = datasetList.query(function() {
+  	datasetListCtrl.datasets = getServices.datasetList.query(function() {
       var temp = datasetListCtrl.datasets;
       datasetListCtrl.datasets = datasetListCtrl.datasets.results;
       var recursiveLoad = function(num){
-        temp = datasetList.query({page:num},function(){
+        temp = getServices.datasetList.query({page:num},function(){
           for (var i = 0; i < temp.results.length;i++){
             temp.results[i]['active'] = false;
           }
@@ -39,10 +39,11 @@ angular.module('sgisApp')
   		if (datasetListCtrl.datasets[datasetIndex].active) {
   		/*just activated, this is tied to checkbox*/
   			sharedTagService.addTags(datasetListCtrl.datasets[datasetIndex]);
-        envService.addActiveDataset(datasetIndex);
+        envService.addActiveDataset(datasetListCtrl.datasets[datasetIndex].id);
+        sharedGeomService.loadDataset(datasetListCtrl.datasets[datasetIndex].id);
 	  	} else {
         sharedTagService.removeTags(datasetListCtrl.datasets[datasetIndex]);
-        envService.removeActiveDataset(datasetIndex);
+        envService.removeActiveDataset(datasetListCtrl.datasets[datasetIndex].id);
 	  	}
   	};
 
