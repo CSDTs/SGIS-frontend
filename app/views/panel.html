@@ -20,8 +20,8 @@
           <!--<button id="cluster-but" class="btn btn-primary btn-sm" type="button" ng-click="saveState()">cluster points</button>-->
         </div>
       </div>
-      <div class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
-        <input type="checkbox" ng-model="dataset.active" ng-change="datasetListCtrl.toggleActivatedDataset($index)">{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
+      <div ng-controller="MapController as mapCtrl" class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
+        <input type="checkbox" ng-model="dataset.active" ng-change="mapCtrl.toggleActivatedDataset(datasetListCtrl.getDataset($index))">{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
       </div>
     </div>
   </div>

@@ -31,7 +31,14 @@
 
     <div id="main" ng-controller="UiController as uiCtrl">
       <span ng-controller="MapController as mapCtrl">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control' events='map.events'></ui-gmap-google-map>       
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control' events='map.events'>
+                <!--<ui-gmap-marker coords="mapCtrl.temp" idkey="0">
+                </ui-gmap-marker>-->
+                <!--<ui-gmap-marker coords="marker" options="marker.options" events="marker.events" idkey="marker.id">
+                </ui-gmap-marker>-->
+                <ui-gmap-marker ng-repeat="marker in points" coords="marker.geometry" idkey="marker.features.properties.id">
+            </span>
+        </ui-gmap-google-map>       
       </span>
 
       <div id="right-panel">

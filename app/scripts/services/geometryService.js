@@ -25,12 +25,12 @@ angular.module('sgisServices')
             sgs.params.page = num;
             temp = getServices.mapElement.query(sgs.params,function(){
               sgs.geometries = sgs.geometries.concat(temp.results.features);
-              if (temp.next != null){
+              if (temp.next != null && !sgs.stop){
                 recursiveLoad(num+1);
               }
             });
           };
-          if (temp.next!=null){
+          if (temp.next!=null && !sgs.stop){
             recursiveLoad(2);
           }
         });
