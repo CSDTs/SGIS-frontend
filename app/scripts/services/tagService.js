@@ -11,6 +11,9 @@ angular.module('sgisServices')
       getTagList:function () {
         return Object.keys(activeTagList);
       },
+      getFilterTagList:function () {
+        return Object.keys(filterByList);
+      },
       getTagListForInput:function(){
         var list = [];
         for (var tag in activeTagList){

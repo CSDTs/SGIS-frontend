@@ -16,12 +16,12 @@
       <div class="list-group-item">
         <div class="input-group input-group-sm input-group-btn">
           <button id="refresh-but" class="btn btn-primary btn-sm glyphicon glyphicon-refresh" ng-click="refreshMap()"></button>
-          <button id="stop-but" class="btn btn-primary btn-sm glyphicon glyphicon-stop" type="button" ng-click="saveState()"></button>
+          <button id="stop-but" class="btn btn-primary btn-sm glyphicon glyphicon-stop" type="button" ng-click="stopStart()"></button>
           <!--<button id="cluster-but" class="btn btn-primary btn-sm" type="button" ng-click="saveState()">cluster points</button>-->
         </div>
       </div>
-      <div ng-controller="MapController as mapCtrl" class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
-        <input type="checkbox" ng-model="dataset.active" ng-change="mapCtrl.toggleActivatedDataset(datasetListCtrl.getDataset($index))">{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
+      <div class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
+        <input type="checkbox" ng-model="dataset.active" ng-change="toggleActivatedDataset(datasetListCtrl.getDataset($index))">{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="sgisApp">
+  <body ng-app="sgisApp" ng-controller="MapController as mapCtrl">
 
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -26,25 +26,16 @@
     <div>
       <div class="header">
         <span class="glyphicon glyphicon-map-marker"> </span>SGIS
-      </div><!--header-->
+      </div>
     </div><!-- /.container-fluid -->
-
-    <div id="main" ng-controller="UiController as uiCtrl">
-      <span ng-controller="MapController as mapCtrl">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control' events='map.events'>
-                <!--<ui-gmap-marker coords="mapCtrl.temp" idkey="0">
-                </ui-gmap-marker>-->
-                <!--<ui-gmap-marker coords="marker" options="marker.options" events="marker.events" idkey="marker.id">
-                </ui-gmap-marker>-->
-                <ui-gmap-marker ng-repeat="marker in points" coords="marker.geometry" idkey="marker.features.properties.id">
-            </span>
-        </ui-gmap-google-map>       
-      </span>
-
-      <div id="right-panel">
-        <div ng-include="'views/panel.html'"></div>
-      </div>   
+    <div id="main">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events" control="map.control" draggable="true">
+            <ui-gmap-marker ng-repeat="m in markers" coords="m.geometry.coordinates" idkey="m.properties.id"></ui-gmap-marker>
+        </ui-gmap-google-map>
     </div>
+    <div id="right-panel">
+        <div ng-include="'views/panel.html'"></div>
+    </div>   
     
     <div class="footer">
       <small class="copyright">©2015 Rensselaer Polytechnic Institute</small>

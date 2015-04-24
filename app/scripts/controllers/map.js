@@ -1,78 +1,96 @@
 
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
 	.controller('MapController',['$scope','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi',function ($scope,config,envService,sharedTagService,getServices,uiGmapGoogleMapApi) {
-		var mapCtrl = $scope;
-		$scope.map = {
-			control: {},
-			events: {
-				tilesloaded: function(map,eventName,args){
-					envService.init();
-					var bounds = $scope.map.control.getGMap().getBounds();
-					envService.setBoundingBox({
-						maxLat: bounds.getNorthEast().lat(),
-						maxLon: bounds.getNorthEast().lng(), 
-						minLat: bounds.getSouthWest().lat(), 
-						minLon: bounds.getSouthWest().lng()
-					});
-				}
-			},
-			draggable: true,
-			markers: [],
+    envService.init();
+    var mapCtrl = this;
+    mapCtrl.stop = false;
+    $scope.map = {
+        center: {
+            latitude: 42.68,
+            longitude: -73.75
+        },
+        zoom: 12,
+        control: {}
+    };
+    $scope.map.events={
+      tilesloaded: function(map,eventName,args){
+        var bounds = $scope.map.control.getGMap().getBounds();
+        envService.setBoundingBox({
+          max_lat: bounds.getNorthEast().lat(),
+          max_lon: bounds.getNorthEast().lng(), 
+          min_lat: bounds.getSouthWest().lat(), 
+          min_lon: bounds.getSouthWest().lng()
+        });
+      }
+    };
+    $scope.markers = [];
+    $scope.polygons = [];
 
-		};
-		$scope.map.zoom = config.map.starting.zoom;
-		$scope.map.center = config.map.starting.center;
-		this.points = [];
-		this.temp = {
-				type:"Point",
-				coordinates:[-73.75482,42.6465]
-			
-		};
-		//{coords:,options:,events:,id:}
+    $scope.loadDataset= function(dataset){
+      if (mapCtrl.stop){return;}
+      mapCtrl.params = envService.getBoundingBox();
+      mapCtrl.params.dataset = dataset;
+      mapCtrl.params.tag = sharedTagService.getFilterTagList();
+      if (mapCtrl.params.tag.length > 0){
+        mapCtrl.params.match = sharedTagService.getMatch();
+      } else {
+        delete mapCtrl.params.tag;
+        delete mapCtrl.params.match;
+      }
+      mapCtrl.params.page = 1;
+      var scp = $scope;
 
-        $scope.loadDataset= function(dataset){
-          if (this.stop){return;}
-          mapCtrl.dataset = dataset.id;
-          mapCtrl.params = envService.getBoundingBox();
-          mapCtrl.params.tag = sharedTagService.getTagList();
-          mapCtrl.params.match = sharedTagService.getMatch();
-          mapCtrl.params.page = 1;
-  
-          mapCtrl.map.points = getServices.mapElement.query(mapCtrl.params,function() {
-            var temp = mapCtrl.map.points;
-            mapCtrl.map.points = mapCtrl.map.points.results.features;
-            var recursiveLoad = function(num){
-              mapCtrl.params.page = num;
-              temp = getServices.mapElement.query(mapCtrl.params,function(){
-                mapCtrl.map.points = mapCtrl.map.points.concat(temp.results.features);
-                if (temp.next != null && !mapCtrl.stop){
-                  recursiveLoad(num+1);
-                }else{
-                	$scope.$apply();
-                }
-              });
-            };
-            if (temp.next!=null && !mapCtrl.stop){
-              recursiveLoad(2);
+      var temp_markers = getServices.mapElement.query(mapCtrl.params,function() {
+        
+        var recursiveLoadPoints = function(num){
+          mapCtrl.params.page = num;
+          var next = false;
+          temp_markers = getServices.mapElement.query(mapCtrl.params,function(){
+            next = temp_markers.pop();
+            scp.markers = scp.markers.concat(temp_markers);
+            if (next  && !mapCtrl.stop){
+              recursiveLoadPoints(num+1);
             }
-
           });
         };
-		uiGmapGoogleMapApi.then(function(maps) {
-		});
+        next = temp_markers.pop();
+        scp.markers = scp.markers.concat(temp_markers);
+        if (next  && !mapCtrl.stop){
+          recursiveLoadPoints(2);
+        }
+      });
 
-
-  	  this.toggleActivatedDataset = function (dataset){
-  		if ($scope.dataset.active) {
-  		/*just activated, this is tied to checkbox*/
-  			mapCtrl.map.points = [{type:"Feature",geometry:{type:"Point",coordinates:[-73.75482,42.6465]},properties:{id:5003}}];
-	  		//sharedTagService.addTags($scope.dataset);
-	        //envService.addActiveDataset($scope.dataset.id);
-	        //$scope.loadDataset($scope.dataset.id);
+      var temp_polygons = getServices.mapElement.query(mapCtrl.params,function() {
+        var recursiveLoadPoints = function(num){
+          mapCtrl.params.page = num;
+          var next = false;
+          temp_polygons = getServices.mapElement.query(mapCtrl.params,function(){
+            next = temp_polygons.pop();
+            scp.polygons = scp.polygons.concat(temp_polygons);
+            if (next  && !mapCtrl.stop){
+              recursiveLoadPoints(num+1);
+            }
+          });
+        };
+        next = temp_polygons.pop();
+        scp.polygons = scp.polygons.concat(temp_polygons);
+        if (next  && !mapCtrl.stop){
+          recursiveLoadPoints(2);
+        }
+      });
+    };
+    $scope.stopStart = function(){
+      this.stop = !this.stop;
+    };
+  	$scope.toggleActivatedDataset = function (dataset){
+  		if (dataset.active) {
+  		//just activated, this is tied to checkbox
+  			sharedTagService.addTags(dataset);
+	      envService.addActiveDataset(dataset.id);
+	      $scope.loadDataset(dataset.id);
 	  	} else {
-	        sharedTagService.removeTags($scope.dataset);
-	        envService.removeActiveDataset($scope.dataset.id);
+	        sharedTagService.removeTags(dataset);
+	        envService.removeActiveDataset(dataset.id);
 	  	}
-	        console.log(mapCtrl.map.points);
-  	  };
+  	};
 	}]);
