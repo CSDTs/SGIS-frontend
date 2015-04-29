@@ -16,10 +16,23 @@ angular.module('sgisApp')
 
     filterCtrl.tags = [];
     filterCtrl.getActiveTags = sharedTagService.getTagListForInput;
+    filterCtrl.matchAll = false;
+    filterCtrl.matchChange = function (){
+      sharedTagService.setMatchAll(filterCtrl.matchAll);
+    };
 
   	filterCtrl.runFilter = function(){
+      var temp_tags = [];
+      for (var x in filterCtrl.tags){
+        temp_tags.push(filterCtrl.tags[x].text);
+      }
+      sharedTagService.setFilterByList(temp_tags);
       
   	};
+    filterCtrl.clearTags = function(){
+      filterCtrl.tags = [];
+      filterCtrl.runFilter();
+    };
 
 
   }]);

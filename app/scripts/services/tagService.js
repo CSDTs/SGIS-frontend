@@ -49,8 +49,11 @@ angular.module('sgisServices')
       getFilterByList: function(){
         return filterByList;
       },
+      addToFilterByList: function(list){
+        filterByList = filterByList.concat(list);
+      },
       setFilterByList: function(list){
-
+        filterByList = list;
       },
       matchAll:function(){
         matchAll = true;
@@ -60,6 +63,9 @@ angular.module('sgisServices')
       },
       getMatch:function(){
         return matchAll ? 'all' : 'any';
+      },
+      setMatchAll: function(match){
+        matchAll = match;
       },
   };
 })

@@ -29,13 +29,14 @@
       </div>
     </div><!-- /.container-fluid -->
     <div id="main">
-        <ui-gmap-google-map center="map.center" zoom="map.zoom" events="map.events" control="map.control" draggable="true">
-            <ui-gmap-marker ng-repeat="m in markers" coords="m.geometry.coordinates" idkey="m.properties.id"></ui-gmap-marker>
-        </ui-gmap-google-map>
+        <ui-gmap-google-map id="map" center="map.center" zoom="map.zoom" events="map.events" control="map.control" draggable="true"></ui-gmap-google-map>
+
+        <window ng-show="mapCtrl.infobox"></window>
+
+        <div id="right-panel">
+            <div ng-include="'views/panel.html'"></div>
+        </div>   
     </div>
-    <div id="right-panel">
-        <div ng-include="'views/panel.html'"></div>
-    </div>   
     
     <div class="footer">
       <small class="copyright">©2015 Rensselaer Polytechnic Institute</small>
