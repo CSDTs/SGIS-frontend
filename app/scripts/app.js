@@ -17,6 +17,5 @@ angular.module('sgisApp', [
 	'ngTouch',
 	'map-module',
 	'sgisServices',
-	'ui-module',
     'ngTagsInput'
 ]);

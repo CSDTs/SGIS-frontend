@@ -1,48 +1,25 @@
 
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
 	.controller('MapController',['$scope','$window','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi',function ($scope,$window,config,envService,sharedTagService,getServices,uiGmapGoogleMapApi) {
+    /*init processes/variables*/
     envService.init();
     $("#map .angular-google-map-container").height($window.innerHeight-90);
-    var mapCtrl = this;
-    mapCtrl.stop = true;
-    mapCtrl.pages = {};
-    mapCtrl.icons = function (color) {
-      var icon = config.svg;
-      icon.fillColor = color;
-      return icon;
-    };
-    mapCtrl.colors = {};
-    mapCtrl.dataLayers = {};
-    mapCtrl.loaded = false;
+    var pages = {};
+    var loaded = false;
 
-    mapCtrl.makeColor = function(num){
-      if (!mapCtrl.colors.hasOwnProperty(num)){
-        var getStr = function(mult){
-          var val = (num * mult) % 256;
-          val = val.toString(16);
-          return val.length == 2 ? val : '0'+val;
-        };
-
-        var r = getStr(25);
-        var g = getStr(30);
-        var b = getStr(100);
-        mapCtrl.colors[num] = {color:'#'+r+g+b};
-      }
-
-      return mapCtrl.colors[num].color
-    };
-    mapCtrl.dataStyleOptions = function(feature) {
-      var num = feature.getProperty('dataset');
-      var color = mapCtrl.makeColor(num);
-      return ({
-        icon: mapCtrl.icons(color),
-        fillColor: color,
-        fillOpacity: .3,
-        strokeColor: color,
-        strokeWeight: 1,
-        clickable: true
-      });
-    };
+    $scope.stop = true;
+    $scope.colors = {};
+    $scope.dataLayers = {};
+    /*$scope.infobox = {
+      coords: ,
+      show: false,
+      templateUrl: ,
+      templateParameter: ,
+      isIconVisibleOnClick: ,
+      closeClick: ,
+      options: ,
+      control:
+    };*/
     //initialize map
     $scope.map = {
         center: {
@@ -52,7 +29,42 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
         zoom: 12,
         control: {}
     };
-    mapCtrl.resetBounds = function(){
+
+    var icons = function (color) {
+      var icon = config.svg;
+      icon.fillColor = color;
+      return icon;
+    };
+    var makeColor = function(num){
+      if (!$scope.colors.hasOwnProperty(num)){
+        var getStr = function(mult){
+          var val = (num * mult) % 256;
+          val = val.toString(16);
+          return val.length == 2 ? val : '0'+val;
+        };
+
+        var r = getStr(25);
+        var g = getStr(30);
+        var b = getStr(100);
+        $scope.colors[num] = {color:'#'+r+g+b};
+      }
+
+      return $scope.colors[num].color
+    };
+    var dataStyleOptions = function(feature) {
+      var num = feature.getProperty('dataset');
+      var color = makeColor(num);
+      return ({
+        icon: icons(color),
+        fillColor: color,
+        fillOpacity: .3,
+        strokeColor: color,
+        strokeWeight: 1,
+        clickable: true
+      });
+    };
+
+    var resetBounds = function(){
       var bounds = $scope.map.control.getGMap().getBounds();
       envService.setBoundingBox({
         max_lat: bounds.getNorthEast().lat(),
@@ -61,31 +73,20 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
         min_lon: bounds.getSouthWest().lng()
       });
     };
-    mapCtrl.moInfo = null;
-    mapCtrl.init_datalayer = function(num){
-      mapCtrl.dataLayers[num] = new google.maps.Data();
-      mapCtrl.dataLayers[num].setStyle(mapCtrl.dataStyleOptions);
-      mapCtrl.dataLayers[num].addListener('mouseover', function(event) {
-        //mapCtrl.moInfo = new google.maps.InfoWindow({content: event.feature.getProperty('name'), position: event.feature.latLng}); 
-        //mapCtrl.moInfo.open($scope.mapInstance);
-      });
-      mapCtrl.dataLayers[num].addListener('mouseout', function(event) {
-         mapCtrl.moInfo.close();
-      });
-      mapCtrl.dataLayers[num].addListener('click', function(event) {
-        mapCtrl.moInfo = new google.maps.InfoWindow({content: event.feature.getProperty('name'), position: event.feature.latLng}); 
-        mapCtrl.moInfo.open($scope.mapInstance);
 
-      });
-  };
+    var init_datalayer = function(num){
+      $scope.dataLayers[num] = new google.maps.Data();
+      $scope.dataLayers[num].setStyle(dataStyleOptions);
+    };
+
     $scope.map.events={
       tilesloaded: function(map,eventName,args){
-        mapCtrl.resetBounds();
+        resetBounds();
         $scope.mapInstance = map;
         $scope.stopStart();
       },
       bounds_changed: function(map,eventName,args){
-        mapCtrl.resetBounds();
+        resetBounds();
         for (num in envService.getActiveDatasets()){
           $scope.loadDataset(num);
         }
@@ -93,73 +94,78 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
     };
 
     $scope.loadDataset= function(dataset){
-      if (mapCtrl.stop){return;}
-      mapCtrl.params = envService.getBoundingBox();
-      mapCtrl.params.dataset = dataset;
-      mapCtrl.params.tag = sharedTagService.getFilterTagList();
-      if (mapCtrl.params.tag.length > 0){
-        mapCtrl.params.match = sharedTagService.getMatch();
+      if (stop){return;}
+      params = envService.getBoundingBox();
+      params.dataset = dataset;
+      params.tag = sharedTagService.getFilterTagList();
+      if (params.tag.length > 0){
+        params.match = sharedTagService.getMatch();
       } else {
-        delete mapCtrl.params.tag;
-        delete mapCtrl.params.match;
+        delete params.tag;
+        delete params.match;
       }
-      if (!mapCtrl.pages.hasOwnProperty(dataset)){
-        mapCtrl.pages[dataset] = {};
+      if (!pages.hasOwnProperty(dataset)){
+        pages[dataset] = {};
       } 
-      if (!mapCtrl.pages[dataset].hasOwnProperty(mapCtrl.params)){
-        mapCtrl.pages[dataset][mapCtrl.params] = 1;
+      if (!pages[dataset].hasOwnProperty(params)){
+        pages[dataset][params] = 1;
       } 
-      mapCtrl.params.page = mapCtrl.pages[dataset][mapCtrl.params];
+      params.page = pages[dataset][params];
 
       var recursiveLoadPoints = function(num){
-        mapCtrl.params.page = num;
-        var temp_markers = getServices.mapElement.query(mapCtrl.params,function(){
-          mapCtrl.dataLayers[dataset].addGeoJson(temp_markers.results); 
+        params.page = num;
+        var temp_markers = getServices.mapElement.query(params,function(){
+          $scope.dataLayers[dataset].addGeoJson(temp_markers.results); 
 
-          if (temp_markers.next  && !mapCtrl.stop){
-            recursiveLoadPoints(mapCtrl.params.page+1);
-          } else if (mapCtrl.stop){
-            mapCtrl.pages[dataset][mapCtrl.params] = mapCtrl.params.page+1;
-            delete mapCtrl.params.page;
+          if (temp_markers.next  && !stop){
+            recursiveLoadPoints(params.page+1);
+          } else if (stop){
+            pages[dataset][params] = params.page+1;
+            delete params.page;
           }
         });
       };
 
       recursiveLoadPoints(1);
+
+      $scope.dataLayers[dataset].addListener('onclick', function(event) {
+        document.getElementById('info-box').textContent =
+            event.feature.getProperty('letter');
+      });
     };
 
     ///this is not working - servcies cached?
     $scope.refreshMap = function(){
-      mapCtrl.stop = true;
-      mapCtrl.dataLayers = {};
-      mapCtrl.stop = false;
+      stop = true;
+      $scope.dataLayers = {};
+      stop = false;
       for (num in envService.getActiveDatasets()){
-        if (!mapCtrl.dataLayers.hasOwnProperty(num)){
-          mapCtrl.init_datalayer(num);
+        if (!$scope.dataLayers.hasOwnProperty(num)){
+          init_datalayer(num);
         }
           $scope.loadDataset(num);
         }
       
     };
-    mapCtrl.applyFilter = function(){
+    $scope.applyFilter = function(){
       var tags = sharedTagService.getFilterByList();
-      for (var layer in mapCtrl.dataLayers){
-        mapCtrl.dataLayers[layer].forEach(function(feature) {
+      for (var layer in $scope.dataLayers){
+        $scope.dataLayers[layer].forEach(function(feature) {
           if (tags.length  == 0){
-            mapCtrl.dataLayers[layer].overrideStyle(feature, {visible: true});
+            $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
           } else if (sharedTagService.getMatch() == 'all'){
             for (var tag in tags){
               if ($.inArray(tags[tag],feature.getProperty('tags')) == -1){
-                mapCtrl.dataLayers[layer].overrideStyle(feature, {visible: false});
+                $scope.dataLayers[layer].overrideStyle(feature, {visible: false});
               } else {
-                mapCtrl.dataLayers[layer].overrideStyle(feature, {visible: true});
+                $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
               }
             }
           } else {
-            mapCtrl.dataLayers[layer].overrideStyle(feature, {visible: false});
+            $scope.dataLayers[layer].overrideStyle(feature, {visible: false});
             for (var tag in tags){
               if ($.inArray(tags[tag],feature.getProperty('tags')) > -1){
-                mapCtrl.dataLayers[layer].overrideStyle(feature, {visible: true});
+                $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
               }
             }
 
@@ -168,8 +174,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
       }
     };
     $scope.stopStart = function(){
-      mapCtrl.stop = !mapCtrl.stop;
-      if (!mapCtrl.stop){
+      stop = !stop;
+      if (!stop){
         for (num in envService.getActiveDatasets()){
           $scope.loadDataset(num);
         }
@@ -178,19 +184,19 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
   	$scope.toggleActivatedDataset = function (dataset){
   		if (dataset.active) {
   		//just activated, this is tied to checkbox
-        mapCtrl.stop = false;
+        stop = false;
   			sharedTagService.addTags(dataset);
 	      envService.addActiveDataset(dataset.id);
-        if (!mapCtrl.dataLayers.hasOwnProperty(dataset.id)){
-          mapCtrl.init_datalayer(dataset.id);
+        if (!$scope.dataLayers.hasOwnProperty(dataset.id)){
+          init_datalayer(dataset.id);
         }
-        mapCtrl.dataLayers[dataset.id].setMap($scope.mapInstance);
+        $scope.dataLayers[dataset.id].setMap($scope.mapInstance);
 	      $scope.loadDataset(dataset.id);
 	  	} else {
-        mapCtrl.stop = true;
+        stop = true;
         sharedTagService.removeTags(dataset);
         envService.removeActiveDataset(dataset.id);
-        mapCtrl.dataLayers[dataset.id].setMap(null);
+        $scope.dataLayers[dataset.id].setMap(null);
         $scope.stopStart();
 	  	}
   	};

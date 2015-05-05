@@ -9,29 +9,26 @@
  */
 angular.module('sgisApp')
   .controller('FilterController', ['$scope','sharedTagService',function ($scope,sharedTagService) {
-    /*local scope accessible by anonymous functions*/
-    var filterCtrl = this;
-    /*function inside here is done when query returns*/
-  	//filterCtrl.activeTags = sharedTagService.getTagListForInput();
+    $scope.tags = [];
+    $scope.matchAll = false;
 
-    filterCtrl.tags = [];
-    filterCtrl.getActiveTags = sharedTagService.getTagListForInput;
-    filterCtrl.matchAll = false;
-    filterCtrl.matchChange = function (){
-      sharedTagService.setMatchAll(filterCtrl.matchAll);
+    $scope.getActiveTags = sharedTagService.getTagListForInput;
+
+    $scope.matchChange = function (){
+      sharedTagService.setMatchAll(matchAll);
     };
 
-  	filterCtrl.runFilter = function(){
+  	$scope.runFilter = function(){
       var temp_tags = [];
-      for (var x in filterCtrl.tags){
-        temp_tags.push(filterCtrl.tags[x].text);
+      for (var x in $scope.tags){
+        temp_tags.push($scope.tags[x].text);
       }
       sharedTagService.setFilterByList(temp_tags);
       
   	};
-    filterCtrl.clearTags = function(){
-      filterCtrl.tags = [];
-      filterCtrl.runFilter();
+    $scope.clearTags = function(){
+      $scope.tags = [];
+      $scope.runFilter();
     };
 
 

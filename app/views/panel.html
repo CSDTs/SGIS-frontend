@@ -11,17 +11,17 @@
     </form> 
   </div>
   <div ng-controller="DatasetListController as datasetListCtrl">
-    <a href="#datasetList" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Datasets<span class="badge">{{ datasetListCtrl.datasets.length }}</span></a>
+    <a href="#datasetList" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Datasets<span class="badge">{{ datasets.length }}</span></a>
     <div class="collapse in" id="datasetList">
       <div class="list-group-item">
         <div class="input-group input-group-sm input-group-btn">
           <button id="refresh-but" class="btn btn-primary btn-sm" ng-click="refreshMap()"><span class="glyphicon glyphicon-refresh"></span></button>
-          <button id="stop-but" class="btn btn-primary btn-sm"type="button" ng-click="stopStart()"><span class="glyphicon glyphicon-stop" ng-show="!mapCtrl.stop"></span><span class="glyphicon glyphicon-play" ng-show="mapCtrl.stop"></span></button>
+          <button id="stop-but" class="btn btn-primary btn-sm"type="button" ng-click="stopStart()"><span class="glyphicon glyphicon-stop" ng-show="!stop"></span><span class="glyphicon glyphicon-play" ng-show="stop"></span></button>
           <!--<button id="cluster-but" class="btn btn-primary btn-sm" type="button" ng-click="saveState()">cluster points</button>-->
         </div>
       </div>
-      <div class="list-group-item" ng-repeat="(datasetId, dataset) in datasetListCtrl.datasets">
-        <input type="checkbox" ng-model="dataset.active" ng-disabled="false" ng-change="toggleActivatedDataset(datasetListCtrl.getDataset($index))"><span ng-style="mapCtrl.colors[dataset.id]" class="glyphicon glyphicon-map-marker"></span>{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
+      <div class="list-group-item" ng-repeat="(datasetId, dataset) in datasets">
+        <input type="checkbox" ng-model="dataset.active" ng-change="toggleActivatedDataset(getDataset($index))"><span ng-style="colors[dataset.id]" class="glyphicon glyphicon-map-marker"></span>{{ dataset.name }}<span class="badge">{{ dataset.count }}</span></input>
       </div>
     </div>
   </div>
@@ -30,15 +30,15 @@
     <a href="#filterPanel" class="list-group-item list-group-item-info" data-toggle="collapse" data-parent="#grandparent">Filter</a>
     <div class="collapse" id="filterPanel">
       <div class="input-group list-group-item">
-        <tags-input ng-model="filterCtrl.tags" placeholder="Filter by Tag" >
-          <auto-complete source="filterCtrl.getActiveTags()" min-length="1"></auto-complete>
+        <tags-input ng-model="tags" placeholder="Filter by Tag" >
+          <auto-complete source="getActiveTags()" min-length="1"></auto-complete>
         </tags-input>
         <span class="input-group-btn">
-          <button class="btn btn-primary glyphicon glyphicon-filter" type="button" ng-click="filterCtrl.runFilter();mapCtrl.applyFilter()"> </button>
-          <button class="btn btn-primary glyphicon glyphicon-remove-circle" type="button" ng-click="filterCtrl.clearTags();mapCtrl.applyFilter()" > </button> 
+          <button class="btn btn-primary glyphicon glyphicon-filter" type="button" ng-click="runFilter();applyFilter()"> </button>
+          <button class="btn btn-primary glyphicon glyphicon-remove-circle" type="button" ng-click="clearTags();applyFilter()" > </button> 
         </span>
-        <input type="radio" ng-model="filterCtrl.matchAll" ng-value="false" checked><span class="label label-primary" >Match Any</span>
-        <input type="radio" ng-model="filterCtrl.matchAll" ng-value="true" checked><span class="label label-primary" >Match All</span>
+        <input type="radio" ng-model="matchAll" ng-value="false" checked><span class="label label-primary" >Match Any</span>
+        <input type="radio" ng-model="matchAll" ng-value="true" checked><span class="label label-primary" >Match All</span>
       </div><!-- /input-group -->
     </div>
   </div> <!--end datasetlistctrl scope-->
