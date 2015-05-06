@@ -32,11 +32,11 @@
       <div class="input-group list-group-item">
         <tags-input ng-model="tags" placeholder="Filter by Tag" >
           <auto-complete source="getActiveTags()" min-length="1"></auto-complete>
-        </tags-input>
         <span class="input-group-btn">
           <button class="btn btn-primary glyphicon glyphicon-filter" type="button" ng-click="runFilter();applyFilter()"> </button>
           <button class="btn btn-primary glyphicon glyphicon-remove-circle" type="button" ng-click="clearTags();applyFilter()" > </button> 
         </span>
+        </tags-input>
         <input type="radio" ng-model="matchAll" ng-value="false" checked><span class="label label-primary" >Match Any</span>
         <input type="radio" ng-model="matchAll" ng-value="true" checked><span class="label label-primary" >Match All</span>
       </div><!-- /input-group -->

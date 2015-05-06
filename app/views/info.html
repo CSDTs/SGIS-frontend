@@ -1,0 +1,22 @@
+<div>
+	<p>
+		<b>Name:</b> {{clickedPoint.name}}
+	</p>
+	<p ng-show="clickedPoint.address.length">
+		<b>Address:</b> {{clickedPoint.address}}
+	</p>
+</div>
+<div>
+	<p>
+		<b>Tags:</b> 
+        <tags-input style="width:70%" ng-model="tags" placeholder="Add Tags" >
+          <auto-complete source="availableTags" min-length="1"></auto-complete>
+        <button class="btn btn-primary glyphicon glyphicon-floppy-disk" type="button" ng-click="newTags()" > </button> 
+        </tags-input>
+	</p>
+</div>
+<div>
+	<p ng-repeat="(label, data) in dataList">
+		<b>{{label}}:</b> {{data}}
+	</p>
+</div>

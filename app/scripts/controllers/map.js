@@ -1,6 +1,6 @@
 
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
-	.controller('MapController',['$scope','$window','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi',function ($scope,$window,config,envService,sharedTagService,getServices,uiGmapGoogleMapApi) {
+	.controller('MapController',['$scope','$window','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi','ngDialog',function ($scope, $window, config, envService, sharedTagService, getServices, uiGmapGoogleMapApi, ngDialog) {
     /*init processes/variables*/
     envService.init();
     $("#map .angular-google-map-container").height($window.innerHeight-90);
@@ -10,16 +10,6 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
     $scope.stop = true;
     $scope.colors = {};
     $scope.dataLayers = {};
-    /*$scope.infobox = {
-      coords: ,
-      show: false,
-      templateUrl: ,
-      templateParameter: ,
-      isIconVisibleOnClick: ,
-      closeClick: ,
-      options: ,
-      control:
-    };*/
     //initialize map
     $scope.map = {
         center: {
@@ -128,9 +118,29 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
 
       recursiveLoadPoints(1);
 
-      $scope.dataLayers[dataset].addListener('onclick', function(event) {
-        document.getElementById('info-box').textContent =
-            event.feature.getProperty('letter');
+      $scope.dataLayers[dataset].addListener('click', function(event) {
+        ngDialog.open({
+          template: 'views/info.html',
+          controller: ['$scope','sharedTagService','getServices', function($scope, sharedTagService,getServices) {
+            $scope.clickedPoint = {};
+            $scope.clickedPoint.name = event.feature.getProperty('name');
+            //get and format address
+            $scope.clickedPoint.address = event.feature.getProperty('address');
+            if ($scope.clickedPoint.address.street != null) {
+              $scope.clickedPoint.address = $scope.clickedPoint.address.street + ' ' + $scope.clickedPoint.address.city + ', ' + $scope.clickedPoint.address.state + ' ' + $scope.clickedPoint.address.zipcode + ' ' + $scope.clickedPoint.address.county + ' County';
+            } else {
+              $scope.clickedPoint.address = '';
+            }
+
+            //set tags
+            $scope.availableTags = sharedTagService.getTagListForInput();
+            $scope.tags = [];
+console.log(event.feature.getId());
+            //get data points
+            $scope.dataList = getServices.mapElementData.query({data: 'all', id: event.feature.getId()}, function(){
+            });
+          }]
+        });
       });
     };
 
