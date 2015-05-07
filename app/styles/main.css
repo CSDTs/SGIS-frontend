@@ -99,3 +99,21 @@ body {
   text-align: left;
   padding:5px;
 }
+
+.info-label {
+  padding:5px;
+  font-weight:bold;
+}
+.clear {
+  float:clear;
+}
+
+.middle-btn-fix{
+  display:inline-block; 
+  border-radius:0 !important;
+}
+.last-btn-fix{
+  display:inline-block; 
+  border-top-left-radius:0 !important;
+  border-bottom-left-radius:0 !important;
+}   

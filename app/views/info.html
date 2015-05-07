@@ -1,22 +1,37 @@
 <div>
 	<p>
-		<b>Name:</b> {{clickedPoint.name}}
+		<span class="info-label">Name:</span> {{clickedPoint.name}}
+		<span class="clear"></span>
 	</p>
 	<p ng-show="clickedPoint.address.length">
-		<b>Address:</b> {{clickedPoint.address}}
+		<span class="info-label">Address:</span> {{clickedPoint.address}}
+		<span class="clear"></span>
 	</p>
 </div>
+<form novalidate class="simple-form">
+<div class="input-group">
+  <tags-input ng-model="tags" placeholder="Filter by Tag" >
+    <auto-complete source="getActiveTags()" min-length="1"></auto-complete>
+  </tags-input>
+  <span class="input-group-btn">
+    <button class="btn btn-primary last-btn-fix" type="button" ng-click="clearTags();applyFilter()" ><span class="glyphicon glyphicon-floppy-disk"></span></button> 
+  </span>
+</div><!-- /input-group -->
+</form>
 <div>
 	<p>
-		<b>Tags:</b> 
+		<span class="info-label">Tags: </span> 
         <tags-input style="width:70%" ng-model="tags" placeholder="Add Tags" >
           <auto-complete source="availableTags" min-length="1"></auto-complete>
-        <button class="btn btn-primary glyphicon glyphicon-floppy-disk" type="button" ng-click="newTags()" > </button> 
+        <button class="btn btn-primary glyphicon glyphicon-floppy-disk last-btn-fix" type="button" ng-click="newTags()" > </button> 
         </tags-input>
+        <span class="clear"></span>
 	</p>
 </div>
 <div>
 	<p ng-repeat="(label, data) in dataList">
-		<b>{{label}}:</b> {{data}}
+		<span class="info-label">{{label}}:</span>
+		<a href="{{data}}" ng-show="data.indexOf('http://') == 0">{{data}}</a><span ng-show="data.indexOf('http://') != 0">{{data}}</span>
+		<span class="clear"></span>
 	</p>
 </div>
