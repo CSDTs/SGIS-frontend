@@ -121,25 +121,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
       $scope.dataLayers[dataset].addListener('click', function(event) {
         ngDialog.open({
           template: 'views/info.html',
-          controller: ['$scope','sharedTagService','getServices', function($scope, sharedTagService,getServices) {
-            $scope.clickedPoint = {};
-            $scope.clickedPoint.name = event.feature.getProperty('name');
-            //get and format address
-            $scope.clickedPoint.address = event.feature.getProperty('address');
-            if ($scope.clickedPoint.address.street != null) {
-              $scope.clickedPoint.address = $scope.clickedPoint.address.street + ' ' + $scope.clickedPoint.address.city + ', ' + $scope.clickedPoint.address.state + ' ' + $scope.clickedPoint.address.zipcode + ' ' + $scope.clickedPoint.address.county + ' County';
-            } else {
-              $scope.clickedPoint.address = '';
-            }
-
-            //set tags
-            $scope.availableTags = sharedTagService.getTagListForInput();
-            $scope.tags = [];
-console.log(event.feature.getId());
-            //get data points
-            $scope.dataList = getServices.mapElementData.query({data: 'all', id: event.feature.getId()}, function(){
-            });
-          }]
+          controller: 'InfoWindowController',
+          data: event,
         });
       });
     };

@@ -1,37 +1,34 @@
 <div>
-	<p>
-		<span class="info-label">Name:</span> {{clickedPoint.name}}
-		<span class="clear"></span>
-	</p>
-	<p ng-show="clickedPoint.address.length">
-		<span class="info-label">Address:</span> {{clickedPoint.address}}
-		<span class="clear"></span>
-	</p>
+  <address>
+    <strong>{{clickedPoint.name}}</strong>
+    <span ng-repeat="line in clickedPoint.address"><br>{{line}}</span>
+  </address>
 </div>
-<form novalidate class="simple-form">
-<div class="input-group">
-  <tags-input ng-model="tags" placeholder="Filter by Tag" >
-    <auto-complete source="getActiveTags()" min-length="1"></auto-complete>
-  </tags-input>
-  <span class="input-group-btn">
-    <button class="btn btn-primary last-btn-fix" type="button" ng-click="clearTags();applyFilter()" ><span class="glyphicon glyphicon-floppy-disk"></span></button> 
-  </span>
-</div><!-- /input-group -->
+<form class="form-horizontal">
+
+  <div class="input-group">
+    <div class="input-group-addon">Tags</div>
+    <tags-input ng-model="tags" placeholder="Add Tags">
+      <auto-complete source="availableTags" min-length="1"></auto-complete>
+    </tags-input>
+    <span class="input-group-btn">
+      <button class="btn btn-primary last-btn-fix" type="button" ng-click="pushTags()" ><span class="glyphicon glyphicon-floppy-disk"></span></button> 
+    </span>
+  </div><!-- /input-group -->
 </form>
 <div>
-	<p>
-		<span class="info-label">Tags: </span> 
-        <tags-input style="width:70%" ng-model="tags" placeholder="Add Tags" >
-          <auto-complete source="availableTags" min-length="1"></auto-complete>
-        <button class="btn btn-primary glyphicon glyphicon-floppy-disk last-btn-fix" type="button" ng-click="newTags()" > </button> 
-        </tags-input>
-        <span class="clear"></span>
-	</p>
-</div>
-<div>
-	<p ng-repeat="(label, data) in dataList">
-		<span class="info-label">{{label}}:</span>
-		<a href="{{data}}" ng-show="data.indexOf('http://') == 0">{{data}}</a><span ng-show="data.indexOf('http://') != 0">{{data}}</span>
-		<span class="clear"></span>
-	</p>
+  <table ng-show="{{dataList}}">
+    <!--<thead ng-show="{{false}}">
+      <tr>
+        <th class="label">Label</th>
+        <th>Data</th>
+      </tr>
+    </thead>-->
+    <tbody id="data-table">
+      <tr ng-repeat="(label, data) in dataList">
+        <td class="table-label">{{label}}</td>
+        <td><a href="{{data}}" ng-show="data.indexOf('http://') == 0">{{data}}</a><span ng-show="data.indexOf('http://') != 0">{{data}}</span></td>
+      </tr>
+    <tbody>
+  </table>
 </div>

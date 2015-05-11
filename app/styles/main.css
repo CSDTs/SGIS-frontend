@@ -117,3 +117,13 @@ body {
   border-top-left-radius:0 !important;
   border-bottom-left-radius:0 !important;
 }   
+.table-label{
+  padding-right: 5px;
+  font-weight: bold;
+  text-align: right;
+}
+#data-table{
+  display: block; 
+  height: 150px; 
+  overflow-y: auto;
+}

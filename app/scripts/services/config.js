@@ -36,7 +36,7 @@ angular.module('sgisServices')
           mapElement: '/api-test/',
           mapPoint: '/api-mp/',
           mapPolygon: '/api-poly/',
-
+          tag: '/api-tag/',
         },
         route: function(name) {
           var route = this.routes[name];

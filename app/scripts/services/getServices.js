@@ -10,5 +10,6 @@ angular.module('sgisServices')
         mapElementData: $resource(config.route('mapElement')+':id/', {}, {query: {method: 'GET', isArray: false, params:{page_size:100}, transformResponse : function(data, headers) {
                 return JSON.parse(data).properties.data;
               }}}),
+        tag: $resource(config.route('tag'), {}, {save: {method: 'POST'}}),
     };
 }]);
