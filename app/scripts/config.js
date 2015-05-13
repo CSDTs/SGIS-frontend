@@ -7,7 +7,7 @@ angular.module('sgisServices')
   .config(['uiGmapGoogleMapApiProvider', function (GoogleMapApi) {
   GoogleMapApi.configure({
         /*put google maps API key here*/
-        key: '',
+        key: 'AIzaSyDazxNgLILi-BIkhWUqgodvdQgdcWu29_g',
         v: '3.17',
         libraries: ''
     });
