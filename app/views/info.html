@@ -20,12 +20,12 @@
   <table ng-show="{{dataList}}">
     <!--<thead ng-show="{{false}}">
       <tr>
-        <th class="label">Label</th>
+        <th class="table-label">Label</th>
         <th>Data</th>
       </tr>
     </thead>-->
     <tbody id="data-table">
-      <tr ng-repeat="(label, data) in dataList">
+      <tr ng-repeat="(label, data) in dataList" ng-show="data.length>0">
         <td class="table-label">{{label}}</td>
         <td><a href="{{data}}" ng-show="data.indexOf('http://') == 0">{{data}}</a><span ng-show="data.indexOf('http://') != 0">{{data}}</span></td>
       </tr>

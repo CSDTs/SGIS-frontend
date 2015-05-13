@@ -1,5 +1,5 @@
 
-angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
+angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'])
 	.controller('MapController',['$scope','$window','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi','ngDialog',function ($scope, $window, config, envService, sharedTagService, getServices, uiGmapGoogleMapApi, ngDialog) {
     /*init processes/variables*/
     envService.init();
@@ -18,6 +18,11 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
         },
         zoom: 12,
         control: {}
+    };
+    $scope.findLocation = {
+      search: '',
+      details: {},
+      options: {}
     };
 
     var icons = function (color) {
@@ -81,6 +86,16 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices'])
           $scope.loadDataset(num);
         }
       }
+    };
+
+    $scope.recenterMap = function(){
+      if ($scope.findLocation.search == '')
+        return;
+      var limit = 100;
+      while (limit && !$scope.findLocation.details.geometry.location){
+        limit -= 1;
+      }
+      $scope.map.control.getGMap().setCenter($scope.findLocation.details.geometry.location);
     };
 
     $scope.loadDataset= function(dataset){
