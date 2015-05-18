@@ -9,8 +9,6 @@
 
 module.exports = function (grunt) {
 
-  var config =
-    require('./config/config.json');
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 

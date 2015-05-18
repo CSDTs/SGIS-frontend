@@ -1,10 +1,12 @@
+'use strict';
+
 angular.module('sgisApp')
   .controller('InfoWindowController', ['$scope','sharedTagService','getServices', function($scope, sharedTagService,getServices) {
     $scope.clickedPoint = {};
     $scope.clickedPoint.name = $scope.ngDialogData.feature.getProperty('name');
     //get and format address
     $scope.clickedPoint.address = $scope.ngDialogData.feature.getProperty('address');
-    if ($scope.clickedPoint.address.street != null) {
+    if ($scope.clickedPoint.address.street !== null) {
       $scope.clickedPoint.address = [$scope.clickedPoint.address.street, $scope.clickedPoint.address.city + ', ' + $scope.clickedPoint.address.state + ' ' + $scope.clickedPoint.address.zipcode, $scope.clickedPoint.address.county + ' County'];
     } else {
       var temp = $scope.clickedPoint.address;
@@ -28,7 +30,7 @@ angular.module('sgisApp')
 
     var checkNewTag = function(tag){
       for (var t in origTags){
-        if (tag == origTags[t]){
+        if (tag === origTags[t]){
           return false;
         }
       }
@@ -37,11 +39,12 @@ angular.module('sgisApp')
     $scope.pushTags = function(){
       for (var tag in $scope.tags){
         if(checkNewTag($scope.tags[tag].text)){
-          var response = getServices.tag.save({mapelement:$scope.ngDialogData.feature.getId(),tag:$scope.tags[tag].text}, function(){
+          getServices.tag.save({mapelement:$scope.ngDialogData.feature.getId(),tag:$scope.tags[tag].text}, function(){
               //add returned info to origTags because it's now pushed (non-approved tags not shown)
               origTags.push($scope.tags[tag].text);
-              if(!sharedTagService.checkTagApproved($scope.tags[tag],$scope.ngDialogData.feature.getProperty('dataset')))
+              if(!sharedTagService.checkTagApproved($scope.tags[tag].text,$scope.ngDialogData.feature.getProperty('dataset'))){
                 $scope.approved = false;
+              }
           });
         }
       }

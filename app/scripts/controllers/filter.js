@@ -15,15 +15,15 @@ angular.module('sgisApp')
     $scope.getActiveTags = sharedTagService.getTagListForInput;
 
     $scope.matchChange = function (){
-      sharedTagService.setMatchAll(matchAll);
+      sharedTagService.setMatchAll($scope.matchAll);
     };
 
   	$scope.runFilter = function(){
-      var temp_tags = [];
+      var tempTags = [];
       for (var x in $scope.tags){
-        temp_tags.push($scope.tags[x].text);
+        tempTags.push($scope.tags[x].text);
       }
-      sharedTagService.setFilterByList(temp_tags);
+      sharedTagService.setFilterByList(tempTags);
       
   	};
     $scope.clearTags = function(){

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sgisServices')
-  .service('envService', ['getServices','sharedTagService',function (getServices,sharedTagService) {
+  .service('envService', [function () {
       var boundingBox;
       var activeDatasets; 
       var datasetStatus;
@@ -18,9 +18,6 @@ angular.module('sgisServices')
         },
         getActiveDatasets:function(){
           return activeDatasets;
-        },
-        getFilterTags:function(){
-          return filterTags;
         },
         setBoundingBox:function(input){
           boundingBox = input;

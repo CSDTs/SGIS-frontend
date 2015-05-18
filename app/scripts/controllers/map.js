@@ -1,11 +1,11 @@
+'use strict';
 
 angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'])
 	.controller('MapController',['$scope','$window','config','envService','sharedTagService','getServices','uiGmapGoogleMapApi','ngDialog',function ($scope, $window, config, envService, sharedTagService, getServices, uiGmapGoogleMapApi, ngDialog) {
     /*init processes/variables*/
     envService.init();
-    $("#map .angular-google-map-container").height($window.innerHeight-90);
+    $('#map .angular-google-map-container').height($window.innerHeight-90);
     var pages = {};
-    var loaded = false;
 
     $scope.stop = true;
     $scope.colors = {};
@@ -41,7 +41,7 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
         var getStr = function(mult){
           var val = (num * mult) % 256;
           val = val.toString(16);
-          return val.length == 2 ? val : '0'+val;
+          return val.length === 2 ? val : '0'+val;
         };
 
         var r = getStr(25);
@@ -50,7 +50,7 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
         $scope.colors[num] = {color:'#'+r+g+b};
       }
 
-      return $scope.colors[num].color
+      return $scope.colors[num].color;
     };
     var dataStyleOptions = function(feature) {
       var num = feature.getProperty('dataset');
@@ -58,7 +58,7 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
       return ({
         icon: icons(color),
         fillColor: color,
-        fillOpacity: .3,
+        fillOpacity: 0.3,
         strokeColor: color,
         strokeWeight: 1,
         clickable: true
@@ -75,28 +75,29 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
       });
     };
 
-    var init_datalayer = function(num){
+    var initDatalayer = function(num){
       $scope.dataLayers[num] = new google.maps.Data();
       $scope.dataLayers[num].setStyle(dataStyleOptions);
     };
 
     $scope.map.events={
-      tilesloaded: function(map,eventName,args){
+      tilesloaded: function(map){
         resetBounds();
         $scope.mapInstance = map;
         $scope.stopStart();
       },
-      bounds_changed: function(map,eventName,args){
+      bounds_changed: function(){
         resetBounds();
-        for (num in envService.getActiveDatasets()){
+        for (var num in envService.getActiveDatasets()){
           $scope.loadDataset(num);
         }
       }
     };
 
     $scope.recenterMap = function(){
-      if ($scope.findLocation.search == '')
+      if ($scope.findLocation.search === ''){
         return;
+      }
       var limit = 100;
       while (limit && !$scope.findLocation.details.geometry.location){
         limit -= 1;
@@ -111,8 +112,9 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
     };
 
     $scope.addCircles = function(){
-      if ($scope.findLocation.search == '')
+      if ($scope.findLocation.search === ''){
         return;
+      }
       var calculatedRadius;
       switch($scope.unit){
         case 'mi':
@@ -144,8 +146,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
     };
 
     $scope.loadDataset= function(dataset){
-      if (stop){return;}
-      params = envService.getBoundingBox();
+      if ($scope.stop){return;}
+      var params = envService.getBoundingBox();
       params.dataset = dataset;
       params.tag = sharedTagService.getFilterTagList();
       if (params.tag.length > 0){
@@ -164,12 +166,12 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
 
       var recursiveLoadPoints = function(num){
         params.page = num;
-        var temp_markers = getServices.mapElement.query(params,function(){
-          $scope.dataLayers[dataset].addGeoJson(temp_markers.results); 
+        var tempMarkers = getServices.mapElement.query(params,function(){
+          $scope.dataLayers[dataset].addGeoJson(tempMarkers.results); 
 
-          if (temp_markers.next  && !stop){
+          if (tempMarkers.next  && !$scope.stop){
             recursiveLoadPoints(params.page+1);
-          } else if (stop){
+          } else if ($scope.stop){
             pages[dataset][params] = params.page+1;
             delete params.page;
           }
@@ -189,12 +191,12 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
 
     ///this is not working - servcies cached?
     $scope.refreshMap = function(){
-      stop = true;
+      $scope.stop = true;
       $scope.dataLayers = {};
-      stop = false;
-      for (num in envService.getActiveDatasets()){
+      $scope.stop = false;
+      for (var num in envService.getActiveDatasets()){
         if (!$scope.dataLayers.hasOwnProperty(num)){
-          init_datalayer(num);
+          initDatalayer(num);
         }
           $scope.loadDataset(num);
         }
@@ -204,11 +206,11 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
       var tags = sharedTagService.getFilterByList();
       for (var layer in $scope.dataLayers){
         $scope.dataLayers[layer].forEach(function(feature) {
-          if (tags.length  == 0){
+          if (tags.length  === 0){
             $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
-          } else if (sharedTagService.getMatch() == 'all'){
+          } else if (sharedTagService.getMatch() === 'all'){
             for (var tag in tags){
-              if ($.inArray(tags[tag],feature.getProperty('tags')) == -1){
+              if ($.inArray(tags[tag],feature.getProperty('tags')) === -1){
                 $scope.dataLayers[layer].overrideStyle(feature, {visible: false});
               } else {
                 $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
@@ -216,8 +218,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
             }
           } else {
             $scope.dataLayers[layer].overrideStyle(feature, {visible: false});
-            for (var tag in tags){
-              if ($.inArray(tags[tag],feature.getProperty('tags')) > -1){
+            for (var t in tags){
+              if ($.inArray(tags[t],feature.getProperty('tags')) > -1){
                 $scope.dataLayers[layer].overrideStyle(feature, {visible: true});
               }
             }
@@ -227,9 +229,9 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
       }
     };
     $scope.stopStart = function(){
-      stop = !stop;
-      if (!stop){
-        for (num in envService.getActiveDatasets()){
+      $scope.stop = !$scope.stop;
+      if (!$scope.stop){
+        for (var num in envService.getActiveDatasets()){
           $scope.loadDataset(num);
         }
       }
@@ -237,16 +239,16 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
   	$scope.toggleActivatedDataset = function (dataset){
   		if (dataset.active) {
   		//just activated, this is tied to checkbox
-        stop = false;
+        $scope.stop = false;
   			sharedTagService.addTags(dataset);
 	      envService.addActiveDataset(dataset.id);
         if (!$scope.dataLayers.hasOwnProperty(dataset.id)){
-          init_datalayer(dataset.id);
+          initDatalayer(dataset.id);
         }
         $scope.dataLayers[dataset.id].setMap($scope.mapInstance);
 	      $scope.loadDataset(dataset.id);
 	  	} else {
-        stop = true;
+        $scope.stop = true;
         sharedTagService.removeTags(dataset);
         envService.removeActiveDataset(dataset.id);
         $scope.dataLayers[dataset.id].setMap(null);
