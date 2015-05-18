@@ -67,5 +67,11 @@ angular.module('sgisServices')
       setMatchAll: function(match){
         matchAll = match;
       },
+      checkTagApproved: function(tag, dataset_id){
+        if (activeTagList.hasOwnProperty(tag) && activeTagList[tag].hasOwnProperty(dataset_id)){
+          return true;
+        }
+        return false;
+      },
   };
 })

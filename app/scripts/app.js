@@ -19,6 +19,4 @@ angular.module('sgisApp', [
 	'sgisServices',
     'ngTagsInput',
     'ngDialog'
-]).config(function($resourceProvider) {
-  $resourceProvider.defaults.stripTrailingSlashes = false;
-});
+]);

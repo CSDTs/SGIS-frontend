@@ -10,6 +10,8 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
     $scope.stop = true;
     $scope.colors = {};
     $scope.dataLayers = {};
+    $scope.userCircles = [];
+
     //initialize map
     $scope.map = {
         center: {
@@ -24,6 +26,10 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
       details: {},
       options: {}
     };
+
+    $scope.radius = 1;
+    $scope.unit = 'mi';
+    $scope.allUnits = ['mi','km'];
 
     var icons = function (color) {
       var icon = config.svg;
@@ -96,6 +102,45 @@ angular.module('map-module',['uiGmapgoogle-maps','sgisServices','ngAutocomplete'
         limit -= 1;
       }
       $scope.map.control.getGMap().setCenter($scope.findLocation.details.geometry.location);
+    };
+
+    
+
+    $scope.changeUnit = function(newUnit){
+      $scope.unit = newUnit;
+    };
+
+    $scope.addCircles = function(){
+      if ($scope.findLocation.search == '')
+        return;
+      var calculatedRadius;
+      switch($scope.unit){
+        case 'mi':
+          calculatedRadius = $scope.radius*1609.34;
+          break;
+        case 'km':
+          calculatedRadius = $scope.radius*1000;
+          break;
+      }
+
+      $scope.userCircles.push(new google.maps.Circle({
+        strokeColor: '#000000',
+        strokeOpacity: 1,
+        strokeWeight: 1,
+        fillOpacity: 0,
+        map: $scope.map.control.getGMap(),
+        center: $scope.findLocation.details.geometry.location,
+        radius: calculatedRadius,
+        draggable: true
+      }));
+    };
+
+    $scope.clearCircles = function(){
+      while($scope.userCircles.length){
+        var temp = $scope.userCircles.pop();
+        temp.setMap(null);
+        temp = null;
+      }
     };
 
     $scope.loadDataset= function(dataset){

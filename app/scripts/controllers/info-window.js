@@ -23,6 +23,8 @@ angular.module('sgisApp')
     }
     //get data points
     $scope.dataList = getServices.mapElementData.query({data: 'all', id: $scope.ngDialogData.feature.getId()}, function(){});
+    
+    $scope.approved = true;
 
     var checkNewTag = function(tag){
       for (var t in origTags){
@@ -33,23 +35,15 @@ angular.module('sgisApp')
       return true;
     };
     $scope.pushTags = function(){
-      var approved = true;
       for (var tag in $scope.tags){
-        if(checkNewTag($scope.tags[tag])){
-          getServices.tag.save({mapelement:$scope.ngDialogData.feature.getId(),tag:$scope.tags[tag]}, function(){
+        if(checkNewTag($scope.tags[tag].text)){
+          var response = getServices.tag.save({mapelement:$scope.ngDialogData.feature.getId(),tag:$scope.tags[tag].text}, function(){
               //add returned info to origTags because it's now pushed (non-approved tags not shown)
-
-              if(true)
-                approved = false;
+              origTags.push($scope.tags[tag].text);
+              if(!sharedTagService.checkTagApproved($scope.tags[tag],$scope.ngDialogData.feature.getProperty('dataset')))
+                $scope.approved = false;
           });
         }
-      }
-      //show non-approved warning
-      //change this to show only if non-approved tags are pushed
-      if (!approved){        
-        ngDialog.open({
-          template: '<p>If a tag you added has not yet been approved, a teacher needs to approve it. Until then, your tag will not appear, but it has been saved.</p>'
-        });
       }
     };
   }
